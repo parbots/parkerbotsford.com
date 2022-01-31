@@ -1,7 +1,5 @@
 import Head from 'next/head';
 
-const title = "Hi, i'm Parker Botsford.";
-
 export default function HomePage() {
     return (
         <div>
@@ -19,7 +17,7 @@ export default function HomePage() {
             </header>
 
             <main>
-                <h1>{title}</h1>
+                <h1>{"Hi, i'm Parker Botsford."}</h1>
             </main>
 
             <footer>
