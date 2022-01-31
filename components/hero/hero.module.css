@@ -3,6 +3,9 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    height: 100vh;
+}
 
-    height: 400px;
+.hero h1 {
+    padding: 0 20%;
 }

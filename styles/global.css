@@ -18,7 +18,7 @@ html:focus-within {
 }
 
 body {
-    font-family: monospace;
+    font-family: 'Roboto Mono', monospace;
     font-size: 16px;
     min-height: 100vh;
     line-height: 1.5;
@@ -62,4 +62,13 @@ h2 {
 
 p {
     font-size: 16px;
+}
+
+a {
+    color: black;
+    text-decoration: none;
+}
+
+a:hover {
+    text-decoration: underline 2px;
 }

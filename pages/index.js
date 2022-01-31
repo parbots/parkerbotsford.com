@@ -4,9 +4,11 @@ import Header from '../components/header';
 import Hero from '../components/hero/';
 import Footer from '../components/footer';
 
+import styles from '../styles/about-page.module.css';
+
 export default function HomePage() {
     return (
-        <div>
+        <main className={styles.main}>
             <Head>
                 <title>Parker Botsford</title>
             </Head>
@@ -14,6 +16,6 @@ export default function HomePage() {
             <Header />
             <Hero />
             <Footer />
-        </div>
+        </main>
     );
 }
