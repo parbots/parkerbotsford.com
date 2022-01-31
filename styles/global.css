@@ -19,6 +19,7 @@ html:focus-within {
 
 body {
     font-family: monospace;
+    font-size: 16px;
     min-height: 100vh;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
@@ -49,4 +50,16 @@ h4,
 h5,
 h6 {
     overflow-wrap: break-word;
+}
+
+h1 {
+    font-size: 36px;
+}
+
+h2 {
+    font-size: 28px;
+}
+
+p {
+    font-size: 16px;
 }

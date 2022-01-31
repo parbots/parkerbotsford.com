@@ -1,5 +1,9 @@
 import Head from 'next/head';
 
+import Header from '../components/header';
+import Hero from '../components/hero/';
+import Footer from '../components/footer';
+
 export default function HomePage() {
     return (
         <div>
@@ -7,22 +11,9 @@ export default function HomePage() {
                 <title>Parker Botsford</title>
             </Head>
 
-            <header>
-                <h2>Parker Botsford</h2>
-                <nav>
-                    <a href=''>Blog</a>
-                    <a href=''>About</a>
-                    <a href=''>Contact</a>
-                </nav>
-            </header>
-
-            <main>
-                <h1>{"Hi, i'm Parker Botsford."}</h1>
-            </main>
-
-            <footer>
-                <p>© Parker Botsford 2022</p>
-            </footer>
+            <Header />
+            <Hero />
+            <Footer />
         </div>
     );
 }
