@@ -1,21 +1,22 @@
 import Head from 'next/head';
 
-import Header from '../../components/header';
-import Hero from '../../components/hero/';
-import Footer from '../../components/footer';
+import styles from '../../styles/BlogPage.module.css';
 
-import styles from '../../styles/about-page.module.css';
+import Header from '../../components/Header';
+import Footer from '../../components/Footer';
 
-export default function HomePage() {
+export default function BlogPage() {
     return (
-        <main className={styles.main}>
+        <div className={styles.page}>
             <Head>
                 <title>Parker Botsford</title>
             </Head>
 
             <Header />
-            <section>Blog</section>
+            <section>
+                <h1>Blog Page</h1>
+            </section>
             <Footer />
-        </main>
+        </div>
     );
 }
