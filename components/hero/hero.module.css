@@ -13,6 +13,7 @@
     padding: 10%;
 }
 
-.hero h2 {
+.hero p {
+    font-size: 28px;
     max-width: 60%;
 }
