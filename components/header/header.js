@@ -10,9 +10,6 @@ const header = () => {
                 <Link href='/'>
                     <a>about</a>
                 </Link>
-                <Link href='/blog'>
-                    <a>blog</a>
-                </Link>
             </nav>
         </header>
     );
