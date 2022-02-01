@@ -8,14 +8,16 @@ import styles from '../styles/about-page.module.css';
 
 export default function HomePage() {
     return (
-        <main className={styles.main}>
+        <div className={styles.main}>
             <Head>
                 <title>Parker Botsford</title>
             </Head>
 
             <Header />
-            <Hero />
+            <main>
+                <Hero />
+            </main>
             <Footer />
-        </main>
+        </div>
     );
 }
