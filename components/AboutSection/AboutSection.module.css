@@ -1,0 +1,12 @@
+.aboutSection {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.aboutSection h2 {
+    text-align: center;
+    max-width: 60%;
+}

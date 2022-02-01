@@ -1,6 +1,6 @@
-import styles from './footer.module.css';
+import styles from './Footer.module.css';
 
-const footer = () => {
+const Footer = () => {
     return (
         <footer className={styles.footer}>
             <p>© Parker Botsford 2022</p>
@@ -8,4 +8,4 @@ const footer = () => {
     );
 };
 
-export default footer;
+export default Footer;

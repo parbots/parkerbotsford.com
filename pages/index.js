@@ -1,10 +1,11 @@
 import Head from 'next/head';
 
-import Header from '../components/header';
-import Hero from '../components/hero/';
-import Footer from '../components/footer';
+import styles from '../styles/HomePage.module.css';
 
-import styles from '../styles/about-page.module.css';
+import HeroSection from '../components/HeroSection/HeroSection';
+import AboutSection from '../components/AboutSection/AboutSection';
+import ProjectSection from '../components/ProjectSection';
+import Footer from '../components/Footer';
 
 export default function HomePage() {
     return (
@@ -13,11 +14,9 @@ export default function HomePage() {
                 <title>Parker Botsford</title>
             </Head>
 
-            <section className={styles.hero}>
-                <Header />
-                <Hero />
-            </section>
-
+            <HeroSection />
+            <AboutSection />
+            <ProjectSection />
             <Footer />
         </div>
     );
