@@ -6,11 +6,11 @@ const Header = () => {
     return (
         <header className={styles.header}>
             <h2>Parker Botsford</h2>
-            <nav>
+            {/* <nav>
                 <Link href='/'>
                     <a>about</a>
                 </Link>
-            </nav>
+            </nav> */}
         </header>
     );
 };
