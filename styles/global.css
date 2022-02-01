@@ -69,3 +69,8 @@ a {
     color: black;
     text-decoration: underline 2px;
 }
+
+::selection {
+    color: white;
+    background-color: black;
+}
