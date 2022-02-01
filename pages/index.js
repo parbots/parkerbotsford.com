@@ -10,6 +10,10 @@ export default function HomePage() {
         <div className={styles.page}>
             <Head>
                 <title>Parker Botsford</title>
+                <meta
+                    name='description'
+                    content='Fullstack web developer and I also blog sometimes!'
+                />
             </Head>
 
             <HeroSection />
