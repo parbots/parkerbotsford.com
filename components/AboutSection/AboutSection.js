@@ -1,8 +1,12 @@
 import { useState } from 'react';
+
 import styles from './AboutSection.module.css';
 
+import InfoBox from './InfoBox/InfoBox';
+import SkillsBox from './SkillsBox/SkillsBox';
+
 const AboutSection = () => {
-    const defaultInfo = { title: 'Hover any skill', text: '' };
+    const defaultInfo = { title: 'Info', text: '' };
     const [info, setInfo] = useState(defaultInfo);
 
     return (
@@ -14,26 +18,8 @@ const AboutSection = () => {
                     responsive.
                 </p>
             </div>
-            <div className={styles.skills}>
-                <h2>Skills</h2>
-                <ul className={styles.skillsList}>
-                    <li
-                        onMouseEnter={() =>
-                            setInfo({
-                                title: 'React',
-                                text: 'React Framework',
-                            })
-                        }
-                        onMouseLeave={() => setInfo(defaultInfo)}
-                    >
-                        React
-                    </li>
-                </ul>
-            </div>
-            <div className={styles.info}>
-                <h2>{info.title}</h2>
-                <p>{info.text}</p>
-            </div>
+            <SkillsBox setInfo={setInfo} />
+            <InfoBox title={info.title} text={info.text} />
         </section>
     );
 };

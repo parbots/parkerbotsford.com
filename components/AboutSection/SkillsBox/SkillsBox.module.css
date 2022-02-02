@@ -1,0 +1,24 @@
+.skillsBox {
+    grid-area: skills;
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    padding: 25px;
+    border: 2px solid;
+}
+
+.top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.hint {
+    text-align: center;
+}
+
+@media (max-width: 800px) {
+    .hint {
+        display: none;
+    }
+}
