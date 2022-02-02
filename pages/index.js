@@ -4,6 +4,7 @@ import styles from '../styles/HomePage.module.css';
 
 import HeroSection from '../components/HeroSection/HeroSection';
 import Footer from '../components/Footer';
+import AboutSection from '../components/AboutSection/AboutSection';
 
 export default function HomePage() {
     return (
@@ -17,6 +18,7 @@ export default function HomePage() {
             </Head>
 
             <HeroSection />
+            <AboutSection />
             <Footer />
         </div>
     );
