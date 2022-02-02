@@ -1,12 +1,56 @@
 .aboutSection {
-    display: flex;
+    display: grid;
+    grid-template-areas:
+        'about info'
+        'skills info';
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 25px;
+    padding: 50px;
     height: 100vh;
 }
 
-.left {
+.about {
+    grid-area: about;
     display: flex;
     flex-direction: column;
-    padding: 50px 0 50px 50px;
-    width: 50%;
-    height: 100%;
+    padding: 25px;
+    border: 2px solid;
+}
+
+.skills {
+    grid-area: skills;
+    display: flex;
+    flex-direction: column;
+    padding: 25px;
+    border: 2px solid;
+}
+
+.info {
+    grid-area: info;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+    border: 2px solid;
+}
+
+@media (max-width: 576px) {
+    .aboutSection {
+        display: flex;
+        flex-direction: column;
+    }
+
+    .about {
+        height: 50%;
+    }
+
+    .skills {
+        height: 50%;
+    }
+
+    .info {
+        display: none;
+    }
 }
