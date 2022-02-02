@@ -1,6 +1,10 @@
+import { useState } from 'react';
 import styles from './AboutSection.module.css';
 
 const AboutSection = () => {
+    const defaultInfo = { title: 'Hover any skill', text: '' };
+    const [info, setInfo] = useState(defaultInfo);
+
     return (
         <section className={styles.aboutSection}>
             <div className={styles.about}>
@@ -12,14 +16,23 @@ const AboutSection = () => {
             </div>
             <div className={styles.skills}>
                 <h2>Skills</h2>
-                <ul>
-                    <li>React</li>
-                    <li>Next.js</li>
-                    <li>Git</li>
+                <ul className={styles.skillsList}>
+                    <li
+                        onMouseEnter={() =>
+                            setInfo({
+                                title: 'React',
+                                text: 'React Framework',
+                            })
+                        }
+                        onMouseLeave={() => setInfo(defaultInfo)}
+                    >
+                        React
+                    </li>
                 </ul>
             </div>
             <div className={styles.info}>
-                <h2>Hover any skill</h2>
+                <h2>{info.title}</h2>
+                <p>{info.text}</p>
             </div>
         </section>
     );

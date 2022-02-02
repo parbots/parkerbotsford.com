@@ -14,6 +14,7 @@
     grid-area: about;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     padding: 25px;
     border: 2px solid;
 }
@@ -22,8 +23,34 @@
     grid-area: skills;
     display: flex;
     flex-direction: column;
+    gap: 10px;
     padding: 25px;
     border: 2px solid;
+}
+
+.skillsList {
+    list-style-type: none;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    grid-template-rows: repeat(3, 1fr);
+    gap: 10px;
+    padding: 0;
+}
+
+.skillsList li {
+    text-align: center;
+    padding: 20px;
+    border-radius: 10px;
+    color: white;
+    background-color: black;
+    min-width: fit-content;
+    cursor: pointer;
+    border: 2px solid black;
+}
+
+.skillsList li:hover {
+    color: black;
+    background-color: white;
 }
 
 .info {
