@@ -5,3 +5,10 @@
     height: 10vh;
     padding: 50px;
 }
+
+@media (max-width: 576px) {
+    .header {
+        flex-direction: column;
+        justify-content: center;
+    }
+}
