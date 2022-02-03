@@ -15,7 +15,7 @@ function MyApp({ Component, pageProps }) {
                 <meta httpEquiv='X-UA-Compatible' content='ie=edge' />
                 <link
                     rel='shortcut icon'
-                    href='public/favicon.ico'
+                    href='/favicon.ico'
                     type='image/x-icon'
                 />
             </Head>
