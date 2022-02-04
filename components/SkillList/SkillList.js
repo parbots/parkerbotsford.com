@@ -1,8 +1,12 @@
+import styles from './SkillList.module.css';
+
+import SkillItem from './SkillItem';
+
 const SkillList = () => {
     return (
-        <div>
-            <h1>SkillList</h1>
-        </div>
+        <ul className={styles.skillList}>
+            <SkillItem>React</SkillItem>
+        </ul>
     );
 };
 
