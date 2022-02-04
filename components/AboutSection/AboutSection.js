@@ -1,7 +1,7 @@
 import styles from './AboutSection.module.css';
 
-import InfoBox from '../InfoBox/InfoBox';
-import SkillList from '../SkillList/SkillList';
+import InfoBox from 'components/InfoBox';
+import SkillList from 'components/SkillList';
 
 const AboutSection = () => {
     return (
