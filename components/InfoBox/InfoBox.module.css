@@ -18,6 +18,7 @@
 
 .hint {
     text-align: center;
+    opacity: 0.5;
 }
 
 @media (max-width: 800px) {
