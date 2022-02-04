@@ -2,13 +2,9 @@ import { useState } from 'react';
 
 import styles from './AboutSection.module.css';
 
-import InfoBox from './InfoBox/InfoBox';
 import SkillsBox from './SkillsBox/SkillsBox';
 
 const AboutSection = () => {
-    const defaultInfo = { title: 'Info', text: '' };
-    const [info, setInfo] = useState(defaultInfo);
-
     return (
         <section className={styles.aboutSection}>
             <div className={styles.about}>
@@ -18,8 +14,7 @@ const AboutSection = () => {
                     responsive.
                 </p>
             </div>
-            <SkillsBox setInfo={setInfo} />
-            <InfoBox title={info.title} text={info.text} />
+            <SkillsBox />
         </section>
     );
 };

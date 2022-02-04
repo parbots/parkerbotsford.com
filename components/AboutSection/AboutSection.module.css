@@ -1,28 +1,19 @@
 .aboutSection {
-    display: grid;
-    grid-template-areas:
-        'about info'
-        'skills info';
-    grid-template-columns: 1fr 1fr;
-    grid-template-rows: 1fr 1fr;
+    display: flex;
+    flex-direction: column;
     gap: 25px;
     padding: 50px;
     height: 100vh;
 }
 
+.aboutSection > * {
+    flex: 1;
+}
+
 .about {
-    grid-area: about;
     display: flex;
     flex-direction: column;
     gap: 10px;
     padding: 25px;
     border: 2px solid;
-}
-
-@media (max-width: 800px) {
-    .aboutSection {
-        grid-template-areas:
-            'about about'
-            'skills skills';
-    }
 }

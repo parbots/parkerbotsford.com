@@ -1,6 +1,6 @@
 import styles from './SkillsList.module.css';
 
-const SkillsList = (props) => {
+const SkillsList = () => {
     const skills = [
         {
             title: 'React',
@@ -18,16 +18,7 @@ const SkillsList = (props) => {
 
     const skillsList = skills.map((skill) => (
         <li key={skill.title} className={styles.skill}>
-            <button
-                onClick={() =>
-                    props.setInfo({
-                        title: skill.title,
-                        text: skill.text,
-                    })
-                }
-            >
-                {skill.title}
-            </button>
+            {skill.title}
         </li>
     ));
 

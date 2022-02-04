@@ -8,8 +8,7 @@
     padding: 0;
 }
 
-.skill button {
-    cursor: pointer;
+.skill {
     min-width: fit-content;
     padding: 20px;
     color: white;
@@ -18,7 +17,7 @@
     border-radius: 10px;
 }
 
-.skill button:hover {
+.skill:hover {
     color: black;
     background-color: white;
 }
