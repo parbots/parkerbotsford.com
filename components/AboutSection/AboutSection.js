@@ -1,4 +1,3 @@
-import { useState } from 'react';
 import InfoBox from '../InfoBox/InfoBox';
 
 import styles from './AboutSection.module.css';
