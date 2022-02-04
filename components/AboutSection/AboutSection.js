@@ -8,8 +8,8 @@ const AboutSection = () => {
         <section className={styles.aboutSection}>
             <InfoBox title='About Me'>
                 <p>
-                    I love building amazing websites that are both fast and
-                    responsive.
+                    I am a coding addict that loves solving problems through
+                    programming.
                 </p>
             </InfoBox>
             <InfoBox title='Skills'>
