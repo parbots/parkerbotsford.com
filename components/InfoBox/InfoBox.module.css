@@ -1,15 +1,15 @@
 .infoBox {
     display: flex;
     flex-direction: column;
-    gap: 10px;
+    gap: 25px;
     padding: 25px;
-    border: 2px solid;
 }
 
 .top {
     display: flex;
     justify-content: space-between;
     align-items: center;
+    border-bottom: 2px dotted black;
 }
 
 .title {

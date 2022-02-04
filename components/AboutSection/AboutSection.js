@@ -12,7 +12,7 @@ const AboutSection = () => {
                     responsive.
                 </p>
             </InfoBox>
-            <InfoBox title='Skills' hint='Select any skill'>
+            <InfoBox title='Skills'>
                 <SkillList />
             </InfoBox>
         </section>

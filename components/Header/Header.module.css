@@ -1,9 +1,9 @@
 .header {
+    flex: 1;
     display: flex;
     justify-content: space-between;
     align-items: center;
-    height: 10vh;
-    padding: 50px;
+    padding: 0 25px;
 }
 
 @media (max-width: 800px) {

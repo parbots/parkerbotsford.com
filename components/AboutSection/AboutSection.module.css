@@ -3,17 +3,4 @@
     flex-direction: column;
     gap: 25px;
     padding: 50px;
-    height: 100vh;
-}
-
-.aboutSection > * {
-    flex: 1;
-}
-
-.about {
-    display: flex;
-    flex-direction: column;
-    gap: 10px;
-    padding: 25px;
-    border: 2px solid;
 }

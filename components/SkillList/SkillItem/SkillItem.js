@@ -3,7 +3,8 @@ import styles from './SkillItem.module.css';
 const SkillItem = (props) => {
     return (
         <li className={styles.item}>
-            <button className={styles.button}>{props.children}</button>
+            {props.children}
+            <h3 className={styles.name}>{props.name}</h3>
         </li>
     );
 };

@@ -1,9 +1,9 @@
 .hero {
+    flex: 9;
     display: flex;
     flex-direction: column;
     justify-content: space-evenly;
     align-items: center;
-    height: 90vh;
 }
 
 .hero h1 {

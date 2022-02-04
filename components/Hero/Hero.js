@@ -6,7 +6,7 @@ const Hero = () => {
             <h1>{"Hi, i'm Parker."}</h1>
             <p>
                 {
-                    "I'm a fullstack web developer with a passion for responsive, accessible, and beautiful designs."
+                    "I'm a frontend web developer with a passion for creating responsive, accessible, and beautiful designs."
                 }
             </p>
         </div>
