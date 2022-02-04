@@ -1,0 +1,14 @@
+.button {
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    color: black;
+    background-color: white;
+    border: 1px solid black;
+    border-radius: 10px;
+}
+
+.button:hover {
+    color: white;
+    background-color: black;
+}
