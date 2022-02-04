@@ -5,6 +5,7 @@ import styles from 'styles/HomePage.module.css';
 import HeroSection from 'components/HeroSection';
 import Footer from 'components/Footer';
 import AboutSection from 'components/AboutSection';
+import ContactSection from 'components/ContactSection';
 
 export default function HomePage() {
     return (
@@ -19,6 +20,7 @@ export default function HomePage() {
 
             <HeroSection />
             <AboutSection />
+            <ContactSection />
             <Footer />
         </div>
     );

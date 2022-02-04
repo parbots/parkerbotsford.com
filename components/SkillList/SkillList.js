@@ -5,7 +5,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCss3Alt,
     faGit,
-    faGithub,
+    faGithubSquare,
     faHtml5,
     faJsSquare,
     faNpm,
@@ -36,7 +36,9 @@ const SkillList = () => {
         },
         {
             name: 'GitHub',
-            icon: <FontAwesomeIcon icon={faGithub} size='3x' fixedWidth />,
+            icon: (
+                <FontAwesomeIcon icon={faGithubSquare} size='3x' fixedWidth />
+            ),
         },
         {
             name: 'Npm',
