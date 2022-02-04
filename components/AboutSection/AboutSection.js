@@ -1,6 +1,7 @@
-import InfoBox from '../InfoBox/InfoBox';
-
 import styles from './AboutSection.module.css';
+
+import InfoBox from '../InfoBox/InfoBox';
+import SkillList from '../SkillList/SkillList';
 
 const AboutSection = () => {
     return (
@@ -11,7 +12,9 @@ const AboutSection = () => {
                     responsive.
                 </p>
             </InfoBox>
-            <InfoBox title='Skills'></InfoBox>
+            <InfoBox title='Skills' hint='Select any skill'>
+                <SkillList />
+            </InfoBox>
         </section>
     );
 };
