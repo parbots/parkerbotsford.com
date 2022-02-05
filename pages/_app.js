@@ -17,7 +17,25 @@ function MyApp({ Component, pageProps }) {
                 />
                 <meta httpEquiv='x-ua-compatible' content='ie=edge' />
                 <meta httpEquiv='X-UA-Compatible' content='ie=edge' />
-                <link rel='shortcut icon' href='/favicon.ico' />
+                <link
+                    rel='apple-touch-icon'
+                    sizes='180x180'
+                    href='icon/apple-touch-icon.png'
+                />
+                <link
+                    rel='icon'
+                    type='image/png'
+                    sizes='32x32'
+                    href='icon/favicon-32x32.png'
+                />
+                <link
+                    rel='icon'
+                    type='image/png'
+                    sizes='16x16'
+                    href='icon/favicon-16x16.png'
+                />
+                <link rel='manifest' href='icon/site.webmanifest' />
+                <link rel='shortcut icon' href='icon/favicon.ico' />
             </Head>
 
             <Component {...pageProps} />

@@ -60,6 +60,10 @@ h2 {
     font-size: 28px;
 }
 
+h3 {
+    font-size: 24px;
+}
+
 p {
     font-size: 16px;
 }
@@ -73,4 +77,23 @@ a {
 ::selection {
     color: white;
     background-color: black;
+}
+
+@media (max-width: 700px) {
+    h1 {
+        font-size: 32px;
+    }
+
+    h2 {
+        font-size: 24px;
+    }
+
+    h3 {
+        font-size: 20px;
+    }
+
+    p,
+    a {
+        font-size: 14px;
+    }
 }
