@@ -1,6 +1,6 @@
-import Head from 'next/head';
-
 import styles from 'styles/HomePage.module.css';
+
+import Head from 'next/head';
 
 import HeroSection from 'components/HeroSection';
 import Footer from 'components/Footer';
@@ -14,7 +14,7 @@ export default function HomePage() {
                 <title>Parker Botsford</title>
                 <meta
                     name='description'
-                    content='Fullstack web developer and I also blog sometimes!'
+                    content="Hi, my name is Parker. I'm a frontend web developer and I also blog sometimes!"
                 />
             </Head>
 
