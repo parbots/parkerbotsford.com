@@ -1,28 +1,12 @@
 import styles from './HeroSection.module.css';
 
 import Link from 'next/link';
+import Navbar from 'components/Navbar';
 
 const HeroSection = () => {
     return (
         <section className={styles.heroSection}>
-            <nav className={styles.header}>
-                <Link href='/'>
-                    <a className={styles.logo}>pb</a>
-                </Link>
-
-                <ul className={styles.links}>
-                    <li>
-                        <Link href='/'>
-                            <a className={styles.link}>About Me</a>
-                        </Link>
-                    </li>
-                    <li>
-                        <Link href='/blog'>
-                            <a className={styles.link}>Blog</a>
-                        </Link>
-                    </li>
-                </ul>
-            </nav>
+            <Navbar />
             <div className={styles.main}>
                 <h1 className={styles.title}>{"Hi, i'm Parker."}</h1>
                 <p className={styles.text}>
