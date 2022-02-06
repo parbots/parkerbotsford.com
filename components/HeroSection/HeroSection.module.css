@@ -1,5 +1,61 @@
 .heroSection {
     display: flex;
     flex-direction: column;
+    padding-top: 25px;
     height: 100vh;
+}
+
+.header {
+    position: absolute;
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    padding: 0 50px;
+}
+
+.logo {
+    width: 10vh;
+    height: 10vh;
+    font-size: 48px;
+    line-height: 8vh;
+    text-align: center;
+    text-decoration: none;
+    color: white;
+    background-color: black;
+    border-radius: 5px;
+    border: 2px solid black;
+}
+
+.logo:hover {
+    color: black;
+    background-color: white;
+}
+
+.links {
+    list-style-type: none;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+}
+
+.main {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 50px;
+    padding: 0 50px;
+}
+
+.title {
+    font-size: 36px;
+    text-align: center;
+    max-width: 60%;
+}
+
+.text {
+    font-size: 24px;
+    width: 80%;
 }

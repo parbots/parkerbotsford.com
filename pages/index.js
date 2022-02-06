@@ -17,7 +17,6 @@ export default function HomePage() {
                     content="Hi, my name is Parker. I'm a frontend web developer and I also blog sometimes!"
                 />
             </Head>
-
             <HeroSection />
             <AboutSection />
             <ContactSection />
