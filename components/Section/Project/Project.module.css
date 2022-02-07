@@ -1,3 +1,8 @@
+.projectSection {
+    min-height: 100vh;
+    height: auto;
+}
+
 .repoBox {
     flex: 1;
     display: flex;
@@ -50,4 +55,10 @@
 
 .repoInfo {
     flex: 1;
+}
+
+@media (max-width: 700px) {
+    .repoList {
+        grid-template-columns: 1fr;
+    }
 }

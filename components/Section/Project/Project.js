@@ -22,7 +22,7 @@ const Project = (props) => {
         );
     });
     return (
-        <Section>
+        <Section className={styles.projectSection}>
             <InfoBox title='Projects'>
                 <div className={styles.repoBox}>
                     <ul className={styles.repoList}>{repos}</ul>
