@@ -5,6 +5,7 @@
     border-radius: 5px;
     width: 80px;
     padding: 5px;
+    cursor: pointer;
 }
 
 .button:hover {
