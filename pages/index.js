@@ -4,9 +4,13 @@ import Head from 'next/head';
 
 import Hero from 'components/Section/Hero';
 import About from 'components/Section/About';
+import Project from 'components/Section/Project';
 import Contact from 'components/Section/Contact';
 
-export default function HomePage() {
+import { gql } from '@apollo/client';
+import client from '../apollo-client';
+
+export default function HomePage(props) {
     return (
         <div className={styles.page}>
             <Head>
@@ -18,7 +22,32 @@ export default function HomePage() {
             </Head>
             <Hero />
             <About />
+            <Project repos={props.repos} />
             <Contact />
         </div>
     );
+}
+
+export async function getStaticProps() {
+    const { data } = await client.query({
+        query: gql`
+            query Viewer {
+                viewer {
+                    repositories(first: 6) {
+                        nodes {
+                            name
+                            description
+                            url
+                        }
+                    }
+                }
+            }
+        `,
+    });
+
+    return {
+        props: {
+            repos: data.viewer.repositories.nodes,
+        },
+    };
 }
