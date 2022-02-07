@@ -1,0 +1,18 @@
+.page {
+    display: flex;
+    flex-direction: column;
+    padding: 0 50px;
+}
+
+.todo {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+}
+
+.todoMessage {
+    text-align: center;
+}
