@@ -10,6 +10,7 @@ const Hero = () => {
             <Navbar />
             <h1 className={styles.title}>
                 <Typewriter
+                    options={{ cursor: '｜' }}
                     onInit={(typeWriter) => {
                         typeWriter
                             .pauseFor(500)
