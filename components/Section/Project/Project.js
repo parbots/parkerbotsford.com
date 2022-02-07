@@ -23,7 +23,7 @@ const Project = (props) => {
     });
     return (
         <Section className={styles.projectSection}>
-            <InfoBox title='Projects'>
+            <InfoBox title='Projects' hint='Select any project'>
                 <div className={styles.repoBox}>
                     <ul className={styles.repoList}>{repos}</ul>
                 </div>
