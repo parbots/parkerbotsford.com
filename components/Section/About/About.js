@@ -7,7 +7,7 @@ import SkillList from 'components/SkillList';
 
 const About = () => {
     return (
-        <Section>
+        <Section id='aboutSection'>
             <InfoBox title='About Me'>
                 <p>
                     I am a coding addict that loves solving problems through

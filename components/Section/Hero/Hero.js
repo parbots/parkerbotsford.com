@@ -5,7 +5,7 @@ import Navbar from 'components/Navbar';
 
 const Hero = () => {
     return (
-        <Section className={styles.heroSection}>
+        <Section id='heroSection' className={styles.heroSection}>
             <Navbar />
             <h1 className={styles.title}>{"Hi, i'm Parker."}</h1>
             <p className={styles.text}>

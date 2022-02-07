@@ -2,7 +2,10 @@ import styles from './Section.module.css';
 
 const Section = (props) => {
     return (
-        <section className={`${styles.section} ${props.className}`}>
+        <section
+            id={props.id}
+            className={`${styles.section} ${props.className}`}
+        >
             {props.children}
         </section>
     );
