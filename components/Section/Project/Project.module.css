@@ -35,7 +35,8 @@
     transition: border 0.2s ease;
 }
 
-.repoLink:hover {
+.repoLink:hover,
+.repoLink:focus {
     text-decoration: none;
     border-color: var(--color);
 }

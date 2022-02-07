@@ -24,7 +24,8 @@
     transition: all 0.2s ease;
 }
 
-.logo:hover {
+.logo:hover,
+.logo:focus {
     color: var(--color);
     background-color: var(--background-color);
     text-decoration: none;
