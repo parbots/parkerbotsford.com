@@ -1,0 +1,19 @@
+.button {
+    color: var(--color);
+    background-color: var(--background-color);
+    border: 2px solid var(--color);
+    border-radius: 5px;
+    width: 80px;
+    padding: 5px;
+}
+
+.button:hover {
+    color: var(--background-color);
+    background-color: var(--color);
+}
+
+@media (max-width: 700px) {
+    .button {
+        display: none;
+    }
+}

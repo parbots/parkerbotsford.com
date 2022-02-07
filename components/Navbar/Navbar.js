@@ -1,6 +1,7 @@
 import styles from './Navbar.module.css';
 
 import Link from 'next/link';
+import ThemeToggle from 'components/ThemeToggle';
 
 const Navbar = (props) => {
     const links = props.links.map((link) => {
@@ -20,7 +21,10 @@ const Navbar = (props) => {
             </Link>
 
             <nav className={styles.linkNav}>
-                <ul className={styles.links}>{links}</ul>
+                <ul className={styles.links}>
+                    {links}
+                    <ThemeToggle />
+                </ul>
             </nav>
         </header>
     );

@@ -10,7 +10,7 @@
     justify-content: space-between;
     align-items: center;
     padding-top: 25px;
-    border-bottom: 2px dotted black;
+    border-bottom: 2px dotted var(--color);
 }
 
 .title {

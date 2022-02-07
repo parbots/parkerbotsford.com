@@ -1,3 +1,27 @@
+html {
+    /* --color: black;
+    --background-color: white; */
+
+    --light-color: black;
+    --light-background-color: white;
+
+    --dark-color: white;
+    --dark-background-color: black;
+
+    --color: white;
+    --background-color: black;
+}
+
+body[data-theme='light'] {
+    --color: var(--light-color);
+    --background-color: var(--light-background-color);
+}
+
+body[data-theme='dark'] {
+    --color: var(--dark-color);
+    --background-color: var(--dark-background-color);
+}
+
 *,
 *::before,
 *::after {
@@ -12,6 +36,8 @@ html,
 body {
     scroll-behavior: smooth;
     height: 100%;
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
 html:focus-within {
@@ -71,8 +97,9 @@ p {
 
 a {
     font-size: 16px;
-    color: black;
     text-decoration: none;
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
 a:hover {
@@ -80,8 +107,8 @@ a:hover {
 }
 
 ::selection {
-    color: white;
-    background-color: black;
+    color: var(--color);
+    background-color: var(--background-color);
 }
 
 @media (max-width: 700px) {

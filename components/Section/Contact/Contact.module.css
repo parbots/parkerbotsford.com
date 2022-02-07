@@ -30,7 +30,7 @@
     display: flex;
     align-items: center;
     padding: 10px;
-    border: 2px solid black;
+    border: 2px solid var(--color);
     border-radius: 5px;
     text-decoration: none;
 
@@ -39,6 +39,6 @@
 
 .link:hover {
     text-decoration: none;
-    color: white;
-    background-color: black;
+    color: var(--background-color);
+    background-color: var(--color);
 }
