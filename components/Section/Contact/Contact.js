@@ -1,13 +1,14 @@
+import styles from './Contact.module.css';
+
+import Section from '/components/Section';
+import InfoBox from 'components/InfoBox';
+import Footer from 'components/Footer';
+
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import Link from 'next/link';
 
-import InfoBox from 'components/InfoBox';
-
-import styles from './ContactSection.module.css';
-
-const ContactSection = () => {
+const Contact = () => {
     const links = [
         {
             name: 'GitHub',
@@ -43,14 +44,17 @@ const ContactSection = () => {
     });
 
     return (
-        <section className={styles.contactSection}>
-            <InfoBox title='Contact Me'>
-                <div className={styles.contactBox}>
-                    <ul className={styles.contactList}>{linkComponents}</ul>
-                </div>
+        <Section className={styles.contactSection}>
+            <InfoBox
+                title='Contact Me'
+                boxStyle={styles.contactBox}
+                headerStyle={styles.contactBoxTop}
+            >
+                <ul className={styles.contactList}>{linkComponents}</ul>
             </InfoBox>
-        </section>
+            <Footer />
+        </Section>
     );
 };
 
-export default ContactSection;
+export default Contact;

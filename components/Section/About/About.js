@@ -1,11 +1,13 @@
-import styles from './AboutSection.module.css';
+import styles from './About.module.css';
+
+import Section from '/components/Section';
 
 import InfoBox from 'components/InfoBox';
 import SkillList from 'components/SkillList';
 
-const AboutSection = () => {
+const About = () => {
     return (
-        <section className={styles.aboutSection}>
+        <Section>
             <InfoBox title='About Me'>
                 <p>
                     I am a coding addict that loves solving problems through
@@ -13,10 +15,12 @@ const AboutSection = () => {
                 </p>
             </InfoBox>
             <InfoBox title='Skills'>
-                <SkillList />
+                <div className={styles.skillBox}>
+                    <SkillList />
+                </div>
             </InfoBox>
-        </section>
+        </Section>
     );
 };
 
-export default AboutSection;
+export default About;

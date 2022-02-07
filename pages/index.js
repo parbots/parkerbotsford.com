@@ -2,10 +2,9 @@ import styles from 'styles/HomePage.module.css';
 
 import Head from 'next/head';
 
-import HeroSection from 'components/HeroSection';
-import Footer from 'components/Footer';
-import AboutSection from 'components/AboutSection';
-import ContactSection from 'components/ContactSection';
+import Hero from 'components/Section/Hero';
+import About from 'components/Section/About';
+import Contact from 'components/Section/Contact';
 
 export default function HomePage() {
     return (
@@ -17,10 +16,9 @@ export default function HomePage() {
                     content="Hi, my name is Parker. I'm a frontend web developer and I also blog sometimes!"
                 />
             </Head>
-            <HeroSection />
-            <AboutSection />
-            <ContactSection />
-            <Footer />
+            <Hero />
+            <About />
+            <Contact />
         </div>
     );
 }

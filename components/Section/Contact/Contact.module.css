@@ -1,17 +1,20 @@
 .contactSection {
-    display: flex;
-    flex-direction: column;
-    padding: 25px;
-    height: 100vh;
+    position: relative;
 }
-
 .contactBox {
+    position: relative;
     flex: 1;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+}
+
+.contactBoxTop {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
 }
 
 .contactList {

@@ -1,9 +1,12 @@
 .navbar {
     position: absolute;
-    width: 100%;
+    top: 0;
+    left: 0;
+    right: 0;
     display: flex;
     justify-content: space-between;
-    padding: 0 50px;
+    align-items: center;
+    padding-top: 25px;
 }
 
 .logo {
@@ -24,10 +27,17 @@
     background-color: white;
 }
 
+.linkNav {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
 .links {
     list-style-type: none;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25px;
+    padding: 0;
 }
