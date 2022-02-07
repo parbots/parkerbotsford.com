@@ -31,9 +31,10 @@ const Hero = () => {
                 />
             </h1>
             <p className={styles.text}>
-                {
-                    "I'm a frontend web developer with a passion for creating responsive, accessible, and beautiful designs."
-                }
+                {'Frontend web developer with a passion for creating '}
+                <strong>responsive</strong>, <strong>accessible</strong>
+                {', and '}
+                <strong>beautiful</strong> designs.
             </p>
         </Section>
     );

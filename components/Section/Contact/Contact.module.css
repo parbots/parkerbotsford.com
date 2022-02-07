@@ -27,16 +27,18 @@
 }
 
 .link {
-    text-decoration: none;
     display: flex;
     align-items: center;
     padding: 10px;
     border: 2px solid black;
     border-radius: 5px;
+    text-decoration: none;
+
+    transition: all 0.2s ease;
 }
 
 .link:hover {
-    text-decoration: underline;
+    text-decoration: none;
     color: white;
     background-color: black;
 }

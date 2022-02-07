@@ -20,11 +20,14 @@
     background-color: black;
     border-radius: 5px;
     border: 2px solid black;
+
+    transition: all 0.2s ease;
 }
 
 .logo:hover {
     color: black;
     background-color: white;
+    text-decoration: none;
 }
 
 .linkNav {
