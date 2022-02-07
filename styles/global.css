@@ -1,15 +1,9 @@
-html {
-    /* --color: black;
-    --background-color: white; */
-
+body {
     --light-color: black;
     --light-background-color: white;
 
     --dark-color: white;
     --dark-background-color: black;
-
-    --color: white;
-    --background-color: black;
 }
 
 body[data-theme='light'] {
