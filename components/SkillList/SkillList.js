@@ -8,6 +8,7 @@ import {
     faGithubSquare,
     faHtml5,
     faJsSquare,
+    faNode,
     faNpm,
     faReact,
 } from '@fortawesome/free-brands-svg-icons';
@@ -39,6 +40,10 @@ const SkillList = () => {
             icon: (
                 <FontAwesomeIcon icon={faGithubSquare} size='3x' fixedWidth />
             ),
+        },
+        {
+            name: 'Node.js',
+            icon: <FontAwesomeIcon icon={faNode} size='3x' fixedWidth />,
         },
         {
             name: 'Npm',
