@@ -7,7 +7,18 @@ import Typewriter from 'typewriter-effect';
 const Hero = () => {
     return (
         <Section id='heroSection' className={styles.heroSection}>
-            <Navbar />
+            <Navbar
+                links={[
+                    {
+                        name: 'About',
+                        href: '/',
+                    },
+                    {
+                        name: 'Blog',
+                        href: '/blog',
+                    },
+                ]}
+            />
             <h1 className={styles.title}>
                 <Typewriter
                     options={{ cursor: '｜' }}

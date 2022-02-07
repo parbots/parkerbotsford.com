@@ -1,4 +1,4 @@
-import styles from 'styles/HomePage.module.css';
+import styles from 'styles/Homepage.module.css';
 
 import Head from 'next/head';
 
