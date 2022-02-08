@@ -10,8 +10,6 @@ const httpLink = createHttpLink({
 });
 
 const authLink = new ApolloLink((operation, forward) => {
-    const token = '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';
-
     // Use the setContext method to set the HTTP headers.
     operation.setContext({
         headers: {
