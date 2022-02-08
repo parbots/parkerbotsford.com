@@ -8,8 +8,7 @@
     cursor: pointer;
 }
 
-.button:hover,
-.button:focus {
+.button:hover {
     color: var(--background-color);
     background-color: var(--color);
 }
