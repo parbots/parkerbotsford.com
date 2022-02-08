@@ -11,15 +11,7 @@
     align-items: center;
     padding-top: 25px;
     border-bottom: 2px dotted var(--color);
-}
-
-.title {
     text-align: center;
-}
-
-.hint {
-    text-align: center;
-    opacity: 0.5;
 }
 
 @media (max-width: 700px) {
@@ -27,5 +19,6 @@
         flex-direction: column;
         justify-content: center;
         align-items: center;
+        gap: 5px;
     }
 }
