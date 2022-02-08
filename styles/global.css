@@ -96,8 +96,7 @@ a {
     background-color: var(--background-color);
 }
 
-a:hover,
-a:focus {
+a:hover {
     text-decoration: 2px underline;
 }
 

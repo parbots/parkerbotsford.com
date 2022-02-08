@@ -8,9 +8,7 @@ const Navbar = (props) => {
         return (
             <li key={link.name}>
                 <Link href={link.href}>
-                    <a tabIndex='0' className={styles.link}>
-                        {link.name}
-                    </a>
+                    <a className={styles.link}>{link.name}</a>
                 </Link>
             </li>
         );
@@ -19,9 +17,7 @@ const Navbar = (props) => {
     return (
         <header className={styles.navbar}>
             <Link href='/'>
-                <a tabIndex='0' className={styles.logo}>
-                    pb
-                </a>
+                <a className={styles.logo}>pb</a>
             </Link>
 
             <nav className={styles.linkNav}>

@@ -37,8 +37,7 @@
     transition: all 0.2s ease;
 }
 
-.link:hover,
-.link:focus {
+.link:hover {
     text-decoration: none;
     color: var(--background-color);
     background-color: var(--color);
