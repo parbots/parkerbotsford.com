@@ -10,10 +10,17 @@
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    font-size: 36px;
-    line-height: 40px;
-    text-align: center;
     height: 15vh;
+    text-align: center;
+}
+
+.title > * > span {
+    margin: 0;
+    padding: 0;
+    display: inline-block;
+    height: fit-content;
+    font-size: 36px;
+    line-height: 1.5;
 }
 
 .text {

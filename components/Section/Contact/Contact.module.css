@@ -21,7 +21,7 @@
     list-style-type: none;
     display: flex;
     flex-direction: column;
-    gap: 25px;
+    gap: 50px;
     margin: 0;
     padding: 0;
 }
