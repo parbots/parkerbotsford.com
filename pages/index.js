@@ -33,21 +33,23 @@ export async function getStaticProps() {
         query: gql`
             query Viewer {
                 viewer {
-                    repositories(first: 6) {
+                    pinnedItems(first: 6) {
                         nodes {
-                            name
-                            description
-                            url
-                            repositoryTopics(first: 5) {
-                                nodes {
-                                    topic {
-                                        name
+                            ... on Repository {
+                                name
+                                description
+                                url
+                                repositoryTopics(first: 5) {
+                                    nodes {
+                                        topic {
+                                            name
+                                        }
                                     }
                                 }
-                            }
-                            languages(first: 5) {
-                                nodes {
-                                    name
+                                languages(first: 3) {
+                                    nodes {
+                                        name
+                                    }
                                 }
                             }
                         }
@@ -59,7 +61,7 @@ export async function getStaticProps() {
 
     return {
         props: {
-            repos: data.viewer.repositories.nodes,
+            repos: data.viewer.pinnedItems.nodes,
         },
     };
 }

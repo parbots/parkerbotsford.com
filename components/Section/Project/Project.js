@@ -45,7 +45,10 @@ const Project = (props) => {
     });
     return (
         <Section className={styles.projectSection}>
-            <InfoBox title='Projects' hint='(select any project)'>
+            <InfoBox
+                title='Projects'
+                hint='(select any project to view code on Github)'
+            >
                 <div className={styles.repoBox}>
                     <ul className={styles.repoList}>{repos}</ul>
                 </div>
