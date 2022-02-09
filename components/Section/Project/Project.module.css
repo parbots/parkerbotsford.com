@@ -13,7 +13,6 @@
 
 .repoList {
     list-style: none;
-    flex: 1;
     display: grid;
     grid-template-columns: 1fr 1fr;
     gap: 25px;
@@ -25,12 +24,12 @@
 }
 
 .repoLink {
+    flex: 1;
     display: flex;
     flex-direction: column;
     border: 2px solid var(--background-color);
     border-radius: 10px;
     padding: 10px;
-    flex: 1;
 
     transition: border 0.2s ease;
 }
@@ -42,7 +41,6 @@
 
 .repoName {
     flex: 1;
-    border-bottom: 2px dotted var(--color);
 }
 
 .repoInfoBox {
@@ -57,8 +55,30 @@
     flex: 1;
 }
 
+.repoTagList {
+    flex: 1;
+    list-style: none;
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding: 0;
+}
+
+.repoTag {
+    color: var(--background-color);
+    background-color: var(--color);
+    border-radius: 1rem;
+    padding: 5px 10px;
+}
+
 @media (max-width: 700px) {
     .repoList {
-        grid-template-columns: 1fr;
+        display: flex;
+        flex-direction: column;
+    }
+
+    .repoLink {
+        border-color: var(--color);
     }
 }

@@ -38,6 +38,18 @@ export async function getStaticProps() {
                             name
                             description
                             url
+                            repositoryTopics(first: 5) {
+                                nodes {
+                                    topic {
+                                        name
+                                    }
+                                }
+                            }
+                            languages(first: 5) {
+                                nodes {
+                                    name
+                                }
+                            }
                         }
                     }
                 }
