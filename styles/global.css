@@ -1,9 +1,9 @@
 body {
-    --light-color: black;
-    --light-background-color: white;
+    --light-color: #282828;
+    --light-background-color: #ebdbb2;
 
-    --dark-color: white;
-    --dark-background-color: black;
+    --dark-color: #ebdbb2;
+    --dark-background-color: #282828;
 }
 
 body[data-theme='light'] {

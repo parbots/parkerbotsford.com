@@ -6,6 +6,8 @@
     width: 80px;
     padding: 5px;
     cursor: pointer;
+
+    transition: all 0.2s ease;
 }
 
 .button:hover {
