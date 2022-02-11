@@ -4,12 +4,15 @@ import Head from 'next/head';
 
 import Navbar from 'components/Navbar';
 
-import Typewriter from 'typewriter-effect';
-
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';
+import Link from 'next/link';
 
 export default function BlogHomepage({ posts }) {
+    const formatDate = (published) => {
+        return new Date(published).toDateString();
+    };
+
     return (
         <div className={styles.page}>
             <Head>
@@ -19,7 +22,7 @@ export default function BlogHomepage({ posts }) {
                     content='I post about web development. Mostly React and Next.js, but sometimes other stuff too!'
                 />
             </Head>
-            <section className={styles.todo}>
+            <section className={styles.postsSection}>
                 <Navbar
                     links={[
                         {
@@ -32,27 +35,28 @@ export default function BlogHomepage({ posts }) {
                         },
                     ]}
                 />
-                <h1 className={styles.todoMessage}>
-                    <Typewriter
-                        options={{ cursor: '｜' }}
-                        onInit={(typeWriter) => {
-                            typeWriter
-                                .pauseFor(500)
-                                .typeString('Coming soon...')
-                                .start();
-                        }}
-                    />
-                </h1>
-                <h1>Posts</h1>
-                {posts.map((post) => {
-                    return (
-                        <div key={post.title}>
-                            <h2>{post.title}</h2>
-                            <p>{post.published}</p>
-                            <p>{post.slug}</p>
-                        </div>
-                    );
-                })}
+                <h1 className={styles.title}>Posts</h1>
+
+                <ul className={styles.postList}>
+                    {posts.map((post) => {
+                        return (
+                            <li key={post.title}>
+                                <Link href={`/blog/${post.slug}`}>
+                                    <a className={styles.postLink}>
+                                        <div className={styles.postTop}>
+                                            <h2 className={styles.postTitle}>
+                                                {post.title}
+                                            </h2>
+                                            <p className={styles.postDate}>
+                                                {formatDate(post.published)}
+                                            </p>
+                                        </div>
+                                    </a>
+                                </Link>
+                            </li>
+                        );
+                    })}
+                </ul>
             </section>
         </div>
     );

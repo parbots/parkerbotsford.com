@@ -6,6 +6,8 @@ import styles from 'styles/BlogPost.module.css';
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';
 
+import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
+
 const Post = ({ post }) => {
     return (
         <div className={styles.page}>
@@ -30,6 +32,7 @@ const Post = ({ post }) => {
                     ]}
                 />
                 <h1>{post.title}</h1>
+                {documentToReactComponents(post.content.json)}
             </section>
         </div>
     );

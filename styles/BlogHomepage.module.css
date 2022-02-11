@@ -4,15 +4,51 @@
     padding: 0 50px;
 }
 
-.todo {
+.postsSection {
     position: relative;
+    min-height: 100vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    height: 100vh;
+    gap: 25px;
 }
 
-.todoMessage {
+.title {
     text-align: center;
+}
+
+.postList {
+    padding: 0;
+    margin: 0;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+
+    list-style: none;
+}
+
+.postLink {
+    width: 60vw;
+    display: flex;
+    flex-direction: column;
+    padding: 10px;
+    border: solid 2px var(--color);
+    border-radius: 10px;
+}
+
+.postLink:hover {
+    text-decoration: none;
+    color: var(--background-color);
+    background-color: var(--color);
+}
+
+.postTop {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 50px;
 }
