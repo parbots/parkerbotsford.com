@@ -6,7 +6,10 @@ import Navbar from 'components/Navbar';
 
 import Typewriter from 'typewriter-effect';
 
-export default function BlogHomepage() {
+import { gql } from '@apollo/client';
+import { contentClient } from 'apollo-client';
+
+export default function BlogHomepage({ posts }) {
     return (
         <div className={styles.page}>
             <Head>
@@ -40,7 +43,39 @@ export default function BlogHomepage() {
                         }}
                     />
                 </h1>
+                <h1>Posts</h1>
+                {posts.map((post) => {
+                    return (
+                        <div key={post.title}>
+                            <h2>{post.title}</h2>
+                            <p>{post.published}</p>
+                            <p>{post.slug}</p>
+                        </div>
+                    );
+                })}
             </section>
         </div>
     );
+}
+
+export async function getStaticProps() {
+    const { data } = await contentClient.query({
+        query: gql`
+            query {
+                postCollection {
+                    items {
+                        title
+                        published
+                        slug
+                    }
+                }
+            }
+        `,
+    });
+
+    return {
+        props: {
+            posts: data.postCollection.items,
+        },
+    };
 }

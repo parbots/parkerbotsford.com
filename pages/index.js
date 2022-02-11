@@ -8,7 +8,7 @@ import Project from 'components/Section/Project';
 import Contact from 'components/Section/Contact';
 
 import { gql } from '@apollo/client';
-import client from '../apollo-client';
+import { githubClient } from '../apollo-client';
 
 export default function HomePage(props) {
     return (
@@ -29,7 +29,7 @@ export default function HomePage(props) {
 }
 
 export async function getStaticProps() {
-    const { data } = await client.query({
+    const { data } = await githubClient.query({
         query: gql`
             query Viewer {
                 viewer {
