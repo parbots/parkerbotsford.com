@@ -20,6 +20,8 @@ const Navbar = (props) => {
                 <a className={styles.logo}>pb</a>
             </Link>
 
+            {props.children}
+
             <nav className={styles.linkNav}>
                 <ul className={styles.links}>
                     {links}

@@ -35,6 +35,7 @@ export default function BlogHomepage({ posts }) {
                         },
                     ]}
                 />
+
                 <h1 className={styles.title}>Posts</h1>
 
                 <ul className={styles.postList}>
