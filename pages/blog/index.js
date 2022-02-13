@@ -22,7 +22,7 @@ export default function BlogHomepage({ posts }) {
                     content='I post about web development. Mostly React and Next.js, but sometimes other stuff too!'
                 />
             </Head>
-            <section className={styles.postsSection}>
+            <main className={styles.postsSection}>
                 <Navbar
                     links={[
                         {
@@ -58,7 +58,7 @@ export default function BlogHomepage({ posts }) {
                         );
                     })}
                 </ul>
-            </section>
+            </main>
         </div>
     );
 }

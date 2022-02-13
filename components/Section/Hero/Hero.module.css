@@ -1,5 +1,12 @@
 .heroSection {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+}
+
+.hero {
+    height: 90vh;
+    display: flex;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
     gap: 50px;

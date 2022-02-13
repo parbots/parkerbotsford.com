@@ -9,12 +9,14 @@
     min-height: 100vh;
     display: flex;
     flex-direction: column;
-    justify-content: center;
     align-items: center;
     gap: 25px;
 }
 
 .title {
+    position: relative;
+    left: 0;
+    right: 0;
     text-align: center;
 }
 
