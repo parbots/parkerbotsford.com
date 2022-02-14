@@ -28,8 +28,10 @@ body[data-theme='dark'] {
 
 html,
 body {
-    scroll-behavior: smooth;
     height: 100%;
+
+    scroll-behavior: smooth;
+
     color: var(--color);
     background-color: var(--background-color);
 }
@@ -39,9 +41,10 @@ html:focus-within {
 }
 
 body {
+    min-height: 100vh;
+
     font-family: 'Roboto Mono', monospace;
     font-size: 16px;
-    min-height: 100vh;
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
@@ -52,8 +55,9 @@ picture,
 video,
 canvas,
 svg {
-    display: block;
     max-width: 100%;
+
+    display: block;
 }
 
 input,
@@ -92,6 +96,7 @@ p {
 a {
     font-size: 16px;
     text-decoration: none;
+
     color: var(--color);
     background-color: var(--background-color);
 }
