@@ -1,10 +1,6 @@
 .heroSection {
-    display: flex;
-    flex-direction: column;
-}
+    max-height: 85vh;
 
-.hero {
-    height: 90vh;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -12,25 +8,35 @@
     gap: 50px;
 }
 
-.title {
+.heroTitle {
+    width: 60vw;
+    height: 96px;
     display: flex;
-    flex-direction: column;
     justify-content: center;
-    align-items: center;
-    height: 15vh;
-    text-align: center;
 }
 
-.title > * > span {
+.heroTitle > * {
+    width: 360px;
+    display: inline-block;
+}
+
+.heroTitle > * > span {
     margin: 0;
     padding: 0;
-    display: inline-block;
-    height: fit-content;
+
+    display: inline;
+
     font-size: 36px;
-    line-height: 1.5;
+    line-height: 100%;
 }
 
-.text {
-    font-size: 24px;
+.heroText {
     max-width: 80%;
+    font-size: 24px;
+}
+
+@media (max-width: 700px) {
+    .heroTitle > * {
+        width: 190px;
+    }
 }

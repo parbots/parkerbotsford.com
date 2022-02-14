@@ -1,71 +1,55 @@
-.navbar {
-    width: 100%;
+.header {
+    height: 15vh;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding-top: 25px;
 }
 
-.logo {
+.logoLink {
     width: 10vh;
     height: 10vh;
+
+    border-radius: 5px;
+    border: 2px solid var(--color);
+
     font-size: 48px;
     line-height: 8vh;
     text-align: center;
     text-decoration: none;
+
     color: var(--background-color);
     background-color: var(--color);
-    border-radius: 5px;
-    border: 2px solid var(--color);
 
     transition: all 0.2s ease;
 }
 
-.logo:hover {
+.logoLink:hover {
+    text-decoration: none;
+
     color: var(--color);
     background-color: var(--background-color);
-    text-decoration: none;
 }
 
 .linkNav {
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 25px;
 }
 
-.links {
-    list-style-type: none;
+.linkList {
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 25px;
-    padding: 0;
+
+    list-style: none;
 }
 
 .link {
-    background: none;
-    position: relative;
 }
 
 .link:hover {
     text-decoration: none;
-    color: var(--background-color);
-}
-
-.link::before {
-    background-color: var(--color);
-    content: '';
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    transform: scaleX(0);
-    transform-origin: left;
-    transition: transform 0.5s ease;
-    z-index: -1;
-}
-
-.link:hover::before {
-    transform: scaleX(1);
 }

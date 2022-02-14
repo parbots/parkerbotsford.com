@@ -2,6 +2,7 @@ import styles from 'styles/Homepage.module.css';
 
 import Head from 'next/head';
 
+import Header from 'components/Header';
 import Hero from 'components/Section/Hero';
 import About from 'components/Section/About';
 import Project from 'components/Section/Project';
@@ -9,6 +10,7 @@ import Contact from 'components/Section/Contact';
 
 import { gql } from '@apollo/client';
 import { githubClient } from '../apollo-client';
+import Footer from 'components/Footer';
 
 export default function HomePage(props) {
     return (
@@ -20,10 +22,15 @@ export default function HomePage(props) {
                     content="Hi, my name is Parker. I'm a frontend web developer and I also blog sometimes!"
                 />
             </Head>
-            <Hero />
-            <About />
-            <Project repos={props.repos} />
-            <Contact />
+
+            <Header />
+            <main>
+                <Hero />
+                <About />
+                <Project repos={props.repos} />
+                <Contact />
+            </main>
+            <Footer />
         </div>
     );
 }

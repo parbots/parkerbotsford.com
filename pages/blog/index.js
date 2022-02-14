@@ -1,12 +1,12 @@
 import styles from 'styles/BlogHomepage.module.css';
 
 import Head from 'next/head';
+import Link from 'next/link';
 
-import Navbar from 'components/Navbar';
+import Header from 'components/Header';
 
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';
-import Link from 'next/link';
 
 export default function BlogHomepage({ posts }) {
     const formatDate = (published) => {
@@ -22,20 +22,8 @@ export default function BlogHomepage({ posts }) {
                     content='I post about web development. Mostly React and Next.js, but sometimes other stuff too!'
                 />
             </Head>
+            <Header />
             <main className={styles.postsSection}>
-                <Navbar
-                    links={[
-                        {
-                            name: 'About',
-                            href: '/',
-                        },
-                        {
-                            name: 'Blog',
-                            href: '/blog',
-                        },
-                    ]}
-                />
-
                 <h1 className={styles.title}>Posts</h1>
 
                 <ul className={styles.postList}>
