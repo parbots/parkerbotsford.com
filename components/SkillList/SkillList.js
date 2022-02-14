@@ -1,6 +1,7 @@
 import styles from './SkillList.module.css';
 
 import SkillItem from './SkillItem';
+
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import {
     faCss3Alt,

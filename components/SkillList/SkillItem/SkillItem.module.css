@@ -1,14 +1,25 @@
 .item {
     flex: 1;
     min-width: fit-content;
+
+    padding: 10px;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    padding: 10px;
-    color: var(--color);
-    background-color: var(--background);
+
+    border: solid 2px var(--background-color);
     border-radius: 10px;
+
+    color: var(--color);
+    background-color: var(--background-color);
+
+    transition: border 0.2s ease;
+}
+
+.item:hover {
+    border-color: var(--color);
 }
 
 .name {

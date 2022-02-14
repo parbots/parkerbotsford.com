@@ -1,12 +1,9 @@
 .footer {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
+    height: 5vh;
+
     display: flex;
     justify-content: center;
     align-items: center;
-    padding-bottom: 25px;
 }
 
 .copyright {

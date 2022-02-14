@@ -45,14 +45,11 @@ const Contact = () => {
 
     return (
         <Section id='contactSection' className={styles.contactSection}>
-            <InfoBox
-                title='Contact Me'
-                boxStyle={styles.contactBox}
-                headerStyle={styles.contactBoxTop}
-            >
-                <ul className={styles.contactList}>{linkComponents}</ul>
+            <InfoBox title='Contact Me'>
+                <div className={styles.contactBox}>
+                    <ul className={styles.contactList}>{linkComponents}</ul>
+                </div>
             </InfoBox>
-            <Footer />
         </Section>
     );
 };

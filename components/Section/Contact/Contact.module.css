@@ -1,37 +1,36 @@
 .contactSection {
-    position: relative;
+    height: 95vh;
 }
+
 .contactBox {
-    position: relative;
     flex: 1;
+
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.contactBoxTop {
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-}
-
 .contactList {
-    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
     display: flex;
     flex-direction: column;
     gap: 50px;
-    margin: 0;
-    padding: 0;
+
+    list-style-type: none;
 }
 
 .link {
+    padding: 10px;
+
     display: flex;
     align-items: center;
-    padding: 10px;
+
     border: 2px solid var(--color);
     border-radius: 5px;
+
     text-decoration: none;
 
     transition: all 0.2s ease;
@@ -39,6 +38,7 @@
 
 .link:hover {
     text-decoration: none;
+
     color: var(--background-color);
     background-color: var(--color);
 }

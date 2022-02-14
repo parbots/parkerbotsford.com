@@ -1,10 +1,12 @@
 .skillList {
-    list-style-type: none;
+    margin: 0;
+    padding: 0;
+
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-    margin: 0;
-    padding: 0;
+    gap: 25px;
+
+    list-style: none;
 }

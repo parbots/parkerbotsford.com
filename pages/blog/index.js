@@ -4,14 +4,39 @@ import Head from 'next/head';
 import Link from 'next/link';
 
 import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';
 
-export default function BlogHomepage({ posts }) {
+export default function BlogHomepage(props) {
     const formatDate = (published) => {
         return new Date(published).toDateString();
     };
+
+    const posts =
+        props.posts.length == 0 ? (
+            <p>{`Sorry, I haven't posted Yet. :(`}</p>
+        ) : (
+            props.posts.map((post) => {
+                return (
+                    <li key={post.title}>
+                        <Link href={`/blog/${post.slug}`}>
+                            <a className={styles.postLink}>
+                                <div className={styles.postTop}>
+                                    <h2 className={styles.postTitle}>
+                                        {post.title}
+                                    </h2>
+                                    <p className={styles.postDate}>
+                                        {formatDate(post.published)}
+                                    </p>
+                                </div>
+                            </a>
+                        </Link>
+                    </li>
+                );
+            })
+        );
 
     return (
         <div className={styles.page}>
@@ -25,28 +50,9 @@ export default function BlogHomepage({ posts }) {
             <Header />
             <main className={styles.postsSection}>
                 <h1 className={styles.title}>Posts</h1>
-
-                <ul className={styles.postList}>
-                    {posts.map((post) => {
-                        return (
-                            <li key={post.title}>
-                                <Link href={`/blog/${post.slug}`}>
-                                    <a className={styles.postLink}>
-                                        <div className={styles.postTop}>
-                                            <h2 className={styles.postTitle}>
-                                                {post.title}
-                                            </h2>
-                                            <p className={styles.postDate}>
-                                                {formatDate(post.published)}
-                                            </p>
-                                        </div>
-                                    </a>
-                                </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
+                <ul className={styles.postList}>{posts}</ul>
             </main>
+            <Footer />
         </div>
     );
 }

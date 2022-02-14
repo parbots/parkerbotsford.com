@@ -11,12 +11,14 @@
 .heroTitle {
     width: 60vw;
     height: 96px;
+
     display: flex;
     justify-content: center;
 }
 
 .heroTitle > * {
     width: 360px;
+
     display: inline-block;
 }
 
