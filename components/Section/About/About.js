@@ -1,7 +1,6 @@
 import styles from './About.module.css';
 
 import Section from '/components/Section';
-
 import InfoBox from 'components/InfoBox';
 import SkillList from 'components/SkillList';
 

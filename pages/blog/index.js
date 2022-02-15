@@ -16,7 +16,7 @@ export default function BlogHomepage(props) {
 
     const posts =
         props.posts.length == 0 ? (
-            <p>{`Sorry, I haven't posted Yet. :(`}</p>
+            <p>{`Sorry, I haven't posted yet :(`}</p>
         ) : (
             props.posts.map((post) => {
                 return (

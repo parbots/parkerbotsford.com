@@ -2,7 +2,6 @@ import styles from './Contact.module.css';
 
 import Section from '/components/Section';
 import InfoBox from 'components/InfoBox';
-import Footer from 'components/Footer';
 
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 import { faEnvelope } from '@fortawesome/free-regular-svg-icons';

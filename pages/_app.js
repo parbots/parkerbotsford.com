@@ -1,10 +1,12 @@
 import 'styles/global.css';
 
+import Head from 'next/head';
+
+import { ThemeProvider } from 'components/ThemeToggle/ThemeContext';
+
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
-
-import Head from 'next/head';
 
 function MyApp({ Component, pageProps }) {
     return (
@@ -38,7 +40,9 @@ function MyApp({ Component, pageProps }) {
                 <link rel='shortcut icon' href='icon/favicon.ico' />
             </Head>
 
-            <Component {...pageProps} />
+            <ThemeProvider>
+                <Component {...pageProps} />
+            </ThemeProvider>
         </>
     );
 }

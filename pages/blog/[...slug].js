@@ -1,7 +1,7 @@
+import styles from 'styles/BlogPost.module.css';
+
 import Navbar from 'components/Navbar';
 import Head from 'next/head';
-
-import styles from 'styles/BlogPost.module.css';
 
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';

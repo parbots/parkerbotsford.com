@@ -1,18 +1,13 @@
 import styles from './ThemeToggle.module.css';
 
-import { useState, useEffect } from 'react';
+import { useThemeContext } from './ThemeContext';
 
 const ThemeToggle = () => {
-    const [theme, setTheme] = useState('light');
-    const nextTheme = theme === 'light' ? 'dark' : 'light';
-
-    useEffect(() => {
-        document.body.dataset.theme = theme;
-    }, [theme]);
+    const { theme, toggleTheme } = useThemeContext();
 
     return (
-        <button className={styles.button} onClick={() => setTheme(nextTheme)}>
-            {nextTheme}
+        <button className={styles.button} onClick={toggleTheme}>
+            {theme}
         </button>
     );
 };
