@@ -1,7 +1,9 @@
 import styles from 'styles/BlogPost.module.css';
 
-import Navbar from 'components/Navbar';
 import Head from 'next/head';
+
+import Header from 'components/Header';
+import Footer from 'components/Footer';
 
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';
@@ -18,22 +20,12 @@ const Post = ({ post }) => {
                     content='I post about web development. Mostly React and Next.js, but sometimes other stuff too!'
                 />
             </Head>
-            <section className={styles.postSection}>
-                <Navbar
-                    links={[
-                        {
-                            name: 'About',
-                            href: '/',
-                        },
-                        {
-                            name: 'Blog',
-                            href: '/blog',
-                        },
-                    ]}
-                />
+            <Header />
+            <main className={styles.postsSection}>
                 <h1>{post.title}</h1>
                 {documentToReactComponents(post.content.json)}
-            </section>
+            </main>
+            <Footer />
         </div>
     );
 };
