@@ -43,6 +43,7 @@ const Project = (props) => {
             </li>
         );
     });
+
     return (
         <Section className={styles.projectSection}>
             <InfoBox
