@@ -24,6 +24,7 @@ body[data-theme='dark'] {
 
 * {
     margin: 0;
+    padding: 0;
 }
 
 html,
