@@ -28,10 +28,12 @@
     display: flex;
     align-items: center;
 
-    border: 2px solid var(--color);
+    text-decoration: none;
+
+    border: solid 3px var(--highlight-color);
     border-radius: 5px;
 
-    text-decoration: none;
+    color: var(--highlight-color);
 
     transition: all 0.2s ease;
 }
@@ -40,5 +42,5 @@
     text-decoration: none;
 
     color: var(--background-color);
-    background-color: var(--color);
+    background-color: var(--highlight-color);
 }

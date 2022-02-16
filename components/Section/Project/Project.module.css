@@ -28,7 +28,7 @@
     display: flex;
     flex-direction: column;
 
-    border: 2px solid var(--background-color);
+    border: 3px solid var(--background-color);
     border-radius: 10px;
 
     transition: border 0.2s ease;
@@ -39,15 +39,25 @@
 }
 
 .repoTop {
+    flex: 1;
+
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+
+.repoName {
+    text-align: center;
+
+    border-bottom: solid 3px var(--color);
 }
 
 .repoLink {
     position: relative;
 
     padding: 3px;
+
+    color: var(--highlight-color);
 }
 
 .repoLink:hover {
@@ -63,7 +73,7 @@
     width: 100%;
     height: 3px;
 
-    background-color: var(--color);
+    background-color: var(--highlight-color);
 
     transform: scaleX(0);
     transform-origin: bottom right;
@@ -104,7 +114,7 @@
 .repoTag {
     padding: 5px 10px;
 
-    border-radius: 1rem;
+    border-radius: 10px;
 
     color: var(--background-color);
     background-color: var(--color);
@@ -116,7 +126,7 @@
         flex-direction: column;
     }
 
-    .repoLink {
+    .repoItem {
         border-color: var(--color);
     }
 }
