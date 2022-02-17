@@ -27,7 +27,7 @@
     border: solid 3px var(--background-color);
     border-radius: 10px;
 
-    transition: border 0.3s ease;
+    transition: border 0.3s;
 }
 
 .repoItem:hover {
@@ -68,7 +68,7 @@
     transform: scaleX(0);
     transform-origin: bottom right;
 
-    transition: transform 0.3s ease;
+    transition: transform 0.3s;
 }
 
 .repoLink:hover::after {

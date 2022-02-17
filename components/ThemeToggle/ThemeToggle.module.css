@@ -11,8 +11,7 @@
     color: var(--highlight-color);
     background-color: var(--background-color);
 
-    transition: color 0.3s ease;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s, background 0.3s;
 }
 
 .button:hover {

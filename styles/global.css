@@ -54,8 +54,7 @@ body {
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
 
-    transition: color 0.3s ease;
-    transition: background-color 0.3s ease;
+    transition: color 0.3s, background 0.3s;
 }
 
 img,
