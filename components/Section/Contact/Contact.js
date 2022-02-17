@@ -43,7 +43,7 @@ const Contact = () => {
     });
 
     return (
-        <Section id='contactSection' className={styles.contactSection}>
+        <Section>
             <InfoBox title='Contact Me'>
                 <div className={styles.contactBox}>
                     <ul className={styles.contactList}>{linkComponents}</ul>

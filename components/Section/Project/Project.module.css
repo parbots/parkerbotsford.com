@@ -1,9 +1,9 @@
-.projectSection {
-    min-height: 100vh;
-}
-
 .repoBox {
     flex: 1;
+
+    min-height: 90vh;
+
+    padding: 2rem;
 
     display: flex;
     flex-direction: column;
@@ -12,26 +12,22 @@
 }
 
 .repoList {
-    padding: 0;
-
     display: grid;
     grid-template-columns: 1fr 1fr;
-    gap: 25px;
-
-    list-style: none;
+    gap: 2rem;
 }
 
 .repoItem {
     flex: 1;
-    padding: 10px;
+    padding: 1rem;
 
     display: flex;
     flex-direction: column;
 
-    border: 3px solid var(--background-color);
+    border: solid 3px var(--background-color);
     border-radius: 10px;
 
-    transition: border 0.2s ease;
+    transition: border 0.3s ease;
 }
 
 .repoItem:hover {
@@ -47,8 +43,6 @@
 }
 
 .repoName {
-    text-align: center;
-
     border-bottom: solid 3px var(--color);
 }
 
@@ -58,10 +52,6 @@
     padding: 3px;
 
     color: var(--highlight-color);
-}
-
-.repoLink:hover {
-    text-decoration: none;
 }
 
 .repoLink::after {
@@ -88,7 +78,7 @@
 
 .repoInfoBox {
     flex: 2;
-    padding: 25px;
+    padding: 3rem;
 
     display: flex;
     justify-content: center;
@@ -101,20 +91,17 @@
 
 .repoTagList {
     flex: 1;
-    padding: 0;
 
     display: flex;
     align-items: center;
     flex-wrap: wrap;
-    gap: 10px;
-
-    list-style: none;
+    gap: 0.5rem;
 }
 
 .repoTag {
-    padding: 5px 10px;
+    padding: 0.5rem 1rem;
 
-    border-radius: 10px;
+    border-radius: 5px;
 
     color: var(--background-color);
     background-color: var(--color);
@@ -128,5 +115,24 @@
 
     .repoItem {
         border-color: var(--color);
+    }
+
+    .repoTop {
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        gap: 1rem;
+    }
+
+    .repoName {
+        width: 100%;
+    }
+
+    .repoLink::after {
+        transform: scaleX(1);
+    }
+
+    .repoTagList {
+        justify-content: center;
     }
 }

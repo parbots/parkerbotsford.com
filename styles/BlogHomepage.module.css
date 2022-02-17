@@ -1,5 +1,5 @@
 .page {
-    padding: 0 50px;
+    padding: 0 4rem;
 
     display: flex;
     flex-direction: column;
@@ -11,7 +11,7 @@
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 25px;
+    gap: 2rem;
 }
 
 .title {
@@ -19,33 +19,26 @@
 }
 
 .postList {
-    padding: 0;
-    margin: 0;
-
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 10px;
-
-    list-style: none;
+    gap: 1rem;
 }
 
 .postLink {
     width: 60vw;
 
-    padding: 10px;
+    padding: 1rem;
 
     display: flex;
     flex-direction: column;
 
-    border: solid 2px var(--color);
+    border: solid 3px var(--color);
     border-radius: 10px;
 }
 
 .postLink:hover {
-    text-decoration: none;
-
     color: var(--background-color);
     background-color: var(--color);
 }

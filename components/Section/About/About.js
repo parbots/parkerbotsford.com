@@ -6,12 +6,14 @@ import SkillList from 'components/SkillList';
 
 const About = () => {
     return (
-        <Section id='aboutSection'>
+        <Section>
             <InfoBox title='About Me'>
-                <p>
-                    I am a coding addict that loves solving problems through
-                    programming.
-                </p>
+                <div className={styles.aboutMeBox}>
+                    <p>
+                        I am a coding addict that loves solving problems through
+                        programming.
+                    </p>
+                </div>
             </InfoBox>
             <InfoBox title='Skills'>
                 <div className={styles.skillBox}>

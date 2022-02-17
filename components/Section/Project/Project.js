@@ -3,8 +3,8 @@ import styles from './Project.module.css';
 import Section from '/components/Section';
 import InfoBox from 'components/InfoBox';
 
-const Project = (props) => {
-    const repos = props.repos.map((repo) => {
+const Project = ({ repos }) => {
+    const repoItems = repos.map((repo) => {
         return (
             <li className={styles.repoItem} key={repo.name}>
                 <div className={styles.repoTop}>
@@ -45,10 +45,10 @@ const Project = (props) => {
     });
 
     return (
-        <Section className={styles.projectSection}>
+        <Section>
             <InfoBox title='Projects'>
                 <div className={styles.repoBox}>
-                    <ul className={styles.repoList}>{repos}</ul>
+                    <ul className={styles.repoList}>{repoItems}</ul>
                 </div>
             </InfoBox>
         </Section>

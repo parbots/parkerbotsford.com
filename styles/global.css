@@ -53,6 +53,9 @@ body {
     line-height: 1.5;
     text-rendering: optimizeSpeed;
     -webkit-font-smoothing: antialiased;
+
+    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 img,
@@ -70,6 +73,11 @@ button,
 textarea,
 select {
     font: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
 }
 
 p,
@@ -103,11 +111,6 @@ a {
     text-decoration: none;
 
     color: var(--color);
-    background-color: var(--background-color);
-}
-
-a:hover {
-    text-decoration: 2px underline;
 }
 
 ::selection {

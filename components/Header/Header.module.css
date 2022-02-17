@@ -13,7 +13,6 @@
     font-size: 48px;
     line-height: 7.75vh;
     text-align: center;
-    text-decoration: none;
 
     border: solid 3px var(--highlight-color);
     border-radius: 5px;
@@ -21,12 +20,11 @@
     color: var(--background-color);
     background-color: var(--highlight-color);
 
-    transition: all 0.2s ease;
+    transition: color 0.3s ease;
+    transition: background-color 0.3s ease;
 }
 
 .logoLink:hover {
-    text-decoration: none;
-
     color: var(--highlight-color);
     background-color: var(--background-color);
 }
@@ -35,16 +33,14 @@
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
+    gap: 2rem;
 }
 
 .linkList {
     display: flex;
     justify-content: center;
     align-items: center;
-    gap: 25px;
-
-    list-style: none;
+    gap: 2rem;
 }
 
 .link {
@@ -53,10 +49,6 @@
     padding: 3px;
 
     color: var(--highlight-color);
-}
-
-.link:hover {
-    text-decoration: none;
 }
 
 .link::after {
@@ -79,4 +71,10 @@
 .link:hover::after {
     transform-origin: bottom left;
     transform: scaleX(1);
+}
+
+@media (max-width: 700px) {
+    .link::after {
+        transform: scaleX(1);
+    }
 }

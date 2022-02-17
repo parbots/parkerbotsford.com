@@ -1,11 +1,11 @@
-.heroSection {
-    max-height: 85vh;
+.heroContainer {
+    min-height: 85vh;
 
     display: flex;
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    gap: 50px;
+    gap: 4rem;
 }
 
 .heroTitle {
