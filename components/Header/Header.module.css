@@ -2,8 +2,11 @@
     height: 15vh;
 
     display: flex;
-    justify-content: space-between;
+    justify-content: center;
     align-items: center;
+    gap: 2rem;
+
+    border-bottom: dotted 3px var(--highlight-color);
 }
 
 .logoLink {
@@ -29,10 +32,11 @@
 }
 
 .linkNav {
+    flex: 1;
+
     display: flex;
-    justify-content: center;
+    justify-content: flex-end;
     align-items: center;
-    gap: 2rem;
 }
 
 .linkList {
@@ -73,6 +77,14 @@
 }
 
 @media (max-width: 700px) {
+    .linkNav {
+        justify-content: center;
+    }
+
+    .link {
+        font-size: 2rem;
+    }
+
     .link::after {
         transform: scaleX(1);
     }

@@ -48,3 +48,9 @@
     justify-content: space-between;
     align-items: center;
 }
+
+@media (max-width: 700px) {
+    .page {
+        padding: 0 1rem;
+    }
+}

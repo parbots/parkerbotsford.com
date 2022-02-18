@@ -12,6 +12,16 @@ const Header = () => {
         },
     ];
 
+    const linkItems = links.map((link) => {
+        return (
+            <li key={link.name}>
+                <Link href={link.href}>
+                    <a className={styles.link}>{link.name}</a>
+                </Link>
+            </li>
+        );
+    });
+
     return (
         <header className={styles.header}>
             <Link href='/'>
@@ -19,19 +29,10 @@ const Header = () => {
             </Link>
 
             <nav className={styles.linkNav}>
-                <ul className={styles.linkList}>
-                    {links.map((link) => {
-                        return (
-                            <li key={link.name}>
-                                <Link href={link.href}>
-                                    <a className={styles.link}>{link.name}</a>
-                                </Link>
-                            </li>
-                        );
-                    })}
-                </ul>
-                <ThemeToggle />
+                <ul className={styles.linkList}>{linkItems}</ul>
             </nav>
+
+            <ThemeToggle />
         </header>
     );
 };
