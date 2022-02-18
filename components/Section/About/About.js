@@ -57,7 +57,7 @@ const About = () => {
         return (
             <li key={skill.name} className={styles.skillItem}>
                 {skill.icon}
-                <h3 className={styles.skillName}>{skill.name}</h3>
+                <h4 className={styles.skillName}>{skill.name}</h4>
             </li>
         );
     });
