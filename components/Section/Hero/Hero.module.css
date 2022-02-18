@@ -42,8 +42,9 @@
 .heroText {
     flex: 3;
 
-    max-width: 80%;
-    font-size: 24px;
+    max-width: 70vw;
+
+    font-size: 28px;
 }
 
 .heroHint {
@@ -89,5 +90,9 @@
 @media (max-width: 700px) {
     .heroTitle > * {
         width: 190px;
+    }
+
+    .heroText {
+        max-width: 100%;
     }
 }

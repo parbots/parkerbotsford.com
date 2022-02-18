@@ -22,10 +22,10 @@ const Hero = () => {
                     </h1>
                 </div>
                 <p className={styles.heroText}>
-                    {'Frontend web developer with a passion for creating '}
-                    <strong>responsive</strong>, <strong>accessible</strong>
+                    {'Web developer with a passion for building '}
+                    <strong>fast</strong>, <strong>responsive</strong>
                     {', and '}
-                    <strong>beautiful</strong> designs.
+                    <strong>beautiful</strong> websites.
                 </p>
                 <div className={styles.heroHintContainer}>
                     <p className={styles.heroHint}>
