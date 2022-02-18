@@ -13,3 +13,34 @@
     flex-direction: column;
     justify-content: center;
 }
+
+.skillList {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skillItem {
+    flex: 1;
+
+    min-width: fit-content;
+
+    padding: 0.5rem;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+
+    border: solid 3px var(--color);
+    border-radius: 10px;
+
+    color: var(--color);
+    background-color: var(--background-color);
+}
+
+.skillName {
+    text-align: center;
+}

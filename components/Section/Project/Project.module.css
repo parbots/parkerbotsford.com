@@ -66,13 +66,12 @@
     background-color: var(--highlight-color);
 
     transform: scaleX(0);
-    transform-origin: bottom right;
+    transform-origin: bottom left;
 
     transition: transform 0.3s;
 }
 
 .repoLink:hover::after {
-    transform-origin: bottom left;
     transform: scaleX(1);
 }
 
