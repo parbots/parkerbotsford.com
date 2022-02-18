@@ -1,7 +1,50 @@
+.aboutContainer {
+    display: flex;
+
+    gap: 1rem;
+}
+
 .aboutMeBox {
     min-height: 40vh;
 
     padding: 1rem;
+
+    display: flex;
+    flex-direction: column;
+    gap: 2rem;
+}
+
+.factList {
+    padding-left: 5rem;
+
+    list-style-type: disc;
+}
+
+.link {
+    position: relative;
+
+    color: var(--highlight-color);
+}
+
+.link::after {
+    content: '';
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 3px;
+
+    background-color: var(--highlight-color);
+
+    transform: scaleX(0);
+    transform-origin: bottom left;
+
+    transition: transform 0.3s;
+}
+
+.link:hover::after {
+    transform: scaleX(1);
 }
 
 .skillBox {
@@ -10,24 +53,24 @@
     padding: 1rem;
 
     display: flex;
-    flex-direction: column;
     justify-content: center;
+    align-items: center;
 }
 
 .skillList {
+    flex: 1;
+
     display: flex;
-    flex-wrap: wrap;
     justify-content: center;
-    align-items: center;
+    flex-wrap: wrap;
     gap: 1rem;
 }
 
 .skillItem {
-    flex: 1;
-
     min-width: fit-content;
+    min-height: fit-content;
 
-    padding: 0.5rem;
+    padding: 1rem;
 
     display: flex;
     flex-direction: column;
@@ -43,4 +86,14 @@
 
 .skillName {
     text-align: center;
+}
+
+@media (max-width: 700px) {
+    .aboutContainer {
+        flex-direction: column;
+    }
+
+    .link:after {
+        transform: scaleX(1);
+    }
 }

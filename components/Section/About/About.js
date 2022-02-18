@@ -18,16 +18,16 @@ import {
 const About = () => {
     const skills = [
         {
-            name: 'Javascript',
-            icon: <FontAwesomeIcon icon={faJsSquare} size='3x' fixedWidth />,
-        },
-        {
             name: 'Html',
             icon: <FontAwesomeIcon icon={faHtml5} size='3x' fixedWidth />,
         },
         {
             name: 'Css',
             icon: <FontAwesomeIcon icon={faCss3Alt} size='3x' fixedWidth />,
+        },
+        {
+            name: 'JavaScript',
+            icon: <FontAwesomeIcon icon={faJsSquare} size='3x' fixedWidth />,
         },
         {
             name: 'React',
@@ -64,19 +64,54 @@ const About = () => {
 
     return (
         <Section>
-            <InfoBox title='About Me'>
-                <div className={styles.aboutMeBox}>
-                    <p>
-                        I am a coding addict that loves solving problems through
-                        programming.
-                    </p>
-                </div>
-            </InfoBox>
-            <InfoBox title='Skills'>
-                <div className={styles.skillBox}>
-                    <ul className={styles.skillList}>{skillItems}</ul>
-                </div>
-            </InfoBox>
+            <div className={styles.aboutContainer}>
+                <InfoBox title='About Me'>
+                    <div className={styles.aboutMeBox}>
+                        <p>
+                            {`I love coding and creating tools for other
+                            developers.`}
+                            <br />
+                            {`(Check them out on my `}
+                            <a
+                                href='https://github.com/parkerbotsford'
+                                target='_blank'
+                                rel='noreferrer'
+                                className={styles.link}
+                            >
+                                Github
+                            </a>
+                            {`!)`}
+                        </p>
+                        <p>
+                            {`I'm currently using Typescript, React, and Next.js.`}
+                        </p>
+                        <p>
+                            {`Some fun facts about me:`}
+                            <ul className={styles.factList}>
+                                <li>
+                                    {`I'm obssessed with the `}
+                                    <a
+                                        href='https://github.com/morhetz/gruvbox'
+                                        target='_blank'
+                                        rel='noreferrer'
+                                        className={styles.link}
+                                    >
+                                        Gruvbox
+                                    </a>
+                                    {` colorscheme.`}
+                                </li>
+                                <li>I enjoy skateboarding.</li>
+                                <li>I drink 2 cups of coffee a day.</li>
+                            </ul>
+                        </p>
+                    </div>
+                </InfoBox>
+                <InfoBox title='Skills'>
+                    <div className={styles.skillBox}>
+                        <ul className={styles.skillList}>{skillItems}</ul>
+                    </div>
+                </InfoBox>
+            </div>
         </Section>
     );
 };

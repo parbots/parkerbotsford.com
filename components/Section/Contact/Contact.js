@@ -31,9 +31,9 @@ const Contact = () => {
             <li key={link.name}>
                 <a
                     href={link.link}
-                    className={styles.link}
                     target='_blank'
                     rel='noreferrer'
+                    className={styles.link}
                 >
                     {link.icon}
                     <p>{link.name}</p>
