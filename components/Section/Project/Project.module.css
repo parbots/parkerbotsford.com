@@ -93,13 +93,15 @@
     flex: 1;
 
     display: flex;
-    align-items: center;
     flex-wrap: wrap;
+    align-items: center;
     gap: 0.5rem;
 }
 
 .repoTag {
     padding: 0.5rem 1rem;
+
+    text-align: center;
 
     border-radius: 5px;
 
@@ -130,9 +132,5 @@
 
     .repoLink::after {
         transform: scaleX(1);
-    }
-
-    .repoTagList {
-        justify-content: center;
     }
 }
