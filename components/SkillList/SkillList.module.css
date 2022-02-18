@@ -3,12 +3,5 @@
     flex-wrap: wrap;
     justify-content: center;
     align-items: center;
-    gap: 2rem;
-}
-
-@media (max-width: 700px) {
-    .skillList {
-        display: grid;
-        grid-template-columns: 1fr 1fr;
-    }
+    gap: 1rem;
 }
