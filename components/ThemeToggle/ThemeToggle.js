@@ -1,9 +1,9 @@
 import styles from './ThemeToggle.module.css';
 
-import { useThemeContext } from './ThemeContext';
+import { useTheme } from 'hooks/theme';
 
 const ThemeToggle = () => {
-    const { theme, toggleTheme } = useThemeContext();
+    const { theme, toggleTheme } = useTheme();
 
     return (
         <button className={styles.button} onClick={toggleTheme}>
