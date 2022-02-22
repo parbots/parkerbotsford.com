@@ -3,7 +3,6 @@ import styles from 'styles/Homepage.module.css';
 import Head from 'next/head';
 
 import Header from 'components/Header';
-import Hero from 'components/Section/Hero';
 import About from 'components/Section/About';
 import Project from 'components/Section/Project';
 import Contact from 'components/Section/Contact';
@@ -11,6 +10,7 @@ import Footer from 'components/Footer';
 
 import { gql } from '@apollo/client';
 import { githubClient } from '../apollo-client';
+import IntroSection from 'layouts/HomePage/IntroSection';
 
 export default function HomePage(props) {
     return (
@@ -25,7 +25,7 @@ export default function HomePage(props) {
 
             <Header />
             <main>
-                <Hero />
+                <IntroSection />
                 <About />
                 <Project repos={props.repos} />
                 <Contact />

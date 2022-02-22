@@ -1,0 +1,45 @@
+.introSection {
+    height: 85vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.introTitleSection {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.introTitle {
+    padding: 1rem;
+
+    font-size: 4rem;
+    text-align: center;
+}
+
+.introDescriptionSection {
+    flex: 1;
+
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.introDescription {
+    padding: 1rem;
+
+    font-size: 2rem;
+}
+
+.introHint {
+    padding: 2rem;
+
+    text-align: center;
+
+    color: var(--highlight-color);
+}
