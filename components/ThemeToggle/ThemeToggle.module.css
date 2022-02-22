@@ -5,8 +5,8 @@
 
     cursor: pointer;
 
-    border: solid 3px var(--highlight-color);
-    border-radius: 5px;
+    border: solid 0.2rem var(--highlight-color);
+    border-radius: 0.5rem;
 
     color: var(--highlight-color);
     background-color: var(--background-color);
