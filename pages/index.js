@@ -11,6 +11,7 @@ import Footer from 'components/Footer';
 import { gql } from '@apollo/client';
 import { githubClient } from '../apollo-client';
 import IntroSection from 'layouts/HomePage/IntroSection';
+import AboutSection from 'layouts/HomePage/AboutSection';
 
 export default function HomePage(props) {
     return (
@@ -26,7 +27,7 @@ export default function HomePage(props) {
             <Header />
             <main>
                 <IntroSection />
-                <About />
+                <AboutSection />
                 <Project repos={props.repos} />
                 <Contact />
             </main>

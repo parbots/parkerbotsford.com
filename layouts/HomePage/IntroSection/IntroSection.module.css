@@ -1,11 +1,11 @@
-.introSection {
+.section {
     height: 85vh;
 
     display: flex;
     flex-direction: column;
 }
 
-.introTitleContainer {
+.titleContainer {
     flex: 1;
 
     display: flex;
@@ -14,14 +14,14 @@
     align-items: center;
 }
 
-.introTitle {
+.title {
     padding: 1rem;
 
     font-size: 4rem;
     text-align: center;
 }
 
-.introDescriptionContainer {
+.descriptionContainer {
     flex: 1;
 
     display: flex;
@@ -30,13 +30,13 @@
     align-items: center;
 }
 
-.introDescription {
+.description {
     padding: 1rem;
 
     font-size: 2rem;
 }
 
-.introHint {
+.hint {
     padding: 2rem;
 
     text-align: center;

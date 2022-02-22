@@ -1,10 +1,12 @@
 import styles from './AboutSection.module.css';
-import React from 'react';
 
 const AboutSection = () => {
     return (
-        <section>
-            <h1>AboutSection</h1>
+        <section className={styles.section}>
+            <div className={styles.header}>
+                <h2 className={styles.headerTitle}>About Me</h2>
+            </div>
+            <div className={styles.content}></div>
         </section>
     );
 };
