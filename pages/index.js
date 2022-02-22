@@ -6,7 +6,7 @@ import Header from 'components/Header';
 import IntroSection from 'layouts/HomePage/IntroSection';
 import AboutSection from 'layouts/HomePage/AboutSection';
 import ProjectsSection from 'layouts/HomePage/ProjectsSection';
-import Contact from 'components/Section/Contact';
+import ContactSection from 'layouts/HomePage/ContactSection';
 import Footer from 'components/Footer';
 
 import { gql } from '@apollo/client';
@@ -28,7 +28,7 @@ export default function HomePage(props) {
                 <IntroSection />
                 <AboutSection />
                 <ProjectsSection />
-                <Contact />
+                <ContactSection />
             </main>
             <Footer />
         </div>

@@ -1,0 +1,23 @@
+.section {
+    min-height: 95vh;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.header {
+    height: 10vh;
+
+    display: flex;
+    align-items: flex-end;
+
+    border-bottom: dotted 0.25rem var(--color);
+}
+
+.headerTitle {
+    font-size: 2.5rem;
+}
+
+.content {
+    min-height: 85vh;
+}

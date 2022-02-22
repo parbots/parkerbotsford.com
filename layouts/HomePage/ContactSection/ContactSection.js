@@ -1,14 +1,14 @@
-
-import styles from './ContactSection.module.css'
-import React from 'react';
+import styles from './ContactSection.module.css';
 
 const ContactSection = () => {
     return (
-        <div>
-            <h1>ContactSection</h1>
-        </div>
+        <section className={styles.section}>
+            <div className={styles.header}>
+                <h1 className={styles.headerTitle}>Contact Me</h1>
+            </div>
+            <div className={styles.content}></div>
+        </section>
     );
 };
 
 export default ContactSection;
-
