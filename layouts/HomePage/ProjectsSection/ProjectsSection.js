@@ -1,14 +1,14 @@
-
-import styles from './ProjectsSection.module.css'
-import React from 'react';
+import styles from './ProjectsSection.module.css';
 
 const ProjectsSection = () => {
     return (
-        <div>
-            <h1>ProjectsSection</h1>
-        </div>
+        <section className={styles.section}>
+            <div className={styles.header}>
+                <h2 className={styles.headerTitle}>Projects</h2>
+            </div>
+            <div className={styles.content}></div>
+        </section>
     );
 };
 
 export default ProjectsSection;
-
