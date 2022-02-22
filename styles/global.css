@@ -1,11 +1,11 @@
 body {
-    --light-color: #3d405b;
-    --light-highlight-color: #e07a5f;
-    --light-background-color: #f4f1de;
+    --light-color: #3c3836;
+    --light-highlight-color: #d65d0e;
+    --light-background-color: #f2e5bc;
 
-    --dark-color: #f4f1de;
-    --dark-highlight-color: #e07a5f;
-    --dark-background-color: #3d405b;
+    --dark-color: #ebdbb2;
+    --dark-highlight-color: #d65d0e;
+    --dark-background-color: #32302f;
 }
 
 body[data-theme='light'] {
