@@ -2,7 +2,7 @@ import 'styles/global.css';
 
 import Head from 'next/head';
 
-import { ThemeProvider } from 'components/ThemeToggle/ThemeContext';
+import { ThemeProvider } from 'hooks/theme';
 
 import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
