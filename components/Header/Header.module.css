@@ -6,19 +6,19 @@
     align-items: center;
     gap: 2rem;
 
-    border-bottom: dotted 3px var(--highlight-color);
+    border-bottom: dotted 0.25rem var(--highlight-color);
 }
 
 .logoLink {
     width: 10vh;
     height: 10vh;
 
-    font-size: 48px;
-    line-height: 7.75vh;
+    font-size: 4rem;
+    line-height: 5.25rem;
     text-align: center;
 
-    border: solid 3px var(--highlight-color);
-    border-radius: 5px;
+    border: solid 0.25rem var(--highlight-color);
+    border-radius: 0.5rem;
 
     color: var(--background-color);
     background-color: var(--highlight-color);
@@ -49,7 +49,7 @@
 .link {
     position: relative;
 
-    padding: 3px;
+    padding: 0.25rem;
 
     color: var(--highlight-color);
 }
@@ -61,7 +61,7 @@
     left: 0;
 
     width: 100%;
-    height: 3px;
+    height: 0.25rem;
 
     background-color: var(--highlight-color);
 
