@@ -1,14 +1,12 @@
-
-import styles from './AboutSection.module.css'
+import styles from './AboutSection.module.css';
 import React from 'react';
 
 const AboutSection = () => {
     return (
-        <div>
+        <section>
             <h1>AboutSection</h1>
-        </div>
+        </section>
     );
 };
 
 export default AboutSection;
-

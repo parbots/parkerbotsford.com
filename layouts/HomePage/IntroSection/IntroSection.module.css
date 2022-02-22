@@ -5,7 +5,7 @@
     flex-direction: column;
 }
 
-.introTitleSection {
+.introTitleContainer {
     flex: 1;
 
     display: flex;
@@ -21,7 +21,7 @@
     text-align: center;
 }
 
-.introDescriptionSection {
+.introDescriptionContainer {
     flex: 1;
 
     display: flex;

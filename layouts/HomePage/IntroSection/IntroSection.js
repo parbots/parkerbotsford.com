@@ -3,10 +3,10 @@ import styles from './IntroSection.module.css';
 const IntroSection = () => {
     return (
         <section className={styles.introSection}>
-            <section className={styles.introTitleSection}>
+            <div className={styles.introTitleContainer}>
                 <h1 className={styles.introTitle}>{`Hi, i'm Parker.`}</h1>
-            </section>
-            <section className={styles.introDescriptionSection}>
+            </div>
+            <div className={styles.introDescriptionContainer}>
                 <p className={styles.introDescription}>
                     {`Web developer with a passion for building `}
                     <strong>fast</strong>
@@ -19,7 +19,7 @@ const IntroSection = () => {
                 <p
                     className={styles.introHint}
                 >{`Hint: This color highlights interactive things!`}</p>
-            </section>
+            </div>
         </section>
     );
 };
