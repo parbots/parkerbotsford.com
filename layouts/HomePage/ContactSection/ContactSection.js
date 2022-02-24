@@ -48,12 +48,12 @@ const ContactSection = () => {
 
     return (
         <section className={styles.section}>
-            <div className={styles.header}>
+            <header className={styles.header}>
                 <h1 className={styles.headerTitle}>Contact Me</h1>
-            </div>
-            <div className={styles.content}>
+            </header>
+            <section className={styles.content}>
                 <ul className={styles.linkList}>{linkItems}</ul>
-            </div>
+            </section>
         </section>
     );
 };

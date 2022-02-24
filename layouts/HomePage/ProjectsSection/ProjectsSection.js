@@ -4,10 +4,10 @@ import styles from './ProjectsSection.module.css';
 const ProjectsSection = () => {
     return (
         <section className={styles.section}>
-            <div className={styles.header}>
+            <header className={styles.header}>
                 <h2 className={styles.headerTitle}>Projects</h2>
-            </div>
-            <div className={styles.content}>
+            </header>
+            <section className={styles.content}>
                 <ProjectCard
                     name='Pantry'
                     link='https://github.com/parbots/pantry-web'
@@ -17,7 +17,7 @@ const ProjectsSection = () => {
                         { name: 'React', link: 'https://reactjs.org/' },
                     ]}
                 />
-            </div>
+            </section>
         </section>
     );
 };

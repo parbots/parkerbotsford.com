@@ -3,10 +3,10 @@ import styles from './AboutSection.module.css';
 const AboutSection = () => {
     return (
         <section className={styles.section}>
-            <div className={styles.header}>
+            <header className={styles.header}>
                 <h2 className={styles.headerTitle}>About Me</h2>
-            </div>
-            <div className={styles.content}></div>
+            </header>
+            <section className={styles.content}></section>
         </section>
     );
 };

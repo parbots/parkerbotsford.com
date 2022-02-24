@@ -20,49 +20,6 @@
 
 .content {
     min-height: 90vh;
-}
 
-.project {
-    height: 90vh;
-
-    display: flex;
-}
-
-.projectImage {
-    flex: 1;
-
-    background-color: var(--color);
-}
-
-.projectInfo {
-    flex: 1;
-
-    padding: 1rem;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-}
-
-.tagContainer {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    gap: 1rem;
-}
-
-.tagList {
-    display: flex;
-    align-items: center;
-    gap: 1rem;
-}
-
-.tag {
-    padding: 0.5rem;
-
-    border-radius: 0.5rem;
-
-    color: var(--background);
-    background-color: var(--color);
+    padding-top: 2rem;
 }
