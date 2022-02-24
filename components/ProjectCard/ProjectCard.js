@@ -1,6 +1,6 @@
 import styles from './ProjectCard.module.css';
 
-const ProjectCard = ({ name, link, description, madeWith }) => {
+const ProjectCard = ({ name, link, githubLink, description, madeWith }) => {
     const toolItems = madeWith.map((tool) => {
         return (
             <li key={tool.name} className={styles.toolItem}>
@@ -38,6 +38,17 @@ const ProjectCard = ({ name, link, description, madeWith }) => {
                     </h3>
                     <span className={styles.brace}>{'{'}</span>
                 </header>
+
+                <section className={styles.githubSection}>
+                    <a
+                        href={githubLink}
+                        target='_blank'
+                        rel='noreferrer'
+                        className={styles.githubLink}
+                    >
+                        View On Github
+                    </a>
+                </section>
 
                 <section className={styles.section}>
                     <p className={styles.sectionTitle}>description: </p>

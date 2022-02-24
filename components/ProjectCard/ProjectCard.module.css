@@ -71,8 +71,45 @@
     font-size: 1.5rem;
 }
 
+.githubSection {
+    flex: 1;
+
+    padding-left: 2rem;
+
+    display: flex;
+    align-items: center;
+}
+
+.githubLink {
+    position: relative;
+
+    color: var(--highlight);
+}
+
+.githubLink::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 0.2rem;
+
+    content: '';
+
+    background-color: var(--highlight);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.3s;
+}
+
+.githubLink:hover::after {
+    transform: scaleX(1);
+}
+
 .section {
-    flex: 2;
+    flex: 3;
 
     padding-left: 2rem;
 

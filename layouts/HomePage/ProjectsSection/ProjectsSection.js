@@ -6,31 +6,44 @@ const ProjectsSection = () => {
         {
             name: 'Pantry',
             link: 'https://github.com/parbots/pantry-web',
+            githubLink: 'https://github.com/parbots/pantry-web',
             description: 'Manage your snippets.',
             madeWith: [
                 { name: 'Html' },
-                { name: 'Css' },
-                { name: 'Typescript' },
+                { name: 'CSS' },
+                { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
+                { name: 'React', link: 'https://reactjs.org/' },
+                { name: 'Next.js', link: 'https://nextjs.org/' },
+                { name: 'Vercel', link: 'https://vercel.com/home' },
             ],
         },
         {
             name: 'nrc',
             link: 'https://www.npmjs.com/package/@pbots/nrc',
+            githubLink: 'https://github.com/parbots/nrc',
             description: 'Create a new react component that fits your needs.',
             madeWith: [
-                { name: 'Html' },
-                { name: 'Css' },
-                { name: 'Typescript' },
+                { name: 'Javascript' },
+                { name: 'Node.js', link: 'https://nodejs.org/' },
+                { name: 'Npm', link: 'https://www.npmjs.com/' },
+                {
+                    name: 'Commander.js',
+                    link: 'https://github.com/tj/commander.js',
+                },
             ],
         },
         {
             name: 'ToDone',
             link: 'https://todone-beta.vercel.app/',
+            githubLink: 'https://github.com/parbots/todone',
             description: 'Online task manager.',
             madeWith: [
                 { name: 'Html' },
-                { name: 'Css' },
-                { name: 'Typescript' },
+                { name: 'CSS' },
+                { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
+                { name: 'React', link: 'https://reactjs.org/' },
+                { name: 'Next.js', link: 'https://nextjs.org/' },
+                { name: 'Vercel', link: 'https://vercel.com/home' },
             ],
         },
     ];
@@ -41,6 +54,7 @@ const ProjectsSection = () => {
                 key={project.name}
                 name={project.name}
                 link={project.link}
+                githubLink={project.githubLink}
                 description={project.description}
                 madeWith={project.madeWith}
             />
