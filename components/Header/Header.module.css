@@ -6,7 +6,7 @@
     align-items: center;
     gap: 1rem;
 
-    border-bottom: dotted 0.25rem var(--highlight-color);
+    border-bottom: dotted 0.25rem var(--highlight);
 }
 
 .logoLink {
@@ -17,18 +17,18 @@
     line-height: 3.75rem;
     text-align: center;
 
-    border: solid 0.2rem var(--highlight-color);
+    border: solid 0.2rem var(--highlight);
     border-radius: 0.5rem;
 
-    color: var(--background-color);
-    background-color: var(--highlight-color);
+    color: var(--background);
+    background-color: var(--highlight);
 
     transition: color 0.3s, background 0.3s;
 }
 
 .logoLink:hover {
-    color: var(--highlight-color);
-    background-color: var(--background-color);
+    color: var(--highlight);
+    background-color: var(--background);
 }
 
 .linkNav {
@@ -51,7 +51,7 @@
 
     padding: 0.25rem;
 
-    color: var(--highlight-color);
+    color: var(--highlight);
 }
 
 .link::after {
@@ -63,7 +63,7 @@
     width: 100%;
     height: 0.2rem;
 
-    background-color: var(--highlight-color);
+    background-color: var(--highlight);
 
     transform: scaleX(0);
     transform-origin: bottom left;

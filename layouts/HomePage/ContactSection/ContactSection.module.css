@@ -44,17 +44,17 @@
     align-items: center;
     gap: 1rem;
 
-    border: solid 0.25rem var(--highlight-color);
+    border: solid 0.25rem var(--highlight);
     border-radius: 1rem;
 
-    color: var(--highlight-color);
+    color: var(--highlight);
 
     transition: color 0.3s, background-color 0.3s;
 }
 
 .link:hover {
-    color: var(--background-color);
-    background-color: var(--highlight-color);
+    color: var(--background);
+    background-color: var(--highlight);
 }
 
 .linkIcon {
@@ -84,7 +84,7 @@
 
     content: '';
 
-    background-color: var(--background-color);
+    background-color: var(--background);
 
     transform: scaleX(0);
     transform-origin: left;
@@ -98,8 +98,8 @@
 
 @media (max-width: 700px) {
     .link {
-        color: var(--background-color);
-        background-color: var(--highlight-color);
+        color: var(--background);
+        background-color: var(--highlight);
     }
 
     .linkName::after {

@@ -39,7 +39,7 @@
 }
 
 .postLink:hover {
-    color: var(--background-color);
+    color: var(--background);
     background-color: var(--color);
 }
 

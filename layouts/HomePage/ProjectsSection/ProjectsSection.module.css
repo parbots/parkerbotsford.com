@@ -63,6 +63,6 @@
 
     border-radius: 0.5rem;
 
-    color: var(--background-color);
+    color: var(--background);
     background-color: var(--color);
 }
