@@ -9,7 +9,7 @@ import Footer from 'components/Footer';
 import { gql } from '@apollo/client';
 import { contentClient } from 'apollo-client';
 
-export default function BlogHomepage(props) {
+const BlogHomepage = (props) => {
     const formatDate = (published) => {
         return new Date(published).toDateString();
     };
@@ -55,7 +55,7 @@ export default function BlogHomepage(props) {
             <Footer />
         </div>
     );
-}
+};
 
 export async function getStaticProps() {
     const { data } = await contentClient.query({
@@ -78,3 +78,5 @@ export async function getStaticProps() {
         },
     };
 }
+
+export default BlogHomepage;

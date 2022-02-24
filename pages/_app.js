@@ -8,7 +8,7 @@ import { config } from '@fortawesome/fontawesome-svg-core';
 import '@fortawesome/fontawesome-svg-core/styles.css';
 config.autoAddCss = false;
 
-function MyApp({ Component, pageProps }) {
+const App = ({ Component, pageProps }) => {
     return (
         <>
             <Head>
@@ -45,6 +45,6 @@ function MyApp({ Component, pageProps }) {
             </ThemeProvider>
         </>
     );
-}
+};
 
-export default MyApp;
+export default App;

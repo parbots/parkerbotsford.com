@@ -9,10 +9,7 @@ import ProjectsSection from 'layouts/HomePage/ProjectsSection';
 import ContactSection from 'layouts/HomePage/ContactSection';
 import Footer from 'components/Footer';
 
-import { gql } from '@apollo/client';
-import { githubClient } from '../apollo-client';
-
-export default function HomePage(props) {
+const HomePage = () => {
     return (
         <div className={styles.page}>
             <Head>
@@ -33,42 +30,6 @@ export default function HomePage(props) {
             <Footer />
         </div>
     );
-}
+};
 
-export async function getStaticProps() {
-    const { data } = await githubClient.query({
-        query: gql`
-            query Viewer {
-                viewer {
-                    pinnedItems(first: 6) {
-                        nodes {
-                            ... on Repository {
-                                name
-                                description
-                                url
-                                repositoryTopics(first: 5) {
-                                    nodes {
-                                        topic {
-                                            name
-                                        }
-                                    }
-                                }
-                                languages(first: 3) {
-                                    nodes {
-                                        name
-                                    }
-                                }
-                            }
-                        }
-                    }
-                }
-            }
-        `,
-    });
-
-    return {
-        props: {
-            repos: data.viewer.pinnedItems.nodes,
-        },
-    };
-}
+export default HomePage;

@@ -1,4 +1,4 @@
-import styles from 'styles/BlogPost.module.css';
+import styles from 'styles/BlogPostPage.module.css';
 
 import Head from 'next/head';
 
@@ -10,7 +10,7 @@ import { contentClient } from 'apollo-client';
 
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
-const Post = ({ post }) => {
+const BlogPostPage = ({ post }) => {
     return (
         <div className={styles.page}>
             <Head>
@@ -76,4 +76,4 @@ export async function getStaticPaths() {
     };
 }
 
-export default Post;
+export default BlogPostPage;
