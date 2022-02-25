@@ -1,6 +1,14 @@
+import Image from 'next/image';
 import styles from './ProjectCard.module.css';
 
-const ProjectCard = ({ name, link, githubLink, description, madeWith }) => {
+const ProjectCard = ({
+    image,
+    name,
+    link,
+    githubLink,
+    description,
+    madeWith,
+}) => {
     const toolItems = madeWith.map((tool) => {
         return (
             <li key={tool.name} className={styles.toolItem}>
@@ -21,8 +29,14 @@ const ProjectCard = ({ name, link, githubLink, description, madeWith }) => {
 
     return (
         <section className={styles.card}>
-            <div className={styles.temp}>
-                <h3>Image</h3>
+            <div className={styles.imageContainer}>
+                <Image
+                    src={image}
+                    alt={name}
+                    layout='intrinsic'
+                    quality='100'
+                    className={styles.image}
+                />
             </div>
             <div className={styles.projectInfo}>
                 <header className={styles.header}>

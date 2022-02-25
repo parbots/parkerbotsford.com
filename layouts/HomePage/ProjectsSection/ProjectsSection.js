@@ -1,9 +1,12 @@
 import ProjectCard from 'components/ProjectCard';
 import styles from './ProjectsSection.module.css';
 
+import nrcImage from 'public/nrc.svg';
+
 const ProjectsSection = () => {
     const projects = [
         {
+            image: nrcImage,
             name: 'Pantry',
             link: 'https://github.com/parbots/pantry-web',
             githubLink: 'https://github.com/parbots/pantry-web',
@@ -18,6 +21,7 @@ const ProjectsSection = () => {
             ],
         },
         {
+            image: nrcImage,
             name: 'nrc',
             link: 'https://www.npmjs.com/package/@pbots/nrc',
             githubLink: 'https://github.com/parbots/nrc',
@@ -33,6 +37,7 @@ const ProjectsSection = () => {
             ],
         },
         {
+            image: nrcImage,
             name: 'ToDone',
             link: 'https://todone-beta.vercel.app/',
             githubLink: 'https://github.com/parbots/todone',
@@ -52,6 +57,7 @@ const ProjectsSection = () => {
         return (
             <ProjectCard
                 key={project.name}
+                image={project.image}
                 name={project.name}
                 link={project.link}
                 githubLink={project.githubLink}
