@@ -32,9 +32,8 @@ const ProjectCard = ({
             <div className={styles.imageContainer}>
                 <Image
                     src={image}
-                    alt={name}
-                    layout='intrinsic'
                     quality='100'
+                    alt={name}
                     className={styles.image}
                 />
             </div>

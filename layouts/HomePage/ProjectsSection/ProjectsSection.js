@@ -1,12 +1,14 @@
 import ProjectCard from 'components/ProjectCard';
 import styles from './ProjectsSection.module.css';
 
+import pantryImage from 'public/pantry.png';
 import nrcImage from 'public/nrc.svg';
+import todoneImage from 'public/todone.png';
 
 const ProjectsSection = () => {
     const projects = [
         {
-            image: nrcImage,
+            image: pantryImage,
             name: 'Pantry',
             link: 'https://github.com/parbots/pantry-web',
             githubLink: 'https://github.com/parbots/pantry-web',
@@ -37,7 +39,7 @@ const ProjectsSection = () => {
             ],
         },
         {
-            image: nrcImage,
+            image: todoneImage,
             name: 'ToDone',
             link: 'https://todone-beta.vercel.app/',
             githubLink: 'https://github.com/parbots/todone',
