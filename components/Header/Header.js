@@ -4,7 +4,7 @@ import Link from 'next/link';
 
 import ThemeToggle from 'components/ThemeToggle';
 
-const Header = () => {
+const Header = ({ blog }) => {
     const links = [
         {
             name: 'Blog',
@@ -29,7 +29,12 @@ const Header = () => {
             </Link>
 
             <nav className={styles.linkNav}>
-                <ul className={styles.linkList}>{linkItems}</ul>
+                {!blog && <ul className={styles.linkList}>{linkItems}</ul>}
+                {blog && (
+                    <Link href='/blog'>
+                        <a className={styles.pathLink}>/blog</a>
+                    </Link>
+                )}
             </nav>
 
             <ThemeToggle />
