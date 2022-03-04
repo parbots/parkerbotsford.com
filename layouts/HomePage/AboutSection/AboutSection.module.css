@@ -10,8 +10,6 @@
 
     display: flex;
     align-items: flex-end;
-
-    border-bottom: dotted 0.25rem var(--color);
 }
 
 .headerTitle {
