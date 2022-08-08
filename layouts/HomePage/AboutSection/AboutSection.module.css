@@ -18,4 +18,14 @@
 
 .content {
     min-height: 90vh;
+
+    display: flex;
+    flex-direction: column;
+
+    padding: 1rem;
+}
+
+.factList {
+    list-style: circle;
+    padding-left: 2rem;
 }
