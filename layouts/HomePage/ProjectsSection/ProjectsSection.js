@@ -1,35 +1,21 @@
 import ProjectCard from 'components/ProjectCard';
 import styles from './ProjectsSection.module.css';
 
-import pantryImage from 'public/pantry.png';
 import nrcImage from 'public/nrc.svg';
 import todoneImage from 'public/todone.png';
 
 const ProjectsSection = () => {
     const projects = [
         {
-            image: pantryImage,
-            name: 'Pantry',
-            link: 'https://github.com/parbots/pantry-web',
-            githubLink: 'https://github.com/parbots/pantry-web',
-            description: 'Manage your snippets.',
-            madeWith: [
-                { name: 'Html' },
-                { name: 'CSS' },
-                { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
-                { name: 'React', link: 'https://reactjs.org/' },
-                { name: 'Next.js', link: 'https://nextjs.org/' },
-                { name: 'Vercel', link: 'https://vercel.com/home' },
-            ],
-        },
-        {
             image: nrcImage,
             name: 'nrc',
             link: 'https://www.npmjs.com/package/@pbots/nrc',
             githubLink: 'https://github.com/parbots/nrc',
             description: 'Create a new react component that fits your needs.',
-            madeWith: [
-                { name: 'Javascript' },
+            languages: [
+                { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
+            ],
+            tools: [
                 { name: 'Node.js', link: 'https://nodejs.org/' },
                 { name: 'Npm', link: 'https://www.npmjs.com/' },
                 {
@@ -44,10 +30,12 @@ const ProjectsSection = () => {
             link: 'https://todone-beta.vercel.app/',
             githubLink: 'https://github.com/parbots/todone',
             description: 'Online task manager.',
-            madeWith: [
+            languages: [
                 { name: 'Html' },
                 { name: 'CSS' },
                 { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
+            ],
+            tools: [
                 { name: 'React', link: 'https://reactjs.org/' },
                 { name: 'Next.js', link: 'https://nextjs.org/' },
                 { name: 'Vercel', link: 'https://vercel.com/home' },
@@ -64,7 +52,8 @@ const ProjectsSection = () => {
                 link={project.link}
                 githubLink={project.githubLink}
                 description={project.description}
-                madeWith={project.madeWith}
+                languages={project.languages}
+                tools={project.tools}
             />
         );
     });

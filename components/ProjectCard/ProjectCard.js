@@ -7,9 +7,30 @@ const ProjectCard = ({
     link,
     githubLink,
     description,
-    madeWith,
+    languages,
+    tools,
 }) => {
-    const toolItems = madeWith.map((tool) => {
+    const languageItems = languages.map((language) => {
+        return (
+            <li key={language.name} className={styles.toolItem}>
+                {language.link && (
+                    <a
+                        href={language}
+                        target='_blank'
+                        rel='noreferrer'
+                        className={styles.tool + ' ' + styles.toolLink}
+                    >
+                        {language.name}
+                    </a>
+                )}
+                {!language.link && (
+                    <p className={styles.tool}>{language.name}</p>
+                )}
+            </li>
+        );
+    });
+
+    const toolItems = tools.map((tool) => {
         return (
             <li key={tool.name} className={styles.toolItem}>
                 {tool.link && (
@@ -64,12 +85,17 @@ const ProjectCard = ({
                 </section>
 
                 <section className={styles.section}>
-                    <p className={styles.sectionTitle}>description: </p>
+                    <p className={styles.sectionTitle}>Description: </p>
                     <p className={styles.description}>{description}</p>
                 </section>
 
                 <section className={styles.section}>
-                    <p className={styles.sectionTitle}>madeWith:</p>
+                    <p className={styles.sectionTitle}>Coded With:</p>
+                    <ul className={styles.toolsList}>{languageItems}</ul>
+                </section>
+
+                <section className={styles.section}>
+                    <p className={styles.sectionTitle}>Tools Used:</p>
                     <ul className={styles.toolsList}>{toolItems}</ul>
                 </section>
 
