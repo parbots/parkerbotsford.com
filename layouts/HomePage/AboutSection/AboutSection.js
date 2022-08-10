@@ -7,19 +7,50 @@ const AboutSection = () => {
                 <h2 className={styles.headerTitle}>About Me</h2>
             </header>
             <section className={styles.content}>
-                <p>I love coding and creating tools for other developers.</p>
+                <div>
+                    <p>
+                        I love coding and creating tools for other developers.
+                    </p>
+                    <p>
+                        (Check them out on my{' '}
+                        <a
+                            href='https://www.github.com/parbots'
+                            target='_blank'
+                            rel='noreferrer'
+                            className={styles.aboutLink}
+                        >
+                            Github
+                        </a>
+                        !)
+                    </p>
+                </div>
 
-                <p>(Check them out on my Github!)</p>
+                <div>
+                    <p>
+                        {"I'm currently using Typescript, React, and Next.js."}
+                    </p>
+                </div>
 
-                <p>{"I'm currently using Typescript, React, and Next.js."}</p>
+                <div>
+                    <p>Some fun facts about me:</p>
 
-                <p>Some fun facts about me:</p>
-
-                <ul className={styles.factList}>
-                    <li>{"I'm obssessed with the Gruvbox colorscheme."}</li>
-                    <li>I love skateboarding!</li>
-                    <li>I drink 2 cups of coffee a day.</li>
-                </ul>
+                    <ul className={styles.factList}>
+                        <li>
+                            {"I'm obssessed with the "}
+                            <a
+                                href='https://www.github.com/morhetz/gruvbox'
+                                target='_blank'
+                                rel='noreferrer'
+                                className={styles.aboutLink}
+                            >
+                                Gruvbox
+                            </a>
+                            {' colorscheme.'}
+                        </li>
+                        <li>I love skateboarding!</li>
+                        <li>I drink 2 cups of coffee a day.</li>
+                    </ul>
+                </div>
             </section>
         </section>
     );

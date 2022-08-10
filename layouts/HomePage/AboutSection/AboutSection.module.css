@@ -21,11 +21,40 @@
 
     display: flex;
     flex-direction: column;
+    gap: 2rem;
 
-    padding: 1rem;
+    padding: 2rem;
 }
 
 .factList {
     list-style: circle;
     padding-left: 2rem;
+}
+
+.aboutLink {
+    position: relative;
+
+    color: var(--highlight);
+}
+
+.aboutLink::after {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+
+    width: 100%;
+    height: 0.2rem;
+
+    content: '';
+
+    background-color: var(--highlight);
+
+    transform: scaleX(0);
+    transform-origin: left;
+
+    transition: transform 0.3s;
+}
+
+.aboutLink:hover::after {
+    transform: scaleX(1);
 }
