@@ -70,10 +70,6 @@ const ProjectCard = ({
                             {name}
                         </a>
                     </h3>
-                    <span className={styles.brace}>{'{'}</span>
-                </header>
-
-                <section className={styles.githubSection}>
                     <a
                         href={githubLink}
                         target='_blank'
@@ -82,7 +78,7 @@ const ProjectCard = ({
                     >
                         View On Github
                     </a>
-                </section>
+                </header>
 
                 <section className={styles.section}>
                     <p className={styles.sectionTitle}>Description: </p>
@@ -98,10 +94,6 @@ const ProjectCard = ({
                     <p className={styles.sectionTitle}>Tools Used:</p>
                     <ul className={styles.toolsList}>{toolItems}</ul>
                 </section>
-
-                <footer className={styles.footer}>
-                    <span className={styles.brace}>{'}'}</span>
-                </footer>
             </div>
         </section>
     );

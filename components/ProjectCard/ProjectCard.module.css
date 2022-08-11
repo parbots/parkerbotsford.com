@@ -1,7 +1,7 @@
 .card {
     flex: 1;
 
-    min-height: 80vh;
+    min-height: 60vh;
 
     display: flex;
 
@@ -41,8 +41,11 @@
     flex: 1;
 
     display: flex;
+    justify-content: space-between;
     align-items: center;
     gap: 1rem;
+
+    border-bottom: dotted 0.1rem var(--color);
 }
 
 .titleLink {
@@ -73,19 +76,6 @@
 
 .titleLink:hover::after {
     transform: scaleX(1);
-}
-
-.brace {
-    font-size: 1.5rem;
-}
-
-.githubSection {
-    flex: 1;
-
-    padding-left: 2rem;
-
-    display: flex;
-    align-items: center;
 }
 
 .githubLink {
