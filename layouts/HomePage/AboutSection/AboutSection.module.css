@@ -2,6 +2,19 @@
     min-height: 100vh;
 
     display: flex;
+}
+
+.sectionLeft {
+    width: 50%;
+
+    display: flex;
+    flex-direction: column;
+}
+
+.sectionRight {
+    width: 50%;
+
+    display: flex;
     flex-direction: column;
 }
 
