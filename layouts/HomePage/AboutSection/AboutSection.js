@@ -1,6 +1,36 @@
 import styles from './AboutSection.module.css';
 
 const AboutSection = () => {
+    const skills = [
+        { name: 'Html' },
+        { name: 'CSS' },
+        { name: 'Javascript' },
+        { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
+        { name: 'React', link: 'https://reactjs.org/' },
+        { name: 'Next.js', link: 'https://nextjs.org/' },
+        { name: 'Node.js', link: 'https://nodejs.org/' },
+        { name: 'Git' },
+        { name: 'Github', link: 'https://github.com/about' },
+    ];
+
+    const skillItems = skills.map((skill) => {
+        return (
+            <li key={skill.name} className={styles.skillItem}>
+                {skill.link && (
+                    <a
+                        href={skill.link}
+                        target='_blank'
+                        rel='noreferrer'
+                        className={styles.skill + ' ' + styles.skillLink}
+                    >
+                        {skill.name}
+                    </a>
+                )}
+                {!skill.link && <p className={styles.skill}>{skill.name}</p>}
+            </li>
+        );
+    });
+
     return (
         <section className={styles.section}>
             <section className={styles.sectionLeft}>
@@ -59,7 +89,9 @@ const AboutSection = () => {
                 <header className={styles.header}>
                     <h2 className={styles.headerTitle}>My Skills</h2>
                 </header>
-                <section className={styles.contentRight}></section>
+                <section className={styles.contentRight}>
+                    <ul className={styles.skillList}>{skillItems}</ul>
+                </section>
             </section>
         </section>
     );

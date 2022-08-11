@@ -1,6 +1,4 @@
 .section {
-    min-height: 100vh;
-
     display: flex;
 }
 
@@ -25,8 +23,6 @@
 
 .contentLeft,
 .contentRight {
-    min-height: 90vh;
-
     display: flex;
     flex-direction: column;
 }
@@ -67,6 +63,48 @@
 
 .aboutLink:hover::after {
     transform: scaleX(1);
+}
+
+.contentRight {
+    align-items: center;
+}
+
+.skillList {
+    padding: 2rem;
+
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: 1rem;
+}
+
+.skillItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.skill {
+    padding: 0.5rem;
+
+    border: solid 0.2rem var(--color);
+    border-radius: 0.5rem;
+
+    color: var(--background);
+    background-color: var(--color);
+}
+
+.skillLink {
+    border-color: var(--highlight);
+
+    background-color: var(--highlight);
+
+    transition: color 0.2s, background-color 0.2s;
+}
+
+.skillLink:hover {
+    color: var(--highlight);
+    background-color: var(--background);
 }
 
 @media (max-width: 750px) {
