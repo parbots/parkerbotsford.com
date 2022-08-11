@@ -4,13 +4,7 @@
     display: flex;
 }
 
-.sectionLeft {
-    width: 50%;
-
-    display: flex;
-    flex-direction: column;
-}
-
+.sectionLeft,
 .sectionRight {
     width: 50%;
 
@@ -29,13 +23,16 @@
     font-size: 2rem;
 }
 
-.content {
+.contentLeft,
+.contentRight {
     min-height: 90vh;
 
     display: flex;
     flex-direction: column;
-    gap: 2rem;
+}
 
+.contentLeft {
+    gap: 2rem;
     padding: 2rem;
 }
 
@@ -70,4 +67,15 @@
 
 .aboutLink:hover::after {
     transform: scaleX(1);
+}
+
+@media (max-width: 750px) {
+    .section {
+        flex-direction: column;
+    }
+
+    .sectionLeft,
+    .sectionRight {
+        width: 100%;
+    }
 }

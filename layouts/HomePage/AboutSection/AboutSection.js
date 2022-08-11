@@ -9,7 +9,7 @@ const AboutSection = () => {
                 <header className={styles.header}>
                     <h2 className={styles.headerTitle}>About Me</h2>
                 </header>
-                <section className={styles.content}>
+                <section className={styles.contentLeft}>
                     <div>
                         <p>
                             I love coding and creating tools for other
@@ -61,6 +61,7 @@ const AboutSection = () => {
                 <header className={styles.header}>
                     <h2 className={styles.headerTitle}>My Skills</h2>
                 </header>
+                <section className={styles.contentRight}></section>
             </section>
         </section>
     );
