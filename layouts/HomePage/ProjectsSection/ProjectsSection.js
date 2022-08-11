@@ -7,6 +7,23 @@ import todoneImage from 'public/todone.png';
 const ProjectsSection = () => {
     const projects = [
         {
+            image: todoneImage,
+            name: 'ToDone',
+            link: 'https://todone-beta.vercel.app/',
+            githubLink: 'https://github.com/parbots/todone',
+            description: 'Online task manager.',
+            languages: [
+                { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
+                { name: 'Html' },
+                { name: 'CSS' },
+            ],
+            tools: [
+                { name: 'React', link: 'https://reactjs.org/' },
+                { name: 'Next.js', link: 'https://nextjs.org/' },
+                { name: 'Vercel', link: 'https://vercel.com/home' },
+            ],
+        },
+        {
             image: nrcImage,
             name: 'nrc',
             link: 'https://www.npmjs.com/package/@pbots/nrc',
@@ -22,23 +39,6 @@ const ProjectsSection = () => {
                     name: 'Commander.js',
                     link: 'https://github.com/tj/commander.js',
                 },
-            ],
-        },
-        {
-            image: todoneImage,
-            name: 'ToDone',
-            link: 'https://todone-beta.vercel.app/',
-            githubLink: 'https://github.com/parbots/todone',
-            description: 'Online task manager.',
-            languages: [
-                { name: 'Html' },
-                { name: 'CSS' },
-                { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
-            ],
-            tools: [
-                { name: 'React', link: 'https://reactjs.org/' },
-                { name: 'Next.js', link: 'https://nextjs.org/' },
-                { name: 'Vercel', link: 'https://vercel.com/home' },
             ],
         },
     ];
