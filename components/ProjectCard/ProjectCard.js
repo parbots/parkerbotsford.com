@@ -15,7 +15,7 @@ const ProjectCard = ({
             <li key={language.name} className={styles.toolItem}>
                 {language.link && (
                     <a
-                        href={language}
+                        href={language.link}
                         target='_blank'
                         rel='noreferrer'
                         className={styles.tool + ' ' + styles.toolLink}
