@@ -1,7 +1,5 @@
 import styles from './AboutSection.module.css';
 
-// TODO: use flex column on mobile
-
 const AboutSection = () => {
     return (
         <section className={styles.section}>

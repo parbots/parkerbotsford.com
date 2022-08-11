@@ -5,7 +5,6 @@ import { faEnvelope } from '@fortawesome/free-regular-svg-icons';
 import { faGithub, faLinkedin } from '@fortawesome/free-brands-svg-icons';
 
 const ContactSection = () => {
-    // TODO: Add a resume link
     const links = [
         {
             name: 'GitHub',
