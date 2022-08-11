@@ -39,7 +39,7 @@ const AboutSection = () => {
                         <p>Some fun facts about me:</p>
                         <ul className={styles.factList}>
                             <li>
-                                {"I'm obssessed with the "}
+                                {'I am obssessed with the '}
                                 <a
                                     href='https://www.github.com/morhetz/gruvbox'
                                     target='_blank'
