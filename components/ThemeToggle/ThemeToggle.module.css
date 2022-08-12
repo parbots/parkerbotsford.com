@@ -1,11 +1,11 @@
 .button {
-    width: 10vh;
-
-    padding: 0.5rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 
     cursor: pointer;
 
-    border: solid 0.2rem var(--highlight);
+    border: none;
     border-radius: 0.5rem;
 
     color: var(--highlight);
@@ -17,4 +17,18 @@
 .button:hover {
     color: var(--background);
     background-color: var(--highlight);
+}
+
+.icon {
+    padding: 0.5rem;
+
+    flex: 1;
+
+    font-size: 1.5rem;
+}
+
+@media (max-width: 700px) {
+    .icon {
+        font-size: 2rem;
+    }
 }
