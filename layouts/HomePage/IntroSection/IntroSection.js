@@ -18,7 +18,7 @@ const IntroSection = () => {
                 </p>
                 <p
                     className={styles.hint}
-                >{`Hint: This color highlights interactive things!`}</p>
+                >{`Hint: This color highlights links and interactive things!`}</p>
             </section>
         </section>
     );

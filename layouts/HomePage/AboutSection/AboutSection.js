@@ -87,7 +87,7 @@ const AboutSection = () => {
 
             <section className={styles.sectionRight}>
                 <header className={styles.header}>
-                    <h2 className={styles.headerTitle}>My Skills</h2>
+                    <h2 className={styles.headerTitle}>Skills</h2>
                 </header>
                 <section className={styles.contentRight}>
                     <ul className={styles.skillList}>{skillItems}</ul>

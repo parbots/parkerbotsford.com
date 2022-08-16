@@ -9,9 +9,10 @@ const ProjectsSection = () => {
         {
             image: todoneImage,
             name: 'ToDone',
-            link: 'https://todone-beta.vercel.app/',
+            link: 'https://todone-parbots.vercel.app/',
             githubLink: 'https://github.com/parbots/todone',
-            description: 'Online task manager.',
+            description:
+                'Online todo-list manager using a custom react hook to handle creation, deletion, and sorting of tasks. User data is stored in the browser cache each time a task is updated',
             languages: [
                 { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
                 { name: 'Html' },
@@ -28,7 +29,8 @@ const ProjectsSection = () => {
             name: 'nrc',
             link: 'https://www.npmjs.com/package/@pbots/nrc',
             githubLink: 'https://github.com/parbots/nrc',
-            description: 'Create a new react component that fits your needs.',
+            description:
+                'An npm cli tool for creating react components with some initial boilerplate code. Includes support for Typescript, css-modules, and custom directories.',
             languages: [
                 { name: 'Typescript', link: 'https://www.typescriptlang.org/' },
             ],
