@@ -8,7 +8,7 @@ const ContactSection = () => {
     const links = [
         {
             name: 'GitHub',
-            href: 'https://github.com/parkerbotsford',
+            href: 'https://github.com/parbots',
             icon: faGithub,
         },
         {
