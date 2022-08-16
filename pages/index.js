@@ -16,7 +16,7 @@ const HomePage = () => {
                 <title>Parker Botsford</title>
                 <meta
                     name='description'
-                    content="Hi, my name is Parker. I'm a frontend web developer and I also blog sometimes!"
+                    content="Hi, my name is Parker. I'm a fullstack web developer and I also blog sometimes!"
                 />
             </Head>
 

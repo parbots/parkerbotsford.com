@@ -8,13 +8,13 @@ const IntroSection = () => {
             </header>
             <section className={styles.descriptionContainer}>
                 <p className={styles.description}>
-                    {`Web developer with a passion for building `}
+                    {`Fullstack developer with a passion for building `}
                     <strong>fast</strong>
                     {`, `}
                     <strong>responsive</strong>
                     {`, and `}
                     <strong>beautiful</strong>
-                    {` websites.`}
+                    {` technologies for the web.`}
                 </p>
                 <p
                     className={styles.hint}
