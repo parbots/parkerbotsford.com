@@ -22,6 +22,7 @@ const ProjectsSection = () => {
                 { name: 'React', link: 'https://reactjs.org/' },
                 { name: 'Next.js', link: 'https://nextjs.org/' },
                 { name: 'Vercel', link: 'https://vercel.com/home' },
+                { name: 'Firebase', link: 'https://firebase.google.com' },
             ],
         },
         {
