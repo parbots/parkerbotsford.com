@@ -40,6 +40,12 @@
     padding: 2rem;
 
     text-align: center;
+}
 
-    color: var(--highlight);
+.hint span {
+    padding: 0.5rem;
+
+    border-radius: 0.5rem;
+
+    background-color: var(--highlight);
 }

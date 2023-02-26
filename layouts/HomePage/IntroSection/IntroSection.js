@@ -1,4 +1,4 @@
-import styles from './IntroSection.module.css';
+import styles from "./IntroSection.module.css";
 
 const IntroSection = () => {
     return (
@@ -16,9 +16,11 @@ const IntroSection = () => {
                     <strong>beautiful</strong>
                     {` technologies for the web.`}
                 </p>
-                <p
-                    className={styles.hint}
-                >{`Hint: This color highlights links and interactive things!`}</p>
+                <p className={styles.hint}>
+                    {`Hint: `}
+                    <span>This color</span>
+                    {` highlights links and interactive things!`}
+                </p>
             </section>
         </section>
     );
