@@ -1,0 +1,129 @@
+:root {
+    --light-color: #000000;
+    --light-highlight: #d65d0e;
+    --light-background: #ffffff;
+
+    --dark-color: #ffffff;
+    --dark-highlight: #d65d0e;
+    --dark-background: #000000;
+}
+
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+* {
+    margin: 0;
+    padding: 0;
+}
+
+html,
+body {
+    height: 100%;
+
+    font-family: 'Roboto Mono', monospace;
+    font-size: 16px;
+    line-height: 1.5;
+    text-rendering: optimizeSpeed;
+    -webkit-font-smoothing: antialiased;
+}
+
+html:focus-within {
+    scroll-behavior: smooth;
+}
+
+#__next {
+    height: 100%;
+
+    isolation: isolate;
+}
+
+body {
+    --color: var(--light-color);
+    --highlight: var(--light-highlight);
+    --background: var(--light-background);
+
+    min-height: 100vh;
+
+    color: var(--color);
+    background-color: var(--background);
+
+    transition: color 0.3s, background 0.3s;
+}
+
+img,
+picture,
+video,
+canvas,
+svg {
+    max-width: 100%;
+
+    display: block;
+}
+
+input,
+button,
+textarea,
+select {
+    font: inherit;
+}
+
+ul,
+ol {
+    list-style: none;
+}
+
+p,
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    overflow-wrap: break-word;
+}
+
+h1 {
+    font-size: 3rem;
+}
+
+h2 {
+    font-size: 2rem;
+}
+
+h3 {
+    font-size: 1.5rem;
+}
+
+p {
+    font-size: 1rem;
+}
+
+a {
+    font-size: 1rem;
+    text-decoration: none;
+}
+
+::selection {
+    color: var(--background);
+    background-color: var(--color);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html:focus-within {
+        scroll-behavior: auto;
+    }
+
+    *,
+    *::before,
+    *::after {
+        scroll-behavior: auto !important;
+
+        animation-duration: 0.01ms !important;
+        animation-iteration-count: 1 !important;
+
+        transition-duration: 0.01ms !important;
+    }
+}
