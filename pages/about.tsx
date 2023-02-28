@@ -14,7 +14,7 @@ export default function AboutPage() {
 
             <div className={styles.page}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>{"Parker Botsford's Projects"}</h1>
+                    <h1 className={styles.title}>{"About Parker Botsford"}</h1>
                 </header>
 
                 <main className={styles.main}></main>
