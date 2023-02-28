@@ -13,6 +13,15 @@ export default function ContactPage() {
             </Head>
 
             <div className={styles.page}>
+                <header className={styles.header}>
+                    <h1 className={styles.title}>{"Contact Parker Botsford"}</h1>
+                </header>
+
+                <main className={styles.main}></main>
+
+                <footer className={styles.footer}>
+                    <p className={styles.copyright}>Copyright © 2023 Parker Botsford</p>
+                </footer>
             </div>
         </>
     );
