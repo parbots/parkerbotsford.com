@@ -17,7 +17,8 @@ export default function AboutPage() {
                     <h1 className={styles.title}>{"About Parker Botsford"}</h1>
                 </header>
 
-                <main className={styles.main}></main>
+                <main className={styles.main}>
+                </main>
 
                 <footer className={styles.footer}>
                     <p className={styles.copyright}>Copyright © 2023 Parker Botsford</p>
