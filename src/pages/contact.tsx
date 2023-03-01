@@ -4,6 +4,7 @@ import Head from "next/head";
 import styles from "@styles/ContactPage.module.css"
 
 import { Header } from "@components/header";
+import { Footer } from "@components/footer";
 
 export default function ContactPage() {
     return (
@@ -19,9 +20,7 @@ export default function ContactPage() {
 
                 <main className={styles.main}></main>
 
-                <footer className={styles.footer}>
-                    <p className={styles.copyright}>Copyright © 2023 Parker Botsford</p>
-                </footer>
+                <Footer />
             </div>
         </>
     );

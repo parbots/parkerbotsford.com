@@ -1,10 +1,10 @@
 
 import Head from "next/head";
-import Link from "next/link";
 
 import styles from "@styles/AboutPage.module.css"
 
 import { Header } from "@components/header";
+import { Footer } from "@components/footer";
 
 export default function AboutPage() {
     return (
@@ -21,15 +21,7 @@ export default function AboutPage() {
                 <main className={styles.main}>
                 </main>
 
-                <footer className={styles.footer}>
-                    <nav className={styles.nav}>
-                        <Link href='/' className={styles.navLink}>/Home</Link>
-                        <Link href='/about' className={styles.navLink}>/About</Link>
-                        <Link href='/projects' className={styles.navLink}>/Projects</Link>
-                        <Link href='/contact' className={styles.navLink}>/Contact</Link>
-                    </nav>
-                    <p className={styles.copyright}>Copyright © 2023 Parker Botsford</p>
-                </footer>
+                <Footer />
             </div>
         </>
     );
