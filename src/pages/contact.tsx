@@ -16,7 +16,7 @@ export default function ContactPage() {
             </Head>
 
             <div className={styles.page}>
-                <Header title='Contact Parker Botsford' />
+                <Header title='Contact' />
 
                 <main className={styles.main}></main>
 

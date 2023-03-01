@@ -16,7 +16,7 @@ export default function ProjectsPage() {
             </Head>
 
             <div className={styles.page}>
-                <Header title="Parker Botsford's Projects" />
+                <Header title="Projects" />
 
                 <main className={styles.main}></main>
 

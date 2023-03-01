@@ -16,7 +16,7 @@ export default function AboutPage() {
             </Head>
 
             <div className={styles.page}>
-                <Header title='About Parker Botsford' />
+                <Header title='About Me' />
 
                 <main className={styles.main}>
                 </main>
