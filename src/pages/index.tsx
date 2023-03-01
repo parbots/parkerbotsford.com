@@ -21,15 +21,11 @@ export default function Home() {
 
                 <main className={styles.main}>
                     <nav className={styles.nav}>
-                        <Link href="/about" className={styles.link}>About</Link>
-                        <Link href="/projects" className={styles.link}>Projects</Link>
-                        <Link href="/contact" className={styles.link}>Contact</Link>
+                        <Link href="/about" className={styles.link}>/About</Link>
+                        <Link href="/projects" className={styles.link}>/Projects</Link>
+                        <Link href="/contact" className={styles.link}>/Contact</Link>
                     </nav>
                 </main>
-
-                <footer className={styles.footer}>
-                    <p className={styles.copyright}>Copyright © 2023 Parker Botsford</p>
-                </footer>
             </div>
         </>
     );
