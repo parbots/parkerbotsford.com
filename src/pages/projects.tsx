@@ -1,20 +1,20 @@
 
 import Head from "next/head";
 
-import styles from "@/styles/ContactPage.module.css"
+import styles from "@styles/ProjectsPage.module.css"
 
-export default function ContactPage() {
+export default function ProjectsPage() {
     return (
         <>
             <Head>
-                <title>Contact Me</title>
+                <title>Projects</title>
                 <meta name="viewport" content="width=device-width, initial-scale=1" />
                 <link rel="icon" href="/favicon.ico" />
             </Head>
 
             <div className={styles.page}>
                 <header className={styles.header}>
-                    <h1 className={styles.title}>{"Contact Parker Botsford"}</h1>
+                    <h1 className={styles.title}>{"Parker Botsford's Projects"}</h1>
                 </header>
 
                 <main className={styles.main}></main>

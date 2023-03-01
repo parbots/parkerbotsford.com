@@ -2,7 +2,7 @@
 import Head from "next/head";
 import Link from "next/link";
 
-import styles from "@/styles/AboutPage.module.css"
+import styles from "@styles/AboutPage.module.css"
 
 export default function AboutPage() {
     return (
