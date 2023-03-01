@@ -3,6 +3,8 @@ import Head from "next/head";
 
 import styles from "@styles/ProjectsPage.module.css"
 
+import { Header } from "@components/header";
+
 export default function ProjectsPage() {
     return (
         <>
@@ -13,9 +15,7 @@ export default function ProjectsPage() {
             </Head>
 
             <div className={styles.page}>
-                <header className={styles.header}>
-                    <h1 className={styles.title}>{"Parker Botsford's Projects"}</h1>
-                </header>
+                <Header title="Parker Botsford's Projects" />
 
                 <main className={styles.main}></main>
 

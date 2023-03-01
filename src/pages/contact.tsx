@@ -3,6 +3,8 @@ import Head from "next/head";
 
 import styles from "@styles/ContactPage.module.css"
 
+import { Header } from "@components/header";
+
 export default function ContactPage() {
     return (
         <>
@@ -13,9 +15,7 @@ export default function ContactPage() {
             </Head>
 
             <div className={styles.page}>
-                <header className={styles.header}>
-                    <h1 className={styles.title}>{"Contact Parker Botsford"}</h1>
-                </header>
+                <Header title='Contact Parker Botsford' />
 
                 <main className={styles.main}></main>
 

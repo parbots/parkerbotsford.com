@@ -3,20 +3,6 @@
     flex-direction: column;
 }
 
-.header {
-    height: 10vh;
-
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
-    align-items: center;
-    gap: 2rem;
-}
-
-.title {
-    font-size: 2.5rem;
-}
-
 .main {
     height: 80vh;
 

@@ -4,6 +4,8 @@ import Link from "next/link";
 
 import styles from "@styles/AboutPage.module.css"
 
+import { Header } from "@components/header";
+
 export default function AboutPage() {
     return (
         <>
@@ -14,9 +16,7 @@ export default function AboutPage() {
             </Head>
 
             <div className={styles.page}>
-                <header className={styles.header}>
-                    <h1 className={styles.title}>{"About Parker Botsford"}</h1>
-                </header>
+                <Header title='About Parker Botsford' />
 
                 <main className={styles.main}>
                 </main>
@@ -25,8 +25,8 @@ export default function AboutPage() {
                     <nav className={styles.nav}>
                         <Link href='/' className={styles.navLink}>/Home</Link>
                         <Link href='/about' className={styles.navLink}>/About</Link>
-                        <Link href='/about' className={styles.navLink}>/Projects</Link>
-                        <Link href='/about' className={styles.navLink}>/Contact</Link>
+                        <Link href='/projects' className={styles.navLink}>/Projects</Link>
+                        <Link href='/contact' className={styles.navLink}>/Contact</Link>
                     </nav>
                     <p className={styles.copyright}>Copyright © 2023 Parker Botsford</p>
                 </footer>
