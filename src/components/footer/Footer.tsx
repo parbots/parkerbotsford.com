@@ -1,7 +1,7 @@
 
-import Link from 'next/link';
+import Link from 'next/link'
 
-import styles from './Footer.module.css';
+import styles from './Footer.module.css'
 
 export const Footer = () => {
     return (
