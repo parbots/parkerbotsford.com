@@ -28,7 +28,7 @@ export default function ProjectsPage() {
                         <li className={styles.listItem}>
                             <p className={styles.text}>
                                 {'parkerbotsford.com ('}
-                                <a href='https://github.com/parbots/parkerbotsford' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                <a href='https://github.com/parbots/parkerbotsford.com' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
                                 {') - This website! Built with '}
                                 <a href='https://nextjs.org/' target='_blank' rel='noreferrer' className={styles.link}>Next.js</a>
                                 {' and lots of love.'}
