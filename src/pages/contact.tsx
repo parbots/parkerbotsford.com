@@ -20,8 +20,8 @@ export default function ContactPage() {
 
                 <main className={styles.main}>
                     <p className={styles.text}>
-                        {'You probably want to '}
-                        <a href='mailto: parker.botsford.dev@gmail.com' target='_blank' rel='noreferrer' className={styles.link}>email me at parker.botsford.dev@gmail.com</a>
+                        {'You probably want to email me at '}
+                        <a href='mailto: parker.botsford.dev@gmail.com' target='_blank' rel='noreferrer' className={styles.link}>parker.botsford.dev@gmail.com</a>
                         {', but you can also find me elsewhere online:'}
                     </p>
                     <ul className={styles.list}>

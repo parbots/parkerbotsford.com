@@ -13,7 +13,7 @@
 
     width: 60svw;
 
-    padding-top: 5svh;
+    padding-top: 1rem;
 
     display: flex;
     flex-direction: column;
@@ -80,5 +80,25 @@
     transform: scaleX(1);
 }
 
+@media (max-width: 800px) {
+    .main {
+        width: 85svw;
+    }
 
+    .text {
+        font-size: 1rem;
+    }
+
+    .link {
+        font-size: 1rem;
+    }
+
+    .link::after {
+        height: 0.1rem;
+
+        transform: scaleX(1);
+
+        background-color: var(--highlight);
+    }
+}
 

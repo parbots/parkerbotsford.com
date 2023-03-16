@@ -11,3 +11,9 @@
 .title {
     font-size: 4rem;
 }
+
+@media (max-width: 800px) {
+    .title {
+        font-size: 3rem;
+    }
+}

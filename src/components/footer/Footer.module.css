@@ -1,5 +1,5 @@
 .footer {
-    height: 10svh;
+    min-height: 10svh;
 
     display: flex;
     flex-direction: column;
@@ -10,7 +10,9 @@
 
 .nav {
     display: flex;
+    justify-content: center;
     align-items: center;
+    flex-wrap: wrap;
     gap: 2rem;
 }
 
@@ -57,4 +59,25 @@
 
 .copyright {
     font-size: 0.8rem;
+}
+
+@media (max-width: 800px) {
+    .nav {
+        width: 60svw;
+        gap: 1rem;
+    }
+
+    .navLink {
+        font-size: 1.2rem;
+
+        color: var(--highlight);
+    }
+
+    .navLink::after {
+        height: 0.1rem;
+
+        transform: scaleX(1);
+
+        background-color: var(--highlight);
+    }
 }
