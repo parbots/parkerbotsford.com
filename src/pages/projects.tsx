@@ -1,6 +1,5 @@
 
 import Head from 'next/head'
-import Link from 'next/link'
 
 import styles from '@styles/ProjectsPage.module.css'
 
@@ -24,14 +23,35 @@ export default function ProjectsPage() {
                     <ul className={styles.list}>
                         <li className={styles.listItem}>
                             <p className={styles.text}>
-                                <Link href='' className={styles.link}>done</Link>
-                                {' - Info about done'}
+                                {'parkerbotsford.com ('}
+                                <a href='https://github.com/parbots/parkerbotsford' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                {') - This website! Built with '}
+                                <a href='https://nextjs.org/' target='_blank' rel='noreferrer' className={styles.link}>Next.js</a>
+                                {' and lots of love.'}
                             </p>
                         </li>
                         <li className={styles.listItem}>
                             <p className={styles.text}>
-                                <Link href='' className={styles.link}>nrc</Link>
-                                {' - Info about nrc'}
+                                <a href='https://get-stuff-done.vercel.app' target='_blank' rel='noreferrer' className={styles.link}>done</a>
+                                {' ('}
+                                <a href='https://github.com/parbots/done' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                {') - Online todo manager. Uses '}
+                                <a href='https://nextjs.org/' target='_blank' rel='noreferrer' className={styles.link}>Next.js</a>
+                                {' on the frontend and '}
+                                <a href='https://supabase.com/' target='_blank' rel='noreferrer' className={styles.link}>Supabase</a>
+                                {' for the database on the backend.'}
+                            </p>
+                        </li>
+                        <li className={styles.listItem}>
+                            <p className={styles.text}>
+                                <a href='https://www.npmjs.com/package/@pbots/nrc' target='_blank' rel='noreferrer' className={styles.link}>nrc</a>
+                                {' ('}
+                                <a href='https://github.com/parbots/nrc' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                {') - CLI for creating React functional components. Built with '}
+                                <a href='https://www.npmjs.com/package/commander' target='_blank' rel='noreferrer' className={styles.link}>Commander.js</a>
+                                {' and '}
+                                <a href='https://nodejs.org/' target='_blank' rel='noreferrer' className={styles.link}>Node.js</a>
+                                {'.'}
                             </p>
                         </li>
                     </ul>

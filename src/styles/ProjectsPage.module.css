@@ -54,6 +54,10 @@
     transition: color 0.3s;
 }
 
+.link::selection {
+    background-color: var(--highlight);
+}
+
 .link::after {
     position: absolute;
     bottom: 0;
@@ -75,5 +79,6 @@
 .link:is(:hover, :focus-visible)::after {
     transform: scaleX(1);
 }
+
 
 

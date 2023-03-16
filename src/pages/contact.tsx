@@ -1,6 +1,5 @@
 
 import Head from 'next/head'
-import Link from 'next/link'
 
 import styles from '@styles/ContactPage.module.css'
 
@@ -22,15 +21,15 @@ export default function ContactPage() {
                 <main className={styles.main}>
                     <p className={styles.text}>
                         {'You probably want to '}
-                        <Link href='' className={styles.link}>email me at parker.botsford.dev@gmail.com</Link>
+                        <a href='mailto: parker.botsford.dev@gmail.com' target='_blank' rel='noreferrer' className={styles.link}>email me at parker.botsford.dev@gmail.com</a>
                         {', but you can also find me elsewhere online:'}
                     </p>
                     <ul className={styles.list}>
                         <li className={styles.listItem}>
-                            <Link href='' className={styles.link}>Github</Link>
+                            <a href='https://github.com/parbots' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
                         </li>
                         <li className={styles.listItem}>
-                            <Link href='' className={styles.link}>LinkedIn</Link>
+                            <a href='https://www.linkedin.com/in/parkerbotsford' target='_blank' rel='noreferrer' className={styles.link}>LinkedIn</a>
                         </li>
                     </ul>
                 </main>
