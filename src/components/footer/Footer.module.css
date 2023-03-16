@@ -1,5 +1,5 @@
 .footer {
-    height: 10vh;
+    height: 10svh;
 
     display: flex;
     flex-direction: column;
@@ -17,10 +17,17 @@
 .navLink {
     position: relative;
 
-    text-decoration: none;
-    font-size: 1.2rem;
+    outline: none;
+
+    font-size: 1.5rem;
 
     color: var(--color);
+
+    transition: color 0.3s;
+}
+
+.navLink:is(:hover, :focus-visible) {
+    color: var(--highlight);
 }
 
 .navLink::after {
@@ -38,13 +45,16 @@
     transform: scaleX(0);
     transform-origin: left;
 
-    transition: transform 0.3s;
+    transition: transform 0.3s, color 0.3s;
 }
 
-.navLink:hover::after {
+.navLink:is(:hover, :focus-visible)::after {
+    background-color: var(--highlight);
+
     transform: scaleX(1);
+
 }
 
 .copyright {
-    font-size: 0.75rem;
+    font-size: 0.8rem;
 }

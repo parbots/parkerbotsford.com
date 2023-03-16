@@ -14,12 +14,9 @@ export default function Home() {
             </Head>
 
             <div className={styles.page}>
-                <header className={styles.header}>
+                <main className={styles.main}>
                     <h1 className={styles.title}>{'Hi, I\'m Parker.'}</h1>
                     <p className={styles.description}>{'Web developer with a passion for designing beautiful and functional user experiences.'}</p>
-                </header>
-
-                <main className={styles.main}>
                     <nav className={styles.nav}>
                         <Link href='/about' className={styles.link}>/About</Link>
                         <Link href='/projects' className={styles.link}>/Projects</Link>
