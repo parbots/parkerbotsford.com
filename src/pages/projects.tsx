@@ -1,10 +1,10 @@
 
+import styles from '@/styles/ProjectsPage.module.css'
+
 import Head from 'next/head'
 
-import styles from '@styles/ProjectsPage.module.css'
-
-import { Header } from '@components/header'
-import { Footer } from '@components/footer'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export default function ProjectsPage() {
     return (

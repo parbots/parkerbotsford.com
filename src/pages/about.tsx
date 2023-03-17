@@ -1,11 +1,11 @@
 
+import styles from '@/styles/AboutPage.module.css'
+
 import Head from 'next/head'
 import Link from 'next/link'
 
-import styles from '@styles/AboutPage.module.css'
-
-import { Header } from '@components/header'
-import { Footer } from '@components/footer'
+import { Header } from '@/components/header'
+import { Footer } from '@/components/footer'
 
 export default function AboutPage() {
     return (
