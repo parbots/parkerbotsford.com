@@ -1,3 +1,4 @@
+import '@styles/reset.css'
 import '@styles/globals.css'
 
 import { Roboto_Mono } from 'next/font/google'

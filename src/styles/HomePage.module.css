@@ -65,7 +65,7 @@
     left: 0;
 
     width: 100%;
-    height: 0.2rem;
+    height: 3px;
 
     content: '';
 
@@ -103,8 +103,6 @@
     }
 
     .link::after {
-        height: 0.1rem;
-
         transform: scaleX(1);
 
         background-color: var(--highlight);
