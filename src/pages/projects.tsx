@@ -4,6 +4,9 @@ import styles from '@/styles/ProjectsPage.module.css'
 import Head from 'next/head'
 
 import { Header } from '@/components/header'
+
+import { TextLink } from '@/components/textLink'
+
 import { Footer } from '@/components/footer'
 
 export default function ProjectsPage() {
@@ -28,33 +31,33 @@ export default function ProjectsPage() {
                         <li className={styles.listItem}>
                             <p className={styles.text}>
                                 {'parkerbotsford.com ('}
-                                <a href='https://github.com/parbots/parkerbotsford.com' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                <TextLink href='https://github.com/parbots/parkerbotsford.com' out={true}>Github</TextLink>
                                 {') - This website! Built with '}
-                                <a href='https://nextjs.org/' target='_blank' rel='noreferrer' className={styles.link}>Next.js</a>
+                                <TextLink href='https://nextjs.org/' out={true}>Next.js</TextLink>
                                 {' and lots of love.'}
                             </p>
                         </li>
                         <li className={styles.listItem}>
                             <p className={styles.text}>
-                                <a href='https://get-stuff-done.vercel.app' target='_blank' rel='noreferrer' className={styles.link}>done</a>
+                                <TextLink href='https://get-stuff-done.vercel.app' out={true}>done</TextLink>
                                 {' ('}
-                                <a href='https://github.com/parbots/done' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                <TextLink href='https://github.com/parbots/done' out={true}>Github</TextLink>
                                 {') - Online todo manager. Uses '}
-                                <a href='https://nextjs.org/' target='_blank' rel='noreferrer' className={styles.link}>Next.js</a>
+                                <TextLink href='https://nextjs.org/' out={true}>Next.js</TextLink>
                                 {' on the frontend and '}
-                                <a href='https://supabase.com/' target='_blank' rel='noreferrer' className={styles.link}>Supabase</a>
+                                <TextLink href='https://supabase.com/' out={true}>Supabase</TextLink>
                                 {' for the database on the backend.'}
                             </p>
                         </li>
                         <li className={styles.listItem}>
                             <p className={styles.text}>
-                                <a href='https://www.npmjs.com/package/@pbots/nrc' target='_blank' rel='noreferrer' className={styles.link}>nrc</a>
+                                <TextLink href='https://www.npmjs.com/package/@pbots/nrc' out={true}>nrc</TextLink>
                                 {' ('}
-                                <a href='https://github.com/parbots/nrc' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                                <TextLink href='https://github.com/parbots/nrc' out={true}>Github</TextLink>
                                 {') - CLI for creating React functional components. Built with '}
-                                <a href='https://www.npmjs.com/package/commander' target='_blank' rel='noreferrer' className={styles.link}>Commander.js</a>
+                                <TextLink href='https://www.npmjs.com/package/commander' out={true}>Commander.js</TextLink>
                                 {' and '}
-                                <a href='https://nodejs.org/' target='_blank' rel='noreferrer' className={styles.link}>Node.js</a>
+                                <TextLink href='https://nodejs.org/' out={true}>Node.js</TextLink>
                                 {'.'}
                             </p>
                         </li>

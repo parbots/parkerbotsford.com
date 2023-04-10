@@ -4,6 +4,9 @@ import styles from '@/styles/ContactPage.module.css'
 import Head from 'next/head'
 
 import { Header } from '@/components/header'
+
+import { TextLink } from '@/components/textLink'
+
 import { Footer } from '@/components/footer'
 
 export default function ContactPage() {
@@ -25,15 +28,15 @@ export default function ContactPage() {
                 <main className={styles.main}>
                     <p className={styles.text}>
                         {'You probably want to email me at '}
-                        <a href='mailto: parker.botsford.dev@gmail.com' target='_blank' rel='noreferrer' className={styles.link}>parker.botsford.dev@gmail.com</a>
+                        <TextLink href='mailto: parker.botsford.dev@gmail.com' out={true}>parker.botsford.dev@gmail.com</TextLink>
                         {', but you can also find me elsewhere online:'}
                     </p>
                     <ul className={styles.list}>
                         <li className={styles.listItem}>
-                            <a href='https://github.com/parbots' target='_blank' rel='noreferrer' className={styles.link}>Github</a>
+                            <TextLink href='https://github.com/parbots' out={true}>Github</TextLink>
                         </li>
                         <li className={styles.listItem}>
-                            <a href='https://www.linkedin.com/in/parkerbotsford' target='_blank' rel='noreferrer' className={styles.link}>LinkedIn</a>
+                            <TextLink href='https://www.linkedin.com/in/parkerbotsford' out={true}>LinkedIn</TextLink>
                         </li>
                     </ul>
                 </main>

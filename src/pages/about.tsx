@@ -2,9 +2,11 @@
 import styles from '@/styles/AboutPage.module.css'
 
 import Head from 'next/head'
-import Link from 'next/link'
 
 import { Header } from '@/components/header'
+
+import { TextLink } from '@/components/textLink'
+
 import { Footer } from '@/components/footer'
 
 export default function AboutPage() {
@@ -30,9 +32,9 @@ export default function AboutPage() {
                     <p className={styles.text}>{'I love working with and maintaing open source projects!'}</p>
                     <p className={styles.text}>
                         {'For more, check out '}
-                        <Link href='/projects' className={styles.link}>my projects</Link>
+                        <TextLink href='/projects'>my projects</TextLink>
                         {' or '}
-                        <Link href='/contact' className={styles.link}>contact me</Link>
+                        <TextLink href='/contact'>contact me</TextLink>
                         {'.'}
                     </p>
                 </main>
