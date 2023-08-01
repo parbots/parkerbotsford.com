@@ -26,9 +26,9 @@ export default function AboutPage() {
                 <Header title='About Me' />
 
                 <main className={styles.main}>
-                    <p className={styles.text}>{'I\'m Parker Botsford, a software engineer.'}</p>
+                    <p className={styles.text}>{'I\'m Parker Botsford, an IT engineer and programmer.'}</p>
                     <p className={styles.text}>{'I currently live near the Atlanta area.'}</p>
-                    <p className={styles.text}>{'I enjoy building websites and tools that help other software developers.'}</p>
+                    <p className={styles.text}>{'I enjoy building websites and tools that help software developers and IT technicians work smarter.'}</p>
                     <p className={styles.text}>{'I love working with and maintaing open source projects!'}</p>
                     <p className={styles.text}>
                         {'For more, check out '}

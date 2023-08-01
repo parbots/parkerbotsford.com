@@ -34,7 +34,9 @@ export default function ProjectsPage() {
                                 <TextLink href='https://github.com/parbots/parkerbotsford.com' out={true}>Github</TextLink>
                                 {') - This website! Built with '}
                                 <TextLink href='https://nextjs.org/' out={true}>Next.js</TextLink>
-                                {' and lots of love.'}
+                                {' and lots of love. Hosted on '}
+                                <TextLink href='https://vercel.org/' out={true}>Vercel</TextLink>
+                                {'.'}
                             </p>
                         </li>
                         <li className={styles.listItem}>
@@ -46,7 +48,9 @@ export default function ProjectsPage() {
                                 <TextLink href='https://nextjs.org/' out={true}>Next.js</TextLink>
                                 {' on the frontend and '}
                                 <TextLink href='https://supabase.com/' out={true}>Supabase</TextLink>
-                                {' for the database on the backend.'}
+                                {' for the database on the backend. Hosted on '}
+                                <TextLink href='https://vercel.org/' out={true}>Vercel</TextLink>
+                                {'.'}
                             </p>
                         </li>
                         <li className={styles.listItem}>
