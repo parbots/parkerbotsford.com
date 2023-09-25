@@ -89,6 +89,11 @@ body {
 }
 
 body {
+    min-height: 100vh;
+
+    display: flex;
+    flex-direction: column;
+
     color: rgb(var(--foreground-rgb));
     background: linear-gradient(
             to bottom,

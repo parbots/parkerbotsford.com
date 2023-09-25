@@ -1,0 +1,16 @@
+.header {
+    min-height: 10vh;
+
+    padding: 1rem;
+
+    display: flex;
+    flex-direction: row;
+    justify-content: flex-start;
+    align-items: center;
+}
+
+.title {
+    font-size: 2rem;
+
+    text-align: center;
+}
