@@ -1,0 +1,42 @@
+.nav {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.linkList {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 0.5rem;
+
+    list-style: none;
+}
+
+.linkItem {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.link {
+    padding: 0.5rem;
+
+    font-size: 1rem;
+
+    text-align: center;
+    text-decoration: none;
+
+    color: black;
+}
+
+.link:is(:hover, :focus-visible) {
+    text-decoration: underline;
+}
+
+.linkSeperator {
+    font-size: 1rem;
+    text-align: center;
+}
