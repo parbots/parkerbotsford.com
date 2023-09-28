@@ -15,7 +15,7 @@ export const HeaderNav = ({
                     </Link>
                 </li>
                 {idx < arr.length - 1 && (
-                    <li className={styles.linkItem}>
+                    <li key={idx + arr.length} className={styles.linkItem}>
                         <p className={styles.linkSeperator}>{"/"}</p>
                     </li>
                 )}
