@@ -1,4 +1,5 @@
-import "@styles/globals.css";
+import "@styles/reset.css";
+import "@styles/global.css";
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
 

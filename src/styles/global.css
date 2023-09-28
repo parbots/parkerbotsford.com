@@ -1,0 +1,18 @@
+:root {
+    --fg: black;
+    --bg: white;
+}
+
+body {
+    color: var(--fg);
+    background-color: var(--bg);
+}
+
+::selection {
+    color: var(--bg);
+    background-color: var(--fg);
+}
+
+h1 {
+    line-height: 1;
+}
