@@ -10,7 +10,7 @@ export default function MainLayout({
 }) {
     return (
         <>
-            <Header title="Parker Botsford" />
+            <Header title="PB" />
             <main className={styles.main}>{children}</main>
             <Footer />
         </>
