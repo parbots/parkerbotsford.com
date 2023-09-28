@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function ContactPage() {
     return (
-        <main className={styles.main}>
-            <h1 className={styles.header}>Parker Botsford - Contact</h1>
-        </main>
+        <section className={styles.section}>
+            <h1 className={styles.title}>contact</h1>
+        </section>
     );
 }

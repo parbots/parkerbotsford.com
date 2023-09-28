@@ -8,8 +8,8 @@ export const metadata: Metadata = {
 
 export default function ProjectsPage() {
     return (
-        <main className={styles.main}>
-            <h1 className={styles.header}>Parker Botsford - Projects</h1>
-        </main>
+        <section className={styles.section}>
+            <h1 className={styles.title}>projects</h1>
+        </section>
     );
 }
