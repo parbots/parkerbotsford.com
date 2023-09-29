@@ -36,6 +36,10 @@
     text-decoration: underline;
 }
 
+.link[data-current="true"] {
+    font-weight: bold;
+}
+
 .linkSeperator {
     font-size: 1rem;
     text-align: center;
