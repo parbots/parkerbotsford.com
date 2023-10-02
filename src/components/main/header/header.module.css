@@ -10,7 +10,7 @@
 }
 
 .headerLeft {
-    min-width: 5vw;
+    flex: 1;
 
     display: flex;
     flex-direction: row;
@@ -19,7 +19,7 @@
 }
 
 .headerMiddle {
-    flex: 1;
+    flex: 2;
 
     display: flex;
     flex-direction: row;
@@ -28,7 +28,7 @@
 }
 
 .headerRight {
-    min-width: 5vw;
+    flex: 1;
 
     display: flex;
     flex-direction: row;
