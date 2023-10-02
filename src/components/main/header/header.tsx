@@ -24,9 +24,15 @@ export const Header = ({ title }: { title: string }) => {
 
     return (
         <header className={styles.header}>
-            <h2 className={styles.title}>{title}</h2>
-            <HeaderNav links={links} />
-            <h2>S</h2>
+            <section className={styles.headerLeft}>
+                <h2 className={styles.title}>{title}</h2>
+            </section>
+            <section className={styles.headerMiddle}>
+                <HeaderNav links={links} />
+            </section>
+            <section className={styles.headerRight}>
+                <h2>S</h2>
+            </section>
         </header>
     );
 };
