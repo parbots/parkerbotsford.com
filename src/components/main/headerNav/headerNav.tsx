@@ -3,7 +3,6 @@
 import Link from "next/link";
 import styles from "./headerNav.module.css";
 import { v4 as uuid } from "uuid";
-import { Fragment } from "react";
 import { usePathname } from "next/navigation";
 
 export const HeaderNav = ({
@@ -13,10 +12,10 @@ export const HeaderNav = ({
 }) => {
     const currentPathname = usePathname();
 
-    const navLinks = links.map((link, idx, arr) => {
-        return (
-            <Fragment key={uuid()}>
-                <li className={styles.linkItem}>
+    const navItems = links
+        .map((link) => {
+            return (
+                <li key={uuid()} className={styles.navItem}>
                     <Link
                         href={link.href}
                         className={styles.link}
@@ -25,18 +24,25 @@ export const HeaderNav = ({
                         {link.name}
                     </Link>
                 </li>
-                {idx < arr.length - 1 && (
-                    <li className={styles.linkItem}>
-                        <p className={styles.linkSeperator}>{"/"}</p>
-                    </li>
-                )}
-            </Fragment>
-        );
-    });
+            );
+        })
+        .reduce((listItems, linkItem, idx, linkList) => {
+            listItems.push(linkItem);
+
+            if (idx < linkList.length - 1) {
+                listItems.push(
+                    <li key={uuid()} className={styles.navItem}>
+                        <p className={styles.linkSeperator}>/</p>
+                    </li>,
+                );
+            }
+
+            return listItems;
+        }, [] as JSX.Element[]);
 
     return (
         <nav className={styles.nav}>
-            <ul className={styles.linkList}>{navLinks}</ul>
+            <ul className={styles.navList}>{navItems}</ul>
         </nav>
     );
 };
