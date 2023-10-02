@@ -21,6 +21,7 @@
         "baseUrl": ".",
         "paths": {
             "@app/*": ["src/app/*"],
+            "@sections/*": ["src/sections/*"],
             "@components/*": ["src/components/*"],
             "@styles/*": ["src/styles/*"]
         }

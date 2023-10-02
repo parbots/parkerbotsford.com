@@ -1,7 +1,6 @@
 import styles from "@styles/main/layout.module.css";
 
-import { Header } from "@components/main/header";
-import { Footer } from "@components/main/footer";
+import { Header, Footer } from "@sections/main";
 
 export default function MainLayout({
     children,

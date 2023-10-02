@@ -1,6 +1,6 @@
 import styles from "./header.module.css";
 
-import { HeaderNav } from "@components/main/headerNav";
+import { HeaderNav } from "@sections/main";
 
 export const Header = ({ title }: { title: string }) => {
     const links = [

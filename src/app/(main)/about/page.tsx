@@ -1,4 +1,5 @@
 import styles from "@styles/main/page-about.module.css";
+
 import { Metadata } from "next";
 
 export const metadata: Metadata = {

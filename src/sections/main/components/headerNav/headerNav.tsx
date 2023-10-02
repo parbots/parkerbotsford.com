@@ -1,7 +1,8 @@
 "use client";
 
-import Link from "next/link";
 import styles from "./headerNav.module.css";
+
+import Link from "next/link";
 import { v4 as uuid } from "uuid";
 import { usePathname } from "next/navigation";
 
