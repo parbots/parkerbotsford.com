@@ -1,6 +1,12 @@
 :root {
-    --fg: black;
-    --bg: white;
+    --light-fg: #181825;
+    --light-bg: #e6e9ef;
+
+    --dark-fg: #e6e9ef;
+    --dark-bg: #181825;
+
+    --fg: var(--light-fg);
+    --bg: var(--light-bg);
 }
 
 body {
@@ -15,4 +21,9 @@ body {
 
 h1 {
     line-height: 1;
+}
+
+a {
+    color: var(--fg);
+    background-color: var(--bg);
 }

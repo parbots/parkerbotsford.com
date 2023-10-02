@@ -28,8 +28,6 @@
 
     text-align: center;
     text-decoration: none;
-
-    color: black;
 }
 
 .link:is(:hover, :focus-visible) {
