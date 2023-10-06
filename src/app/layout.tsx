@@ -1,7 +1,8 @@
-import "@styles/reset.css";
 import "@styles/global.css";
+
 import type { Metadata } from "next";
 import { JetBrains_Mono } from "next/font/google";
+import { ThemeProvider } from "@providers/themeProvider";
 
 const jetbrains = JetBrains_Mono({ subsets: ["latin"] });
 
@@ -17,7 +18,15 @@ export default function RootLayout({
 }) {
     return (
         <html lang="en">
-            <body className={jetbrains.className}>{children}</body>
+            <body className={jetbrains.className + " transition-colors"}>
+                <ThemeProvider
+                    attribute="class"
+                    defaultTheme="system"
+                    enableSystem
+                >
+                    {children}
+                </ThemeProvider>
+            </body>
         </html>
     );
 }
