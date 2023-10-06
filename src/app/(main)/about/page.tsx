@@ -1,5 +1,3 @@
-import styles from "@styles/main/page-about.module.css";
-
 import { Metadata } from "next";
 
 export const metadata: Metadata = {
@@ -9,8 +7,8 @@ export const metadata: Metadata = {
 
 export default function AboutPage() {
     return (
-        <section className={styles.section}>
-            <h1 className={styles.title}>about</h1>
+        <section className="flex-auto flex justify-center items-center">
+            <h1 className="text-7xl">About</h1>
         </section>
     );
 }

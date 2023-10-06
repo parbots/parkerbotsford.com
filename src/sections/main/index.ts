@@ -1,5 +1,5 @@
 // Components
-export { Header } from "./components/header/header";
-export { HeaderNav } from "./components/headerNav/headerNav";
+export { Header } from "./components/header";
+export { HeaderNav } from "./components/headerNav";
 
-export { Footer } from "./components/footer/footer";
+export { Footer } from "./components/footer";

@@ -1,5 +1,3 @@
-import styles from "@styles/main/layout.module.css";
-
 import { Header, Footer } from "@sections/main";
 
 export default function MainLayout({
@@ -10,7 +8,9 @@ export default function MainLayout({
     return (
         <>
             <Header title="PB" />
-            <main className={styles.main}>{children}</main>
+            <main className="w-screen h-[90vh] flex justify-center items-center">
+                {children}
+            </main>
             <Footer />
         </>
     );
