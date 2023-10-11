@@ -1,23 +1,35 @@
 {
     "compilerOptions": {
-        "target": "es5",
-        "lib": ["dom", "dom.iterable", "esnext"],
-        "allowJs": true,
-        "skipLibCheck": true,
-        "strict": true,
-        "noEmit": true,
+        // base
         "esModuleInterop": true,
-        "module": "esnext",
-        "moduleResolution": "bundler",
+        "skipLibCheck": true,
+        "target": "es5",
+        "verbatimModuleSyntax": true,
+        "allowJs": true,
         "resolveJsonModule": true,
+        "moduleDetection": "auto",
+
+        // strictness
+        "strict": true,
+        "noUncheckedIndexedAccess": true,
+
+        // modules
+        "moduleResolution": "bundler",
+        "module": "esnext",
+        "noEmit": true,
         "isolatedModules": true,
+
+        "lib": ["dom", "dom.iterable", "esnext"],
+
         "jsx": "preserve",
         "incremental": true,
+
         "plugins": [
             {
                 "name": "next"
             }
         ],
+
         "baseUrl": ".",
         "paths": {
             "@app/*": ["src/app/*"],
