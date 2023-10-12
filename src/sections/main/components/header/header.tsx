@@ -1,4 +1,4 @@
-import { HeaderNav } from "@sections/main";
+import { HeaderNav } from "./nav/headerNav";
 import { ThemeToggle } from "@components/themeToggle";
 
 export const Header = ({ title }: { title: string }) => {

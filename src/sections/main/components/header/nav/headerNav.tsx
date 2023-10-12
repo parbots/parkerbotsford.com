@@ -1,28 +1,17 @@
 "use client";
 
-import Link from "next/link";
 import { v4 as uuid } from "uuid";
-import { usePathname } from "next/navigation";
+import { HeaderNavLink } from "./headerNavLink";
 
 export const HeaderNav = ({
     links,
 }: {
     links: { name: string; href: string }[];
 }) => {
-    const currentPathname = usePathname();
-
     const navItems = links.map((link) => {
         return (
             <li key={uuid()}>
-                <Link
-                    href={link.href}
-                    className={
-                        "text-lg hover:underline focus-visible:underline" +
-                        (currentPathname == link.href ? " text-purple-500" : "")
-                    }
-                >
-                    {link.name}
-                </Link>
+                <HeaderNavLink href={link.href}>{link.name}</HeaderNavLink>
             </li>
         );
     });

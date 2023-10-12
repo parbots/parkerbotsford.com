@@ -1,4 +1,4 @@
-import { Header, Footer } from "@sections/main";
+import { Header, Footer } from "@sections/main/components";
 
 export default function MainLayout({
     children,
