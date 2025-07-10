@@ -10,6 +10,7 @@
         "format": "prettier --ignore-path .gitignore --write ."
     },
     "dependencies": {
+        "@astrojs/check": "^0.9.4",
         "@astrojs/mdx": "^4.3.0",
         "@astrojs/react": "^4.3.0",
         "@astrojs/vercel": "^8.2.1",
@@ -17,7 +18,8 @@
         "@types/react-dom": "^19.1.6",
         "astro": "^5.11.0",
         "react": "^19.1.0",
-        "react-dom": "^19.1.0"
+        "react-dom": "^19.1.0",
+        "typescript": "^5.8.3"
     },
     "devDependencies": {
         "prettier": "^3.6.2",
