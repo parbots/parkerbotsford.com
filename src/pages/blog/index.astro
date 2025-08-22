@@ -1,0 +1,27 @@
+---
+import '@styles/global.css';
+
+import BaseLayout from '@layouts/base.astro';
+
+const PageTitle = "Parker Botsford's Blog";
+
+const allPosts = Object.values(
+    import.meta.glob('./posts/*.md', { eager: true }),
+);
+---
+
+<BaseLayout PageTitle={PageTitle}>
+    <h2>My Awesome Subtitle</h2>
+    <p>This is the blog homepage</p>
+    <ul>
+        {
+            allPosts.map((post: any) => {
+                return (
+                    <li>
+                        <a href={post.url}>{post.frontmatter.title}</a>
+                    </li>
+                );
+            })
+        }
+    </ul>
+</BaseLayout>

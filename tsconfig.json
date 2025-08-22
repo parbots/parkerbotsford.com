@@ -4,6 +4,15 @@
     "exclude": ["dist"],
     "compilerOptions": {
         "jsx": "react-jsx",
-        "jsxImportSource": "react"
+        "jsxImportSource": "react",
+        "baseUrl": ".",
+        "paths": {
+            "@/*": ["src/*"],
+            "@pages/*": ["src/pages/*"],
+            "@components/*": ["src/components/*"],
+            "@layouts/*": ["src/layouts/*"],
+            "@assets/*": ["src/assets/*"],
+            "@styles/*": ["src/styles/*"]
+        }
     }
 }

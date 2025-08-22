@@ -1,0 +1,17 @@
+---
+const allPosts = Object.values(
+    import.meta.glob('@pages/blog/posts/*.md', { eager: true }),
+);
+---
+
+<ul>
+    {
+        allPosts.map((post: any) => {
+            return (
+                <li>
+                    <a href={post.url}>{post.frontmatter.title}</a>
+                </li>
+            );
+        })
+    }
+</ul>
