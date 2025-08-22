@@ -1,7 +1,8 @@
 {
-    "name": "parkerbotsford-com",
+    "name": "parkerbotsford.com",
     "type": "module",
-    "version": "0.0.1",
+    "version": "0.1.0",
+    "private": "true",
     "scripts": {
         "dev": "astro dev",
         "build": "astro check && astro build",
@@ -10,19 +11,19 @@
         "format": "prettier --ignore-path .gitignore --write ."
     },
     "dependencies": {
+        "astro": "^5.13.3",
         "@astrojs/check": "^0.9.4",
         "@astrojs/react": "^4.3.0",
         "@astrojs/vercel": "^8.2.6",
         "@vercel/analytics": "^1.5.0",
-        "astro": "^5.13.3",
         "react": "^19.1.1",
         "react-dom": "^19.1.1"
     },
     "devDependencies": {
-        "@types/react": "^19.1.11",
-        "@types/react-dom": "^19.1.7",
         "prettier": "^3.6.2",
         "prettier-plugin-astro": "^0.14.1",
-        "typescript": "^5.9.2"
+        "typescript": "^5.9.2",
+        "@types/react": "^19.1.11",
+        "@types/react-dom": "^19.1.7"
     }
 }
