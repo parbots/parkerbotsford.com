@@ -1,0 +1,39 @@
+---
+interface Props {
+    title: string;
+}
+
+const { title } = Astro.props;
+
+import Analytics from '@vercel/analytics/astro';
+
+import '@styles/reset.css';
+---
+
+<!doctype html>
+<html lang='en'>
+    <head>
+        <meta charset='UTF-8' />
+        <link
+            rel='icon'
+            type='image/svg+xml'
+            href='/favicon.svg'
+        />
+        <meta
+            name='generator'
+            content={Astro.generator}
+        />
+        <meta
+            name='viewport'
+            content='width=device-width, initial-scale=1'
+        />
+        <title>{title}</title>
+        <Analytics />
+    </head>
+    <body>
+        <main>
+            <h1>{title}</h1>
+            <slot />
+        </main>
+    </body>
+</html>
