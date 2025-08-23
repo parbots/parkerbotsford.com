@@ -1,0 +1,62 @@
+.header {
+    width: 100vw;
+
+    padding: 1rem;
+
+    display: flex;
+
+    place-items: center;
+}
+
+.left {
+    flex: 1;
+
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+
+.title {
+    font-size: 2rem;
+}
+
+.center {
+    flex: 1;
+
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+
+.nav {
+    display: flex;
+    place-items: center;
+    gap: 2rem;
+}
+
+.right {
+    flex: 1;
+
+    display: flex;
+    place-content: center;
+    place-items: center;
+}
+
+.toggle {
+    padding: 0.5rem;
+
+    border: none;
+    border-radius: 0.2rem;
+
+    color: var(--fg);
+    background-color: var(--accent);
+
+    cursor: pointer;
+
+    transition: background-color 0.3s;
+}
+
+.toggle:hover,
+.toggle:focus-visible {
+    background-color: var(--highlight);
+}

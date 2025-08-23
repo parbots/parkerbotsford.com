@@ -1,5 +1,19 @@
 ---
-import BaseLayout from '@layouts/BaseLayout.astro';
+import BaseLayout from '@layouts/base/BaseLayout.astro';
+
+import Header from '@components/base/header';
+import Footer from '@components/base/footer';
 ---
 
-<BaseLayout title='Homepage' />
+<style>
+    main {
+        flex: 1;
+        width: 100vw;
+    }
+</style>
+
+<BaseLayout title='Homepage'>
+    <Header />
+    <main></main>
+    <Footer />
+</BaseLayout>

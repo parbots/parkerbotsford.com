@@ -1,0 +1,20 @@
+:root {
+    --fg: #463f3a;
+    --bg: #f4f3ee;
+    --accent: #bcb8b1;
+    --highlight: #e0afa0;
+
+    color: var(--fg);
+    background-color: var(--bg);
+
+    font-family: 'Atkinson Hyperlegible Next Variable', sans-serif;
+    font-size: 16px;
+}
+
+::selection {
+    background-color: var(--highlight);
+}
+
+a {
+    color: var(--fg);
+}

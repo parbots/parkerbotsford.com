@@ -11,6 +11,7 @@
 
 * {
     margin: 0;
+    padding: 0;
 }
 
 @media (prefers-reduced-motion: no-preference) {
@@ -65,4 +66,8 @@ h6 {
 #root,
 #__next {
     isolation: isolate;
+}
+
+a {
+    text-decoration: none;
 }
