@@ -17,7 +17,7 @@
     "htmlWhitespaceSensitivity": "css",
     "endOfLine": "lf",
     "embeddedLanguageFormatting": "auto",
-    "singleAttributePerLine": false,
+    "singleAttributePerLine": true,
 
     "plugins": ["prettier-plugin-astro"],
     "overrides": [
@@ -27,5 +27,8 @@
                 "parser": "astro"
             }
         }
-    ]
+    ],
+
+    "astroAllowshorthand": true,
+    "astroSkipFrontmatter": false
 }
