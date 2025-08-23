@@ -11,14 +11,15 @@
         "format": "prettier --write ."
     },
     "dependencies": {
-        "astro": "^5.13.3",
         "@astrojs/check": "^0.9.4",
         "@astrojs/react": "^4.3.0",
         "@astrojs/ts-plugin": "^1.10.4",
         "@astrojs/vercel": "^8.2.6",
-        "@vercel/analytics": "^1.5.0",
-        "nanostores": "^1.0.1",
+        "@fontsource-variable/atkinson-hyperlegible-next": "^5.2.4",
         "@nanostores/react": "^1.0.0",
+        "@vercel/analytics": "^1.5.0",
+        "astro": "^5.13.3",
+        "nanostores": "^1.0.1",
         "react": "^19.1.1",
         "react-dom": "^19.1.1"
     },
