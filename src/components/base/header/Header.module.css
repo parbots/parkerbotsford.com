@@ -1,7 +1,7 @@
 .header {
     width: 100vw;
 
-    padding: 1rem;
+    padding: 2rem;
 
     display: flex;
 
@@ -12,7 +12,6 @@
     flex: 1;
 
     display: flex;
-    place-content: center;
     place-items: center;
 }
 
@@ -20,26 +19,40 @@
     font-size: 2rem;
 }
 
-.center {
-    flex: 1;
-
-    display: flex;
-    place-content: center;
-    place-items: center;
-}
-
-.nav {
-    display: flex;
-    place-items: center;
-    gap: 2rem;
-}
-
 .right {
     flex: 1;
 
     display: flex;
+    justify-content: flex-end;
+    place-items: center;
+    gap: 2rem;
+}
+
+.nav {
+    display: flex;
     place-content: center;
     place-items: center;
+    gap: 2rem;
+}
+
+.search {
+    width: 10rem;
+
+    padding: 0.2rem;
+
+    text-align: center;
+
+    border: none;
+    border-bottom: 0.2rem solid var(--accent);
+
+    color: var(--fg);
+    background-color: var(--bg);
+}
+
+.search::placeholder {
+    color: var(--accent);
+
+    opacity: 1;
 }
 
 .toggle {

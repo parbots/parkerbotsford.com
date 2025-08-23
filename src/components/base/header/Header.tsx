@@ -14,7 +14,7 @@ const Header = () => {
             <div className={styles.left}>
                 <h2 className={styles.title}>Parker Botsford</h2>
             </div>
-            <div className={styles.center}>
+            <div className={styles.right}>
                 <nav className={styles.nav}>
                     {links.map((link) => (
                         <Link
@@ -24,8 +24,10 @@ const Header = () => {
                         />
                     ))}
                 </nav>
-            </div>
-            <div className={styles.right}>
+                <input
+                    placeholder='Search'
+                    className={styles.search}
+                />
                 <button
                     type='button'
                     className={styles.toggle}
