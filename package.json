@@ -8,7 +8,7 @@
         "build": "astro check && astro build",
         "preview": "astro preview",
         "astro": "astro",
-        "format": "prettier --ignore-path .gitignore --write ."
+        "format": "prettier --write ."
     },
     "dependencies": {
         "astro": "^5.13.3",
