@@ -33,7 +33,7 @@
     transform: scaleX(0);
 
     transition:
-        transform 0.3s ease-in-out,
+        transform 0.3s,
         background-color 0.3s;
 }
 
