@@ -9,8 +9,9 @@ import { SITE } from '../config';
 
 <Base title={SITE.title} description={SITE.description}>
   <div class="flex min-h-svh flex-col">
+    <a href="#main" class="skip-link">Skip to content</a>
     <Nav />
-    <main class="mx-auto w-full max-w-[var(--content-width)] flex-1 px-6 fade-in">
+    <main id="main" class="mx-auto w-full max-w-[var(--content-width)] flex-1 px-6 fade-in">
       <Hero />
       <RecentPosts />
     </main>
