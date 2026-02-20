@@ -17,7 +17,7 @@ Personal website and portfolio built with Astro, React islands, MDX content, and
 - **Never push to any remote branch** — only commit locally
 - **Atomic, conventional commits** — `feat:`, `fix:`, `refactor:`, `style:`, `chore:`, `docs:`, etc.
 - **Verify after major changes** — run `pnpm lint`, `pnpm format:check`, `pnpm typecheck`, and `pnpm build`
-- **Fix all lint/format/type issues** — errors *and* warnings
+- **Fix all lint/format/type issues** — errors _and_ warnings
 - **Keep CLAUDE.md current** — update as you work; consolidate if it grows too large
 - **Use /docs for domain knowledge** — reference docs here to reduce context bloat
 

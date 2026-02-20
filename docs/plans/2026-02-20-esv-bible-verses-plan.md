@@ -13,6 +13,7 @@
 ### Task 1: Environment Setup & Verse Data
 
 **Files:**
+
 - Create: `src/data/verses.ts`
 - Modify: `.env.example` (create if missing) or document in README
 - Modify: `.gitignore`
@@ -98,6 +99,7 @@ git commit -m "feat: add daily verses data and generated cache directory"
 ### Task 2: ESV API Utility
 
 **Files:**
+
 - Create: `src/utils/esv-api.ts`
 
 **Step 1: Create the ESV API fetch utility**
@@ -117,9 +119,7 @@ const ESV_HTML_URL = "https://api.esv.org/v3/passage/html/";
 function getApiKey(): string {
   const key = import.meta.env.ESV_API_KEY ?? process.env.ESV_API_KEY;
   if (!key) {
-    throw new Error(
-      "ESV_API_KEY is not set. Get one at https://api.esv.org/",
-    );
+    throw new Error("ESV_API_KEY is not set. Get one at https://api.esv.org/");
   }
   return key;
 }
@@ -140,7 +140,9 @@ async function fetchPassageText(ref: string, apiKey: string): Promise<string> {
   });
 
   if (!res.ok) {
-    throw new Error(`ESV API error for "${ref}": ${res.status} ${res.statusText}`);
+    throw new Error(
+      `ESV API error for "${ref}": ${res.status} ${res.statusText}`,
+    );
   }
 
   const data = await res.json();
@@ -167,7 +169,9 @@ async function fetchPassageHtml(ref: string, apiKey: string): Promise<string> {
   });
 
   if (!res.ok) {
-    throw new Error(`ESV API error for "${ref}": ${res.status} ${res.statusText}`);
+    throw new Error(
+      `ESV API error for "${ref}": ${res.status} ${res.statusText}`,
+    );
   }
 
   const data = await res.json();
@@ -214,6 +218,7 @@ git commit -m "feat: add ESV API fetch utility"
 ### Task 3: Astro Integration for Build-time Verse Fetching
 
 **Files:**
+
 - Create: `src/integrations/esv-verses.ts`
 - Modify: `astro.config.ts`
 
@@ -453,6 +458,7 @@ git commit -m "feat: add Astro integration for build-time ESV verse fetching"
 ### Task 4: Verse Cache Reader Utility
 
 **Files:**
+
 - Create: `src/utils/verse-cache.ts`
 
 **Step 1: Create the cache reader**
@@ -521,6 +527,7 @@ git commit -m "feat: add verse cache reader utility"
 ### Task 5: Content Collection Schema Update
 
 **Files:**
+
 - Modify: `src/content.config.ts`
 
 **Step 1: Add verses field to all three collection schemas**
@@ -553,6 +560,7 @@ git commit -m "feat: add verses field to content collection schemas"
 ### Task 6: BibleVerse React Island Component
 
 **Files:**
+
 - Create: `src/features/bible/interactive/BibleVerse.tsx`
 
 **Step 1: Create the BibleVerse component**
@@ -583,7 +591,7 @@ export default function BibleVerse({
 function BlockVerse({ reference, text }: { reference: string; text: string }) {
   return (
     <figure
-      className="my-6 rounded-md border-l-2 py-4 pr-4 pl-4"
+      className="my-6 rounded-md border-l-2 py-4 pl-4 pr-4"
       style={{
         borderColor: "var(--accent)",
         backgroundColor: "var(--bg-surface)",
@@ -613,13 +621,7 @@ function BlockVerse({ reference, text }: { reference: string; text: string }) {
   );
 }
 
-function InlineVerse({
-  reference,
-  text,
-}: {
-  reference: string;
-  text: string;
-}) {
+function InlineVerse({ reference, text }: { reference: string; text: string }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
@@ -703,7 +705,7 @@ function InlineVerse({
           }}
         >
           <p
-            className="mb-2 text-xs font-semibold tracking-wide uppercase"
+            className="mb-2 text-xs font-semibold uppercase tracking-wide"
             style={{
               fontFamily: "var(--font-mono)",
               color: "var(--accent)",
@@ -712,7 +714,7 @@ function InlineVerse({
             {reference}
           </p>
           <p
-            className="mb-2 text-sm leading-relaxed italic"
+            className="mb-2 text-sm italic leading-relaxed"
             style={{
               fontFamily: "var(--font-body)",
               color: "var(--fg)",
@@ -754,6 +756,7 @@ git commit -m "feat: add BibleVerse React island component with popover and bloc
 ### Task 7: BibleVerse Astro Wrapper
 
 **Files:**
+
 - Create: `src/features/bible/BibleVerseWrapper.astro`
 
 This wrapper reads from the verse cache and passes data to the React island. It's what MDX files import.
@@ -807,6 +810,7 @@ git commit -m "feat: add BibleVerse Astro wrapper for MDX usage"
 ### Task 8: DailyVerse Component
 
 **Files:**
+
 - Create: `src/features/bible/DailyVerse.astro`
 
 **Step 1: Create the DailyVerse component**
@@ -825,14 +829,11 @@ const verse = getDailyVerse(dailyRefs);
 {
   verse && (
     <section class="py-12">
-      <h2
-        class="mb-4 text-lg"
-        style="font-family: var(--font-mono);"
-      >
+      <h2 class="mb-4 text-lg" style="font-family: var(--font-mono);">
         Verse of the day
       </h2>
       <figure
-        class="rounded-md border-l-2 py-4 pr-4 pl-4"
+        class="rounded-md border-l-2 py-4 pl-4 pr-4"
         style={`border-color: var(--accent); background-color: var(--bg-surface);`}
       >
         <blockquote
@@ -858,11 +859,13 @@ const verse = getDailyVerse(dailyRefs);
 In `src/pages/index.astro`, import and place `<DailyVerse />` after `<RecentPosts />`:
 
 Add import:
+
 ```typescript
 import DailyVerse from "../features/bible/DailyVerse.astro";
 ```
 
 Add component after `<RecentPosts />`:
+
 ```astro
 <DailyVerse />
 ```
@@ -879,6 +882,7 @@ git commit -m "feat: add DailyVerse component to homepage"
 ### Task 9: Verses Aggregation Page
 
 **Files:**
+
 - Create: `src/features/bible/VerseList.astro`
 - Create: `src/pages/verses.astro`
 
@@ -1014,6 +1018,7 @@ git commit -m "feat: add /verses aggregation page"
 ### Task 10: Navigation Update & Integration Test
 
 **Files:**
+
 - Modify: `src/config.ts`
 
 **Step 1: Add Verses to navigation**
@@ -1029,6 +1034,7 @@ In `src/config.ts`, add to `NAV_ITEMS`:
 Add `verses` frontmatter and a `<BibleVerse>` component to an existing blog post (e.g., `src/data/blog/hello-world.mdx`) for testing:
 
 In the frontmatter, add:
+
 ```yaml
 verses:
   - "John 3:16"
@@ -1036,6 +1042,7 @@ verses:
 ```
 
 In the body, add:
+
 ```mdx
 import BibleVerse from "../../features/bible/BibleVerseWrapper.astro";
 
@@ -1072,6 +1079,7 @@ git commit -m "feat: add Verses to site navigation"
 Run: `pnpm dev`
 
 Check:
+
 - Homepage shows "Verse of the day" section
 - `/verses` page lists all referenced verses
 - Blog post with `<BibleVerse>` shows popover on hover and block display
