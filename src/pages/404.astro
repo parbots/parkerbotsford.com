@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import Nav from '../components/primitives/Nav.astro';
+import Footer from '../components/primitives/Footer.astro';
+---
+
+<Base title="Not Found">
+  <div class="flex min-h-svh flex-col">
+    <a href="#main" class="skip-link">Skip to content</a>
+    <Nav />
+    <main id="main" class="mx-auto flex w-full max-w-[var(--content-width)] flex-1 flex-col items-center justify-center px-6 fade-in">
+      <p class="text-6xl text-[var(--fg-muted)]" style="font-family: var(--font-mono);">404</p>
+      <p class="mt-4 text-[var(--fg-muted)]">This page doesn't exist.</p>
+      <a href="/" class="mt-8 text-sm" style="font-family: var(--font-mono);">Go home</a>
+    </main>
+    <Footer />
+  </div>
+</Base>
