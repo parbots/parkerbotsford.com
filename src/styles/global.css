@@ -191,14 +191,22 @@ a:hover {
 }
 
 /* ===== Shiki dual theme ===== */
+/* !important needed to override Shiki's inline styles */
 .shiki,
 .shiki span {
-  color: var(--shiki-light);
-  background-color: var(--shiki-light-bg);
+  color: var(--shiki-light) !important;
+  background-color: var(--shiki-light-bg) !important;
 }
 
 html.dark .shiki,
 html.dark .shiki span {
-  color: var(--shiki-dark);
-  background-color: var(--shiki-dark-bg);
+  color: var(--shiki-dark) !important;
+  background-color: var(--shiki-dark-bg) !important;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .shiki,
+  .shiki span {
+    transition: color 500ms ease, background-color 500ms ease !important;
+  }
 }
