@@ -1,13 +1,16 @@
 ---
 import { NAV_ITEMS } from '../../config';
 import ThemeToggle from './ThemeToggle';
+import MobileNav from './MobileNav';
 ---
 
-<nav class="mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6">
-  <a href="/" class="font-mono text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]" style="font-family: var(--font-mono);">
+<nav class="relative z-50 mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6">
+  <a href="/" class="text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]" style="font-family: var(--font-mono);">
     Parker Botsford
   </a>
-  <div class="flex items-center gap-6">
+
+  {/* Desktop nav */}
+  <div class="hidden items-center gap-6 md:flex">
     {NAV_ITEMS.map((item) => (
       <a
         href={item.href}
@@ -18,5 +21,11 @@ import ThemeToggle from './ThemeToggle';
       </a>
     ))}
     <ThemeToggle client:load />
+  </div>
+
+  {/* Mobile nav */}
+  <div class="flex items-center gap-4 md:hidden">
+    <ThemeToggle client:load />
+    <MobileNav client:load items={[...NAV_ITEMS]} />
   </div>
 </nav>
