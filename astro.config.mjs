@@ -9,4 +9,17 @@ import sitemap from '@astrojs/sitemap';
 export default defineConfig({
   site: 'https://parkerbotsford.com',
   integrations: [react(), mdx(), tailwind(), sitemap()],
+  image: {
+    service: {
+      entrypoint: 'astro/assets/services/sharp',
+    },
+  },
+  markdown: {
+    shikiConfig: {
+      themes: {
+        light: 'github-light',
+        dark: 'github-dark',
+      },
+    },
+  },
 });
