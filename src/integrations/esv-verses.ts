@@ -8,6 +8,7 @@ import {
   statSync,
 } from "node:fs";
 import { join } from "node:path";
+import { loadEnv } from "vite";
 import type { VerseData } from "../utils/esv-api";
 import { fetchPassageText } from "../utils/esv-api";
 
@@ -47,7 +48,8 @@ export default function esvVerses(): AstroIntegration {
     name: "esv-verses",
     hooks: {
       "astro:config:setup": async ({ logger }) => {
-        const apiKey = process.env.ESV_API_KEY;
+        const env = loadEnv("production", process.cwd(), "ESV_");
+        const apiKey = env.ESV_API_KEY;
 
         if (!apiKey || apiKey === "your_api_key_here") {
           logger.warn(
@@ -95,15 +97,40 @@ export default function esvVerses(): AstroIntegration {
           return;
         }
 
-        logger.info(`Found ${refs.size} unique verse reference(s). Fetching…`);
+        // 3. Load existing cache so we only fetch missing verses
+        const outDir = join(srcDir, "data", "generated");
+        const outPath = join(outDir, "verse-cache.json");
+        let cached: Record<string, VerseData> = {};
 
-        // 3. Fetch all verses sequentially to respect rate limits
-        const results: Record<string, VerseData> = {};
+        if (existsSync(outPath)) {
+          try {
+            cached = JSON.parse(readFileSync(outPath, "utf-8"));
+          } catch {
+            cached = {};
+          }
+        }
 
-        for (const ref of refs) {
+        const missing = [...refs].filter((ref) => !cached[ref]);
+
+        if (missing.length === 0) {
+          logger.info(
+            `All ${refs.size} verse(s) already cached — skipping fetch.`,
+          );
+          return;
+        }
+
+        logger.info(
+          `Found ${refs.size} verse(s), ${missing.length} not cached. Fetching…`,
+        );
+
+        // 4. Fetch only missing verses sequentially to respect rate limits
+        let fetched = 0;
+
+        for (const ref of missing) {
           try {
             const text = await fetchPassageText(ref, apiKey);
-            results[ref] = { reference: ref, text };
+            cached[ref] = { reference: ref, text };
+            fetched++;
             logger.info(`  ✓ ${ref}`);
           } catch (err) {
             logger.warn(
@@ -112,16 +139,16 @@ export default function esvVerses(): AstroIntegration {
           }
         }
 
-        // 4. Write cache
-        const outDir = join(srcDir, "data", "generated");
-        if (!existsSync(outDir)) {
-          mkdirSync(outDir, { recursive: true });
+        // 5. Write cache (only if we fetched something new)
+        if (fetched > 0) {
+          if (!existsSync(outDir)) {
+            mkdirSync(outDir, { recursive: true });
+          }
+          writeFileSync(outPath, JSON.stringify(cached, null, 2) + "\n");
         }
 
-        const outPath = join(outDir, "verse-cache.json");
-        writeFileSync(outPath, JSON.stringify(results, null, 2) + "\n");
         logger.info(
-          `Wrote ${Object.keys(results).length} verse(s) to ${outPath}`,
+          `Cache now has ${Object.keys(cached).length} verse(s) (${fetched} newly fetched).`,
         );
       },
     },
