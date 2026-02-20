@@ -1,0 +1,34 @@
+---
+import { DAILY_VERSES } from "../../data/verses";
+import { getDailyVerse } from "../../utils/verse-cache";
+
+const dailyRefs = DAILY_VERSES.map((v) => v.ref);
+const verse = getDailyVerse(dailyRefs);
+---
+
+{
+  verse && (
+    <section class="py-12">
+      <h2 class="mb-4 text-lg" style="font-family: var(--font-mono);">
+        Verse of the day
+      </h2>
+      <figure
+        class="rounded-md border-l-2 py-4 pl-4 pr-4"
+        style={`border-color: var(--accent); background-color: var(--bg-surface);`}
+      >
+        <blockquote
+          class="mb-2 italic"
+          style="color: var(--fg); font-size: clamp(1rem, 1.5vw, 1.125rem); line-height: 1.7;"
+        >
+          {verse.text}
+        </blockquote>
+        <figcaption
+          class="text-sm"
+          style="font-family: var(--font-mono); color: var(--fg-muted);"
+        >
+          — {verse.reference} (ESV)
+        </figcaption>
+      </figure>
+    </section>
+  )
+}
