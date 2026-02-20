@@ -1,0 +1,41 @@
+---
+title: Testing Bible Verse Integration
+description: A test post demonstrating inline and block Bible verse references using the ESV API.
+date: 2026-02-20
+tags: [test, bible]
+verses:
+  - Romans 8:28
+  - Philippians 4:6-7
+  - Proverbs 3:5-6
+  - John 3:16
+  - Psalm 23:1-3
+---
+
+import BibleVerse from "../../features/bible/BibleVerseWrapper.astro";
+
+This post demonstrates the ESV Bible verse integration with both inline and block display modes.
+
+## Inline Verses
+
+In <BibleVerse ref="Romans 8:28" />, Paul reminds us that God works all things together for the good of those who love him — a comforting truth during difficult seasons. He also addresses anxiety in <BibleVerse ref="Philippians 4:6-7" />, encouraging believers to bring everything to God in prayer.
+
+Perhaps no single verse captures the heart of the gospel more clearly than <BibleVerse ref="John 3:16" />, a passage that has been shared across generations.
+
+## Block Verses
+
+Here is a well-known passage on trusting the Lord:
+
+<BibleVerse ref="Proverbs 3:5-6" display="block" />
+
+And one of the most beloved Psalms:
+
+<BibleVerse ref="Psalm 23:1-3" display="block" />
+
+## How It Works
+
+Verses listed in the frontmatter `verses` array are fetched from the ESV API at build time and cached. The `<BibleVerse>` component renders them in two ways:
+
+- **Inline** (default) — hover or click a reference to see the passage in a popover. Click the reference link in the popover to read it on esv.org.
+- **Block** — renders the passage as a styled blockquote with attribution.
+
+Both modes include proper ESV copyright attribution linking to [esv.org](https://www.esv.org).
