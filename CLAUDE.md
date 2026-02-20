@@ -8,9 +8,14 @@ Personal website and portfolio built with Astro, React islands, MDX content, and
 
 ## Commands
 
-- `npm run dev` — Start dev server (localhost:4321)
-- `npm run build` — Production build to `dist/`
-- `npm run preview` — Preview production build
+- `pnpm dev` — Start dev server (localhost:4321)
+- `pnpm build` — Production build to `dist/`
+- `pnpm preview` — Preview production build
+- `pnpm lint` — Run ESLint
+- `pnpm lint:fix` — Run ESLint with auto-fix
+- `pnpm format` — Format all files with Prettier
+- `pnpm format:check` — Check formatting without writing
+- `pnpm typecheck` — Run `astro check` for type diagnostics
 
 ## Architecture
 
@@ -32,6 +37,8 @@ Personal website and portfolio built with Astro, React islands, MDX content, and
 - `src/content.config.ts` — content collection schemas
 - `src/styles/global.css` — CSS reset, theme variables (light/dark), typography, prose styles
 - `src/utils/` — date formatting, reading time
+- `eslint.config.js` — ESLint v9 flat config (JS/TS/Astro/React/jsx-a11y)
+- `.prettierrc` — Prettier config with Astro + Tailwind plugins
 
 ## Styling
 
@@ -39,9 +46,12 @@ Tailwind CSS utilities + CSS custom properties in `global.css`. Theme uses `.dar
 
 ## Conventions
 
+- **Package manager:** pnpm (not npm/yarn)
 - TypeScript strict mode
 - Astro components: PascalCase `.astro` files with typed Props interfaces
 - React islands: `.tsx` files, hydrated with `client:load`
 - Commits: conventional commits (`feat:`, `fix:`, `chore:`, etc.)
 - Content: all `.mdx` for interactive component support
 - Drafts: filtered in production via `draft: true` frontmatter
+- **Linting:** ESLint v9 flat config with TypeScript, Astro, React, jsx-a11y, and Prettier integration
+- **Formatting:** Prettier with Astro parser and Tailwind class sorting
