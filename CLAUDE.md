@@ -50,8 +50,17 @@ Tailwind CSS utilities + CSS custom properties in `global.css`. Theme uses `.dar
 - TypeScript strict mode
 - Astro components: PascalCase `.astro` files with typed Props interfaces
 - React islands: `.tsx` files, hydrated with `client:load`
-- Commits: conventional commits (`feat:`, `fix:`, `chore:`, etc.)
 - Content: all `.mdx` for interactive component support
 - Drafts: filtered in production via `draft: true` frontmatter
 - **Linting:** ESLint v9 flat config with TypeScript, Astro, React, jsx-a11y, and Prettier integration
 - **Formatting:** Prettier with Astro parser and Tailwind class sorting
+
+## Development Rules
+
+- **Never commit, merge, or push to `main`** — merges to main are done manually by the user
+- **Never push to any remote branch** — only commit changes locally
+- **Atomic, conventional commits** — use `feat:`, `fix:`, `refactor:`, `style:`, `chore:`, `docs:`, etc. with clear, concise messages
+- **Verify after major changes** — run `pnpm lint`, `pnpm format:check`, `pnpm typecheck`, and `pnpm build` after significant work to ensure nothing is broken
+- **Fix all lint/format/type issues** — resolve errors *and* warnings, don't leave them behind
+- **Keep CLAUDE.md current** — update with important development information as you work; consolidate and simplify if it grows too large
+- **Use /docs for domain knowledge** — create separate files in `/docs` for major domains/areas of the codebase and reference them here to reduce context bloat
