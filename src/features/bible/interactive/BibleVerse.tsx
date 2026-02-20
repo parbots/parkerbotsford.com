@@ -45,7 +45,16 @@ function BlockVerse({ reference, text }: { reference: string; text: string }) {
           color: "var(--fg-muted)",
         }}
       >
-        — {reference} (ESV)
+        — {reference} (
+        <a
+          href="https://www.esv.org"
+          target="_blank"
+          rel="noopener noreferrer"
+          style={{ color: "var(--fg-muted)" }}
+        >
+          ESV
+        </a>
+        )
       </figcaption>
     </figure>
   );
@@ -188,7 +197,14 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
               fontFamily: "var(--font-mono)",
             }}
           >
-            ESV
+            <a
+              href="https://www.esv.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              style={{ color: "var(--fg-muted)" }}
+            >
+              ESV
+            </a>
           </p>
         </div>
       )}

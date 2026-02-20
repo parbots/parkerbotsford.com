@@ -26,7 +26,16 @@ const verse = getDailyVerse(dailyRefs);
           class="text-sm"
           style="font-family: var(--font-mono); color: var(--fg-muted);"
         >
-          — {verse.reference} (ESV)
+          — {verse.reference} (
+          <a
+            href="https://www.esv.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            style="color: var(--fg-muted);"
+          >
+            ESV
+          </a>
+          )
         </figcaption>
       </figure>
     </section>

@@ -26,7 +26,7 @@ export async function fetchPassageText(
     "include-first-verse-numbers": "true",
     "include-footnotes": "false",
     "include-headings": "false",
-    "include-short-copyright": "true",
+    "include-short-copyright": "false",
   });
 
   const res = await fetch(`${ESV_TEXT_URL}?${params}`, {
@@ -54,7 +54,7 @@ export async function fetchPassageHtml(
     "include-first-verse-numbers": "true",
     "include-footnotes": "false",
     "include-headings": "false",
-    "include-short-copyright": "true",
+    "include-short-copyright": "false",
     "include-css-link": "false",
     "inline-styles": "false",
     "wrapping-div": "false",
