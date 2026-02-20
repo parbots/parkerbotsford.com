@@ -1,6 +1,5 @@
 export interface VerseRef {
   ref: string;
-  category?: string;
 }
 
 /**

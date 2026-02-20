@@ -9,7 +9,7 @@ import {
 } from "node:fs";
 import { join } from "node:path";
 import type { VerseData } from "../utils/esv-api";
-import { fetchPassageText, fetchPassageHtml } from "../utils/esv-api";
+import { fetchPassageText } from "../utils/esv-api";
 
 function extractVersesFromFrontmatter(content: string): string[] {
   const match = content.match(/verses:\s*\n((?:\s+-\s+.*\n?)*)/);
@@ -102,11 +102,8 @@ export default function esvVerses(): AstroIntegration {
 
         for (const ref of refs) {
           try {
-            const [text, html] = await Promise.all([
-              fetchPassageText(ref, apiKey),
-              fetchPassageHtml(ref, apiKey),
-            ]);
-            results[ref] = { reference: ref, text, html };
+            const text = await fetchPassageText(ref, apiKey);
+            results[ref] = { reference: ref, text };
             logger.info(`  ✓ ${ref}`);
           } catch (err) {
             logger.warn(

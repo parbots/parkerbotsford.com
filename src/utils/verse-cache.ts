@@ -26,10 +26,6 @@ export function getVerse(ref: string): VerseData | null {
   return c[ref] ?? null;
 }
 
-export function getAllVerses(): Record<string, VerseData> {
-  return loadCache();
-}
-
 export function getDailyVerse(dailyRefs: string[]): VerseData | null {
   if (dailyRefs.length === 0) return null;
 
