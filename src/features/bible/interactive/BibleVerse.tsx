@@ -55,6 +55,21 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
   const [open, setOpen] = useState(false);
   const triggerRef = useRef<HTMLButtonElement>(null);
   const popoverRef = useRef<HTMLDivElement>(null);
+  const closeTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
+
+  function scheduleClose() {
+    closeTimerRef.current = setTimeout(() => setOpen(false), 150);
+  }
+
+  function cancelClose() {
+    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+  }
+
+  useEffect(() => {
+    return () => {
+      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
+    };
+  }, []);
 
   useEffect(() => {
     if (!open) return;
@@ -74,11 +89,17 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
       if (e.key === "Escape") setOpen(false);
     }
 
+    function handleScroll() {
+      setOpen(false);
+    }
+
     document.addEventListener("mousedown", handleClickOutside);
     document.addEventListener("keydown", handleEscape);
+    document.addEventListener("scroll", handleScroll, true);
     return () => {
       document.removeEventListener("mousedown", handleClickOutside);
       document.removeEventListener("keydown", handleEscape);
+      document.removeEventListener("scroll", handleScroll, true);
     };
   }, [open]);
 
@@ -91,9 +112,14 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
 
     // Center below trigger
     const left = trigger.left + trigger.width / 2 - popover.offsetWidth / 2;
-    const top = trigger.bottom + 8;
+    let top = trigger.bottom + 8;
 
-    // Keep within viewport
+    // If popover overflows bottom of viewport, position above trigger
+    if (top + popover.offsetHeight > window.innerHeight - 8) {
+      top = trigger.top - popover.offsetHeight - 8;
+    }
+
+    // Keep within viewport horizontally
     const clampedLeft = Math.max(
       8,
       Math.min(left, window.innerWidth - popover.offsetWidth - 8),
@@ -108,8 +134,11 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
       <button
         ref={triggerRef}
         onClick={() => setOpen(!open)}
-        onMouseEnter={() => setOpen(true)}
-        onMouseLeave={() => setOpen(false)}
+        onMouseEnter={() => {
+          cancelClose();
+          setOpen(true);
+        }}
+        onMouseLeave={scheduleClose}
         className="cursor-pointer border-b border-dashed font-semibold"
         style={{
           color: "var(--accent)",
@@ -125,8 +154,8 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
         <div
           ref={popoverRef}
           role="tooltip"
-          onMouseEnter={() => setOpen(true)}
-          onMouseLeave={() => setOpen(false)}
+          onMouseEnter={cancelClose}
+          onMouseLeave={scheduleClose}
           className="fixed z-50 max-w-sm rounded-md border p-4 shadow-lg"
           style={{
             backgroundColor: "var(--bg-surface)",
