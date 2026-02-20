@@ -1,0 +1,22 @@
+---
+import { NAV_ITEMS } from '../../config';
+import ThemeToggle from './ThemeToggle';
+---
+
+<nav class="mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6">
+  <a href="/" class="font-mono text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]" style="font-family: var(--font-mono);">
+    Parker Botsford
+  </a>
+  <div class="flex items-center gap-6">
+    {NAV_ITEMS.map((item) => (
+      <a
+        href={item.href}
+        class="text-sm text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
+        style="font-family: var(--font-mono);"
+      >
+        {item.label}
+      </a>
+    ))}
+    <ThemeToggle client:load />
+  </div>
+</nav>
