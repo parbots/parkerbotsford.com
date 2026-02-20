@@ -1,6 +1,6 @@
 ---
-import Page from './Page.astro';
-import { formatDate } from '../utils/dates';
+import Page from "./Page.astro";
+import { formatDate } from "../utils/dates";
 
 interface Props {
   title: string;
@@ -15,7 +15,10 @@ const { title, date, type } = Astro.props;
   <article>
     <header class="mb-12">
       <h1 class="mb-3">{title}</h1>
-      <div class="flex items-center gap-3 text-sm text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      <div
+        class="flex items-center gap-3 text-sm text-[var(--fg-muted)]"
+        style="font-family: var(--font-mono);"
+      >
         <time>{formatDate(date)}</time>
         <span>&middot; {type}</span>
       </div>

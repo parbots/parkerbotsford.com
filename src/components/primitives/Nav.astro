@@ -1,25 +1,33 @@
 ---
-import { NAV_ITEMS } from '../../config';
-import ThemeToggle from './ThemeToggle';
-import MobileNav from './MobileNav';
+import { NAV_ITEMS } from "../../config";
+import ThemeToggle from "./ThemeToggle";
+import MobileNav from "./MobileNav";
 ---
 
-<nav class="relative z-50 mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6">
-  <a href="/" class="text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]" style="font-family: var(--font-mono);">
+<nav
+  class="relative z-50 mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6"
+>
+  <a
+    href="/"
+    class="text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]"
+    style="font-family: var(--font-mono);"
+  >
     Parker Botsford
   </a>
 
   {/* Desktop nav */}
   <div class="hidden items-center gap-6 md:flex">
-    {NAV_ITEMS.map((item) => (
-      <a
-        href={item.href}
-        class="text-sm text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
-        style="font-family: var(--font-mono);"
-      >
-        {item.label}
-      </a>
-    ))}
+    {
+      NAV_ITEMS.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
+          style="font-family: var(--font-mono);"
+        >
+          {item.label}
+        </a>
+      ))
+    }
     <ThemeToggle client:load />
   </div>
 

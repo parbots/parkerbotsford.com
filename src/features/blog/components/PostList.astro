@@ -1,19 +1,22 @@
 ---
-import { getCollection } from 'astro:content';
-import PostCard from './PostCard.astro';
+import { getCollection } from "astro:content";
+import PostCard from "./PostCard.astro";
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 ---
 
 <div class="divide-y divide-[var(--border)]">
-  {posts.map((post) => (
-    <PostCard
-      title={post.data.title}
-      description={post.data.description}
-      date={post.data.date}
-      href={`/blog/${post.id}`}
-      tags={post.data.tags}
-    />
-  ))}
+  {
+    posts.map((post) => (
+      <PostCard
+        title={post.data.title}
+        description={post.data.description}
+        date={post.data.date}
+        href={`/blog/${post.id}`}
+        tags={post.data.tags}
+      />
+    ))
+  }
 </div>

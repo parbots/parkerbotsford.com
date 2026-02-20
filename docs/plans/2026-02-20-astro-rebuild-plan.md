@@ -15,6 +15,7 @@
 Remove the existing Next.js source and initialize a fresh Astro project in-place.
 
 **Files:**
+
 - Delete: `src/` (entire Next.js source)
 - Delete: `next.config.js`, `.eslintrc.json`
 - Create: fresh Astro project files
@@ -63,6 +64,7 @@ git commit -m "chore: scaffold Astro project with React, MDX, Tailwind"
 Set up the feature-folder architecture. Empty directories with placeholder files.
 
 **Files:**
+
 - Create: all directories per design doc
 
 **Step 1: Create directory tree**
@@ -103,6 +105,7 @@ git commit -m "chore: create feature-folder directory structure"
 Create the CSS foundation: reset, theme variables, typography, motion.
 
 **Files:**
+
 - Create: `src/styles/global.css`
 
 **Step 1: Write global.css**
@@ -119,15 +122,15 @@ Create the CSS foundation: reset, theme variables, typography, motion.
 
 /* ===== Theme Variables ===== */
 :root {
-  --bg: #F5F0EB;
-  --bg-surface: #EDE7E0;
-  --fg: #2C2420;
-  --fg-muted: #8C7B6B;
-  --accent: #C4643A;
-  --border: #D9CFC4;
+  --bg: #f5f0eb;
+  --bg-surface: #ede7e0;
+  --fg: #2c2420;
+  --fg-muted: #8c7b6b;
+  --accent: #c4643a;
+  --border: #d9cfc4;
 
-  --font-body: 'Lora', Georgia, serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-body: "Lora", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
 
   --content-width: 680px;
   --spacing-xs: 0.5rem;
@@ -138,12 +141,12 @@ Create the CSS foundation: reset, theme variables, typography, motion.
 }
 
 .dark {
-  --bg: #1C1917;
+  --bg: #1c1917;
   --bg-surface: #262220;
-  --fg: #E7DDD4;
-  --fg-muted: #9C8B7B;
-  --accent: #D4845A;
-  --border: #3D3530;
+  --fg: #e7ddd4;
+  --fg-muted: #9c8b7b;
+  --accent: #d4845a;
+  --border: #3d3530;
 }
 
 /* ===== Base ===== */
@@ -160,18 +163,30 @@ body {
 }
 
 /* ===== Typography ===== */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   line-height: 1.3;
   font-weight: 600;
 }
 
-h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-h2 { font-size: clamp(1.375rem, 3vw, 1.875rem); }
-h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+h2 {
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+}
+h3 {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+}
 
-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
+p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
 
-code, pre {
+code,
+pre {
   font-family: var(--font-mono);
   font-size: 0.9em;
 }
@@ -193,8 +208,14 @@ a:hover {
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(8px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(8px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 ```
@@ -219,6 +240,7 @@ git commit -m "feat: add global styles with wabi-sabi theme variables"
 Create the centralized config and utility functions.
 
 **Files:**
+
 - Create: `src/config.ts`
 - Create: `src/utils/dates.ts`
 - Create: `src/utils/reading-time.ts`
@@ -228,17 +250,18 @@ Create the centralized config and utility functions.
 
 ```typescript
 export const SITE = {
-  title: 'Parker Botsford',
-  description: 'IT engineer and programmer with a passion for designing, building, and maintaining innovative technology solutions.',
-  url: 'https://parkerbotsford.com',
-  author: 'Parker Botsford',
+  title: "Parker Botsford",
+  description:
+    "IT engineer and programmer with a passion for designing, building, and maintaining innovative technology solutions.",
+  url: "https://parkerbotsford.com",
+  author: "Parker Botsford",
 } as const;
 
 export const NAV_ITEMS = [
-  { label: 'Blog', href: '/blog' },
-  { label: 'Writings', href: '/writings' },
-  { label: 'Projects', href: '/projects' },
-  { label: 'About', href: '/about' },
+  { label: "Blog", href: "/blog" },
+  { label: "Writings", href: "/writings" },
+  { label: "Projects", href: "/projects" },
+  { label: "About", href: "/about" },
 ] as const;
 ```
 
@@ -246,10 +269,10 @@ export const NAV_ITEMS = [
 
 ```typescript
 export function formatDate(date: Date): string {
-  return date.toLocaleDateString('en-US', {
-    year: 'numeric',
-    month: 'long',
-    day: 'numeric',
+  return date.toLocaleDateString("en-US", {
+    year: "numeric",
+    month: "long",
+    day: "numeric",
   });
 }
 ```
@@ -293,6 +316,7 @@ git commit -m "feat: add site config, date/reading-time utils, types"
 Create the layout chain: Base.astro (HTML shell) and Page.astro (Nav + Footer wrapper).
 
 **Files:**
+
 - Create: `src/layouts/Base.astro`
 - Create: `src/layouts/Page.astro`
 
@@ -302,15 +326,15 @@ This is the HTML shell. Loads fonts, global CSS, view transitions, and injects a
 
 ```astro
 ---
-import { ClientRouter } from 'astro:transitions';
-import '../styles/global.css';
+import { ClientRouter } from "astro:transitions";
+import "../styles/global.css";
 
 interface Props {
   title: string;
   description?: string;
 }
 
-const { title, description = '' } = Astro.props;
+const { title, description = "" } = Astro.props;
 ---
 
 <!doctype html>
@@ -332,9 +356,12 @@ const { title, description = '' } = Astro.props;
     <title>{title}</title>
     <ClientRouter />
     <script is:inline>
-      const theme = localStorage.getItem('theme') ??
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', theme === 'dark');
+      const theme =
+        localStorage.getItem("theme") ??
+        (window.matchMedia("(prefers-color-scheme: dark)").matches
+          ? "dark"
+          : "light");
+      document.documentElement.classList.toggle("dark", theme === "dark");
     </script>
   </head>
   <body>
@@ -349,9 +376,9 @@ Wraps content with Nav and Footer. Used by all pages except the homepage (which 
 
 ```astro
 ---
-import Base from './Base.astro';
-import Nav from '../components/primitives/Nav.astro';
-import Footer from '../components/primitives/Footer.astro';
+import Base from "./Base.astro";
+import Nav from "../components/primitives/Nav.astro";
+import Footer from "../components/primitives/Footer.astro";
 
 interface Props {
   title: string;
@@ -364,7 +391,9 @@ const { title, description } = Astro.props;
 <Base title={title} description={description}>
   <div class="flex min-h-svh flex-col">
     <Nav />
-    <main class="mx-auto w-full max-w-[var(--content-width)] flex-1 px-6 py-12 fade-in">
+    <main
+      class="fade-in mx-auto w-full max-w-[var(--content-width)] flex-1 px-6 py-12"
+    >
       <slot />
     </main>
     <Footer />
@@ -394,6 +423,7 @@ git commit -m "feat: add Base and Page layouts with fonts, theme, view transitio
 Build the shared UI atoms: Nav, Footer, Link, Button, ThemeToggle.
 
 **Files:**
+
 - Create: `src/components/primitives/Nav.astro`
 - Create: `src/components/primitives/Footer.astro`
 - Create: `src/components/primitives/Link.astro`
@@ -403,24 +433,32 @@ Build the shared UI atoms: Nav, Footer, Link, Button, ThemeToggle.
 
 ```astro
 ---
-import { NAV_ITEMS } from '../../config';
-import ThemeToggle from './ThemeToggle';
+import { NAV_ITEMS } from "../../config";
+import ThemeToggle from "./ThemeToggle";
 ---
 
-<nav class="mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6">
-  <a href="/" class="font-mono text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]" style="font-family: var(--font-mono);">
+<nav
+  class="mx-auto flex w-full max-w-[var(--content-width)] items-center justify-between px-6 py-6"
+>
+  <a
+    href="/"
+    class="font-mono text-sm tracking-wide text-[var(--fg)] no-underline hover:text-[var(--accent)]"
+    style="font-family: var(--font-mono);"
+  >
     Parker Botsford
   </a>
   <div class="flex items-center gap-6">
-    {NAV_ITEMS.map((item) => (
-      <a
-        href={item.href}
-        class="text-sm text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
-        style="font-family: var(--font-mono);"
-      >
-        {item.label}
-      </a>
-    ))}
+    {
+      NAV_ITEMS.map((item) => (
+        <a
+          href={item.href}
+          class="text-sm text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
+          style="font-family: var(--font-mono);"
+        >
+          {item.label}
+        </a>
+      ))
+    }
     <ThemeToggle client:load />
   </div>
 </nav>
@@ -435,7 +473,10 @@ const year = new Date().getFullYear();
 
 <footer class="mx-auto w-full max-w-[var(--content-width)] px-6 py-8">
   <div class="border-t border-[var(--border)] pt-6">
-    <p class="text-sm text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+    <p
+      class="text-sm text-[var(--fg-muted)]"
+      style="font-family: var(--font-mono);"
+    >
       &copy; {year} Parker Botsford
     </p>
   </div>
@@ -454,8 +495,8 @@ interface Props {
   class?: string;
 }
 
-const { href, external = false, class: className = '' } = Astro.props;
-const attrs = external ? { target: '_blank', rel: 'noreferrer' } : {};
+const { href, external = false, class: className = "" } = Astro.props;
+const attrs = external ? { target: "_blank", rel: "noreferrer" } : {};
 ---
 
 <a href={href} class={className} {...attrs}>
@@ -468,30 +509,30 @@ const attrs = external ? { target: '_blank', rel: 'noreferrer' } : {};
 React island for dark mode toggle.
 
 ```tsx
-import { useState, useEffect } from 'react';
+import { useState, useEffect } from "react";
 
 export default function ThemeToggle() {
   const [dark, setDark] = useState(false);
 
   useEffect(() => {
-    setDark(document.documentElement.classList.contains('dark'));
+    setDark(document.documentElement.classList.contains("dark"));
   }, []);
 
   function toggle() {
     const next = !dark;
     setDark(next);
-    document.documentElement.classList.toggle('dark', next);
-    localStorage.setItem('theme', next ? 'dark' : 'light');
+    document.documentElement.classList.toggle("dark", next);
+    localStorage.setItem("theme", next ? "dark" : "light");
   }
 
   return (
     <button
       onClick={toggle}
-      aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      style={{ fontFamily: 'var(--font-mono)' }}
-      className="text-sm text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors duration-200"
+      aria-label={dark ? "Switch to light mode" : "Switch to dark mode"}
+      style={{ fontFamily: "var(--font-mono)" }}
+      className="text-sm text-[var(--fg-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
     >
-      {dark ? 'light' : 'dark'}
+      {dark ? "light" : "dark"}
     </button>
   );
 }
@@ -517,17 +558,18 @@ git commit -m "feat: add primitive components (Nav, Footer, Link, ThemeToggle)"
 Define the three content collections with Zod schemas.
 
 **Files:**
+
 - Create: `src/content.config.ts`
 
 **Step 1: Write content.config.ts**
 
 ```typescript
-import { defineCollection } from 'astro:content';
-import { glob } from 'astro/loaders';
-import { z } from 'astro/zod';
+import { defineCollection } from "astro:content";
+import { glob } from "astro/loaders";
+import { z } from "astro/zod";
 
 const blog = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/data/blog' }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/blog" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -538,17 +580,17 @@ const blog = defineCollection({
 });
 
 const writings = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/data/writings' }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/writings" }),
   schema: z.object({
     title: z.string(),
     date: z.coerce.date(),
-    type: z.enum(['poem', 'story', 'essay']),
+    type: z.enum(["poem", "story", "essay"]),
     draft: z.boolean().default(false),
   }),
 });
 
 const projects = defineCollection({
-  loader: glob({ pattern: '**/*.mdx', base: './src/data/projects' }),
+  loader: glob({ pattern: "**/*.mdx", base: "./src/data/projects" }),
   schema: z.object({
     title: z.string(),
     description: z.string(),
@@ -599,6 +641,7 @@ git commit -m "feat: add content collection schemas and sample blog post"
 Build the homepage with Hero and RecentPosts feature components.
 
 **Files:**
+
 - Create: `src/features/home/Hero.astro`
 - Create: `src/features/home/RecentPosts.astro`
 - Modify: `src/pages/index.astro`
@@ -607,7 +650,7 @@ Build the homepage with Hero and RecentPosts feature components.
 
 ```astro
 ---
-import { SITE } from '../../config';
+import { SITE } from "../../config";
 ---
 
 <section class="py-24 md:py-32">
@@ -626,51 +669,60 @@ import { SITE } from '../../config';
 
 ```astro
 ---
-import { getCollection } from 'astro:content';
-import { formatDate } from '../../utils/dates';
+import { getCollection } from "astro:content";
+import { formatDate } from "../../utils/dates";
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
+const posts = (await getCollection("blog", ({ data }) => !data.draft))
   .sort((a, b) => b.data.date.getTime() - a.data.date.getTime())
   .slice(0, 3);
 ---
 
-{posts.length > 0 && (
-  <section class="py-12">
-    <h2 class="mb-6 text-lg" style="font-family: var(--font-mono);">Recent posts</h2>
-    <ul class="space-y-4">
-      {posts.map((post) => (
-        <li>
-          <a href={`/blog/${post.id}`} class="group block">
-            <span class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
-              {post.data.title}
-            </span>
-            <span class="ml-3 text-sm text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
-              {formatDate(post.data.date)}
-            </span>
-          </a>
-        </li>
-      ))}
-    </ul>
-  </section>
-)}
+{
+  posts.length > 0 && (
+    <section class="py-12">
+      <h2 class="mb-6 text-lg" style="font-family: var(--font-mono);">
+        Recent posts
+      </h2>
+      <ul class="space-y-4">
+        {posts.map((post) => (
+          <li>
+            <a href={`/blog/${post.id}`} class="group block">
+              <span class="text-[var(--fg)] transition-colors duration-200 group-hover:text-[var(--accent)]">
+                {post.data.title}
+              </span>
+              <span
+                class="ml-3 text-sm text-[var(--fg-muted)]"
+                style="font-family: var(--font-mono);"
+              >
+                {formatDate(post.data.date)}
+              </span>
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
+  )
+}
 ```
 
 **Step 3: Write index.astro**
 
 ```astro
 ---
-import Base from '../layouts/Base.astro';
-import Nav from '../components/primitives/Nav.astro';
-import Footer from '../components/primitives/Footer.astro';
-import Hero from '../features/home/Hero.astro';
-import RecentPosts from '../features/home/RecentPosts.astro';
-import { SITE } from '../config';
+import Base from "../layouts/Base.astro";
+import Nav from "../components/primitives/Nav.astro";
+import Footer from "../components/primitives/Footer.astro";
+import Hero from "../features/home/Hero.astro";
+import RecentPosts from "../features/home/RecentPosts.astro";
+import { SITE } from "../config";
 ---
 
 <Base title={SITE.title} description={SITE.description}>
   <div class="flex min-h-svh flex-col">
     <Nav />
-    <main class="mx-auto w-full max-w-[var(--content-width)] flex-1 px-6 fade-in">
+    <main
+      class="fade-in mx-auto w-full max-w-[var(--content-width)] flex-1 px-6"
+    >
       <Hero />
       <RecentPosts />
     </main>
@@ -702,6 +754,7 @@ git commit -m "feat: add homepage with Hero and RecentPosts"
 Build the blog list page, PostCard, PostList, and dynamic slug page.
 
 **Files:**
+
 - Create: `src/features/blog/components/PostCard.astro`
 - Create: `src/features/blog/components/PostList.astro`
 - Create: `src/layouts/Post.astro`
@@ -712,7 +765,7 @@ Build the blog list page, PostCard, PostList, and dynamic slug page.
 
 ```astro
 ---
-import { formatDate } from '../../../utils/dates';
+import { formatDate } from "../../../utils/dates";
 
 interface Props {
   title: string;
@@ -727,15 +780,18 @@ const { title, description, date, href, tags = [] } = Astro.props;
 
 <article class="group py-4">
   <a href={href} class="block no-underline">
-    <h3 class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
+    <h3
+      class="text-[var(--fg)] transition-colors duration-200 group-hover:text-[var(--accent)]"
+    >
       {title}
     </h3>
     <p class="mt-1 text-sm text-[var(--fg-muted)]">{description}</p>
-    <div class="mt-2 flex items-center gap-3 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+    <div
+      class="mt-2 flex items-center gap-3 text-xs text-[var(--fg-muted)]"
+      style="font-family: var(--font-mono);"
+    >
       <time>{formatDate(date)}</time>
-      {tags.length > 0 && (
-        <span>{tags.join(', ')}</span>
-      )}
+      {tags.length > 0 && <span>{tags.join(", ")}</span>}
     </div>
   </a>
 </article>
@@ -745,23 +801,26 @@ const { title, description, date, href, tags = [] } = Astro.props;
 
 ```astro
 ---
-import { getCollection } from 'astro:content';
-import PostCard from './PostCard.astro';
+import { getCollection } from "astro:content";
+import PostCard from "./PostCard.astro";
 
-const posts = (await getCollection('blog', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 ---
 
 <div class="divide-y divide-[var(--border)]">
-  {posts.map((post) => (
-    <PostCard
-      title={post.data.title}
-      description={post.data.description}
-      date={post.data.date}
-      href={`/blog/${post.id}`}
-      tags={post.data.tags}
-    />
-  ))}
+  {
+    posts.map((post) => (
+      <PostCard
+        title={post.data.title}
+        description={post.data.description}
+        date={post.data.date}
+        href={`/blog/${post.id}`}
+        tags={post.data.tags}
+      />
+    ))
+  }
 </div>
 ```
 
@@ -769,8 +828,8 @@ const posts = (await getCollection('blog', ({ data }) => !data.draft))
 
 ```astro
 ---
-import Page from './Page.astro';
-import { formatDate } from '../utils/dates';
+import Page from "./Page.astro";
+import { formatDate } from "../utils/dates";
 
 interface Props {
   title: string;
@@ -786,11 +845,12 @@ const { title, description, date, tags = [] } = Astro.props;
   <article>
     <header class="mb-12">
       <h1 class="mb-3">{title}</h1>
-      <div class="flex items-center gap-3 text-sm text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      <div
+        class="flex items-center gap-3 text-sm text-[var(--fg-muted)]"
+        style="font-family: var(--font-mono);"
+      >
         <time>{formatDate(date)}</time>
-        {tags.length > 0 && (
-          <span>&middot; {tags.join(', ')}</span>
-        )}
+        {tags.length > 0 && <span>&middot; {tags.join(", ")}</span>}
       </div>
     </header>
     <div class="prose">
@@ -804,8 +864,8 @@ const { title, description, date, tags = [] } = Astro.props;
 
 ```astro
 ---
-import Page from '../../layouts/Page.astro';
-import PostList from '../../features/blog/components/PostList.astro';
+import Page from "../../layouts/Page.astro";
+import PostList from "../../features/blog/components/PostList.astro";
 ---
 
 <Page title="Blog" description="Posts on code and other things.">
@@ -818,11 +878,11 @@ import PostList from '../../features/blog/components/PostList.astro';
 
 ```astro
 ---
-import { getCollection, render } from 'astro:content';
-import Post from '../../layouts/Post.astro';
+import { getCollection, render } from "astro:content";
+import Post from "../../layouts/Post.astro";
 
 export async function getStaticPaths() {
-  const posts = await getCollection('blog');
+  const posts = await getCollection("blog");
   return posts.map((post) => ({
     params: { slug: post.id },
     props: { post },
@@ -866,6 +926,7 @@ git commit -m "feat: add blog feature with list page and dynamic post pages"
 Build the writings section — mirrors blog structure but with its own layout and components.
 
 **Files:**
+
 - Create: `src/features/writings/components/WritingCard.astro`
 - Create: `src/features/writings/components/WritingList.astro`
 - Create: `src/layouts/Writing.astro`
@@ -877,7 +938,7 @@ Build the writings section — mirrors blog structure but with its own layout an
 
 ```astro
 ---
-import { formatDate } from '../../../utils/dates';
+import { formatDate } from "../../../utils/dates";
 
 interface Props {
   title: string;
@@ -892,14 +953,22 @@ const { title, date, type, href } = Astro.props;
 <article class="group py-4">
   <a href={href} class="block no-underline">
     <div class="flex items-baseline justify-between gap-4">
-      <h3 class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
+      <h3
+        class="text-[var(--fg)] transition-colors duration-200 group-hover:text-[var(--accent)]"
+      >
         {title}
       </h3>
-      <span class="shrink-0 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      <span
+        class="shrink-0 text-xs text-[var(--fg-muted)]"
+        style="font-family: var(--font-mono);"
+      >
         {type}
       </span>
     </div>
-    <time class="mt-1 block text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+    <time
+      class="mt-1 block text-xs text-[var(--fg-muted)]"
+      style="font-family: var(--font-mono);"
+    >
       {formatDate(date)}
     </time>
   </a>
@@ -910,22 +979,25 @@ const { title, date, type, href } = Astro.props;
 
 ```astro
 ---
-import { getCollection } from 'astro:content';
-import WritingCard from './WritingCard.astro';
+import { getCollection } from "astro:content";
+import WritingCard from "./WritingCard.astro";
 
-const writings = (await getCollection('writings', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const writings = (
+  await getCollection("writings", ({ data }) => !data.draft)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <div class="divide-y divide-[var(--border)]">
-  {writings.map((writing) => (
-    <WritingCard
-      title={writing.data.title}
-      date={writing.data.date}
-      type={writing.data.type}
-      href={`/writings/${writing.id}`}
-    />
-  ))}
+  {
+    writings.map((writing) => (
+      <WritingCard
+        title={writing.data.title}
+        date={writing.data.date}
+        type={writing.data.type}
+        href={`/writings/${writing.id}`}
+      />
+    ))
+  }
 </div>
 ```
 
@@ -933,8 +1005,8 @@ const writings = (await getCollection('writings', ({ data }) => !data.draft))
 
 ```astro
 ---
-import Page from './Page.astro';
-import { formatDate } from '../utils/dates';
+import Page from "./Page.astro";
+import { formatDate } from "../utils/dates";
 
 interface Props {
   title: string;
@@ -949,7 +1021,10 @@ const { title, date, type } = Astro.props;
   <article>
     <header class="mb-12">
       <h1 class="mb-3">{title}</h1>
-      <div class="flex items-center gap-3 text-sm text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      <div
+        class="flex items-center gap-3 text-sm text-[var(--fg-muted)]"
+        style="font-family: var(--font-mono);"
+      >
         <time>{formatDate(date)}</time>
         <span>&middot; {type}</span>
       </div>
@@ -965,8 +1040,8 @@ const { title, date, type } = Astro.props;
 
 ```astro
 ---
-import Page from '../../layouts/Page.astro';
-import WritingList from '../../features/writings/components/WritingList.astro';
+import Page from "../../layouts/Page.astro";
+import WritingList from "../../features/writings/components/WritingList.astro";
 ---
 
 <Page title="Writings" description="Poems, stories, and essays.">
@@ -979,11 +1054,11 @@ import WritingList from '../../features/writings/components/WritingList.astro';
 
 ```astro
 ---
-import { getCollection, render } from 'astro:content';
-import Writing from '../../layouts/Writing.astro';
+import { getCollection, render } from "astro:content";
+import Writing from "../../layouts/Writing.astro";
 
 export async function getStaticPaths() {
-  const writings = await getCollection('writings');
+  const writings = await getCollection("writings");
   return writings.map((writing) => ({
     params: { slug: writing.id },
     props: { writing },
@@ -1041,6 +1116,7 @@ git commit -m "feat: add writings feature with list page and dynamic detail page
 Build the projects section with its own layout and components.
 
 **Files:**
+
 - Create: `src/features/projects/components/ProjectCard.astro`
 - Create: `src/features/projects/components/ProjectList.astro`
 - Create: `src/layouts/Project.astro`
@@ -1066,23 +1142,33 @@ const { title, description, status, tech, href } = Astro.props;
 <article class="group py-4">
   <a href={href} class="block no-underline">
     <div class="flex items-baseline justify-between gap-4">
-      <h3 class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
+      <h3
+        class="text-[var(--fg)] transition-colors duration-200 group-hover:text-[var(--accent)]"
+      >
         {title}
       </h3>
-      <span class="shrink-0 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      <span
+        class="shrink-0 text-xs text-[var(--fg-muted)]"
+        style="font-family: var(--font-mono);"
+      >
         {status}
       </span>
     </div>
     <p class="mt-1 text-sm text-[var(--fg-muted)]">{description}</p>
-    {tech.length > 0 && (
-      <div class="mt-2 flex flex-wrap gap-2">
-        {tech.map((t) => (
-          <span class="rounded bg-[var(--bg-surface)] px-2 py-0.5 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
-            {t}
-          </span>
-        ))}
-      </div>
-    )}
+    {
+      tech.length > 0 && (
+        <div class="mt-2 flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <span
+              class="rounded bg-[var(--bg-surface)] px-2 py-0.5 text-xs text-[var(--fg-muted)]"
+              style="font-family: var(--font-mono);"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      )
+    }
   </a>
 </article>
 ```
@@ -1091,23 +1177,26 @@ const { title, description, status, tech, href } = Astro.props;
 
 ```astro
 ---
-import { getCollection } from 'astro:content';
-import ProjectCard from './ProjectCard.astro';
+import { getCollection } from "astro:content";
+import ProjectCard from "./ProjectCard.astro";
 
-const projects = (await getCollection('projects'))
-  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+const projects = (await getCollection("projects")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
 ---
 
 <div class="divide-y divide-[var(--border)]">
-  {projects.map((project) => (
-    <ProjectCard
-      title={project.data.title}
-      description={project.data.description}
-      status={project.data.status}
-      tech={project.data.tech}
-      href={`/projects/${project.id}`}
-    />
-  ))}
+  {
+    projects.map((project) => (
+      <ProjectCard
+        title={project.data.title}
+        description={project.data.description}
+        status={project.data.status}
+        tech={project.data.tech}
+        href={`/projects/${project.id}`}
+      />
+    ))
+  }
 </div>
 ```
 
@@ -1115,7 +1204,7 @@ const projects = (await getCollection('projects'))
 
 ```astro
 ---
-import Page from './Page.astro';
+import Page from "./Page.astro";
 
 interface Props {
   title: string;
@@ -1134,20 +1223,40 @@ const { title, description, status, tech, url, repo } = Astro.props;
     <header class="mb-12">
       <h1 class="mb-3">{title}</h1>
       <p class="text-[var(--fg-muted)]">{description}</p>
-      <div class="mt-4 flex flex-wrap items-center gap-4 text-sm" style="font-family: var(--font-mono);">
+      <div
+        class="mt-4 flex flex-wrap items-center gap-4 text-sm"
+        style="font-family: var(--font-mono);"
+      >
         <span class="text-[var(--fg-muted)]">{status}</span>
-        {url && <a href={url} target="_blank" rel="noreferrer">visit</a>}
-        {repo && <a href={repo} target="_blank" rel="noreferrer">source</a>}
+        {
+          url && (
+            <a href={url} target="_blank" rel="noreferrer">
+              visit
+            </a>
+          )
+        }
+        {
+          repo && (
+            <a href={repo} target="_blank" rel="noreferrer">
+              source
+            </a>
+          )
+        }
       </div>
-      {tech.length > 0 && (
-        <div class="mt-3 flex flex-wrap gap-2">
-          {tech.map((t) => (
-            <span class="rounded bg-[var(--bg-surface)] px-2 py-0.5 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
-              {t}
-            </span>
-          ))}
-        </div>
-      )}
+      {
+        tech.length > 0 && (
+          <div class="mt-3 flex flex-wrap gap-2">
+            {tech.map((t) => (
+              <span
+                class="rounded bg-[var(--bg-surface)] px-2 py-0.5 text-xs text-[var(--fg-muted)]"
+                style="font-family: var(--font-mono);"
+              >
+                {t}
+              </span>
+            ))}
+          </div>
+        )
+      }
     </header>
     <div class="prose">
       <slot />
@@ -1160,8 +1269,8 @@ const { title, description, status, tech, url, repo } = Astro.props;
 
 ```astro
 ---
-import Page from '../../layouts/Page.astro';
-import ProjectList from '../../features/projects/components/ProjectList.astro';
+import Page from "../../layouts/Page.astro";
+import ProjectList from "../../features/projects/components/ProjectList.astro";
 ---
 
 <Page title="Projects" description="Things I'm building.">
@@ -1174,11 +1283,11 @@ import ProjectList from '../../features/projects/components/ProjectList.astro';
 
 ```astro
 ---
-import { getCollection, render } from 'astro:content';
-import Project from '../../layouts/Project.astro';
+import { getCollection, render } from "astro:content";
+import Project from "../../layouts/Project.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection("projects");
   return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },
@@ -1241,13 +1350,14 @@ git commit -m "feat: add projects feature with list page and dynamic detail page
 Build the about page.
 
 **Files:**
+
 - Create: `src/pages/about.astro`
 
 **Step 1: Write about.astro**
 
 ```astro
 ---
-import Page from '../layouts/Page.astro';
+import Page from "../layouts/Page.astro";
 ---
 
 <Page title="About" description="About Parker Botsford.">
@@ -1255,10 +1365,15 @@ import Page from '../layouts/Page.astro';
   <div class="space-y-4 text-[var(--fg-muted)]">
     <p>I'm Parker Botsford, an IT engineer and programmer.</p>
     <p>I currently live near the Atlanta area.</p>
-    <p>I enjoy building websites and tools that help software developers and IT technicians work smarter.</p>
+    <p>
+      I enjoy building websites and tools that help software developers and IT
+      technicians work smarter.
+    </p>
     <p>I love working with and maintaining open source projects!</p>
     <p>
-      For more, check out <a href="/projects">my projects</a> or <a href="/blog">read my blog</a>.
+      For more, check out <a href="/projects">my projects</a> or <a href="/blog"
+        >read my blog</a
+      >.
     </p>
   </div>
 </Page>
@@ -1287,6 +1402,7 @@ git commit -m "feat: add about page"
 Add styling for rendered MDX content (headings, lists, code blocks, etc. inside `.prose`).
 
 **Files:**
+
 - Modify: `src/styles/global.css`
 
 **Step 1: Add prose styles to global.css**
@@ -1309,7 +1425,8 @@ Append to the end of `src/styles/global.css`:
   margin-bottom: 1.25rem;
 }
 
-.prose ul, .prose ol {
+.prose ul,
+.prose ol {
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
@@ -1373,6 +1490,7 @@ git commit -m "feat: add prose styles for MDX content rendering"
 Add one interactive component per feature to establish the pattern.
 
 **Files:**
+
 - Create: `src/features/blog/interactive/Callout.astro`
 - Create: `src/features/writings/interactive/PoemLayout.astro`
 - Create: `src/features/projects/interactive/TechStack.astro`
@@ -1382,14 +1500,14 @@ Add one interactive component per feature to establish the pattern.
 ```astro
 ---
 interface Props {
-  type?: 'info' | 'warning' | 'tip';
+  type?: "info" | "warning" | "tip";
 }
 
-const { type = 'info' } = Astro.props;
+const { type = "info" } = Astro.props;
 const borderColor = {
-  info: 'var(--accent)',
-  warning: '#D97706',
-  tip: '#059669',
+  info: "var(--accent)",
+  warning: "#D97706",
+  tip: "#059669",
 }[type];
 ---
 
@@ -1412,7 +1530,7 @@ interface Props {
 const { centered = false } = Astro.props;
 ---
 
-<div class:list={['my-8 leading-loose italic', { 'text-center': centered }]}>
+<div class:list={["my-8 italic leading-loose", { "text-center": centered }]}>
   <slot />
 </div>
 ```
@@ -1429,12 +1547,16 @@ const { items } = Astro.props;
 ---
 
 <div class="my-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
-  {items.map((item) => (
-    <div class="rounded border border-[var(--border)] bg-[var(--bg-surface)] p-3">
-      <span class="block text-sm font-semibold text-[var(--fg)]">{item.name}</span>
-      <span class="text-xs text-[var(--fg-muted)]">{item.role}</span>
-    </div>
-  ))}
+  {
+    items.map((item) => (
+      <div class="rounded border border-[var(--border)] bg-[var(--bg-surface)] p-3">
+        <span class="block text-sm font-semibold text-[var(--fg)]">
+          {item.name}
+        </span>
+        <span class="text-xs text-[var(--fg-muted)]">{item.role}</span>
+      </div>
+    ))
+  }
 </div>
 ```
 
@@ -1458,6 +1580,7 @@ git commit -m "feat: add starter interactive components (Callout, PoemLayout, Te
 Update CLAUDE.md to reflect the new Astro project.
 
 **Files:**
+
 - Modify: `CLAUDE.md`
 
 **Step 1: Rewrite CLAUDE.md for the Astro project**
@@ -1493,6 +1616,7 @@ npm run dev
 ```
 
 Visit each route and verify:
+
 - `/` — homepage with hero + recent posts
 - `/about` — about page
 - `/blog` — blog list with sample post

@@ -1,13 +1,13 @@
 ---
 interface Props {
-  type?: 'info' | 'warning' | 'tip';
+  type?: "info" | "warning" | "tip";
 }
 
-const { type = 'info' } = Astro.props;
+const { type = "info" } = Astro.props;
 const borderColor = {
-  info: 'var(--accent)',
-  warning: '#D97706',
-  tip: '#059669',
+  info: "var(--accent)",
+  warning: "#D97706",
+  tip: "#059669",
 }[type];
 ---
 

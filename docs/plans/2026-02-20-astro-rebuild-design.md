@@ -90,12 +90,15 @@ src/
 All content files are `.mdx` for interactive component support.
 
 ### Blog
+
 - title, description, date, tags[], draft
 
 ### Writings
+
 - title, date, type (poem|story|essay), draft
 
 ### Projects
+
 - title, description, url?, repo?, status, tech[]
 
 Drafts filtered in production builds.
@@ -127,14 +130,14 @@ Base.astro → Page.astro → Post.astro      (blog)
 
 ### Color Palette
 
-| Token        | Light              | Dark                |
-|--------------|--------------------|---------------------|
-| --bg         | #F5F0EB (cream)    | #1C1917 (chocolate) |
-| --bg-surface | #EDE7E0 (stone)    | #262220 (charcoal)  |
-| --fg         | #2C2420 (espresso) | #E7DDD4 (parchment) |
-| --fg-muted   | #8C7B6B (warm grey)| #9C8B7B (dusty)     |
-| --accent     | #C4643A (terracotta)| #D4845A (lt terra)  |
-| --border     | #D9CFC4 (sand)     | #3D3530 (dk sand)   |
+| Token        | Light                | Dark                |
+| ------------ | -------------------- | ------------------- |
+| --bg         | #F5F0EB (cream)      | #1C1917 (chocolate) |
+| --bg-surface | #EDE7E0 (stone)      | #262220 (charcoal)  |
+| --fg         | #2C2420 (espresso)   | #E7DDD4 (parchment) |
+| --fg-muted   | #8C7B6B (warm grey)  | #9C8B7B (dusty)     |
+| --accent     | #C4643A (terracotta) | #D4845A (lt terra)  |
+| --border     | #D9CFC4 (sand)       | #3D3530 (dk sand)   |
 
 ### Typography
 

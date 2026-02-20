@@ -1,9 +1,9 @@
 ---
-import { getCollection, render } from 'astro:content';
-import Project from '../../layouts/Project.astro';
+import { getCollection, render } from "astro:content";
+import Project from "../../layouts/Project.astro";
 
 export async function getStaticPaths() {
-  const projects = await getCollection('projects');
+  const projects = await getCollection("projects");
   return projects.map((project) => ({
     params: { slug: project.id },
     props: { project },

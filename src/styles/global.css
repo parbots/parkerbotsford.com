@@ -9,15 +9,15 @@
 
 /* ===== Theme Variables ===== */
 :root {
-  --bg: #F5F0EB;
-  --bg-surface: #EDE7E0;
-  --fg: #2C2420;
-  --fg-muted: #8C7B6B;
-  --accent: #C4643A;
-  --border: #D9CFC4;
+  --bg: #f5f0eb;
+  --bg-surface: #ede7e0;
+  --fg: #2c2420;
+  --fg-muted: #8c7b6b;
+  --accent: #c4643a;
+  --border: #d9cfc4;
 
-  --font-body: 'Lora', Georgia, serif;
-  --font-mono: 'JetBrains Mono', 'Courier New', monospace;
+  --font-body: "Lora", Georgia, serif;
+  --font-mono: "JetBrains Mono", "Courier New", monospace;
 
   --content-width: 680px;
   --spacing-xs: 0.5rem;
@@ -28,12 +28,12 @@
 }
 
 .dark {
-  --bg: #1C1917;
+  --bg: #1c1917;
   --bg-surface: #262220;
-  --fg: #E7DDD4;
-  --fg-muted: #9C8B7B;
-  --accent: #D4845A;
-  --border: #3D3530;
+  --fg: #e7ddd4;
+  --fg-muted: #9c8b7b;
+  --accent: #d4845a;
+  --border: #3d3530;
 }
 
 /* ===== Base ===== */
@@ -86,27 +86,44 @@ body {
 /* ===== Theme Transitions ===== */
 @media (prefers-reduced-motion: no-preference) {
   html {
-    transition: background-color 500ms ease, color 500ms ease;
+    transition:
+      background-color 500ms ease,
+      color 500ms ease;
   }
 
   html * {
-    transition: background-color 500ms ease, color 500ms ease, border-color 500ms ease;
+    transition:
+      background-color 500ms ease,
+      color 500ms ease,
+      border-color 500ms ease;
   }
 }
 
 /* ===== Typography ===== */
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   line-height: 1.3;
   font-weight: 600;
 }
 
-h1 { font-size: clamp(1.75rem, 4vw, 2.5rem); }
-h2 { font-size: clamp(1.375rem, 3vw, 1.875rem); }
-h3 { font-size: clamp(1.125rem, 2.5vw, 1.5rem); }
+h1 {
+  font-size: clamp(1.75rem, 4vw, 2.5rem);
+}
+h2 {
+  font-size: clamp(1.375rem, 3vw, 1.875rem);
+}
+h3 {
+  font-size: clamp(1.125rem, 2.5vw, 1.5rem);
+}
 
-p { font-size: clamp(1rem, 1.5vw, 1.125rem); }
+p {
+  font-size: clamp(1rem, 1.5vw, 1.125rem);
+}
 
-code, pre {
+code,
+pre {
   font-family: var(--font-mono);
   font-size: 0.9em;
 }
@@ -128,8 +145,14 @@ a:hover {
   }
 
   @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(12px); }
-    to { opacity: 1; transform: translateY(0); }
+    from {
+      opacity: 0;
+      transform: translateY(12px);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
   }
 }
 
@@ -148,7 +171,8 @@ a:hover {
   margin-bottom: 1.25rem;
 }
 
-.prose ul, .prose ol {
+.prose ul,
+.prose ol {
   margin-bottom: 1.25rem;
   padding-left: 1.5rem;
 }
@@ -190,22 +214,145 @@ a:hover {
   margin: 2rem 0;
 }
 
-/* ===== Shiki dual theme ===== */
-/* Light theme: uses Shiki's inline color/background-color directly */
-/* Dark theme: override with --shiki-dark CSS variables */
-/* Note: Astro uses .astro-code, not .shiki */
-html.dark .astro-code,
-html.dark .astro-code span {
-  color: var(--shiki-dark) !important;
-  background-color: var(--shiki-dark-bg) !important;
-  font-style: var(--shiki-dark-font-style) !important;
-  font-weight: var(--shiki-dark-font-weight) !important;
-  text-decoration: var(--shiki-dark-text-decoration) !important;
+/* ===== Code Block Theme (Shiki css-variables) ===== */
+/* Wabi-sabi palette mapped to Shiki CSS variable tokens */
+:root {
+  --astro-code-foreground: var(--fg);
+  --astro-code-background: var(--bg-surface);
+  --astro-code-token-constant: #9a5523;
+  --astro-code-token-string: #6e7b3d;
+  --astro-code-token-comment: var(--fg-muted);
+  --astro-code-token-keyword: #a0522d;
+  --astro-code-token-parameter: #7b5b3a;
+  --astro-code-token-function: #8b5a2b;
+  --astro-code-token-string-expression: #6e7b3d;
+  --astro-code-token-punctuation: var(--fg-muted);
+  --astro-code-token-link: var(--accent);
+}
+
+.dark {
+  --astro-code-token-constant: #d4a574;
+  --astro-code-token-string: #a3b97c;
+  --astro-code-token-keyword: #d4845a;
+  --astro-code-token-parameter: #c4a882;
+  --astro-code-token-function: #c9956b;
+  --astro-code-token-string-expression: #a3b97c;
+  --astro-code-token-punctuation: var(--fg-muted);
+}
+
+/* ===== Code Block Layout ===== */
+.astro-code {
+  position: relative;
+  counter-reset: line;
+}
+
+/* Line numbers: add class="line-numbers" to code fence or use data attr */
+.astro-code .line::before {
+  counter-increment: line;
+  content: counter(line);
+  display: inline-block;
+  width: 0;
+  margin-left: -0.5rem;
+  margin-right: 0;
+  text-align: right;
+  color: var(--fg-muted);
+  opacity: 0;
+  font-size: 1em;
+  user-select: none;
+  clip-path: inset(0);
 }
 
 @media (prefers-reduced-motion: no-preference) {
-  .astro-code,
-  .astro-code span {
-    transition: color 500ms ease, background-color 500ms ease !important;
+  .astro-code .line::before {
+    transition:
+      width 250ms ease,
+      margin-left 250ms ease,
+      margin-right 250ms ease,
+      opacity 250ms ease;
+  }
+}
+
+.astro-code.line-numbers .line::before,
+.astro-code[data-line-numbers] .line::before {
+  width: 2rem;
+  margin-left: -0.5rem;
+  margin-right: 1rem;
+  opacity: 1;
+}
+
+/* ===== Code Block Toolbar ===== */
+.code-toolbar {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  display: flex;
+  gap: 0.25rem;
+  opacity: 0;
+}
+
+pre.astro-code:hover .code-toolbar,
+pre.astro-code:focus-within .code-toolbar {
+  opacity: 1;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .code-toolbar {
+    transition: opacity 200ms ease;
+  }
+}
+
+.code-toolbar-btn {
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1;
+  padding: 0.25rem 0.5rem;
+  border: 1px solid var(--border);
+  border-radius: 0.25rem;
+  background: var(--bg-surface);
+  color: var(--fg-muted);
+  cursor: pointer;
+}
+
+.code-toolbar-btn:hover {
+  color: var(--fg);
+  background: var(--bg);
+}
+
+.code-toolbar-btn[aria-pressed="true"] {
+  color: var(--accent);
+}
+
+/* ===== Line Highlighting ===== */
+/* For [!code highlight] notation and {1,3-4} meta syntax */
+.astro-code .line.highlighted {
+  background-color: var(--accent);
+  background-color: color-mix(in srgb, var(--accent) 15%, transparent);
+  margin: 0 -1rem;
+  padding: 0 1rem;
+  border-left: 2px solid var(--accent);
+}
+
+/* Accent color for line numbers on highlighted/focused lines */
+.astro-code .line.highlighted::before,
+.astro-code .line.focused::before {
+  color: var(--accent);
+}
+
+/* For [!code focus] notation */
+.astro-code.has-focused .line:not(.focused) {
+  opacity: 0.4;
+  filter: blur(0.5px);
+}
+
+.astro-code.has-focused:hover .line:not(.focused) {
+  opacity: 1;
+  filter: none;
+}
+
+@media (prefers-reduced-motion: no-preference) {
+  .astro-code.has-focused .line {
+    transition:
+      opacity 300ms ease,
+      filter 300ms ease;
   }
 }

@@ -13,8 +13,8 @@ Clean and readable. Does exactly what you'd expect.
 
 ```python
 for i in range(1, 101):
-    if i % 15 == 0:
-        print("FizzBuzz")
+    if i % 15 == 0: # [!code highlight]
+        print("FizzBuzz") # [!code highlight]
     elif i % 3 == 0:
         print("Fizz")
     elif i % 5 == 0:
@@ -29,11 +29,12 @@ A bit more ceremony, but the types keep you honest.
 
 ```typescript
 function fizzBuzz(n: number): string {
-  if (n % 15 === 0) return "FizzBuzz";
-  if (n % 3 === 0) return "Fizz";
-  if (n % 5 === 0) return "Buzz";
-  return String(n);
-}
+  // [!code focus]
+  if (n % 15 === 0) return "FizzBuzz"; // [!code focus]
+  if (n % 3 === 0) return "Fizz"; // [!code focus]
+  if (n % 5 === 0) return "Buzz"; // [!code focus]
+  return String(n); // [!code focus]
+} // [!code focus]
 
 Array.from({ length: 100 }, (_, i) => i + 1)
   .map(fizzBuzz)
@@ -48,7 +49,7 @@ Ownership and pattern matching make even simple things feel deliberate.
 fn main() {
     for i in 1..=100 {
         let result = match (i % 3, i % 5) {
-            (0, 0) => String::from("FizzBuzz"),
+            (0, 0) => String::from("FizzBuzz"), // [!code highlight]
             (0, _) => String::from("Fizz"),
             (_, 0) => String::from("Buzz"),
             _ => i.to_string(),

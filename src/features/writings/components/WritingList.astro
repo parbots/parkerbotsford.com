@@ -1,18 +1,21 @@
 ---
-import { getCollection } from 'astro:content';
-import WritingCard from './WritingCard.astro';
+import { getCollection } from "astro:content";
+import WritingCard from "./WritingCard.astro";
 
-const writings = (await getCollection('writings', ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const writings = (
+  await getCollection("writings", ({ data }) => !data.draft)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
 <div class="divide-y divide-[var(--border)]">
-  {writings.map((writing) => (
-    <WritingCard
-      title={writing.data.title}
-      date={writing.data.date}
-      type={writing.data.type}
-      href={`/writings/${writing.id}`}
-    />
-  ))}
+  {
+    writings.map((writing) => (
+      <WritingCard
+        title={writing.data.title}
+        date={writing.data.date}
+        type={writing.data.type}
+        href={`/writings/${writing.id}`}
+      />
+    ))
+  }
 </div>
