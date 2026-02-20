@@ -1,8 +1,5 @@
-interface VerseData {
-  reference: string;
-  text: string;
-  html: string;
-}
+import type { VerseData } from "./esv-api";
+export type { VerseData };
 
 let cache: Record<string, VerseData> | null = null;
 

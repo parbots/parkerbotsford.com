@@ -8,75 +8,16 @@ import {
   statSync,
 } from "node:fs";
 import { join } from "node:path";
-
-interface VerseData {
-  reference: string;
-  text: string;
-  html: string;
-}
-
-const ESV_TEXT_URL = "https://api.esv.org/v3/passage/text/";
-const ESV_HTML_URL = "https://api.esv.org/v3/passage/html/";
-
-async function fetchPassageText(ref: string, apiKey: string): Promise<string> {
-  const params = new URLSearchParams({
-    q: ref,
-    "include-passage-references": "false",
-    "include-verse-numbers": "true",
-    "include-first-verse-numbers": "true",
-    "include-footnotes": "false",
-    "include-headings": "false",
-    "include-short-copyright": "true",
-  });
-
-  const res = await fetch(`${ESV_TEXT_URL}?${params}`, {
-    headers: { Authorization: `Token ${apiKey}` },
-  });
-
-  if (!res.ok) {
-    throw new Error(
-      `ESV API error for "${ref}": ${res.status} ${res.statusText}`,
-    );
-  }
-
-  const data = (await res.json()) as { passages?: string[] };
-  return (data.passages?.[0] ?? "").trim();
-}
-
-async function fetchPassageHtml(ref: string, apiKey: string): Promise<string> {
-  const params = new URLSearchParams({
-    q: ref,
-    "include-passage-references": "false",
-    "include-verse-numbers": "true",
-    "include-first-verse-numbers": "true",
-    "include-footnotes": "false",
-    "include-headings": "false",
-    "include-short-copyright": "true",
-    "include-css-link": "false",
-    "inline-styles": "false",
-    "wrapping-div": "false",
-    "include-audio-link": "false",
-  });
-
-  const res = await fetch(`${ESV_HTML_URL}?${params}`, {
-    headers: { Authorization: `Token ${apiKey}` },
-  });
-
-  if (!res.ok) {
-    throw new Error(
-      `ESV API error for "${ref}": ${res.status} ${res.statusText}`,
-    );
-  }
-
-  const data = (await res.json()) as { passages?: string[] };
-  return (data.passages?.[0] ?? "").trim();
-}
+import type { VerseData } from "../utils/esv-api";
+import { fetchPassageText, fetchPassageHtml } from "../utils/esv-api";
 
 function extractVersesFromFrontmatter(content: string): string[] {
   const match = content.match(/verses:\s*\n((?:\s+-\s+.*\n?)*)/);
   if (!match) return [];
 
-  return [...match[1].matchAll(/\s+-\s+(.*)/g)].map((m) => m[1].trim());
+  return [...match[1].matchAll(/\s+-\s+(.*)/g)].map((m) =>
+    m[1].trim().replace(/^["']|["']$/g, ""),
+  );
 }
 
 function extractVersesFromMdxBody(content: string): string[] {

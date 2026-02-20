@@ -4,8 +4,8 @@ export interface VerseData {
   html: string;
 }
 
-const ESV_TEXT_URL = "https://api.esv.org/v3/passage/text/";
-const ESV_HTML_URL = "https://api.esv.org/v3/passage/html/";
+export const ESV_TEXT_URL = "https://api.esv.org/v3/passage/text/";
+export const ESV_HTML_URL = "https://api.esv.org/v3/passage/html/";
 
 function getApiKey(): string {
   const key = import.meta.env.ESV_API_KEY ?? process.env.ESV_API_KEY;
@@ -15,7 +15,10 @@ function getApiKey(): string {
   return key;
 }
 
-async function fetchPassageText(ref: string, apiKey: string): Promise<string> {
+export async function fetchPassageText(
+  ref: string,
+  apiKey: string,
+): Promise<string> {
   const params = new URLSearchParams({
     q: ref,
     "include-passage-references": "false",
@@ -40,7 +43,10 @@ async function fetchPassageText(ref: string, apiKey: string): Promise<string> {
   return (data.passages?.[0] ?? "").trim();
 }
 
-async function fetchPassageHtml(ref: string, apiKey: string): Promise<string> {
+export async function fetchPassageHtml(
+  ref: string,
+  apiKey: string,
+): Promise<string> {
   const params = new URLSearchParams({
     q: ref,
     "include-passage-references": "false",
