@@ -214,6 +214,37 @@ a:hover {
   margin: 2rem 0;
 }
 
+/* ===== Verse HoverCard ===== */
+@keyframes verse-hovercard-in {
+  from {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+@keyframes verse-hovercard-out {
+  from {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+  to {
+    opacity: 0;
+    transform: scale(0.96) translateY(4px);
+  }
+}
+
+.verse-hovercard[data-state="open"] {
+  animation: verse-hovercard-in 150ms ease-out;
+}
+
+.verse-hovercard[data-state="closed"] {
+  animation: verse-hovercard-out 100ms ease-in;
+}
+
 /* ===== Code Block Theme (Shiki css-variables) ===== */
 /* Wabi-sabi palette mapped to Shiki CSS variable tokens */
 :root {

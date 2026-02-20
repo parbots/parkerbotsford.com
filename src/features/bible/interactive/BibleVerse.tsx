@@ -1,4 +1,54 @@
-import { useState, useRef, useEffect } from "react";
+import * as HoverCard from "@radix-ui/react-hover-card";
+import { useCallback, useEffect, useState } from "react";
+
+function esvUrl(reference: string): string {
+  return `https://www.esv.org/verses/${encodeURIComponent(reference)}/`;
+}
+
+// Lightweight cross-island coordination via custom events.
+// When one verse opens, all others close immediately.
+const VERSE_OPEN_EVENT = "bible-verse:open";
+
+function emitVerseOpen(ref: string) {
+  window.dispatchEvent(new CustomEvent(VERSE_OPEN_EVENT, { detail: { ref } }));
+}
+
+function CopyButton({
+  text,
+  reference,
+  className,
+}: {
+  text: string;
+  reference: string;
+  className?: string;
+}) {
+  const [copied, setCopied] = useState(false);
+
+  async function handleCopy() {
+    const formatted = `"${text}" — ${reference} (ESV)`;
+    try {
+      await navigator.clipboard.writeText(formatted);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 1500);
+    } catch {
+      // Silently fail if clipboard access is denied
+    }
+  }
+
+  return (
+    <button
+      onClick={handleCopy}
+      className={`cursor-pointer text-xs ${className ?? ""}`}
+      style={{
+        fontFamily: "var(--font-mono)",
+        color: "var(--fg-muted)",
+      }}
+      aria-label={`Copy ${reference}`}
+    >
+      {copied ? "Copied!" : "Copy"}
+    </button>
+  );
+}
 
 interface BibleVerseProps {
   reference: string;
@@ -20,15 +70,9 @@ export default function BibleVerse({
 
 function BlockVerse({ reference, text }: { reference: string; text: string }) {
   return (
-    <figure
-      className="my-6 rounded-md border-l-2 py-4 pl-4 pr-4"
-      style={{
-        borderColor: "var(--accent)",
-        backgroundColor: "var(--bg-surface)",
-      }}
-    >
+    <figure className="not-prose my-6">
       <blockquote
-        className="mb-2 italic"
+        className="italic"
         style={{
           fontFamily: "var(--font-body)",
           color: "var(--fg)",
@@ -39,22 +83,35 @@ function BlockVerse({ reference, text }: { reference: string; text: string }) {
         {text}
       </blockquote>
       <figcaption
-        className="text-sm"
+        className="mt-3 flex items-center gap-2 text-sm"
         style={{
           fontFamily: "var(--font-mono)",
           color: "var(--fg-muted)",
         }}
       >
-        — {reference} (
-        <a
-          href="https://www.esv.org"
-          target="_blank"
-          rel="noopener noreferrer"
-          style={{ color: "var(--fg-muted)" }}
-        >
-          ESV
-        </a>
-        )
+        <span>
+          —{" "}
+          <a
+            href={esvUrl(reference)}
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--accent)" }}
+          >
+            {reference}
+          </a>{" "}
+          (
+          <a
+            href="https://www.esv.org"
+            target="_blank"
+            rel="noopener noreferrer"
+            style={{ color: "var(--fg-muted)" }}
+          >
+            ESV
+          </a>
+          )
+        </span>
+        <span style={{ color: "var(--border)" }}>·</span>
+        <CopyButton text={text} reference={reference} />
       </figcaption>
     </figure>
   );
@@ -62,125 +119,78 @@ function BlockVerse({ reference, text }: { reference: string; text: string }) {
 
 function InlineVerse({ reference, text }: { reference: string; text: string }) {
   const [open, setOpen] = useState(false);
-  const triggerRef = useRef<HTMLButtonElement>(null);
-  const popoverRef = useRef<HTMLDivElement>(null);
-  const closeTimerRef = useRef<ReturnType<typeof setTimeout>>(undefined);
 
-  function scheduleClose() {
-    closeTimerRef.current = setTimeout(() => setOpen(false), 150);
-  }
-
-  function cancelClose() {
-    if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-  }
-
+  // Close this card when a different verse opens
   useEffect(() => {
-    return () => {
-      if (closeTimerRef.current) clearTimeout(closeTimerRef.current);
-    };
-  }, []);
-
-  useEffect(() => {
-    if (!open) return;
-
-    function handleClickOutside(e: MouseEvent) {
-      if (
-        popoverRef.current &&
-        !popoverRef.current.contains(e.target as Node) &&
-        triggerRef.current &&
-        !triggerRef.current.contains(e.target as Node)
-      ) {
+    function onVerseOpen(e: Event) {
+      const detail = (e as CustomEvent<{ ref: string }>).detail;
+      if (detail.ref !== reference) {
         setOpen(false);
       }
     }
 
-    function handleEscape(e: KeyboardEvent) {
-      if (e.key === "Escape") setOpen(false);
-    }
+    window.addEventListener(VERSE_OPEN_EVENT, onVerseOpen);
+    return () => window.removeEventListener(VERSE_OPEN_EVENT, onVerseOpen);
+  }, [reference]);
 
-    function handleScroll() {
-      setOpen(false);
-    }
-
-    document.addEventListener("mousedown", handleClickOutside);
-    document.addEventListener("keydown", handleEscape);
-    document.addEventListener("scroll", handleScroll, true);
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-      document.removeEventListener("keydown", handleEscape);
-      document.removeEventListener("scroll", handleScroll, true);
-    };
-  }, [open]);
-
-  // Position popover
-  useEffect(() => {
-    if (!open || !triggerRef.current || !popoverRef.current) return;
-
-    const trigger = triggerRef.current.getBoundingClientRect();
-    const popover = popoverRef.current;
-
-    // Center below trigger
-    const left = trigger.left + trigger.width / 2 - popover.offsetWidth / 2;
-    let top = trigger.bottom + 8;
-
-    // If popover overflows bottom of viewport, position above trigger
-    if (top + popover.offsetHeight > window.innerHeight - 8) {
-      top = trigger.top - popover.offsetHeight - 8;
-    }
-
-    // Keep within viewport horizontally
-    const clampedLeft = Math.max(
-      8,
-      Math.min(left, window.innerWidth - popover.offsetWidth - 8),
-    );
-
-    popover.style.left = `${clampedLeft}px`;
-    popover.style.top = `${top}px`;
-  }, [open]);
+  const handleOpenChange = useCallback(
+    (next: boolean) => {
+      if (next) {
+        emitVerseOpen(reference);
+      }
+      setOpen(next);
+    },
+    [reference],
+  );
 
   return (
-    <span className="relative inline">
-      <button
-        ref={triggerRef}
-        onClick={() => setOpen(!open)}
-        onMouseEnter={() => {
-          cancelClose();
-          setOpen(true);
-        }}
-        onMouseLeave={scheduleClose}
-        className="cursor-pointer border-b border-dashed font-semibold"
-        style={{
-          color: "var(--accent)",
-          borderColor: "var(--accent)",
-        }}
-        aria-expanded={open}
-        aria-label={`${reference} — click or hover to read`}
-      >
-        {reference}
-      </button>
+    <HoverCard.Root
+      open={open}
+      onOpenChange={handleOpenChange}
+      openDelay={100}
+      closeDelay={80}
+    >
+      <HoverCard.Trigger asChild>
+        <a
+          href={esvUrl(reference)}
+          target="_blank"
+          rel="noopener noreferrer"
+          className="not-prose cursor-pointer border-b border-dashed font-semibold"
+          style={{
+            color: "var(--accent)",
+            borderColor: "var(--accent)",
+          }}
+        >
+          {reference}
+        </a>
+      </HoverCard.Trigger>
 
-      {open && (
-        <div
-          ref={popoverRef}
-          role="tooltip"
-          onMouseEnter={cancelClose}
-          onMouseLeave={scheduleClose}
-          className="fixed z-50 max-w-sm rounded-md border p-4 shadow-lg"
+      <HoverCard.Portal>
+        <HoverCard.Content
+          sideOffset={4}
+          className="verse-hovercard z-50 w-80 rounded-md border p-4 shadow-lg"
           style={{
             backgroundColor: "var(--bg-surface)",
             borderColor: "var(--border)",
             color: "var(--fg)",
           }}
         >
-          <p
-            className="mb-2 text-xs font-semibold uppercase tracking-wide"
-            style={{
-              fontFamily: "var(--font-mono)",
-              color: "var(--accent)",
-            }}
-          >
-            {reference}
-          </p>
+          <div className="mb-2 flex items-center justify-between">
+            <p
+              className="text-xs font-semibold uppercase tracking-wide"
+              style={{ fontFamily: "var(--font-mono)" }}
+            >
+              <a
+                href={esvUrl(reference)}
+                target="_blank"
+                rel="noopener noreferrer"
+                style={{ color: "var(--accent)" }}
+              >
+                {reference}
+              </a>
+            </p>
+            <CopyButton text={text} reference={reference} />
+          </div>
           <p
             className="mb-2 text-sm italic leading-relaxed"
             style={{
@@ -206,8 +216,12 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
               ESV
             </a>
           </p>
-        </div>
-      )}
-    </span>
+          <HoverCard.Arrow
+            style={{ fill: "var(--bg-surface)" }}
+            className="drop-shadow-sm"
+          />
+        </HoverCard.Content>
+      </HoverCard.Portal>
+    </HoverCard.Root>
   );
 }
