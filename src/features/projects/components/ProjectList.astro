@@ -1,0 +1,19 @@
+---
+import { getCollection } from 'astro:content';
+import ProjectCard from './ProjectCard.astro';
+
+const projects = (await getCollection('projects'))
+  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+---
+
+<div class="divide-y divide-[var(--border)]">
+  {projects.map((project) => (
+    <ProjectCard
+      title={project.data.title}
+      description={project.data.description}
+      status={project.data.status}
+      tech={project.data.tech}
+      href={`/projects/${project.id}`}
+    />
+  ))}
+</div>

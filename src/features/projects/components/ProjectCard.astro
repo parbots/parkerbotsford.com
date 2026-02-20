@@ -1,0 +1,34 @@
+---
+interface Props {
+  title: string;
+  description: string;
+  status: string;
+  tech: string[];
+  href: string;
+}
+
+const { title, description, status, tech, href } = Astro.props;
+---
+
+<article class="group py-4">
+  <a href={href} class="block no-underline">
+    <div class="flex items-baseline justify-between gap-4">
+      <h3 class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
+        {title}
+      </h3>
+      <span class="shrink-0 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+        {status}
+      </span>
+    </div>
+    <p class="mt-1 text-sm text-[var(--fg-muted)]">{description}</p>
+    {tech.length > 0 && (
+      <div class="mt-2 flex flex-wrap gap-2">
+        {tech.map((t) => (
+          <span class="rounded bg-[var(--bg-surface)] px-2 py-0.5 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+            {t}
+          </span>
+        ))}
+      </div>
+    )}
+  </a>
+</article>

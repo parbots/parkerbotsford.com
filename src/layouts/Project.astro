@@ -1,0 +1,40 @@
+---
+import Page from './Page.astro';
+
+interface Props {
+  title: string;
+  description: string;
+  status: string;
+  tech: string[];
+  url?: string;
+  repo?: string;
+}
+
+const { title, description, status, tech, url, repo } = Astro.props;
+---
+
+<Page title={title} description={description}>
+  <article>
+    <header class="mb-12">
+      <h1 class="mb-3">{title}</h1>
+      <p class="text-[var(--fg-muted)]">{description}</p>
+      <div class="mt-4 flex flex-wrap items-center gap-4 text-sm" style="font-family: var(--font-mono);">
+        <span class="text-[var(--fg-muted)]">{status}</span>
+        {url && <a href={url} target="_blank" rel="noreferrer">visit</a>}
+        {repo && <a href={repo} target="_blank" rel="noreferrer">source</a>}
+      </div>
+      {tech.length > 0 && (
+        <div class="mt-3 flex flex-wrap gap-2">
+          {tech.map((t) => (
+            <span class="rounded bg-[var(--bg-surface)] px-2 py-0.5 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+              {t}
+            </span>
+          ))}
+        </div>
+      )}
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</Page>
