@@ -1,0 +1,28 @@
+---
+import { formatDate } from '../../../utils/dates';
+
+interface Props {
+  title: string;
+  date: Date;
+  type: string;
+  href: string;
+}
+
+const { title, date, type, href } = Astro.props;
+---
+
+<article class="group py-4">
+  <a href={href} class="block no-underline">
+    <div class="flex items-baseline justify-between gap-4">
+      <h3 class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
+        {title}
+      </h3>
+      <span class="shrink-0 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+        {type}
+      </span>
+    </div>
+    <time class="mt-1 block text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      {formatDate(date)}
+    </time>
+  </a>
+</article>
