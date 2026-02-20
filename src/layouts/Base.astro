@@ -29,9 +29,13 @@ const { title, description = '' } = Astro.props;
     <title>{title}</title>
     <ClientRouter />
     <script is:inline>
-      const theme = localStorage.getItem('theme') ??
-        (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-      document.documentElement.classList.toggle('dark', theme === 'dark');
+      function applyTheme() {
+        const theme = localStorage.getItem('theme') ??
+          (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+        document.documentElement.classList.toggle('dark', theme === 'dark');
+      }
+      applyTheme();
+      document.addEventListener('astro:after-swap', applyTheme);
     </script>
   </head>
   <body>
