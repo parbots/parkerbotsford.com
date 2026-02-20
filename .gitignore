@@ -17,6 +17,9 @@ yarn-debug.log*
 yarn-error.log*
 .pnpm-debug.log*
 
+# Generated verse cache
+src/data/generated/
+
 # local env files
 .env
 .env.*
