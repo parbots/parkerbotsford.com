@@ -1,0 +1,69 @@
+---
+// CodeBlockToolbar — injects line-numbers toggle + copy button on each code block.
+// Include once in a layout; the inline <script> handles DOM injection.
+---
+
+<script>
+  function initToolbars() {
+    const codeBlocks = document.querySelectorAll("pre.astro-code");
+
+    for (const pre of codeBlocks) {
+      // Skip if already initialized
+      if (pre.querySelector(".code-toolbar")) continue;
+
+      const toolbar = document.createElement("div");
+      toolbar.className = "code-toolbar";
+
+      // --- Line numbers toggle ---
+      const lineBtn = document.createElement("button");
+      lineBtn.type = "button";
+      lineBtn.className = "code-toolbar-btn";
+      lineBtn.setAttribute("aria-label", "Toggle line numbers");
+      lineBtn.textContent = "#";
+      lineBtn.addEventListener("click", () => {
+        pre.classList.toggle("line-numbers");
+        lineBtn.setAttribute(
+          "aria-pressed",
+          String(pre.classList.contains("line-numbers")),
+        );
+      });
+      lineBtn.setAttribute(
+        "aria-pressed",
+        String(pre.classList.contains("line-numbers")),
+      );
+
+      // --- Copy button ---
+      const copyBtn = document.createElement("button");
+      copyBtn.type = "button";
+      copyBtn.className = "code-toolbar-btn";
+      copyBtn.setAttribute("aria-label", "Copy code");
+      copyBtn.textContent = "Copy";
+      copyBtn.addEventListener("click", async () => {
+        const code = pre.querySelector("code");
+        if (!code) return;
+        try {
+          await navigator.clipboard.writeText(code.innerText);
+          copyBtn.textContent = "Copied!";
+          setTimeout(() => {
+            copyBtn.textContent = "Copy";
+          }, 1500);
+        } catch {
+          copyBtn.textContent = "Error";
+          setTimeout(() => {
+            copyBtn.textContent = "Copy";
+          }, 1500);
+        }
+      });
+
+      toolbar.appendChild(lineBtn);
+      toolbar.appendChild(copyBtn);
+      pre.appendChild(toolbar);
+    }
+  }
+
+  // Run on initial load
+  initToolbars();
+
+  // Re-run after view-transition navigations
+  document.addEventListener("astro:after-swap", initToolbars);
+</script>
