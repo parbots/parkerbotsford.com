@@ -1,0 +1,22 @@
+---
+import Base from './Base.astro';
+import Nav from '../components/primitives/Nav.astro';
+import Footer from '../components/primitives/Footer.astro';
+
+interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description } = Astro.props;
+---
+
+<Base title={title} description={description}>
+  <div class="flex min-h-svh flex-col">
+    <Nav />
+    <main class="mx-auto w-full max-w-[var(--content-width)] flex-1 px-6 py-12 fade-in">
+      <slot />
+    </main>
+    <Footer />
+  </div>
+</Base>
