@@ -1,4 +1,5 @@
 import { useState, useEffect } from 'react';
+import { Sun, Moon } from 'lucide-react';
 
 export default function ThemeToggle() {
   const [dark, setDark] = useState(false);
@@ -18,10 +19,9 @@ export default function ThemeToggle() {
     <button
       onClick={toggle}
       aria-label={dark ? 'Switch to light mode' : 'Switch to dark mode'}
-      style={{ fontFamily: 'var(--font-mono)' }}
-      className="text-sm text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors duration-200"
+      className="text-[var(--fg-muted)] hover:text-[var(--accent)] transition-colors duration-300"
     >
-      {dark ? 'light' : 'dark'}
+      {dark ? <Sun size={16} strokeWidth={1.5} /> : <Moon size={16} strokeWidth={1.5} />}
     </button>
   );
 }
