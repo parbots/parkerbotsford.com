@@ -1,0 +1,13 @@
+---
+import Page from "../layouts/Page.astro";
+import VerseList from "../features/bible/VerseList.astro";
+---
+
+<Page title="Verses" description="Bible verse references across the site">
+  <h1 class="mb-2">Verses</h1>
+  <p class="mb-8 text-[var(--fg-muted)]">
+    All Bible verse references found across the site, from the English Standard
+    Version (ESV).
+  </p>
+  <VerseList />
+</Page>

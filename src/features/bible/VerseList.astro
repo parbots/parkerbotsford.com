@@ -1,0 +1,92 @@
+---
+import { getCollection } from "astro:content";
+import { getVerse } from "../../utils/verse-cache";
+
+interface VerseEntry {
+  ref: string;
+  text: string;
+  sources: { title: string; href: string; collection: string }[];
+}
+
+const blog = await getCollection("blog", ({ data }) => !data.draft);
+const writings = await getCollection("writings", ({ data }) => !data.draft);
+const projects = await getCollection("projects");
+
+const verseMap = new Map<string, VerseEntry>();
+
+function addVerses(
+  items: { id: string; data: { title: string; verses: string[] } }[],
+  collection: string,
+  pathPrefix: string,
+) {
+  for (const item of items) {
+    const verses = item.data.verses;
+    for (const ref of verses) {
+      const existing = verseMap.get(ref);
+      const source = {
+        title: item.data.title,
+        href: `${pathPrefix}/${item.id}`,
+        collection,
+      };
+      if (existing) {
+        existing.sources.push(source);
+      } else {
+        const verse = getVerse(ref);
+        verseMap.set(ref, {
+          ref,
+          text: verse?.text ?? "",
+          sources: [source],
+        });
+      }
+    }
+  }
+}
+
+addVerses(blog, "blog", "/blog");
+addVerses(writings, "writings", "/writings");
+addVerses(projects, "projects", "/projects");
+
+const entries = [...verseMap.values()].sort((a, b) =>
+  a.ref.localeCompare(b.ref),
+);
+---
+
+{
+  entries.length > 0 ? (
+    <ul class="space-y-8">
+      {entries.map((entry) => (
+        <li>
+          <h3
+            class="mb-1 text-base font-semibold"
+            style="font-family: var(--font-mono); color: var(--accent);"
+          >
+            {entry.ref}
+          </h3>
+          {entry.text && (
+            <p
+              class="mb-2 text-sm italic leading-relaxed"
+              style="color: var(--fg);"
+            >
+              {entry.text}
+            </p>
+          )}
+          <div class="flex flex-wrap gap-2">
+            {entry.sources.map((src) => (
+              <a
+                href={src.href}
+                class="rounded-sm px-2 py-0.5 text-xs"
+                style="background-color: var(--bg-surface); color: var(--fg-muted); font-family: var(--font-mono);"
+              >
+                {src.collection}/{src.title}
+              </a>
+            ))}
+          </div>
+        </li>
+      ))}
+    </ul>
+  ) : (
+    <p style="color: var(--fg-muted);">
+      No verse references found across the site yet.
+    </p>
+  )
+}
