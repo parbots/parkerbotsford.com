@@ -1,0 +1,28 @@
+---
+import { formatDate } from '../../../utils/dates';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  href: string;
+  tags?: string[];
+}
+
+const { title, description, date, href, tags = [] } = Astro.props;
+---
+
+<article class="group py-4">
+  <a href={href} class="block no-underline">
+    <h3 class="text-[var(--fg)] group-hover:text-[var(--accent)] transition-colors duration-200">
+      {title}
+    </h3>
+    <p class="mt-1 text-sm text-[var(--fg-muted)]">{description}</p>
+    <div class="mt-2 flex items-center gap-3 text-xs text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+      <time>{formatDate(date)}</time>
+      {tags.length > 0 && (
+        <span>{tags.join(', ')}</span>
+      )}
+    </div>
+  </a>
+</article>

@@ -1,0 +1,30 @@
+---
+import Page from './Page.astro';
+import { formatDate } from '../utils/dates';
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+}
+
+const { title, description, date, tags = [] } = Astro.props;
+---
+
+<Page title={title} description={description}>
+  <article>
+    <header class="mb-12">
+      <h1 class="mb-3">{title}</h1>
+      <div class="flex items-center gap-3 text-sm text-[var(--fg-muted)]" style="font-family: var(--font-mono);">
+        <time>{formatDate(date)}</time>
+        {tags.length > 0 && (
+          <span>&middot; {tags.join(', ')}</span>
+        )}
+      </div>
+    </header>
+    <div class="prose">
+      <slot />
+    </div>
+  </article>
+</Page>
