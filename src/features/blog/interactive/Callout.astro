@@ -1,0 +1,19 @@
+---
+interface Props {
+  type?: 'info' | 'warning' | 'tip';
+}
+
+const { type = 'info' } = Astro.props;
+const borderColor = {
+  info: 'var(--accent)',
+  warning: '#D97706',
+  tip: '#059669',
+}[type];
+---
+
+<aside
+  class="my-6 rounded-r border-l-2 bg-[var(--bg-surface)] px-4 py-3"
+  style={`border-color: ${borderColor};`}
+>
+  <slot />
+</aside>

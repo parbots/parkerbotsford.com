@@ -1,0 +1,16 @@
+---
+interface Props {
+  items: { name: string; role: string }[];
+}
+
+const { items } = Astro.props;
+---
+
+<div class="my-6 grid grid-cols-2 gap-3 sm:grid-cols-3">
+  {items.map((item) => (
+    <div class="rounded border border-[var(--border)] bg-[var(--bg-surface)] p-3">
+      <span class="block text-sm font-semibold text-[var(--fg)]">{item.name}</span>
+      <span class="text-xs text-[var(--fg-muted)]">{item.role}</span>
+    </div>
+  ))}
+</div>
