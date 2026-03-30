@@ -1,9 +1,14 @@
 ---
 import Page from "../../layouts/Page.astro";
+import ContentHeaderCard from "../../components/shared/ContentHeaderCard.astro";
 import ProjectList from "../../features/projects/components/ProjectList.astro";
 ---
 
 <Page title="Projects" description="Things I'm building.">
-  <h1 class="mb-8">Projects</h1>
+  <ContentHeaderCard
+    type="project"
+    title="Projects"
+    meta="Things I'm building."
+  />
   <ProjectList />
 </Page>

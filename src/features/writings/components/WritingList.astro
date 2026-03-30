@@ -7,7 +7,7 @@ const writings = (
 ).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 ---
 
-<div class="divide-y divide-[var(--border)]">
+<div class="mx-auto flex max-w-[44rem] flex-col gap-4 py-4">
   {
     writings.map((writing) => (
       <WritingCard
