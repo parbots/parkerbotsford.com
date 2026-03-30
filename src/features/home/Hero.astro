@@ -2,13 +2,19 @@
 import { SITE } from "../../config";
 ---
 
-<section class="py-24 md:py-32">
-  <h1 class="mb-4">Hi, I'm Parker.</h1>
-  <p class="max-w-lg text-[var(--fg-muted)]">{SITE.description}</p>
-  <nav class="mt-8 flex gap-6" style="font-family: var(--font-mono);">
-    <a href="/blog" class="text-sm">/blog</a>
-    <a href="/writings" class="text-sm">/writings</a>
-    <a href="/projects" class="text-sm">/projects</a>
-    <a href="/about" class="text-sm">/about</a>
-  </nav>
+<section class="px-6 pb-8 pt-16 text-center md:pb-12 md:pt-24">
+  <h1
+    class="mb-3 text-4xl font-extrabold tracking-tight md:text-6xl"
+    style="font-family: var(--font-display); letter-spacing: -1.5px; line-height: 1.05;"
+  >
+    <span class="wave-hand">&#128075;</span>
+    {SITE.author}
+  </h1>
+  <p
+    class="mx-auto max-w-md text-base text-[var(--fg-muted)] md:text-lg"
+    style="line-height: 1.6;"
+  >
+    Engineer, writer, and maker of things. Building software, writing poems, and
+    exploring faith.
+  </p>
 </section>
