@@ -25,6 +25,9 @@ src/data/generated/
 .env.*
 !.env.example
 
+# superpowers brainstorm
+.superpowers/
+
 # vercel
 .vercel
 
