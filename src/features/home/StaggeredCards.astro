@@ -73,12 +73,12 @@ const verse = getDailyVerse(dailyRefs);
         href="/verses"
         class="w-full self-start md:w-[70%]"
       >
-        <p class="mt-2 text-sm leading-relaxed italic opacity-90">
+        <p class="mt-2 text-sm leading-relaxed italic" style="opacity: 0.9;">
           &ldquo;{verse.text}&rdquo;
         </p>
         <span
-          class="mt-1 block text-xs opacity-70"
-          style="font-family: var(--font-mono);"
+          class="mt-1 block text-xs"
+          style="font-family: var(--font-mono); opacity: 0.75;"
         >
           {verse.reference}
         </span>
