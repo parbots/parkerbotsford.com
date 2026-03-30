@@ -28,6 +28,9 @@ src/data/generated/
 # superpowers brainstorm
 .superpowers/
 
+# git worktrees
+.worktrees/
+
 # vercel
 .vercel
 
