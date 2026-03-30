@@ -50,8 +50,8 @@ export default function MobileNav({ items }: Props) {
                 key={item.href}
                 href={item.href}
                 onClick={() => setOpen(false)}
-                className="text-lg text-[var(--fg-muted)] no-underline transition-colors duration-300 hover:text-[var(--accent)]"
-                style={{ fontFamily: "var(--font-mono)" }}
+                className="text-lg font-semibold text-[var(--fg-muted)] no-underline transition-colors duration-300 hover:text-[var(--accent)]"
+                style={{ fontFamily: "var(--font-display)" }}
               >
                 {item.label}
               </a>
