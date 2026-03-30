@@ -7,7 +7,7 @@ const projects = (await getCollection("projects")).sort((a, b) =>
 );
 ---
 
-<div class="mx-auto flex max-w-[44rem] flex-col gap-4 py-4">
+<div class="mx-auto flex max-w-3xl flex-col gap-5 py-6">
   {
     projects.map((project) => (
       <ProjectCard

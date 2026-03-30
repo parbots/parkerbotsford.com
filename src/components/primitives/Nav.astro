@@ -8,11 +8,13 @@ import NavIndicator from "./NavIndicator.astro";
 const currentPath = Astro.url.pathname;
 ---
 
-<nav class="relative z-50 flex w-full justify-center px-6 py-6">
+<nav
+  class="relative z-50 mx-auto flex w-full max-w-5xl items-center justify-center px-6 py-8"
+>
   {/* Desktop: PB monogram */}
   <a
     href="/"
-    class="absolute top-1/2 left-6 hidden -translate-y-1/2 text-sm font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
+    class="absolute left-6 hidden text-base font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
     style="font-family: var(--font-display);"
   >
     PB
@@ -21,7 +23,7 @@ const currentPath = Astro.url.pathname;
   {/* Desktop pill nav */}
   <div
     data-nav-pill
-    class="relative hidden items-center gap-0.5 rounded-full border border-[var(--border)] bg-[var(--bg-surface)] px-1.5 py-1 md:flex"
+    class="relative hidden items-center gap-1 rounded-full border border-[var(--border)] bg-[var(--bg-surface)] px-2 py-1.5 md:flex"
   >
     <NavIndicator />
     {
@@ -33,7 +35,7 @@ const currentPath = Astro.url.pathname;
             href={item.href}
             data-active={isActive ? "" : undefined}
             class:list={[
-              "relative z-10 rounded-full px-3.5 py-1.5 text-sm no-underline transition-colors duration-200",
+              "relative z-10 rounded-full px-4 py-2 text-sm no-underline transition-colors duration-200",
               isActive
                 ? "font-semibold text-[var(--fg)]"
                 : "text-[var(--fg-muted)] hover:text-[var(--fg)]",
@@ -45,7 +47,7 @@ const currentPath = Astro.url.pathname;
       })
     }
     <div
-      class="ml-1.5 flex items-center gap-1 border-l border-[var(--border)] pl-2"
+      class="ml-2 flex items-center gap-2 border-l border-[var(--border)] pl-3"
     >
       <FontSwitcher client:load />
       <ThemeToggle client:load />
@@ -56,12 +58,12 @@ const currentPath = Astro.url.pathname;
   <div class="flex w-full items-center justify-between md:hidden">
     <a
       href="/"
-      class="text-sm font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
+      class="text-base font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
       style="font-family: var(--font-display);"
     >
       PB
     </a>
-    <div class="flex items-center gap-3">
+    <div class="flex items-center gap-4">
       <FontSwitcher client:load />
       <ThemeToggle client:load />
       <MobileNav client:load items={[...NAV_ITEMS]} />

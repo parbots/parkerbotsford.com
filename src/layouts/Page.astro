@@ -15,7 +15,10 @@ const { title, description } = Astro.props;
   <div class="flex min-h-svh flex-col">
     <a href="#main" class="skip-link">Skip to content</a>
     <Nav />
-    <main id="main" class="fade-in mx-auto w-full max-w-3xl flex-1 px-6 py-8">
+    <main
+      id="main"
+      class="fade-in mx-auto w-full max-w-4xl flex-1 px-8 py-12 md:px-12"
+    >
       <slot />
     </main>
     <Footer />
