@@ -53,7 +53,7 @@ export default function FontSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-1.5 shadow-lg">
+        <div className="absolute top-full right-0 z-50 mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-1.5 shadow-lg">
           {FONTS.map((font) => (
             <button
               key={font.id}

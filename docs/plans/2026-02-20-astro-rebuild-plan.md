@@ -1530,7 +1530,7 @@ interface Props {
 const { centered = false } = Astro.props;
 ---
 
-<div class:list={["my-8 italic leading-loose", { "text-center": centered }]}>
+<div class:list={["my-8 leading-loose italic", { "text-center": centered }]}>
   <slot />
 </div>
 ```

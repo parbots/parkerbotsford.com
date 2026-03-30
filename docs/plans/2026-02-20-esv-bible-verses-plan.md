@@ -591,7 +591,7 @@ export default function BibleVerse({
 function BlockVerse({ reference, text }: { reference: string; text: string }) {
   return (
     <figure
-      className="my-6 rounded-md border-l-2 py-4 pl-4 pr-4"
+      className="my-6 rounded-md border-l-2 py-4 pr-4 pl-4"
       style={{
         borderColor: "var(--accent)",
         backgroundColor: "var(--bg-surface)",
@@ -705,7 +705,7 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
           }}
         >
           <p
-            className="mb-2 text-xs font-semibold uppercase tracking-wide"
+            className="mb-2 text-xs font-semibold tracking-wide uppercase"
             style={{
               fontFamily: "var(--font-mono)",
               color: "var(--accent)",
@@ -714,7 +714,7 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
             {reference}
           </p>
           <p
-            className="mb-2 text-sm italic leading-relaxed"
+            className="mb-2 text-sm leading-relaxed italic"
             style={{
               fontFamily: "var(--font-body)",
               color: "var(--fg)",
@@ -833,7 +833,7 @@ const verse = getDailyVerse(dailyRefs);
         Verse of the day
       </h2>
       <figure
-        class="rounded-md border-l-2 py-4 pl-4 pr-4"
+        class="rounded-md border-l-2 py-4 pr-4 pl-4"
         style={`border-color: var(--accent); background-color: var(--bg-surface);`}
       >
         <blockquote
@@ -958,7 +958,7 @@ const entries = [...verseMap.values()].sort((a, b) =>
           </h3>
           {entry.text && (
             <p
-              class="mb-2 text-sm italic leading-relaxed"
+              class="mb-2 text-sm leading-relaxed italic"
               style="color: var(--fg);"
             >
               {entry.text}

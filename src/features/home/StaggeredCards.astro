@@ -6,9 +6,9 @@ import { formatDate } from "../../utils/dates";
 import ContentCard from "../../components/shared/ContentCard.astro";
 
 // Latest blog post
-const posts = (
-  await getCollection("blog", ({ data }) => !data.draft)
-).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 const latestPost = posts[0];
 
 // Latest writing
@@ -73,7 +73,7 @@ const verse = getDailyVerse(dailyRefs);
         href="/verses"
         class="w-full self-start md:w-[70%]"
       >
-        <p class="mt-2 text-sm italic leading-relaxed opacity-90">
+        <p class="mt-2 text-sm leading-relaxed italic opacity-90">
           &ldquo;{verse.text}&rdquo;
         </p>
         <span

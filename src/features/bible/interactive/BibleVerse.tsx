@@ -177,7 +177,7 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
         >
           <div className="mb-2 flex items-center justify-between">
             <p
-              className="text-xs font-semibold uppercase tracking-wide"
+              className="text-xs font-semibold tracking-wide uppercase"
               style={{ fontFamily: "var(--font-mono)" }}
             >
               <a
@@ -192,7 +192,7 @@ function InlineVerse({ reference, text }: { reference: string; text: string }) {
             <CopyButton text={text} reference={reference} />
           </div>
           <p
-            className="mb-2 text-sm italic leading-relaxed"
+            className="mb-2 text-sm leading-relaxed italic"
             style={{
               fontFamily: "var(--font-body)",
               color: "var(--fg)",

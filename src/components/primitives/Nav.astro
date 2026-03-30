@@ -12,7 +12,7 @@ const currentPath = Astro.url.pathname;
   {/* Desktop: PB monogram */}
   <a
     href="/"
-    class="absolute left-6 top-1/2 hidden -translate-y-1/2 text-sm font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
+    class="absolute top-1/2 left-6 hidden -translate-y-1/2 text-sm font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
     style="font-family: var(--font-display);"
   >
     PB
@@ -27,8 +27,7 @@ const currentPath = Astro.url.pathname;
     {
       NAV_ITEMS.map((item) => {
         const isActive =
-          currentPath === item.href ||
-          currentPath.startsWith(item.href + "/");
+          currentPath === item.href || currentPath.startsWith(item.href + "/");
         return (
           <a
             href={item.href}

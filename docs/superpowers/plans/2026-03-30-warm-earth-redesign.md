@@ -19,6 +19,7 @@
 ### Task 1: Update Global CSS Variables and Typography
 
 **Files:**
+
 - Modify: `src/styles/global.css`
 
 This task updates the CSS foundation: font variables, card color tokens, font-display application, theme transition scoping, and card animation keyframes.
@@ -136,11 +137,11 @@ After the `.dark` block, add:
 Inside the first `@media (prefers-reduced-motion: no-preference)` block (the "Theme Transitions" section), replace the `html * { transition: ... }` rule with longhand properties:
 
 ```css
-  html * {
-    transition-property: background-color, color, border-color;
-    transition-duration: 500ms;
-    transition-timing-function: ease;
-  }
+html * {
+  transition-property: background-color, color, border-color;
+  transition-duration: 500ms;
+  transition-timing-function: ease;
+}
 ```
 
 Keep this inside the `@media` block so theme transitions are still suppressed for reduced-motion users. The longhand `transition-property` prevents this wildcard from overriding card hover `transform` transitions.
@@ -150,51 +151,51 @@ Keep this inside the `@media` block so theme transitions are still suppressed fo
 Add inside the second `@media (prefers-reduced-motion: no-preference)` block (the "Motion" section, the one containing `.fade-in` and `@keyframes fadeIn`), after the `fadeIn` keyframes closing brace but before the `@media` block's closing brace:
 
 ```css
-  /* ===== Card Hover ===== */
-  .card-hover {
-    transition:
-      transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-      box-shadow 0.5s ease;
-  }
+/* ===== Card Hover ===== */
+.card-hover {
+  transition:
+    transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+    box-shadow 0.5s ease;
+}
 
-  .card-hover:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.15);
-  }
+.card-hover:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 60px -15px rgba(0, 0, 0, 0.15);
+}
 
-  .card-hover:active {
-    transform: translateY(0);
-    box-shadow: none;
-  }
+.card-hover:active {
+  transform: translateY(0);
+  box-shadow: none;
+}
 
-  /* ===== Waving Hand ===== */
-  .wave-hand {
-    display: inline-block;
-    animation: waveHand 1.5s ease-in-out infinite;
-    transform-origin: 70% 70%;
-  }
+/* ===== Waving Hand ===== */
+.wave-hand {
+  display: inline-block;
+  animation: waveHand 1.5s ease-in-out infinite;
+  transform-origin: 70% 70%;
+}
 
-  @keyframes waveHand {
-    0%,
-    100% {
-      transform: rotate(0deg);
-    }
-    15% {
-      transform: rotate(14deg);
-    }
-    30% {
-      transform: rotate(-8deg);
-    }
-    45% {
-      transform: rotate(14deg);
-    }
-    60% {
-      transform: rotate(-4deg);
-    }
-    75% {
-      transform: rotate(10deg);
-    }
+@keyframes waveHand {
+  0%,
+  100% {
+    transform: rotate(0deg);
   }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  45% {
+    transform: rotate(14deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
+}
 ```
 
 Wrap the card-hover and wave-hand styles inside the existing `@media (prefers-reduced-motion: no-preference)` block. Add a reduced-motion fallback for card-hover outside the block:
@@ -231,6 +232,7 @@ git commit -m "style: update CSS foundation with earth-tone tokens and new typog
 ### Task 2: Update Font Loading in Base.astro
 
 **Files:**
+
 - Modify: `src/layouts/Base.astro`
 
 Update the Google Fonts link to load Nunito, Atkinson Hyperlegible Next, Lora, and Inter. Add the font-preference inline script.
@@ -280,6 +282,7 @@ git commit -m "feat: load new font stack and add font-preference script"
 ### Task 3: Update Footer
 
 **Files:**
+
 - Modify: `src/components/primitives/Footer.astro`
 
 Simplify footer with new typography and generous spacing.
@@ -321,6 +324,7 @@ git commit -m "style: simplify footer with centered layout and generous spacing"
 ### Task 4: Create NavIndicator Component
 
 **Files:**
+
 - Create: `src/components/primitives/NavIndicator.astro`
 
 Astro component with inline script that creates a sliding pill behind the active nav link.
@@ -329,6 +333,7 @@ Astro component with inline script that creates a sliding pill behind the active
 
 ```astro
 ---
+
 ---
 
 <span
@@ -384,6 +389,7 @@ git commit -m "feat: add NavIndicator component with sliding pill animation"
 ### Task 5: Create FontSwitcher Component
 
 **Files:**
+
 - Create: `src/components/primitives/FontSwitcher.tsx`
 
 React island that renders an "Aa" button opening a dropdown to switch body fonts.
@@ -447,7 +453,7 @@ export default function FontSwitcher() {
       </button>
 
       {open && (
-        <div className="absolute right-0 top-full z-50 mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-1.5 shadow-lg">
+        <div className="absolute top-full right-0 z-50 mt-2 w-52 rounded-xl border border-[var(--border)] bg-[var(--bg)] p-1.5 shadow-lg">
           {FONTS.map((font) => (
             <button
               key={font.id}
@@ -488,6 +494,7 @@ git commit -m "feat: add FontSwitcher component with Aa popup menu"
 ### Task 6: Redesign Nav.astro as Pill Nav
 
 **Files:**
+
 - Modify: `src/components/primitives/Nav.astro`
 - Modify: `src/components/primitives/MobileNav.tsx`
 
@@ -512,7 +519,7 @@ const currentPath = Astro.url.pathname;
   {/* Desktop: PB monogram */}
   <a
     href="/"
-    class="absolute left-6 top-1/2 hidden -translate-y-1/2 text-sm font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
+    class="absolute top-1/2 left-6 hidden -translate-y-1/2 text-sm font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
     style="font-family: var(--font-display);"
   >
     PB
@@ -594,6 +601,7 @@ git commit -m "feat: redesign nav as centered pill with sliding indicator and fo
 ### Task 7: Create ContentCard Component
 
 **Files:**
+
 - Create: `src/components/shared/ContentCard.astro`
 
 A shared colored card used on the homepage (staggered) and index pages (full-width). Supports all four content types via a `type` prop.
@@ -638,46 +646,52 @@ const labelMap = {
 >
   {/* Dot pattern decoration */}
   <div
-    class="pointer-events-none absolute right-5 top-5 grid grid-cols-3 gap-1 opacity-15"
+    class="pointer-events-none absolute top-5 right-5 grid grid-cols-3 gap-1 opacity-15"
     style="will-change: transform;"
     aria-hidden="true"
   >
-    {Array.from({ length: 6 }).map(() => (
-      <span class="h-1 w-1 rounded-full bg-current" />
-    ))}
+    {
+      Array.from({ length: 6 }).map(() => (
+        <span class="h-1 w-1 rounded-full bg-current" />
+      ))
+    }
   </div>
 
   <div class="relative z-10 flex min-h-[120px] flex-col justify-between">
     <div>
       <span
-        class="mb-2 block text-[0.65rem] font-semibold uppercase tracking-widest opacity-70"
+        class="mb-2 block text-[0.65rem] font-semibold tracking-widest uppercase opacity-70"
       >
         {labelMap[type]}
       </span>
       <h3
-        class="mb-1 text-xl font-bold leading-tight"
+        class="mb-1 text-xl leading-tight font-bold"
         style="font-family: var(--font-display);"
       >
         {title}
       </h3>
-      {description && (
-        <p class="text-sm leading-relaxed opacity-80">{description}</p>
-      )}
+      {
+        description && (
+          <p class="text-sm leading-relaxed opacity-80">{description}</p>
+        )
+      }
       <slot />
     </div>
-    {meta && (
-      <span
-        class="mt-auto block pt-3 text-[0.65rem] opacity-55"
-        style="font-family: var(--font-mono);"
-      >
-        {meta}
-      </span>
-    )}
+    {
+      meta && (
+        <span
+          class="mt-auto block pt-3 text-[0.65rem] opacity-55"
+          style="font-family: var(--font-mono);"
+        >
+          {meta}
+        </span>
+      )
+    }
   </div>
 
   {/* Arrow indicator */}
   <span
-    class="absolute bottom-5 right-6 text-xl opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-60 md:-translate-x-2"
+    class="absolute right-6 bottom-5 text-xl opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-60 md:-translate-x-2"
     aria-hidden="true"
   >
     &rarr;
@@ -702,6 +716,7 @@ git commit -m "feat: add shared ContentCard component with earth-tone colors"
 ### Task 8: Create ContentHeaderCard Component
 
 **Files:**
+
 - Create: `src/components/shared/ContentHeaderCard.astro`
 
 Wide colored card used at the top of content pages and index pages.
@@ -742,21 +757,23 @@ const labelMap = {
 >
   {/* Dot pattern decoration */}
   <div
-    class="pointer-events-none absolute right-5 top-5 grid grid-cols-3 gap-1 opacity-15"
+    class="pointer-events-none absolute top-5 right-5 grid grid-cols-3 gap-1 opacity-15"
     aria-hidden="true"
   >
-    {Array.from({ length: 6 }).map(() => (
-      <span class="h-1 w-1 rounded-full bg-current" />
-    ))}
+    {
+      Array.from({ length: 6 }).map(() => (
+        <span class="h-1 w-1 rounded-full bg-current" />
+      ))
+    }
   </div>
 
   <span
-    class="mb-2 block text-[0.65rem] font-semibold uppercase tracking-widest opacity-70"
+    class="mb-2 block text-[0.65rem] font-semibold tracking-widest uppercase opacity-70"
   >
     {labelMap[type]}
   </span>
   <h1
-    class="text-2xl font-extrabold leading-tight md:text-3xl"
+    class="text-2xl leading-tight font-extrabold md:text-3xl"
     style="font-family: var(--font-display);"
   >
     {title}
@@ -799,6 +816,7 @@ git commit -m "feat: add ContentHeaderCard component for content page headers"
 ### Task 9: Create StaggeredCards Component
 
 **Files:**
+
 - Create: `src/features/home/StaggeredCards.astro`
 
 The homepage layout that fetches latest content from all types and renders them as alternating left/right cards.
@@ -814,18 +832,21 @@ import { formatDate } from "../../utils/dates";
 import ContentCard from "../../components/shared/ContentCard.astro";
 
 // Latest blog post
-const posts = (await getCollection("blog", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
 const latestPost = posts[0];
 
 // Latest writing
-const writings = (await getCollection("writings", ({ data }) => !data.draft))
-  .sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const writings = (
+  await getCollection("writings", ({ data }) => !data.draft)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
 const latestWriting = writings[0];
 
 // First project (sorted by title)
-const projects = (await getCollection("projects"))
-  .sort((a, b) => a.data.title.localeCompare(b.data.title));
+const projects = (await getCollection("projects")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
 const firstProject = projects[0];
 
 // Daily verse
@@ -878,7 +899,7 @@ const verse = getDailyVerse(dailyRefs);
         href="/verses"
         class="w-full self-start md:w-[70%]"
       >
-        <p class="mt-2 text-sm italic leading-relaxed opacity-90">
+        <p class="mt-2 text-sm leading-relaxed italic opacity-90">
           &ldquo;{verse.text}&rdquo;
         </p>
         <span
@@ -910,6 +931,7 @@ git commit -m "feat: add StaggeredCards homepage component with all content type
 ### Task 10: Redesign Hero and Homepage
 
 **Files:**
+
 - Modify: `src/features/home/Hero.astro`
 - Modify: `src/pages/index.astro`
 
@@ -922,12 +944,13 @@ Replace the entire file with:
 import { SITE } from "../../config";
 ---
 
-<section class="px-6 pb-8 pt-16 text-center md:pb-12 md:pt-24">
+<section class="px-6 pt-16 pb-8 text-center md:pt-24 md:pb-12">
   <h1
     class="mb-3 text-4xl font-extrabold tracking-tight md:text-6xl"
     style="font-family: var(--font-display); letter-spacing: -1.5px; line-height: 1.05;"
   >
-    <span class="wave-hand">&#128075;</span> {SITE.author}
+    <span class="wave-hand">&#128075;</span>
+    {SITE.author}
   </h1>
   <p
     class="mx-auto max-w-md text-base text-[var(--fg-muted)] md:text-lg"
@@ -995,6 +1018,7 @@ git commit -m "feat: redesign homepage with centered hero and staggered content 
 ### Task 11: Update Content Page Layouts
 
 **Files:**
+
 - Modify: `src/layouts/Post.astro`
 - Modify: `src/layouts/Writing.astro`
 - Modify: `src/layouts/Project.astro`
@@ -1140,6 +1164,7 @@ git commit -m "feat: add colored ContentHeaderCard to all content page layouts"
 ### Task 12: Update Index Pages
 
 **Files:**
+
 - Modify: `src/pages/blog/index.astro`
 - Modify: `src/pages/writings/index.astro`
 - Modify: `src/pages/projects/index.astro`
@@ -1398,6 +1423,7 @@ git commit -m "feat: redesign all index pages with ContentHeaderCard and Content
 ### Task 13: Update Other Pages (About, 404, Verses)
 
 **Files:**
+
 - Modify: `src/pages/404.astro`
 - Modify: `src/pages/verses.astro`
 
@@ -1429,10 +1455,8 @@ import Footer from "../components/primitives/Footer.astro";
         404
       </p>
       <p class="mt-4 text-[var(--fg-muted)]">This page doesn't exist.</p>
-      <a
-        href="/"
-        class="mt-8 text-sm"
-        style="font-family: var(--font-display);">Go home</a
+      <a href="/" class="mt-8 text-sm" style="font-family: var(--font-display);"
+        >Go home</a
       >
     </main>
     <Footer />
@@ -1470,8 +1494,8 @@ import VerseList from "../features/bible/VerseList.astro";
       (The Holy Bible, English Standard Version<sup>&reg;</sup>), &copy; 2001 by
       Crossway, a publishing ministry of Good News Publishers. Used by
       permission. All rights reserved. The ESV text may not be quoted in any
-      publication made available to the public by a Creative Commons license. The
-      ESV may not be translated into any other language.
+      publication made available to the public by a Creative Commons license.
+      The ESV may not be translated into any other language.
     </footer>
   </div>
 </Page>
@@ -1494,6 +1518,7 @@ git commit -m "style: update 404 and verses pages with new typography and card h
 ### Task 14: Add Parallax Dot Pattern Effect
 
 **Files:**
+
 - Modify: `src/features/home/StaggeredCards.astro`
 
 Add an inline script for subtle mouse-based parallax on the dot patterns.
@@ -1519,7 +1544,8 @@ Add at the bottom of `StaggeredCards.astro`, after the closing `</section>`. Thi
           const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
           const dots = card.querySelector("[aria-hidden]");
           if (dots) {
-            dots.style.transform = "translate(" + (x * 3) + "px, " + (y * 3) + "px)";
+            dots.style.transform =
+              "translate(" + x * 3 + "px, " + y * 3 + "px)";
           }
         });
       });
@@ -1529,7 +1555,9 @@ Add at the bottom of `StaggeredCards.astro`, after the closing `</section>`. Thi
         if (dots) {
           dots.style.transform = "translate(0, 0)";
           dots.style.transition = "transform 0.3s ease";
-          setTimeout(function () { dots.style.transition = ""; }, 300);
+          setTimeout(function () {
+            dots.style.transition = "";
+          }, 300);
         }
       });
     });
@@ -1554,6 +1582,7 @@ git commit -m "feat: add subtle mouse-based parallax to homepage dot patterns"
 ### Task 15: Update Page.astro to Widen Max-Width
 
 **Files:**
+
 - Modify: `src/layouts/Page.astro`
 
 The `ContentHeaderCard` uses `max-w-[44rem]` (704px) and index page lists use the same. The current `--content-width: 680px` on `<main>` would clip these. Widen `<main>` to `max-w-3xl` (48rem / 768px) so wider components can breathe, while prose and cards still control their own narrower max-widths internally.
@@ -1605,6 +1634,7 @@ git commit -m "style: adjust Page layout spacing"
 ### Task 16: Final Verification and Lint/Format Fix
 
 **Files:**
+
 - All modified files
 
 - [ ] **Step 1: Run full verification suite**
@@ -1641,6 +1671,7 @@ git commit -m "style: auto-format updated files with Prettier"
 - [ ] **Step 5: Visual review**
 
 Run `pnpm dev` and manually verify:
+
 - Homepage: centered pill nav, hero with waving hand, staggered colored cards
 - Blog index: clay card header, full-width blog cards
 - Blog post: wide clay header card, clean prose below
@@ -1660,6 +1691,7 @@ Run `pnpm dev` and manually verify:
 ### Task 17: Update Project Documentation
 
 **Files:**
+
 - Modify: `docs/styling.md`
 - Modify: `docs/architecture.md`
 

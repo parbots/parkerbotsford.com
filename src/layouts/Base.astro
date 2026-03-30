@@ -59,7 +59,8 @@ const { title, description = "" } = Astro.props;
       function applyFont() {
         const pref = localStorage.getItem("font-preference");
         document.documentElement.classList.remove("font-lora", "font-inter");
-        if (pref === "lora") document.documentElement.classList.add("font-lora");
+        if (pref === "lora")
+          document.documentElement.classList.add("font-lora");
         if (pref === "inter")
           document.documentElement.classList.add("font-inter");
       }
