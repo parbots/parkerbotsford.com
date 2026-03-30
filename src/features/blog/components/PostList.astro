@@ -7,7 +7,7 @@ const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
 );
 ---
 
-<div class="divide-y divide-[var(--border)]">
+<div class="mx-auto flex max-w-[44rem] flex-col gap-4 py-4">
   {
     posts.map((post) => (
       <PostCard

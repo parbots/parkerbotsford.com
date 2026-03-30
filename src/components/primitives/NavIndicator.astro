@@ -1,0 +1,38 @@
+---
+
+---
+
+<span
+  id="nav-indicator"
+  class="pointer-events-none absolute rounded-full"
+  style="background: var(--nav-indicator-bg); height: 32px; transition: left 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; opacity: 0;"
+></span>
+
+<script is:inline>
+  function updateNavIndicator() {
+    const nav = document.querySelector("[data-nav-pill]");
+    const indicator = document.getElementById("nav-indicator");
+    if (!nav || !indicator) return;
+
+    const activeLink = nav.querySelector("[data-active]");
+    if (!activeLink) {
+      indicator.style.opacity = "0";
+      return;
+    }
+
+    const navRect = nav.getBoundingClientRect();
+    const linkRect = activeLink.getBoundingClientRect();
+
+    indicator.style.left = linkRect.left - navRect.left + "px";
+    indicator.style.width = linkRect.width + "px";
+    indicator.style.top =
+      linkRect.top - navRect.top + (linkRect.height - 32) / 2 + "px";
+    indicator.style.opacity = "1";
+  }
+
+  updateNavIndicator();
+  window.addEventListener("resize", updateNavIndicator);
+  document.addEventListener("astro:after-swap", () => {
+    requestAnimationFrame(updateNavIndicator);
+  });
+</script>

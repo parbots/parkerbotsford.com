@@ -23,11 +23,11 @@ Personal website redesign for parkerbotsford.com. Replaces the current styling a
 
 ### Font Stack
 
-| Role | Font | Source | Weights |
-|------|------|--------|---------|
-| Display (headings, nav, hero) | Nunito | Google Fonts | 400, 600, 700, 800 |
-| Body (default) | Atkinson Hyperlegible Next | Google Fonts | 400, 600, italic |
-| Code | JetBrains Mono | Google Fonts (existing) | 400, 500 |
+| Role                          | Font                       | Source                  | Weights            |
+| ----------------------------- | -------------------------- | ----------------------- | ------------------ |
+| Display (headings, nav, hero) | Nunito                     | Google Fonts            | 400, 600, 700, 800 |
+| Body (default)                | Atkinson Hyperlegible Next | Google Fonts            | 400, 600, italic   |
+| Code                          | JetBrains Mono             | Google Fonts (existing) | 400, 500           |
 
 ### CSS Variables
 
@@ -42,7 +42,10 @@ Personal website redesign for parkerbotsford.com. Replaces the current styling a
 The new `--font-display` variable is applied to all headings and display-context elements:
 
 ```css
-h1, h2, h3, h4 {
+h1,
+h2,
+h3,
+h4 {
   font-family: var(--font-display);
 }
 ```
@@ -65,32 +68,32 @@ Implementation: an "Aa" button in the nav triggers a small dropdown. Selection p
 
 ### Base Colors (kept from current design)
 
-| Token | Light | Dark |
-|-------|-------|------|
-| `--bg` | `#f5f0eb` (warm cream) | `#1c1917` (dark chocolate) |
-| `--bg-surface` | `#ede7e0` | `#262220` |
-| `--fg` | `#2c2420` | `#e7ddd4` |
-| `--fg-muted` | `#8c7b6b` | `#9c8b7b` |
-| `--accent` | `#c4643a` (burnt sienna) | `#d4845a` |
-| `--border` | `#d9cfc4` | `#3d3530` |
+| Token          | Light                    | Dark                       |
+| -------------- | ------------------------ | -------------------------- |
+| `--bg`         | `#f5f0eb` (warm cream)   | `#1c1917` (dark chocolate) |
+| `--bg-surface` | `#ede7e0`                | `#262220`                  |
+| `--fg`         | `#2c2420`                | `#e7ddd4`                  |
+| `--fg-muted`   | `#8c7b6b`                | `#9c8b7b`                  |
+| `--accent`     | `#c4643a` (burnt sienna) | `#d4845a`                  |
+| `--border`     | `#d9cfc4`                | `#3d3530`                  |
 
 ### Content-Type Card Colors
 
-| Content Type | Card Background | Card Foreground | Semantic Meaning |
-|-------------|----------------|----------------|------------------|
-| Blog | Clay `#b8967a` | `#2e1f14` | Earthy, grounded ideas |
-| Writing | Olive `#8a9e82` | `#1e2a1a` | Nature, ink, reflection |
-| Project | Copper `#c9956e` | `#3a2312` | Making, building, forge |
-| Verse | Sand `#c4b09a` | `#332618` | Desert calm, grounding |
+| Content Type | Card Background  | Card Foreground | Semantic Meaning        |
+| ------------ | ---------------- | --------------- | ----------------------- |
+| Blog         | Clay `#b8967a`   | `#2e1f14`       | Earthy, grounded ideas  |
+| Writing      | Olive `#8a9e82`  | `#1e2a1a`       | Nature, ink, reflection |
+| Project      | Copper `#c9956e` | `#3a2312`       | Making, building, forge |
+| Verse        | Sand `#c4b09a`   | `#332618`       | Desert calm, grounding  |
 
 ### Contrast Ratios (Light Mode)
 
-| Content Type | FG | BG | Ratio | WCAG AA |
-|-------------|----|----|-------|---------|
-| Blog | `#2e1f14` | `#b8967a` | 5.3:1 | Pass |
-| Writing | `#1e2a1a` | `#8a9e82` | 5.5:1 | Pass |
-| Project | `#3a2312` | `#c9956e` | 5.0:1 | Pass |
-| Verse | `#332618` | `#c4b09a` | 5.1:1 | Pass |
+| Content Type | FG        | BG        | Ratio | WCAG AA |
+| ------------ | --------- | --------- | ----- | ------- |
+| Blog         | `#2e1f14` | `#b8967a` | 5.3:1 | Pass    |
+| Writing      | `#1e2a1a` | `#8a9e82` | 5.5:1 | Pass    |
+| Project      | `#3a2312` | `#c9956e` | 5.0:1 | Pass    |
+| Verse        | `#332618` | `#c4b09a` | 5.1:1 | Pass    |
 
 ## Layout
 
@@ -106,6 +109,7 @@ Implementation: an "Aa" button in the nav triggers a small dropdown. Selection p
 Pill-shaped floating nav bar, centered at the top of every page.
 
 **Structure:**
+
 ```
 [ Blog  Writings  Projects  Verses  About  |  Aa  🌙 ]
 ```
@@ -121,12 +125,14 @@ The site name ("Parker Botsford") is not in the nav pill -- it lives in the hero
 ### Homepage
 
 **Hero section:**
+
 - Centered layout
 - Large Nunito heading: "👋 Parker Botsford" (waving hand emoji with CSS animation)
 - Tagline below in body font, muted color
 - Generous vertical padding (4-5rem top, 2-3rem bottom)
 
 **Content cards (clean stagger):**
+
 - Four cards: latest blog post, latest writing, most recent project (sorted by title, first in list), daily verse
 - Each card: ~70-75% width on desktop, **full width on mobile** (below `md` breakpoint)
 - Alternating left/right alignment (`align-self: flex-start` / `flex-end`) on desktop; stacked vertically on mobile
@@ -138,6 +144,7 @@ The site name ("Parker Botsford") is not in the nav pill -- it lives in the hero
 **Daily verse card:** Uses `getDailyVerse()` from `src/utils/verse-cache.ts` with the `DAILY_VERSES` array from `src/data/verses.ts` (existing pattern from `DailyVerse.astro`). Links to `/verses`.
 
 **Card hover behavior:**
+
 - `transform: translateY(-4px)` with bouncy easing `cubic-bezier(0.175, 0.885, 0.32, 1.275)` over 0.5s
 - `box-shadow: 0 20px 60px -15px rgba(0,0,0,0.15)`
 - Arrow slides in from left
@@ -145,6 +152,7 @@ The site name ("Parker Botsford") is not in the nav pill -- it lives in the hero
 ### Content Pages (Blog Posts, Writings, Projects)
 
 **Header card:**
+
 - Wide colored card matching content type (wider than prose column, ~44rem max-width)
 - `border-radius: 20px`, generous padding (2.25rem 2.5rem)
 - Contains: type label, title (2rem, Nunito 800), date/meta, tags (pill-shaped)
@@ -152,6 +160,7 @@ The site name ("Parker Botsford") is not in the nav pill -- it lives in the hero
 - Centered horizontally with more vertical margin (2rem top/bottom)
 
 **Prose content:**
+
 - Standard prose column (38rem max-width, centered)
 - Clean reading experience: generous line-height (1.8), comfortable font size
 - Subheadings in Nunito display font
@@ -185,8 +194,9 @@ The site name ("Parker Botsford") is not in the nav pill -- it lives in the hero
 All interactive cards (homepage, index pages, content headers on hover):
 
 ```css
-transition: transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
-            box-shadow 0.5s ease;
+transition:
+  transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275),
+  box-shadow 0.5s ease;
 ```
 
 - Hover: `translateY(-4px)` + deeper shadow
@@ -215,12 +225,25 @@ The emoji in the hero section has a looping wave animation:
 
 ```css
 @keyframes wave-hand {
-  0%, 100% { transform: rotate(0deg); }
-  15% { transform: rotate(14deg); }
-  30% { transform: rotate(-8deg); }
-  45% { transform: rotate(14deg); }
-  60% { transform: rotate(-4deg); }
-  75% { transform: rotate(10deg); }
+  0%,
+  100% {
+    transform: rotate(0deg);
+  }
+  15% {
+    transform: rotate(14deg);
+  }
+  30% {
+    transform: rotate(-8deg);
+  }
+  45% {
+    transform: rotate(14deg);
+  }
+  60% {
+    transform: rotate(-4deg);
+  }
+  75% {
+    transform: rotate(10deg);
+  }
 }
 ```
 
@@ -241,33 +264,33 @@ All animations wrapped in `@media (prefers-reduced-motion: no-preference)`. When
 
 ### Modified Components
 
-| Component | Changes |
-|-----------|---------|
-| `Base.astro` | Update font preloads (Nunito, Atkinson Hyperlegible Next), add font-preference script |
-| `Page.astro` | No structural changes, spacing adjustments |
-| `Post.astro` | Replace header with wide colored card |
-| `Project.astro` | Replace header with wide colored card (copper) |
-| `Writing.astro` | Replace header with wide colored card (olive) |
-| `Nav.astro` | Redesign as centered pill nav with sliding indicator |
-| `ThemeToggle.tsx` | Keep, integrate into new nav pill |
-| `MobileNav.tsx` | Update styling to match new nav design |
-| `Footer.astro` | Simplify, add spacing |
-| `Hero.astro` | Redesign with large centered Nunito heading + wave emoji |
-| `RecentPosts.astro` | Replace with staggered card layout showing all content types |
-| `PostCard.astro` | Redesign as earth-tone colored card with bouncy hover |
-| `WritingCard.astro` | Redesign as earth-tone colored card |
-| `ProjectCard.astro` | Redesign as earth-tone colored card |
-| `global.css` | Update CSS variables, typography, spacing scale, animations. **Important:** The current wildcard `html *` transition rule (for theme transitions) must be scoped more narrowly -- move it to specific elements (bg, text, borders) or use `transition-property` instead of shorthand, so it does not conflict with card hover `transform` transitions. |
+| Component           | Changes                                                                                                                                                                                                                                                                                                                                                |
+| ------------------- | ------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------ |
+| `Base.astro`        | Update font preloads (Nunito, Atkinson Hyperlegible Next), add font-preference script                                                                                                                                                                                                                                                                  |
+| `Page.astro`        | No structural changes, spacing adjustments                                                                                                                                                                                                                                                                                                             |
+| `Post.astro`        | Replace header with wide colored card                                                                                                                                                                                                                                                                                                                  |
+| `Project.astro`     | Replace header with wide colored card (copper)                                                                                                                                                                                                                                                                                                         |
+| `Writing.astro`     | Replace header with wide colored card (olive)                                                                                                                                                                                                                                                                                                          |
+| `Nav.astro`         | Redesign as centered pill nav with sliding indicator                                                                                                                                                                                                                                                                                                   |
+| `ThemeToggle.tsx`   | Keep, integrate into new nav pill                                                                                                                                                                                                                                                                                                                      |
+| `MobileNav.tsx`     | Update styling to match new nav design                                                                                                                                                                                                                                                                                                                 |
+| `Footer.astro`      | Simplify, add spacing                                                                                                                                                                                                                                                                                                                                  |
+| `Hero.astro`        | Redesign with large centered Nunito heading + wave emoji                                                                                                                                                                                                                                                                                               |
+| `RecentPosts.astro` | Replace with staggered card layout showing all content types                                                                                                                                                                                                                                                                                           |
+| `PostCard.astro`    | Redesign as earth-tone colored card with bouncy hover                                                                                                                                                                                                                                                                                                  |
+| `WritingCard.astro` | Redesign as earth-tone colored card                                                                                                                                                                                                                                                                                                                    |
+| `ProjectCard.astro` | Redesign as earth-tone colored card                                                                                                                                                                                                                                                                                                                    |
+| `global.css`        | Update CSS variables, typography, spacing scale, animations. **Important:** The current wildcard `html *` transition rule (for theme transitions) must be scoped more narrowly -- move it to specific elements (bg, text, borders) or use `transition-property` instead of shorthand, so it does not conflict with card hover `transform` transitions. |
 
 ### New Components
 
-| Component | Purpose |
-|-----------|---------|
-| `FontSwitcher.tsx` | React island: "Aa" popup menu for body font selection |
-| `StaggeredCards.astro` | Homepage layout: alternating left/right card container |
-| `ContentCard.astro` | Shared colored card component with type-based styling |
-| `ContentHeaderCard.astro` | Wide colored header card for content pages |
-| `NavIndicator.astro` | Astro component with inline `<script>`: sliding pill behind active nav item. Uses vanilla JS to measure nav link positions and update a positioned `<span>` via CSS transitions. Avoids React hydration cost for a purely visual effect. Re-initializes on `astro:after-swap` for view transition compatibility. |
+| Component                 | Purpose                                                                                                                                                                                                                                                                                                          |
+| ------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `FontSwitcher.tsx`        | React island: "Aa" popup menu for body font selection                                                                                                                                                                                                                                                            |
+| `StaggeredCards.astro`    | Homepage layout: alternating left/right card container                                                                                                                                                                                                                                                           |
+| `ContentCard.astro`       | Shared colored card component with type-based styling                                                                                                                                                                                                                                                            |
+| `ContentHeaderCard.astro` | Wide colored header card for content pages                                                                                                                                                                                                                                                                       |
+| `NavIndicator.astro`      | Astro component with inline `<script>`: sliding pill behind active nav item. Uses vanilla JS to measure nav link positions and update a positioned `<span>` via CSS transitions. Avoids React hydration cost for a purely visual effect. Re-initializes on `astro:after-swap` for view transition compatibility. |
 
 ### Removed Components
 
@@ -287,12 +310,12 @@ No new directories. New components go in existing locations:
 
 Existing dark mode approach (`.dark` class on `<html>`) is maintained. Card colors in dark mode use darker, desaturated variants:
 
-| Content Type | Dark BG | Dark FG | Ratio | WCAG AA |
-|-------------|---------|---------|-------|---------|
-| Blog (Clay) | `#5c4b3d` | `#e2d5c8` | 5.4:1 | Pass |
-| Writing (Olive) | `#3d4a38` | `#d4e0cf` | 5.6:1 | Pass |
-| Project (Copper) | `#654a37` | `#e8d5c4` | 5.2:1 | Pass |
-| Verse (Sand) | `#62584d` | `#e2d8cc` | 5.1:1 | Pass |
+| Content Type     | Dark BG   | Dark FG   | Ratio | WCAG AA |
+| ---------------- | --------- | --------- | ----- | ------- |
+| Blog (Clay)      | `#5c4b3d` | `#e2d5c8` | 5.4:1 | Pass    |
+| Writing (Olive)  | `#3d4a38` | `#d4e0cf` | 5.6:1 | Pass    |
+| Project (Copper) | `#654a37` | `#e8d5c4` | 5.2:1 | Pass    |
+| Verse (Sand)     | `#62584d` | `#e2d8cc` | 5.1:1 | Pass    |
 
 ## Accessibility
 

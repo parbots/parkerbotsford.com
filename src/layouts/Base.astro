@@ -38,7 +38,7 @@ const { title, description = "" } = Astro.props;
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;0,700;1,400&family=JetBrains+Mono:wght@400;500&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible+Next:ital,wght@0,400;0,600;1,400&family=Inter:wght@400;500;600&family=JetBrains+Mono:wght@400;500&family=Lora:ital,wght@0,400;0,600;1,400&family=Nunito:wght@400;600;700;800&display=swap"
       rel="stylesheet"
     />
     <title>{title}</title>
@@ -54,6 +54,18 @@ const { title, description = "" } = Astro.props;
       }
       applyTheme();
       document.addEventListener("astro:after-swap", applyTheme);
+    </script>
+    <script is:inline>
+      function applyFont() {
+        const pref = localStorage.getItem("font-preference");
+        document.documentElement.classList.remove("font-lora", "font-inter");
+        if (pref === "lora")
+          document.documentElement.classList.add("font-lora");
+        if (pref === "inter")
+          document.documentElement.classList.add("font-inter");
+      }
+      applyFont();
+      document.addEventListener("astro:after-swap", applyFont);
     </script>
   </head>
   <body>

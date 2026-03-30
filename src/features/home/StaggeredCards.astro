@@ -1,0 +1,124 @@
+---
+import { getCollection } from "astro:content";
+import { DAILY_VERSES } from "../../data/verses";
+import { getDailyVerse } from "../../utils/verse-cache";
+import { formatDate } from "../../utils/dates";
+import ContentCard from "../../components/shared/ContentCard.astro";
+
+// Latest blog post
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const latestPost = posts[0];
+
+// Latest writing
+const writings = (
+  await getCollection("writings", ({ data }) => !data.draft)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const latestWriting = writings[0];
+
+// First project (sorted by title)
+const projects = (await getCollection("projects")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+const firstProject = projects[0];
+
+// Daily verse
+const dailyRefs = DAILY_VERSES.map((v) => v.ref);
+const verse = getDailyVerse(dailyRefs);
+---
+
+<section class="mx-auto flex max-w-[46rem] flex-col gap-4 px-6 py-8">
+  {
+    latestPost && (
+      <ContentCard
+        type="blog"
+        title={latestPost.data.title}
+        description={latestPost.data.description}
+        href={`/blog/${latestPost.id}`}
+        meta={formatDate(latestPost.data.date)}
+        class="w-full self-end md:w-3/4"
+      />
+    )
+  }
+  {
+    latestWriting && (
+      <ContentCard
+        type="writing"
+        title={latestWriting.data.title}
+        description={`A ${latestWriting.data.type}`}
+        href={`/writings/${latestWriting.id}`}
+        meta={formatDate(latestWriting.data.date)}
+        class="w-full self-start md:w-[68%]"
+      />
+    )
+  }
+  {
+    firstProject && (
+      <ContentCard
+        type="project"
+        title={firstProject.data.title}
+        description={firstProject.data.description}
+        href={`/projects/${firstProject.id}`}
+        meta={firstProject.data.status}
+        class="w-full self-end md:w-3/4"
+      />
+    )
+  }
+  {
+    verse && (
+      <ContentCard
+        type="verse"
+        title="Verse of the Day"
+        href="/verses"
+        class="w-full self-start md:w-[70%]"
+      >
+        <p class="mt-2 text-sm leading-relaxed italic opacity-90">
+          &ldquo;{verse.text}&rdquo;
+        </p>
+        <span
+          class="mt-1 block text-xs opacity-70"
+          style="font-family: var(--font-mono);"
+        >
+          {verse.reference}
+        </span>
+      </ContentCard>
+    )
+  }
+</section>
+
+<script is:inline>
+  if (
+    window.matchMedia("(pointer: fine)").matches &&
+    !window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ) {
+    const cards = document.querySelectorAll(".card-hover");
+    cards.forEach((card) => {
+      let rafId = 0;
+      card.addEventListener("mousemove", (e) => {
+        cancelAnimationFrame(rafId);
+        rafId = requestAnimationFrame(() => {
+          const rect = card.getBoundingClientRect();
+          const x = ((e.clientX - rect.left) / rect.width - 0.5) * 2;
+          const y = ((e.clientY - rect.top) / rect.height - 0.5) * 2;
+          const dots = card.querySelector("[aria-hidden]");
+          if (dots) {
+            dots.style.transform =
+              "translate(" + x * 3 + "px, " + y * 3 + "px)";
+          }
+        });
+      });
+      card.addEventListener("mouseleave", () => {
+        cancelAnimationFrame(rafId);
+        const dots = card.querySelector("[aria-hidden]");
+        if (dots) {
+          dots.style.transform = "translate(0, 0)";
+          dots.style.transition = "transform 0.3s ease";
+          setTimeout(function () {
+            dots.style.transition = "";
+          }, 300);
+        }
+      });
+    });
+  }
+</script>

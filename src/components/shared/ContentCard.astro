@@ -1,0 +1,88 @@
+---
+interface Props {
+  type: "blog" | "writing" | "project" | "verse";
+  title: string;
+  description?: string;
+  href: string;
+  meta?: string;
+  class?: string;
+}
+
+const { type, title, description, href, meta, class: className } = Astro.props;
+
+const colorMap = {
+  blog: "bg-[var(--card-blog-bg)] text-[var(--card-blog-fg)]",
+  writing: "bg-[var(--card-writing-bg)] text-[var(--card-writing-fg)]",
+  project: "bg-[var(--card-project-bg)] text-[var(--card-project-fg)]",
+  verse: "bg-[var(--card-verse-bg)] text-[var(--card-verse-fg)]",
+};
+
+const labelMap = {
+  blog: "Blog Post",
+  writing: "Writing",
+  project: "Project",
+  verse: "Daily Verse",
+};
+---
+
+<a
+  href={href}
+  class:list={[
+    "card-hover group relative block overflow-hidden rounded-3xl p-6 no-underline md:p-7",
+    colorMap[type],
+    className,
+  ]}
+>
+  {/* Dot pattern decoration */}
+  <div
+    class="pointer-events-none absolute top-5 right-5 grid grid-cols-3 gap-1 opacity-15"
+    style="will-change: transform;"
+    aria-hidden="true"
+  >
+    {
+      Array.from({ length: 6 }).map(() => (
+        <span class="h-1 w-1 rounded-full bg-current" />
+      ))
+    }
+  </div>
+
+  <div class="relative z-10 flex min-h-[120px] flex-col justify-between">
+    <div>
+      <span
+        class="mb-2 block text-[0.65rem] font-semibold tracking-widest uppercase opacity-70"
+      >
+        {labelMap[type]}
+      </span>
+      <h3
+        class="mb-1 text-xl leading-tight font-bold"
+        style="font-family: var(--font-display);"
+      >
+        {title}
+      </h3>
+      {
+        description && (
+          <p class="text-sm leading-relaxed opacity-80">{description}</p>
+        )
+      }
+      <slot />
+    </div>
+    {
+      meta && (
+        <span
+          class="mt-auto block pt-3 text-[0.65rem] opacity-55"
+          style="font-family: var(--font-mono);"
+        >
+          {meta}
+        </span>
+      )
+    }
+  </div>
+
+  {/* Arrow indicator */}
+  <span
+    class="absolute right-6 bottom-5 text-xl opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-60 md:-translate-x-2"
+    aria-hidden="true"
+  >
+    &rarr;
+  </span>
+</a>
