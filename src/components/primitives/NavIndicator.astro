@@ -34,9 +34,12 @@
       animate(indicator!, { opacity: 0 }, { duration: 0.15 });
     }
 
+    const menuSection = nav.querySelector("[data-nav-menu]");
+
     function findTarget(el: Element | null): Element | null {
       while (el && el !== nav) {
-        if (el.matches("a[href], button")) return el;
+        if (el === menuSection) return el;
+        if (el.matches("a[href]")) return el;
         el = el.parentElement;
       }
       return null;
