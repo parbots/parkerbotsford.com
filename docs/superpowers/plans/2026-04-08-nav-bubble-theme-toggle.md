@@ -17,6 +17,7 @@
 ### Task 1: Restyle ThemeToggle button
 
 **Files:**
+
 - Modify: `src/components/primitives/ThemeToggle.tsx:31-34`
 
 - [ ] **Step 1: Update ThemeToggle className**
@@ -25,10 +26,12 @@ Replace the current button className:
 
 ```tsx
 // OLD (line 34)
-className="text-[var(--fg-muted)] transition-colors duration-300 hover:text-[var(--accent)]"
+className =
+  "text-[var(--fg-muted)] transition-colors duration-300 hover:text-[var(--accent)]";
 
 // NEW
-className="flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg)] text-[var(--fg-muted)] transition-colors duration-200 hover:text-[var(--accent)]"
+className =
+  "flex size-8 items-center justify-center rounded-full border border-[var(--border)] bg-[var(--bg)] text-[var(--fg-muted)] transition-colors duration-200 hover:text-[var(--accent)]";
 ```
 
 - [ ] **Step 2: Visual check**
@@ -49,6 +52,7 @@ git commit -m "style: restyle theme toggle to match font menu button"
 ### Task 2: Add Home link and remove desktop PB monogram
 
 **Files:**
+
 - Modify: `src/config.ts:9-15`
 - Modify: `src/components/primitives/Nav.astro:14-21`
 
@@ -72,14 +76,14 @@ export const NAV_ITEMS = [
 In `src/components/primitives/Nav.astro`, remove the desktop PB monogram block (lines 14-20):
 
 ```astro
-  {/* Desktop: PB monogram */}
-  <a
-    href="/"
-    class="absolute left-6 hidden text-base font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
-    style="font-family: var(--font-display);"
-  >
-    PB
-  </a>
+{/* Desktop: PB monogram */}
+<a
+  href="/"
+  class="absolute left-6 hidden text-base font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)] md:block"
+  style="font-family: var(--font-display);"
+>
+  PB
+</a>
 ```
 
 - [ ] **Step 3: Visual check**
@@ -87,6 +91,7 @@ In `src/components/primitives/Nav.astro`, remove the desktop PB monogram block (
 Run: `pnpm dev`
 
 Verify:
+
 - Desktop: "Home" appears as the first nav item in the pill. PB monogram is gone. Clicking Home navigates to `/`. The bubble indicator sits on "Home" when on the homepage.
 - Mobile: "PB" monogram still shows on left. "Home" appears in the hamburger menu overlay.
 - Navigate to `/blog` — "Blog" is highlighted, not "Home".
@@ -103,6 +108,7 @@ git commit -m "feat: add Home nav link and remove redundant desktop PB monogram"
 ### Task 3: Animate nav bubble with View Transitions
 
 **Files:**
+
 - Modify: `src/components/primitives/NavIndicator.astro:5-8` (span element)
 - Modify: `src/components/primitives/NavIndicator.astro:35-37` (event listener)
 
@@ -140,6 +146,7 @@ Note: `astro:page-load` also fires on initial page load, but `updateNavIndicator
 Run: `pnpm dev`
 
 Navigate between pages and verify:
+
 - The bubble smoothly slides from one nav item to another during page transitions (not jumping/resetting).
 - On initial load, the bubble appears on the correct nav item.
 - Resizing the window still repositions the bubble correctly.

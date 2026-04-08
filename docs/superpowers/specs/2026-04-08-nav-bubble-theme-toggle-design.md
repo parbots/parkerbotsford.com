@@ -42,6 +42,7 @@ Child pages (e.g. `/blog/some-post`) will match the parent nav item (e.g. "Blog"
 **JS repositioning interaction:** Change the event listener from `astro:after-swap` to `astro:page-load`. The `after-swap` event fires during the transition and would conflict with the view transition animation. `page-load` fires after the transition completes, ensuring the JS repositioning doesn't fight the browser's animation. The JS is still needed to set the correct final position — the view transition handles the smooth interpolation between old and new positions.
 
 The existing JS remains for:
+
 - Initial positioning on page load
 - Window resize handling
 - Final position after view transition (via `astro:page-load`)
@@ -50,12 +51,12 @@ The existing JS remains for:
 
 ## Files Changed
 
-| File | Change |
-|------|--------|
-| `src/config.ts` | Add `{ label: "Home", href: "/" }` to start of `NAV_ITEMS` |
-| `src/components/primitives/NavIndicator.astro` | Add `transition:name`, change event to `astro:page-load` |
-| `src/components/primitives/ThemeToggle.tsx` | Add circular button styling to match FontSwitcher |
-| `src/components/primitives/Nav.astro` | Remove desktop PB monogram (redundant with Home link) |
+| File                                           | Change                                                     |
+| ---------------------------------------------- | ---------------------------------------------------------- |
+| `src/config.ts`                                | Add `{ label: "Home", href: "/" }` to start of `NAV_ITEMS` |
+| `src/components/primitives/NavIndicator.astro` | Add `transition:name`, change event to `astro:page-load`   |
+| `src/components/primitives/ThemeToggle.tsx`    | Add circular button styling to match FontSwitcher          |
+| `src/components/primitives/Nav.astro`          | Remove desktop PB monogram (redundant with Home link)      |
 
 ## Files Unchanged
 
