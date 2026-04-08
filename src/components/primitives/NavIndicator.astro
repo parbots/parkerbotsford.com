@@ -5,7 +5,7 @@
 <span
   id="nav-indicator"
   class="pointer-events-none absolute rounded-full opacity-0"
-  style="background: var(--nav-indicator-bg); height: 32px;"></span>
+  style="background: var(--nav-indicator-bg);"></span>
 
 <script>
   import { animate } from "motion/mini";
@@ -18,13 +18,15 @@
     function moveIndicatorTo(el: Element) {
       const navRect = nav!.getBoundingClientRect();
       const elRect = el.getBoundingClientRect();
-      const left = elRect.left - navRect.left;
-      const width = elRect.width;
-      const top = elRect.top - navRect.top + (elRect.height - 32) / 2;
 
       animate(
         indicator!,
-        { left: `${left}px`, width: `${width}px`, top: `${top}px` },
+        {
+          left: `${elRect.left - navRect.left}px`,
+          top: `${elRect.top - navRect.top}px`,
+          width: `${elRect.width}px`,
+          height: `${elRect.height}px`,
+        },
         { type: "spring", stiffness: 300, damping: 28, mass: 0.8 },
       );
       animate(indicator!, { opacity: 1 }, { duration: 0.15 });
