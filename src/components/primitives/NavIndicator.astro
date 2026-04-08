@@ -15,17 +15,21 @@
     const indicator = document.getElementById("nav-indicator");
     if (!nav || !indicator) return;
 
+    // Pill border + padding inset — bubble sits inside this margin
+    const INSET = 4;
+
     function moveIndicatorTo(el: Element) {
       const navRect = nav!.getBoundingClientRect();
       const elRect = el.getBoundingClientRect();
+      const bubbleHeight = navRect.height - INSET * 2;
 
       animate(
         indicator!,
         {
           left: `${elRect.left - navRect.left}px`,
-          top: `${elRect.top - navRect.top}px`,
+          top: `${INSET}px`,
           width: `${elRect.width}px`,
-          height: `${elRect.height}px`,
+          height: `${bubbleHeight}px`,
         },
         { type: "spring", stiffness: 300, damping: 28, mass: 0.8 },
       );
