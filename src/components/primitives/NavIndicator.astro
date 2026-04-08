@@ -5,33 +5,56 @@
 <span
   id="nav-indicator"
   class="pointer-events-none absolute rounded-full"
-  transition:name="nav-indicator"
   style="background: var(--nav-indicator-bg); height: 32px; transition: left 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; opacity: 0;"
 ></span>
 
 <script is:inline>
-  function updateNavIndicator() {
+  function initNavIndicator() {
     const nav = document.querySelector("[data-nav-pill]");
     const indicator = document.getElementById("nav-indicator");
     if (!nav || !indicator) return;
 
-    const activeLink = nav.querySelector("[data-active]");
-    if (!activeLink) {
-      indicator.style.opacity = "0";
-      return;
+    const links = nav.querySelectorAll("a[href]");
+
+    function moveIndicatorTo(el) {
+      const navRect = nav.getBoundingClientRect();
+      const linkRect = el.getBoundingClientRect();
+      indicator.style.left = linkRect.left - navRect.left + "px";
+      indicator.style.width = linkRect.width + "px";
+      indicator.style.top =
+        linkRect.top - navRect.top + (linkRect.height - 32) / 2 + "px";
+      indicator.style.opacity = "1";
     }
 
-    const navRect = nav.getBoundingClientRect();
-    const linkRect = activeLink.getBoundingClientRect();
+    function moveToActive() {
+      const activeLink = nav.querySelector("[data-active]");
+      if (activeLink) {
+        moveIndicatorTo(activeLink);
+      } else {
+        indicator.style.opacity = "0";
+      }
+    }
 
-    indicator.style.left = linkRect.left - navRect.left + "px";
-    indicator.style.width = linkRect.width + "px";
-    indicator.style.top =
-      linkRect.top - navRect.top + (linkRect.height - 32) / 2 + "px";
-    indicator.style.opacity = "1";
+    links.forEach(function (link) {
+      link.addEventListener("mouseenter", function () {
+        moveIndicatorTo(link);
+      });
+      link.addEventListener("focus", function () {
+        moveIndicatorTo(link);
+      });
+    });
+
+    nav.addEventListener("mouseleave", moveToActive);
+    nav.addEventListener("focusout", function (e) {
+      if (!nav.contains(e.relatedTarget)) {
+        moveToActive();
+      }
+    });
+
+    moveToActive();
+    window.addEventListener("resize", moveToActive);
   }
 
-  updateNavIndicator();
-  window.addEventListener("resize", updateNavIndicator);
-  document.addEventListener("astro:page-load", updateNavIndicator);
+  initNavIndicator();
+  document.addEventListener("astro:page-load", initNavIndicator);
 </script>
