@@ -38,15 +38,11 @@ const currentPath = Astro.url.pathname;
       })
     }
     <div
-      class="ml-2 border-l border-transparent pl-2 transition-[border-color] duration-300 ease-out group-focus-within/nav:border-[var(--border)] group-hover/nav:border-[var(--border)]"
+      data-nav-menu
+      class="relative z-10 ml-1 flex items-center gap-2 self-stretch border-l border-transparent px-3 transition-[border-color] duration-300 ease-out group-focus-within/nav:border-[var(--border)] group-hover/nav:border-[var(--border)]"
     >
-      <div
-        data-nav-menu
-        class="relative z-10 flex h-full items-center gap-2 rounded-full px-3"
-      >
-        <FontSwitcher client:load />
-        <ThemeToggle client:load />
-      </div>
+      <FontSwitcher client:load />
+      <ThemeToggle client:load />
     </div>
   </div>
 
