@@ -5,6 +5,7 @@
 <span
   id="nav-indicator"
   class="pointer-events-none absolute rounded-full"
+  transition:name="nav-indicator"
   style="background: var(--nav-indicator-bg); height: 32px; transition: left 0.3s ease-in-out, width 0.3s ease-in-out, opacity 0.3s ease-in-out; opacity: 0;"
 ></span>
 
@@ -32,7 +33,5 @@
 
   updateNavIndicator();
   window.addEventListener("resize", updateNavIndicator);
-  document.addEventListener("astro:after-swap", () => {
-    requestAnimationFrame(updateNavIndicator);
-  });
+  document.addEventListener("astro:page-load", updateNavIndicator);
 </script>
