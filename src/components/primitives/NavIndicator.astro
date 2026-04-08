@@ -15,14 +15,12 @@
     const indicator = document.getElementById("nav-indicator");
     if (!nav || !indicator) return;
 
-    const links = nav.querySelectorAll("a[href]");
-
     function moveIndicatorTo(el: Element) {
       const navRect = nav!.getBoundingClientRect();
-      const linkRect = el.getBoundingClientRect();
-      const left = linkRect.left - navRect.left;
-      const width = linkRect.width;
-      const top = linkRect.top - navRect.top + (linkRect.height - 32) / 2;
+      const elRect = el.getBoundingClientRect();
+      const left = elRect.left - navRect.left;
+      const width = elRect.width;
+      const top = elRect.top - navRect.top + (elRect.height - 32) / 2;
 
       animate(
         indicator!,
@@ -36,9 +34,22 @@
       animate(indicator!, { opacity: 0 }, { duration: 0.15 });
     }
 
-    links.forEach(function (link) {
-      link.addEventListener("mouseenter", () => moveIndicatorTo(link));
-      link.addEventListener("focus", () => moveIndicatorTo(link));
+    function findTarget(el: Element | null): Element | null {
+      while (el && el !== nav) {
+        if (el.matches("a[href], button")) return el;
+        el = el.parentElement;
+      }
+      return null;
+    }
+
+    nav.addEventListener("mouseover", (e) => {
+      const target = findTarget(e.target as Element);
+      if (target) moveIndicatorTo(target);
+    });
+
+    nav.addEventListener("focusin", (e) => {
+      const target = findTarget(e.target as Element);
+      if (target) moveIndicatorTo(target);
     });
 
     nav.addEventListener("mouseleave", hideIndicator);
