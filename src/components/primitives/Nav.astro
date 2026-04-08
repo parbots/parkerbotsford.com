@@ -14,7 +14,7 @@ const currentPath = Astro.url.pathname;
   {/* Desktop pill nav */}
   <div
     data-nav-pill
-    class="relative hidden items-center gap-1 rounded-full border border-[var(--border)] bg-[var(--bg-surface)] px-2 py-1.5 md:flex"
+    class="group/nav relative hidden items-center gap-1 rounded-full border border-transparent bg-transparent px-2 py-1.5 transition-[border-color,background-color] duration-300 ease-out focus-within:border-[var(--border)] focus-within:bg-[var(--bg-surface)] hover:border-[var(--border)] hover:bg-[var(--bg-surface)] md:flex"
   >
     <NavIndicator />
     {
@@ -38,7 +38,7 @@ const currentPath = Astro.url.pathname;
       })
     }
     <div
-      class="ml-2 flex items-center gap-2 border-l border-[var(--border)] pl-3"
+      class="ml-2 flex items-center gap-2 border-l border-transparent pl-3 transition-[border-color] duration-300 ease-out group-focus-within/nav:border-[var(--border)] group-hover/nav:border-[var(--border)]"
     >
       <FontSwitcher client:load />
       <ThemeToggle client:load />

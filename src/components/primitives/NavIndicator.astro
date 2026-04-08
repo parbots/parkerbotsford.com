@@ -4,11 +4,12 @@
 
 <span
   id="nav-indicator"
-  class="pointer-events-none absolute rounded-full"
-  style="background: var(--nav-indicator-bg); height: 32px; transition: left 0.4s cubic-bezier(0.16, 1, 0.3, 1), width 0.4s cubic-bezier(0.16, 1, 0.3, 1), top 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.2s ease; opacity: 0; will-change: left, width;"
-></span>
+  class="pointer-events-none absolute rounded-full opacity-0"
+  style="background: var(--nav-indicator-bg); height: 32px;"></span>
 
-<script is:inline>
+<script>
+  import { animate } from "motion/mini";
+
   function initNavIndicator() {
     const nav = document.querySelector("[data-nav-pill]");
     const indicator = document.getElementById("nav-indicator");
@@ -16,35 +17,36 @@
 
     const links = nav.querySelectorAll("a[href]");
 
-    function moveIndicatorTo(el) {
-      const navRect = nav.getBoundingClientRect();
+    function moveIndicatorTo(el: Element) {
+      const navRect = nav!.getBoundingClientRect();
       const linkRect = el.getBoundingClientRect();
-      indicator.style.left = linkRect.left - navRect.left + "px";
-      indicator.style.width = linkRect.width + "px";
-      indicator.style.top =
-        linkRect.top - navRect.top + (linkRect.height - 32) / 2 + "px";
-      indicator.style.opacity = "1";
+      const left = linkRect.left - navRect.left;
+      const width = linkRect.width;
+      const top = linkRect.top - navRect.top + (linkRect.height - 32) / 2;
+
+      animate(
+        indicator!,
+        { left: `${left}px`, width: `${width}px`, top: `${top}px` },
+        { type: "spring", stiffness: 300, damping: 28, mass: 0.8 },
+      );
+      animate(indicator!, { opacity: 1 }, { duration: 0.15 });
     }
 
     function hideIndicator() {
-      indicator.style.opacity = "0";
+      animate(indicator!, { opacity: 0 }, { duration: 0.15 });
     }
 
     links.forEach(function (link) {
-      link.addEventListener("mouseenter", function () {
-        moveIndicatorTo(link);
-      });
-      link.addEventListener("focus", function () {
-        moveIndicatorTo(link);
-      });
+      link.addEventListener("mouseenter", () => moveIndicatorTo(link));
+      link.addEventListener("focus", () => moveIndicatorTo(link));
     });
 
     nav.addEventListener("mouseleave", hideIndicator);
-    nav.addEventListener("focusout", function (e) {
-      if (!nav.contains(e.relatedTarget)) {
+    nav.addEventListener("focusout", ((e: FocusEvent) => {
+      if (!nav!.contains(e.relatedTarget as Node)) {
         hideIndicator();
       }
-    });
+    }) as EventListener);
 
     window.addEventListener("resize", hideIndicator);
   }
