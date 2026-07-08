@@ -6,8 +6,9 @@
 ## Goal
 
 Redesign parkerbotsford.com around the design language of the beza project
-(`../beza/web`): warm bone/sandstone palette, Fraunces display type with
-italic accent words, mono micro-labels, and crafted ornament details — while
+(`../beza/web`): warm bone/sandstone palette, serif display type with
+italic accent words (Fraunces here, as this site's analogue to beza's
+Instrument Serif), mono micro-labels, and crafted ornament details — while
 keeping the site minimal and preserving every existing widget and
 customization (ThemeToggle, FontSwitcher, animated nav bubble, DailyVerse
 hover-card, code-block toolbar, staggered home cards).
@@ -49,15 +50,15 @@ widgets and shadcn components keep working untouched.
 ### Per-type tone colors
 
 Used only in card detailing (reveal layer, labels, dormant variants), not as
-full card fills. Each gets a dark-mode-tuned variant chosen for AA contrast
-in context.
+full card fills. Dark values are starting points; the verification step's AA
+check may nudge them.
 
-| Type | Light base |
-| --- | --- |
-| blog | terracotta `#b0714a` |
-| writing/poem | sage `#7d9070` |
-| project | amber `#c08b52` |
-| verse | sand `#b3a273` |
+| Type | Light base | Dark base |
+| --- | --- | --- |
+| blog | terracotta `#b0714a` | `#c98a5e` |
+| writing/poem | sage `#7d9070` | `#93a886` |
+| project | amber `#c08b52` | `#d3a066` |
+| verse | sand `#b3a273` | `#c2b188` |
 
 ### Derived token sets
 
@@ -73,7 +74,7 @@ in context.
 | Variable | Font | Notes |
 | --- | --- | --- |
 | `--font-display` | Fraunces | Variable optical size; weights ~400–600; italic. All headings. One italic sandstone accent word allowed per display heading. |
-| `--font-body` | Atkinson Hyperlegible | Unchanged default. FontSwitcher continues to offer Lora and Inter (`.font-lora` / `.font-inter` overrides). |
+| `--font-body` | Atkinson Hyperlegible Next | Unchanged default (exact loaded family name). FontSwitcher continues to offer Lora and Inter (`.font-lora` / `.font-inter` overrides). |
 | `--font-mono` | JetBrains Mono | Code + new mono micro-labels. |
 
 Fraunces replaces Nunito. Font loading follows the site's existing font
@@ -107,9 +108,10 @@ The single card primitive used across the site.
   bottom-left `border-radius` animates `12px → 30px`, opening a rounded
   sliver of the tone color. Under `prefers-reduced-motion: reduce`, the
   sliver renders statically (visible at rest, no animation).
-- **Dormant variants (implemented, unused):** `edge-bar` = 3px tone-colored
-  left edge; `chip` = tone-tinted pill label styling hook; `wash` = faint
-  tone tint over the card surface.
+- **Dormant variants (implemented, unused — deliberate user request, not
+  speculative):** `edge-bar` = 3px tone-colored left edge; `chip` =
+  tone-tinted pill label styling hook; `wash` = faint tone tint over the
+  card surface.
 - Existing `card-hover` lift/shadow behavior is folded into this primitive.
 
 ### Supporting primitives
@@ -147,11 +149,12 @@ These keep their exact interaction code and only receive new tokens/markup:
   (e.g. "Engineer, writer, and maker of *things*").
 - Short muted lede.
 - **Status anchor** (bottom-right, two `MonoLabel` lines with live dot):
-  1. Curated line from new `src/data/now.ts` (hand-edited, e.g.
-     "Now: reading Wendell Berry").
+  1. Curated line from new `src/data/now.ts` (hand-edited; exports a single
+     string, e.g. `export const now = "Reading Wendell Berry"`).
   2. Build-time "Latest: *title* · *Mon YYYY*" from the newest entry across
-     blog/writings/projects collections. If collections are empty, this
-     line is omitted and the curated line stands alone.
+     blog/writings/projects collections, **excluding `draft: true` entries**
+     (existing site convention). If no published entries exist, this line
+     is omitted and the curated line stands alone.
 
 ## 5. Page Application
 
