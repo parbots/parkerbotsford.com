@@ -18,6 +18,8 @@
     // Pill border + padding inset — bubble sits inside this margin
     const INSET = 4;
 
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
     function moveIndicatorTo(el: Element) {
       const navRect = nav!.getBoundingClientRect();
       const elRect = el.getBoundingClientRect();
@@ -31,13 +33,23 @@
           width: `${elRect.width}px`,
           height: `${bubbleHeight}px`,
         },
-        { type: "spring", stiffness: 300, damping: 28, mass: 0.8 },
+        reduceMotion.matches
+          ? { duration: 0 }
+          : { type: "spring", stiffness: 300, damping: 28, mass: 0.8 },
       );
-      animate(indicator!, { opacity: 1 }, { duration: 0.15 });
+      animate(
+        indicator!,
+        { opacity: 1 },
+        { duration: reduceMotion.matches ? 0 : 0.15 },
+      );
     }
 
     function hideIndicator() {
-      animate(indicator!, { opacity: 0 }, { duration: 0.15 });
+      animate(
+        indicator!,
+        { opacity: 0 },
+        { duration: reduceMotion.matches ? 0 : 0.15 },
+      );
     }
 
     const menuSection = nav.querySelector("[data-nav-menu]");
