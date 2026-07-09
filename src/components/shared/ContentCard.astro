@@ -1,4 +1,6 @@
 ---
+import RevealCard from "../primitives/RevealCard.astro";
+
 interface Props {
   type: "blog" | "writing" | "project" | "verse";
   title: string;
@@ -10,84 +12,48 @@ interface Props {
 
 const { type, title, description, href, meta, class: className } = Astro.props;
 
-const colorMap = {
-  blog: { bg: "var(--card-blog-bg)", fg: "var(--card-blog-fg)" },
-  writing: { bg: "var(--card-writing-bg)", fg: "var(--card-writing-fg)" },
-  project: { bg: "var(--card-project-bg)", fg: "var(--card-project-fg)" },
-  verse: { bg: "var(--card-verse-bg)", fg: "var(--card-verse-fg)" },
-};
-
 const labelMap = {
   blog: "Blog Post",
   writing: "Writing",
   project: "Project",
   verse: "Daily Verse",
 };
-
-const colors = colorMap[type];
 ---
 
-<a
-  href={href}
-  class:list={[
-    "card-hover group relative block overflow-hidden rounded-3xl p-7 no-underline md:p-9",
-    className,
-  ]}
-  style={`background-color: ${colors.bg}; color: ${colors.fg};`}
->
-  {/* Dot pattern decoration */}
-  <div
-    class="pointer-events-none absolute top-5 right-5 grid grid-cols-3 gap-1"
-    style="will-change: transform; opacity: 0.2;"
-    aria-hidden="true"
-  >
-    {
-      Array.from({ length: 6 }).map(() => (
-        <span class="h-1 w-1 rounded-full bg-current" />
-      ))
-    }
-  </div>
-
-  <div class="relative z-10 flex min-h-[120px] flex-col justify-between">
-    <div>
-      <span
-        class="mb-2 block text-[0.65rem] font-semibold tracking-widest uppercase"
-        style="opacity: 0.8;"
-      >
-        {labelMap[type]}
-      </span>
-      <h3
-        class="mb-1 text-xl leading-tight font-bold"
-        style="font-family: var(--font-display);"
-      >
-        {title}
-      </h3>
-      {
-        description && (
-          <p class="mt-1 text-sm leading-relaxed" style="opacity: 0.85;">
-            {description}
-          </p>
-        )
-      }
-      <slot />
-    </div>
-    {
-      meta && (
-        <span
-          class="mt-auto block pt-3 text-[0.65rem]"
-          style={`font-family: var(--font-mono); opacity: 0.7;`}
-        >
-          {meta}
-        </span>
-      )
-    }
-  </div>
-
-  {/* Arrow indicator */}
-  <span
-    class="absolute right-6 bottom-5 text-xl opacity-0 transition-all duration-300 group-hover:translate-x-0 group-hover:opacity-60 md:-translate-x-2"
-    aria-hidden="true"
-  >
-    &rarr;
+<RevealCard tone={type} href={href} class={className}>
+  <span class="type-label" style={`color: var(--tone-${type});`}>
+    {labelMap[type]}
   </span>
-</a>
+  <h3 class="mt-2 mb-1 text-xl leading-tight">
+    {title}
+  </h3>
+  {
+    description && (
+      <p class="mt-1 text-sm leading-relaxed text-[var(--fg-muted)]">
+        {description}
+      </p>
+    )
+  }
+  <slot />
+  {
+    meta && (
+      <span class="type-meta mt-4 block text-[var(--fg-muted)]">{meta}</span>
+    )
+  }
+</RevealCard>
+
+<style>
+  .type-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .type-meta {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>
