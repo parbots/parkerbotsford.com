@@ -8,11 +8,12 @@
 
 **Tech Stack:** Astro 5, Tailwind CSS v4 (`@theme`), CSS custom properties, Google Fonts (Fraunces variable), MDX content collections. No new dependencies, no new React islands.
 
-**Testing note:** This repo has no JS test infrastructure, and the changes are visual/static. The verification loop for every task is the repo's required gate — `pnpm lint`, `pnpm format:check`, `pnpm typecheck`, `pnpm build` (fix errors *and* warnings) — plus a dev-server visual check in **both themes** (`pnpm dev`, toggle via the sun/moon button in the nav). TDD steps are replaced by these verify steps.
+**Testing note:** This repo has no JS test infrastructure, and the changes are visual/static. The verification loop for every task is the repo's required gate — `pnpm lint`, `pnpm format:check`, `pnpm typecheck`, `pnpm build` (fix errors _and_ warnings) — plus a dev-server visual check in **both themes** (`pnpm dev`, toggle via the sun/moon button in the nav). TDD steps are replaced by these verify steps.
 
 **Rules (from CLAUDE.md):** work on the `dev` branch; never push; never commit/merge to `main`; atomic conventional commits.
 
 **Spec deviations (documented):**
+
 - The spec says the hero "Latest:" line draws from blog/writings/projects. The `projects` collection has no `date` or `draft` fields (`src/content.config.ts:28-39`), so the line draws from **blog + writings only**. Do not add fields to the projects schema (out of scope).
 - Spec §3 lists "VerseList cards" for rebuild, but `src/features/bible/VerseList.astro` renders a plain list, not cards — it re-themes automatically via tokens. No changes to it.
 - Spec §5 mentions list-page "accent word" titles and "reading time" metadata. List titles are single words ("Blog", "Projects") with no natural accent word, and the site has no reading-time utility — both are deliberately skipped. Do not invent them.
@@ -24,6 +25,7 @@
 ### Task 1: Design tokens + Fraunces loading
 
 **Files:**
+
 - Modify: `src/styles/global.css` (theme variable blocks, base heading rules, prose `hr`, Shiki vars)
 - Modify: `src/layouts/Base.astro:41` (Google Fonts URL)
 
@@ -149,15 +151,15 @@ Replace the `.dark` custom-value lines, keeping the same structure. Changed valu
 In `@layer base`, replace the `h1, h2, h3, h4` rule:
 
 ```css
-  h1,
-  h2,
-  h3,
-  h4 {
-    font-family: var(--font-display);
-    font-weight: 450;
-    letter-spacing: -0.02em;
-    line-height: 1.15;
-  }
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-display);
+  font-weight: 450;
+  letter-spacing: -0.02em;
+  line-height: 1.15;
+}
 ```
 
 - [ ] **Step 6: Dashed prose `hr`**
@@ -198,6 +200,7 @@ git commit -m "feat(theme): adopt bone/sandstone palette and Fraunces display ty
 ### Task 2: New primitives
 
 **Files (all Create):**
+
 - `src/components/primitives/RevealCard.astro`
 - `src/components/primitives/Eyebrow.astro`
 - `src/components/primitives/MonoLabel.astro`
@@ -536,6 +539,7 @@ git commit -m "feat(ui): add beza-language primitives (RevealCard, Eyebrow, Mono
 ### Task 3: `now.ts` + statement hero
 
 **Files:**
+
 - Create: `src/data/now.ts`
 - Modify: `src/features/home/Hero.astro` (full rewrite)
 
@@ -610,6 +614,7 @@ git commit -m "feat(home): statement hero with dynamic now/latest anchor"
 ### Task 4: Home section framing
 
 **Files:**
+
 - Modify: `src/pages/index.astro`
 - Modify: `src/features/home/StaggeredCards.astro`
 
@@ -667,6 +672,7 @@ git commit -m "feat(home): frame card section with hatch divider and eyebrow"
 This is the choke point: `PostCard`, `WritingCard`, `ProjectCard`, `StaggeredCards`, and the DailyVerse home card all render through `ContentCard`, so this one rewrite restyles every list card on the site. The Props API is unchanged — no caller changes needed.
 
 **Files:**
+
 - Modify: `src/components/shared/ContentCard.astro` (full rewrite)
 
 - [ ] **Step 1: Rewrite `src/components/shared/ContentCard.astro`**
@@ -739,6 +745,7 @@ const labelMap = {
 
 Run: `pnpm typecheck && pnpm build && pnpm lint && pnpm format:check`
 Then `pnpm dev`, check in **both themes**:
+
 - Home: four staggered quiet cards; hovering (or keyboard-focusing) a card opens the bottom-left corner into a tone-colored rounded sliver; card lift (`card-hover`) still works.
 - `/blog`, `/writings`, `/projects`: list cards all quiet + reveal.
 - With DevTools emulating `prefers-reduced-motion: reduce`: sliver is visible statically, nothing animates.
@@ -758,6 +765,7 @@ git commit -m "feat(cards): rebuild ContentCard on RevealCard with corner reveal
 ### Task 6: Footer + nav polish
 
 **Files:**
+
 - Modify: `src/components/primitives/Footer.astro` (full rewrite)
 
 (Nav needs no code change: its pill/bubble reads tokens, and the mobile "PB" mark already uses `--font-display` → now Fraunces. Verify only.)
@@ -777,7 +785,9 @@ const year = new Date().getFullYear();
   <div class="flex items-center justify-between pt-6">
     <MonoLabel>&copy; {year} Parker Botsford</MonoLabel>
     <MonoLabel live>
-      Atlanta, GA &middot; <a href="/rss.xml" class="hover:text-[var(--accent)]">RSS</a>
+      Atlanta, GA &middot; <a href="/rss.xml" class="hover:text-[var(--accent)]"
+        >RSS</a
+      >
     </MonoLabel>
   </div>
 </footer>
@@ -800,6 +810,7 @@ git commit -m "feat(nav): dashed-rule footer with mono micro-labels"
 Second choke point: restyles the header of every list page and every post/writing/project detail page. Props API unchanged.
 
 **Files:**
+
 - Modify: `src/components/shared/ContentHeaderCard.astro` (full rewrite)
 
 - [ ] **Step 1: Rewrite `src/components/shared/ContentHeaderCard.astro`**
@@ -877,6 +888,7 @@ git commit -m "feat(content): rebuild ContentHeaderCard on RevealCard with eyebr
 ### Task 8: About page accent
 
 **Files:**
+
 - Modify: `src/pages/about.astro:5-6`
 
 - [ ] **Step 1: Use `AccentHeading` for the page title**
@@ -910,6 +922,7 @@ git commit -m "feat(pages): accent heading on about page"
 ### Task 9: Cleanup + docs
 
 **Files:**
+
 - Modify: `src/styles/global.css` (delete legacy vars)
 - Modify: `docs/styling.md`
 - Modify: `CLAUDE.md` (only if stale)
@@ -968,6 +981,7 @@ Read `CLAUDE.md`; nothing in it names fonts or colors, so likely no change. Upda
 Run: `pnpm lint && pnpm format:check && pnpm typecheck && pnpm build`
 Expected: all pass, zero warnings.
 Then a final `pnpm dev` sweep of every route (`/`, `/blog`, one post, `/writings`, one writing/poem, `/projects`, one project, `/verses`, `/about`, a bad URL for 404) in **both themes**, plus:
+
 - FontSwitcher (Lora/Inter/default) and theme transition (no tone-color flash on the card under-layers).
 - Reduced-motion emulation; keyboard tab through cards (focus opens reveal).
 - **AA contrast check** (spec §7): `--accent` on `--bg`, tone label colors on `--bg-surface`, in both themes; nudge dark tone values if any pair fails.
