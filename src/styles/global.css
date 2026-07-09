@@ -6,17 +6,27 @@
 
 /* ===== Theme Variables ===== */
 :root {
-  --bg: #f5f0eb;
-  --bg-surface: #ede7e0;
-  --fg: #2c2420;
-  --fg-muted: #8c7b6b;
-  --accent: #c4643a;
-  --border: #d9cfc4;
+  --bg: #faf7f2;
+  --bg-surface: #ffffff;
+  --fg: #070606;
+  --fg-muted: #6a5f50;
+  --accent: #a8542b;
+  --border: #e8e2d6;
 
-  --font-display: "Nunito", sans-serif;
+  --font-display: "Fraunces", Georgia, serif;
   --font-body: "Atkinson Hyperlegible Next", sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 
+  /* Per-type tone colors — card detailing only (reveal layer, labels) */
+  --tone-blog: #b0714a;
+  --tone-writing: #7d9070;
+  --tone-project: #c08b52;
+  --tone-verse: #b3a273;
+
+  /* Live dot (beza) */
+  --live: #4ade80;
+
+  /* Legacy card fills — still read by ContentCard/ContentHeaderCard; removed in Task 9 */
   --card-blog-bg: #b8967a;
   --card-blog-fg: #2e1f14;
   --card-writing-bg: #8a9e82;
@@ -31,41 +41,45 @@
 
   --content-width: 680px;
 
-  /* shadcn semantic tokens - mapped to warm palette */
-  --background: #f5f0eb;
-  --foreground: #2c2420;
-  --card: #ede7e0;
-  --card-foreground: #2c2420;
-  --popover: #f5f0eb;
-  --popover-foreground: #2c2420;
-  --primary: #c4643a;
-  --primary-foreground: #f5f0eb;
-  --secondary: #ede7e0;
-  --secondary-foreground: #2c2420;
-  --muted: #ede7e0;
-  --muted-foreground: #8c7b6b;
-  --accent-foreground: #2c2420;
+  --background: #faf7f2;
+  --foreground: #070606;
+  --card: #ffffff;
+  --card-foreground: #070606;
+  --popover: #ffffff;
+  --popover-foreground: #070606;
+  --primary: #a8542b;
+  --primary-foreground: #faf7f2;
+  --secondary: #f1ebe1;
+  --secondary-foreground: #070606;
+  --muted: #f1ebe1;
+  --muted-foreground: #6a5f50;
+  --accent-foreground: #070606;
   --destructive: oklch(0.577 0.245 27.325);
-  --input: #d9cfc4;
-  --ring: #c4643a;
-  --radius: 0.625rem;
-  --sidebar: #ede7e0;
-  --sidebar-foreground: #2c2420;
-  --sidebar-primary: #c4643a;
-  --sidebar-primary-foreground: #f5f0eb;
-  --sidebar-accent: #ede7e0;
-  --sidebar-accent-foreground: #2c2420;
-  --sidebar-border: #d9cfc4;
-  --sidebar-ring: #c4643a;
+  --input: #e8e2d6;
+  --ring: #a8542b;
+  --radius: 0.75rem;
+  --sidebar: #f1ebe1;
+  --sidebar-foreground: #070606;
+  --sidebar-primary: #a8542b;
+  --sidebar-primary-foreground: #faf7f2;
+  --sidebar-accent: #f1ebe1;
+  --sidebar-accent-foreground: #070606;
+  --sidebar-border: #e8e2d6;
+  --sidebar-ring: #a8542b;
 }
 
 .dark {
   --bg: #1c1917;
   --bg-surface: #262220;
-  --fg: #e7ddd4;
+  --fg: #ede5da;
   --fg-muted: #9c8b7b;
-  --accent: #d4845a;
+  --accent: #d98a4f;
   --border: #3d3530;
+
+  --tone-blog: #c98a5e;
+  --tone-writing: #93a886;
+  --tone-project: #d3a066;
+  --tone-verse: #c2b188;
 
   --card-blog-bg: #5c4b3d;
   --card-blog-fg: #e2d5c8;
@@ -79,29 +93,29 @@
   --nav-indicator-bg: rgba(255, 255, 255, 0.08);
 
   --background: #1c1917;
-  --foreground: #e7ddd4;
+  --foreground: #ede5da;
   --card: #262220;
-  --card-foreground: #e7ddd4;
+  --card-foreground: #ede5da;
   --popover: #262220;
-  --popover-foreground: #e7ddd4;
-  --primary: #d4845a;
+  --popover-foreground: #ede5da;
+  --primary: #d98a4f;
   --primary-foreground: #1c1917;
   --secondary: #262220;
-  --secondary-foreground: #e7ddd4;
+  --secondary-foreground: #ede5da;
   --muted: #262220;
   --muted-foreground: #9c8b7b;
-  --accent-foreground: #e7ddd4;
+  --accent-foreground: #ede5da;
   --destructive: oklch(0.704 0.191 22.216);
   --input: #3d3530;
-  --ring: #d4845a;
+  --ring: #d98a4f;
   --sidebar: #262220;
-  --sidebar-foreground: #e7ddd4;
-  --sidebar-primary: #d4845a;
+  --sidebar-foreground: #ede5da;
+  --sidebar-primary: #d98a4f;
   --sidebar-primary-foreground: #1c1917;
   --sidebar-accent: #262220;
-  --sidebar-accent-foreground: #e7ddd4;
+  --sidebar-accent-foreground: #ede5da;
   --sidebar-border: #3d3530;
-  --sidebar-ring: #d4845a;
+  --sidebar-ring: #d98a4f;
 }
 
 .font-lora {
@@ -130,8 +144,9 @@
   h3,
   h4 {
     font-family: var(--font-display);
-    line-height: 1.3;
-    font-weight: 600;
+    font-weight: 450;
+    letter-spacing: -0.02em;
+    line-height: 1.15;
   }
   a {
     color: var(--accent);
@@ -280,7 +295,13 @@
 
 .prose hr {
   border: none;
-  border-top: 1px solid var(--border);
+  height: 1px;
+  background: repeating-linear-gradient(
+    90deg,
+    var(--fg) 0 4px,
+    transparent 4px 12px
+  );
+  opacity: 0.25;
   margin: 2rem 0;
 }
 
@@ -322,7 +343,7 @@
   --astro-code-token-constant: #9a5523;
   --astro-code-token-string: #6e7b3d;
   --astro-code-token-comment: var(--fg-muted);
-  --astro-code-token-keyword: #a0522d;
+  --astro-code-token-keyword: #a8542b;
   --astro-code-token-parameter: #7b5b3a;
   --astro-code-token-function: #8b5a2b;
   --astro-code-token-string-expression: #6e7b3d;
@@ -333,7 +354,7 @@
 .dark {
   --astro-code-token-constant: #d4a574;
   --astro-code-token-string: #a3b97c;
-  --astro-code-token-keyword: #d4845a;
+  --astro-code-token-keyword: #d98a4f;
   --astro-code-token-parameter: #c4a882;
   --astro-code-token-function: #c9956b;
   --astro-code-token-string-expression: #a3b97c;
