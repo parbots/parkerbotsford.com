@@ -1,11 +1,18 @@
 ---
+import DashedRule from "./DashedRule.astro";
+import MonoLabel from "./MonoLabel.astro";
+
 const year = new Date().getFullYear();
 ---
 
 <footer class="mx-auto w-full max-w-4xl px-8 py-16 md:px-12">
-  <div class="border-t border-[var(--border)] pt-8 text-center">
-    <p class="text-sm text-[var(--fg-muted)]">
-      &copy; {year} Parker Botsford
-    </p>
+  <DashedRule />
+  <div class="flex items-center justify-between pt-6">
+    <MonoLabel>&copy; {year} Parker Botsford</MonoLabel>
+    <MonoLabel live>
+      Atlanta, GA &middot; <a href="/rss.xml" class="hover:text-[var(--accent)]"
+        >RSS</a
+      >
+    </MonoLabel>
   </div>
 </footer>
