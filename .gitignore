@@ -36,3 +36,4 @@ src/data/generated/
 
 # typescript
 *.tsbuildinfo
+.env*
