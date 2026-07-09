@@ -1,0 +1,59 @@
+---
+import RevealCard from "../primitives/RevealCard.astro";
+
+interface Props {
+  type: "blog" | "writing" | "project" | "verse";
+  title: string;
+  description?: string;
+  href: string;
+  meta?: string;
+  class?: string;
+}
+
+const { type, title, description, href, meta, class: className } = Astro.props;
+
+const labelMap = {
+  blog: "Blog Post",
+  writing: "Writing",
+  project: "Project",
+  verse: "Daily Verse",
+};
+---
+
+<RevealCard tone={type} href={href} class={className}>
+  <span class="type-label" style={`color: var(--tone-${type});`}>
+    {labelMap[type]}
+  </span>
+  <h3 class="mt-2 mb-1 text-xl leading-tight">
+    {title}
+  </h3>
+  {
+    description && (
+      <p class="mt-1 text-sm leading-relaxed text-[var(--fg-muted)]">
+        {description}
+      </p>
+    )
+  }
+  <slot />
+  {
+    meta && (
+      <span class="type-meta mt-4 block text-[var(--fg-muted)]">{meta}</span>
+    )
+  }
+</RevealCard>
+
+<style>
+  .type-label {
+    display: block;
+    font-family: var(--font-mono);
+    font-size: 0.5625rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .type-meta {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+</style>

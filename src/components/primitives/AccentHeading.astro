@@ -1,0 +1,31 @@
+---
+/**
+ * Heading with beza's [[word]] convention: the marked word renders as an
+ * italic accent-colored word. e.g. text="Maker of [[things]]"
+ */
+interface Props {
+  text: string;
+  level?: 1 | 2 | 3;
+  class?: string;
+}
+
+const { text, level = 1, class: className } = Astro.props;
+const parts = text.split(/\[\[(.+?)\]\]/);
+const Tag = `h${level}` as "h1" | "h2" | "h3";
+---
+
+<Tag class:list={[className]}>
+  {
+    parts.map((part, i) =>
+      i % 2 === 1 ? <em class="accent-word">{part}</em> : part,
+    )
+  }
+</Tag>
+
+<style>
+  .accent-word {
+    font-style: italic;
+    font-weight: 400;
+    color: var(--accent);
+  }
+</style>

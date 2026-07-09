@@ -1,0 +1,16 @@
+---
+import ContentCard from "../../../components/shared/ContentCard.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  status: string;
+  tech: string[];
+  href: string;
+}
+
+const { title, description, status, tech, href } = Astro.props;
+const meta = `${status}${tech.length > 0 ? ` · ${tech.join(", ")}` : ""}`;
+---
+
+<ContentCard type="project" {title} {description} {href} {meta} />

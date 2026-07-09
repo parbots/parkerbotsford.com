@@ -1,0 +1,24 @@
+---
+import { DAILY_VERSES } from "../../data/verses";
+import { getDailyVerse } from "../../utils/verse-cache";
+import BibleVerse from "./interactive/BibleVerse.tsx";
+
+const dailyRefs = DAILY_VERSES.map((v) => v.ref);
+const verse = getDailyVerse(dailyRefs);
+---
+
+{
+  verse && (
+    <section class="py-12">
+      <h2 class="mb-4 text-lg" style="font-family: var(--font-mono);">
+        Verse of the day
+      </h2>
+      <BibleVerse
+        client:load
+        reference={verse.reference}
+        text={verse.text}
+        display="block"
+      />
+    </section>
+  )
+}

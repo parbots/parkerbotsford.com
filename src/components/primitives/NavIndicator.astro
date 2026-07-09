@@ -1,0 +1,88 @@
+---
+
+---
+
+<span
+  id="nav-indicator"
+  class="pointer-events-none absolute rounded-full opacity-0"
+  style="background: var(--nav-indicator-bg);"></span>
+
+<script>
+  import { animate } from "motion/mini";
+
+  function initNavIndicator() {
+    const nav = document.querySelector("[data-nav-pill]");
+    const indicator = document.getElementById("nav-indicator");
+    if (!nav || !indicator) return;
+
+    // Pill border + padding inset — bubble sits inside this margin
+    const INSET = 4;
+
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
+
+    function moveIndicatorTo(el: Element) {
+      const navRect = nav!.getBoundingClientRect();
+      const elRect = el.getBoundingClientRect();
+      const bubbleHeight = navRect.height - INSET * 2;
+
+      animate(
+        indicator!,
+        {
+          left: `${elRect.left - navRect.left}px`,
+          top: `${INSET}px`,
+          width: `${elRect.width}px`,
+          height: `${bubbleHeight}px`,
+        },
+        reduceMotion.matches
+          ? { duration: 0 }
+          : { type: "spring", stiffness: 300, damping: 28, mass: 0.8 },
+      );
+      animate(
+        indicator!,
+        { opacity: 1 },
+        { duration: reduceMotion.matches ? 0 : 0.15 },
+      );
+    }
+
+    function hideIndicator() {
+      animate(
+        indicator!,
+        { opacity: 0 },
+        { duration: reduceMotion.matches ? 0 : 0.15 },
+      );
+    }
+
+    const menuSection = nav.querySelector("[data-nav-menu]");
+
+    function findTarget(el: Element | null): Element | null {
+      while (el && el !== nav) {
+        if (el === menuSection) return el;
+        if (el.matches("a[href]")) return el;
+        el = el.parentElement;
+      }
+      return null;
+    }
+
+    nav.addEventListener("mouseover", (e) => {
+      const target = findTarget(e.target as Element);
+      if (target) moveIndicatorTo(target);
+    });
+
+    nav.addEventListener("focusin", (e) => {
+      const target = findTarget(e.target as Element);
+      if (target) moveIndicatorTo(target);
+    });
+
+    nav.addEventListener("mouseleave", hideIndicator);
+    nav.addEventListener("focusout", ((e: FocusEvent) => {
+      if (!nav!.contains(e.relatedTarget as Node)) {
+        hideIndicator();
+      }
+    }) as EventListener);
+
+    window.addEventListener("resize", hideIndicator);
+  }
+
+  initNavIndicator();
+  document.addEventListener("astro:page-load", initNavIndicator);
+</script>

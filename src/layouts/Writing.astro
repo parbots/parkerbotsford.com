@@ -1,0 +1,26 @@
+---
+import Page from "./Page.astro";
+import ContentHeaderCard from "../components/shared/ContentHeaderCard.astro";
+import { formatDate } from "../utils/dates";
+
+interface Props {
+  title: string;
+  date: Date;
+  type: string;
+}
+
+const { title, date, type } = Astro.props;
+---
+
+<Page title={title}>
+  <article>
+    <ContentHeaderCard
+      type="writing"
+      title={title}
+      meta={`${formatDate(date)} · ${type}`}
+    />
+    <div class="prose mx-auto max-w-[var(--content-width)]">
+      <slot />
+    </div>
+  </article>
+</Page>

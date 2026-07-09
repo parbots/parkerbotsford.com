@@ -1,0 +1,30 @@
+---
+import Page from "./Page.astro";
+import ContentHeaderCard from "../components/shared/ContentHeaderCard.astro";
+import CodeBlockToolbar from "../components/shared/CodeBlockToolbar.astro";
+import { formatDate } from "../utils/dates";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  tags?: string[];
+}
+
+const { title, description, date, tags = [] } = Astro.props;
+---
+
+<Page title={title} description={description}>
+  <article>
+    <ContentHeaderCard
+      type="blog"
+      title={title}
+      meta={formatDate(date)}
+      tags={tags}
+    />
+    <div class="prose mx-auto max-w-[var(--content-width)]">
+      <slot />
+    </div>
+  </article>
+  <CodeBlockToolbar />
+</Page>

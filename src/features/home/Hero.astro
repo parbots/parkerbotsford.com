@@ -1,0 +1,44 @@
+---
+import { getCollection } from "astro:content";
+import Eyebrow from "../../components/primitives/Eyebrow.astro";
+import AccentHeading from "../../components/primitives/AccentHeading.astro";
+import MonoLabel from "../../components/primitives/MonoLabel.astro";
+import DashedRule from "../../components/primitives/DashedRule.astro";
+import { SITE } from "../../config";
+import { NOW } from "../../data/now";
+
+// Newest published entry across dated collections (projects have no date).
+const posts = await getCollection("blog", ({ data }) => !data.draft);
+const writings = await getCollection("writings", ({ data }) => !data.draft);
+const dated = [
+  ...posts.map((e) => ({ title: e.data.title, date: e.data.date })),
+  ...writings.map((e) => ({ title: e.data.title, date: e.data.date })),
+].sort((a, b) => b.date.getTime() - a.date.getTime());
+const latest = dated[0];
+const latestDate = latest?.date.toLocaleDateString("en-US", {
+  month: "short",
+  year: "numeric",
+});
+---
+
+<section class="relative mx-auto max-w-4xl px-8 pt-16 pb-10 md:px-12 md:pt-24">
+  <DashedRule class="absolute top-0 right-8 left-8 md:right-12 md:left-12" />
+  <Eyebrow>{SITE.author}</Eyebrow>
+  <AccentHeading
+    text="Engineer, writer, and maker of [[things]]"
+    class="mt-5 max-w-[16ch] text-5xl leading-[1.02] md:text-7xl"
+  />
+  <p class="mt-6 max-w-xl text-base text-[var(--fg-muted)] md:text-lg">
+    Building software, writing poems, and exploring faith.
+  </p>
+  <div class="mt-10 text-right md:absolute md:right-12 md:bottom-6 md:mt-0">
+    <MonoLabel live class="block">Now: {NOW}</MonoLabel>
+    {
+      latest && (
+        <MonoLabel class="block max-w-[40ch] truncate">
+          Latest: {latest.title} &middot; {latestDate}
+        </MonoLabel>
+      )
+    }
+  </div>
+</section>

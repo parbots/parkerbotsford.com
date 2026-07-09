@@ -1,0 +1,64 @@
+---
+import { NAV_ITEMS } from "../../config";
+import ThemeToggle from "./ThemeToggle";
+import FontSwitcher from "./FontSwitcher";
+import MobileNav from "./MobileNav";
+import NavIndicator from "./NavIndicator.astro";
+
+const currentPath = Astro.url.pathname;
+---
+
+<nav
+  class="relative z-50 mx-auto flex w-full max-w-5xl items-center justify-center px-6 py-8"
+>
+  {/* Desktop pill nav */}
+  <div
+    data-nav-pill
+    class="group/nav relative hidden items-center gap-1 rounded-full border border-transparent bg-transparent px-2 py-1.5 transition-[border-color,background-color] duration-300 ease-out focus-within:border-[var(--border)] focus-within:bg-[var(--bg-surface)] hover:border-[var(--border)] hover:bg-[var(--bg-surface)] md:flex"
+  >
+    <NavIndicator />
+    {
+      NAV_ITEMS.map((item) => {
+        const isActive =
+          currentPath === item.href || currentPath.startsWith(item.href + "/");
+        return (
+          <a
+            href={item.href}
+            data-active={isActive ? "" : undefined}
+            class:list={[
+              "relative z-10 rounded-full px-4 py-2 text-sm no-underline transition-colors duration-200",
+              isActive
+                ? "font-semibold text-[var(--fg)]"
+                : "text-[var(--fg-muted)] hover:text-[var(--fg)]",
+            ]}
+          >
+            {item.label}
+          </a>
+        );
+      })
+    }
+    <div
+      data-nav-menu
+      class="relative z-10 ml-1 flex items-center gap-2 self-stretch border-l border-transparent px-3 transition-[border-color] duration-300 ease-out group-focus-within/nav:border-[var(--border)] group-hover/nav:border-[var(--border)]"
+    >
+      <FontSwitcher client:load />
+      <ThemeToggle client:load />
+    </div>
+  </div>
+
+  {/* Mobile nav */}
+  <div class="flex w-full items-center justify-between md:hidden">
+    <a
+      href="/"
+      class="text-base font-bold text-[var(--fg-muted)] no-underline hover:text-[var(--accent)]"
+      style="font-family: var(--font-display);"
+    >
+      PB
+    </a>
+    <div class="flex items-center gap-4">
+      <FontSwitcher client:load />
+      <ThemeToggle client:load />
+      <MobileNav client:load items={[...NAV_ITEMS]} />
+    </div>
+  </div>
+</nav>

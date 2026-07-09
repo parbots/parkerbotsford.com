@@ -1,0 +1,30 @@
+---
+import BibleVerse from "./interactive/BibleVerse.tsx";
+import { getVerse } from "../../utils/verse-cache";
+
+interface Props {
+  ref: string;
+  display?: "inline" | "block";
+}
+
+const { ref, display = "inline" } = Astro.props;
+const verse = getVerse(ref);
+---
+
+{
+  verse ? (
+    <BibleVerse
+      client:load
+      reference={verse.reference}
+      text={verse.text}
+      display={display}
+    />
+  ) : (
+    <span
+      class="text-sm italic"
+      style="color: var(--fg-muted); font-family: var(--font-mono);"
+    >
+      [{ref}]
+    </span>
+  )
+}

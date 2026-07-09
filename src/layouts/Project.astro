@@ -1,0 +1,51 @@
+---
+import Page from "./Page.astro";
+import ContentHeaderCard from "../components/shared/ContentHeaderCard.astro";
+
+interface Props {
+  title: string;
+  description: string;
+  status: string;
+  tech: string[];
+  url?: string;
+  repo?: string;
+}
+
+const { title, description, status, tech, url, repo } = Astro.props;
+---
+
+<Page title={title} description={description}>
+  <article>
+    <ContentHeaderCard type="project" title={title} meta={status} tags={tech}>
+      {
+        (url || repo) && (
+          <div class="mt-3 flex items-center gap-4 text-sm">
+            {url && (
+              <a
+                href={url}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-1 underline opacity-80 hover:opacity-100"
+              >
+                Visit &rarr;
+              </a>
+            )}
+            {repo && (
+              <a
+                href={repo}
+                target="_blank"
+                rel="noreferrer"
+                class="inline-flex items-center gap-1 underline opacity-80 hover:opacity-100"
+              >
+                Source &rarr;
+              </a>
+            )}
+          </div>
+        )
+      }
+    </ContentHeaderCard>
+    <div class="prose mx-auto max-w-[var(--content-width)]">
+      <slot />
+    </div>
+  </article>
+</Page>

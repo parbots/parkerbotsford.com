@@ -1,0 +1,14 @@
+---
+import Page from "../../layouts/Page.astro";
+import ContentHeaderCard from "../../components/shared/ContentHeaderCard.astro";
+import WritingList from "../../features/writings/components/WritingList.astro";
+---
+
+<Page title="Writings" description="Poems, stories, and essays.">
+  <ContentHeaderCard
+    type="writing"
+    title="Writings"
+    meta="Poems, stories, and essays."
+  />
+  <WritingList />
+</Page>

@@ -1,0 +1,21 @@
+---
+import ContentCard from "../../../components/shared/ContentCard.astro";
+import { formatDate } from "../../../utils/dates";
+
+interface Props {
+  title: string;
+  date: Date;
+  type: string;
+  href: string;
+}
+
+const { title, date, type, href } = Astro.props;
+---
+
+<ContentCard
+  type="writing"
+  {title}
+  description={`A ${type}`}
+  {href}
+  meta={formatDate(date)}
+/>

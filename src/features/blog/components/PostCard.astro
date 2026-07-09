@@ -1,0 +1,17 @@
+---
+import ContentCard from "../../../components/shared/ContentCard.astro";
+import { formatDate } from "../../../utils/dates";
+
+interface Props {
+  title: string;
+  description: string;
+  date: Date;
+  href: string;
+  tags?: string[];
+}
+
+const { title, description, date, href, tags = [] } = Astro.props;
+const meta = `${formatDate(date)}${tags.length > 0 ? ` · ${tags.join(", ")}` : ""}`;
+---
+
+<ContentCard type="blog" {title} {description} {href} {meta} />

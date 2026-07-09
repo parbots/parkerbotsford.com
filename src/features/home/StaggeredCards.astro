@@ -1,0 +1,88 @@
+---
+import { getCollection } from "astro:content";
+import { DAILY_VERSES } from "../../data/verses";
+import { getDailyVerse } from "../../utils/verse-cache";
+import { formatDate } from "../../utils/dates";
+import ContentCard from "../../components/shared/ContentCard.astro";
+
+// Latest blog post
+const posts = (await getCollection("blog", ({ data }) => !data.draft)).sort(
+  (a, b) => b.data.date.getTime() - a.data.date.getTime(),
+);
+const latestPost = posts[0];
+
+// Latest writing
+const writings = (
+  await getCollection("writings", ({ data }) => !data.draft)
+).sort((a, b) => b.data.date.getTime() - a.data.date.getTime());
+const latestWriting = writings[0];
+
+// First project (sorted by title)
+const projects = (await getCollection("projects")).sort((a, b) =>
+  a.data.title.localeCompare(b.data.title),
+);
+const firstProject = projects[0];
+
+// Daily verse
+const dailyRefs = DAILY_VERSES.map((v) => v.ref);
+const verse = getDailyVerse(dailyRefs);
+---
+
+<section class="mx-auto flex max-w-3xl flex-col gap-5 px-8 pt-6 pb-12 md:px-12">
+  {
+    latestPost && (
+      <ContentCard
+        type="blog"
+        title={latestPost.data.title}
+        description={latestPost.data.description}
+        href={`/blog/${latestPost.id}`}
+        meta={formatDate(latestPost.data.date)}
+        class="w-full self-end md:w-3/4"
+      />
+    )
+  }
+  {
+    latestWriting && (
+      <ContentCard
+        type="writing"
+        title={latestWriting.data.title}
+        description={`A ${latestWriting.data.type}`}
+        href={`/writings/${latestWriting.id}`}
+        meta={formatDate(latestWriting.data.date)}
+        class="w-full self-start md:w-[68%]"
+      />
+    )
+  }
+  {
+    firstProject && (
+      <ContentCard
+        type="project"
+        title={firstProject.data.title}
+        description={firstProject.data.description}
+        href={`/projects/${firstProject.id}`}
+        meta={firstProject.data.status}
+        class="w-full self-end md:w-3/4"
+      />
+    )
+  }
+  {
+    verse && (
+      <ContentCard
+        type="verse"
+        title="Verse of the Day"
+        href="/verses"
+        class="w-full self-start md:w-[70%]"
+      >
+        <p class="mt-2 text-sm leading-relaxed italic" style="opacity: 0.9;">
+          &ldquo;{verse.text}&rdquo;
+        </p>
+        <span
+          class="mt-1 block text-xs"
+          style="font-family: var(--font-mono); opacity: 0.75;"
+        >
+          {verse.reference}
+        </span>
+      </ContentCard>
+    )
+  }
+</section>

@@ -1,0 +1,33 @@
+---
+interface Props {
+  live?: boolean;
+  class?: string;
+}
+
+const { live = false, class: className } = Astro.props;
+---
+
+<span class:list={["mono-label", className]}>
+  {live && <span class="live-dot" aria-hidden="true" />}
+  <slot />
+</span>
+
+<style>
+  .mono-label {
+    font-family: var(--font-mono);
+    font-size: 0.625rem;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    line-height: 1.6;
+    color: var(--fg-muted);
+  }
+  .live-dot {
+    display: inline-block;
+    width: 6px;
+    height: 6px;
+    margin-right: 6px;
+    border-radius: 50%;
+    background: var(--live);
+    vertical-align: middle;
+  }
+</style>
