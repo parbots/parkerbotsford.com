@@ -216,11 +216,13 @@
 }
 
 /* Card hover reduced-motion fallback */
-.card-hover {
-  transition: box-shadow 0.3s ease;
-}
-.card-hover:hover {
-  box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.1);
+@media (prefers-reduced-motion: reduce) {
+  .card-hover {
+    transition: box-shadow 0.3s ease;
+  }
+  .card-hover:hover {
+    box-shadow: 0 8px 24px -8px rgba(0, 0, 0, 0.1);
+  }
 }
 
 /* ===== Prose (MDX content) ===== */
