@@ -6,10 +6,23 @@ Tailwind CSS utilities + CSS custom properties in `global.css`.
 
 `.dark` class on `<html>` toggled by ThemeToggle React island.
 
-- **Light mode:** warm cream (`--bg: #F5F0EB`, `--accent: #C4643A`)
-- **Dark mode:** dark chocolate (`--bg: #1C1917`)
+- **Light mode:** bone (`--bg: #faf7f2`, `--accent: #a8542b` sandstone)
+- **Dark mode:** warm chocolate (`--bg: #1c1917`, `--accent: #d98a4f`)
+- **Per-type tones** (`--tone-blog/writing/project/verse`): card detailing
+  only (corner reveal, labels, chips) — never full card fills.
 
 ## Fonts
 
-- **Body:** Lora
-- **Code/UI:** JetBrains Mono
+- **Display/headings:** Fraunces (variable; italic accent words via
+  `AccentHeading` and its `[[word]]` convention)
+- **Body:** Atkinson Hyperlegible Next (FontSwitcher offers Lora, Inter)
+- **Code/micro-labels:** JetBrains Mono
+
+## Design language (beza-derived)
+
+Primitives in `src/components/primitives/`: `RevealCard` (quiet card,
+hover/focus corner reveal in tone color; dormant variants `edge-bar`,
+`chip`, `wash` are deliberate — do not remove), `Eyebrow`, `MonoLabel`,
+`HatchDivider`, `DashedRule`, `AccentHeading`.
+
+Spec: `docs/superpowers/specs/2026-07-08-beza-redesign-design.md`

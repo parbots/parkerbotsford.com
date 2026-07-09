@@ -27,16 +27,6 @@
   /* Live dot (beza) */
   --live: #4ade80;
 
-  /* Legacy card fills — still read by ContentCard/ContentHeaderCard; removed in Task 9 */
-  --card-blog-bg: #b8967a;
-  --card-blog-fg: #2e1f14;
-  --card-writing-bg: #8a9e82;
-  --card-writing-fg: #1e2a1a;
-  --card-project-bg: #c9956e;
-  --card-project-fg: #3a2312;
-  --card-verse-bg: #c4b09a;
-  --card-verse-fg: #332618;
-
   /* Nav indicator */
   --nav-indicator-bg: rgba(255, 255, 255, 0.5);
 
@@ -81,15 +71,6 @@
   --tone-writing: #93a886;
   --tone-project: #d3a066;
   --tone-verse: #c2b188;
-
-  --card-blog-bg: #5c4b3d;
-  --card-blog-fg: #e2d5c8;
-  --card-writing-bg: #3d4a38;
-  --card-writing-fg: #d4e0cf;
-  --card-project-bg: #654a37;
-  --card-project-fg: #e8d5c4;
-  --card-verse-bg: #62584d;
-  --card-verse-fg: #e2d8cc;
 
   --nav-indicator-bg: rgba(255, 255, 255, 0.08);
 
