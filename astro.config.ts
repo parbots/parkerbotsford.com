@@ -12,7 +12,7 @@ import {
 
 // https://astro.build/config
 export default defineConfig({
-  site: "https://parkerbotsford.com",
+  site: "https://parbots.com",
   integrations: [esvVerses(), react(), mdx(), sitemap()],
   vite: {
     plugins: [tailwind()],
