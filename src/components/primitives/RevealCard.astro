@@ -1,0 +1,129 @@
+---
+/**
+ * Quiet surface card with a tone-colored under-layer.
+ * Active variant: "reveal" — bottom-left corner radius opens on
+ * hover/focus to expose the tone color.
+ * Dormant variants (deliberate, kept for later use — see spec):
+ * "edge-bar", "chip", "wash".
+ */
+interface Props {
+  tone?: "blog" | "writing" | "project" | "verse" | "neutral";
+  variant?: "reveal" | "edge-bar" | "chip" | "wash";
+  href?: string;
+  class?: string;
+}
+
+const {
+  tone = "neutral",
+  variant = "reveal",
+  href,
+  class: className,
+} = Astro.props;
+
+const Tag = href ? "a" : "div";
+---
+
+<Tag
+  href={href}
+  class:list={[
+    "reveal-card",
+    `tone-${tone}`,
+    `variant-${variant}`,
+    href && "card-hover no-underline",
+    className,
+  ]}
+>
+  <span class="under" aria-hidden="true"></span>
+  <span class="surface">
+    <slot />
+  </span>
+</Tag>
+
+<style>
+  .reveal-card {
+    position: relative;
+    display: block;
+    border-radius: 12px;
+    color: var(--fg);
+  }
+  .tone-blog {
+    --reveal-color: var(--tone-blog);
+  }
+  .tone-writing {
+    --reveal-color: var(--tone-writing);
+  }
+  .tone-project {
+    --reveal-color: var(--tone-project);
+  }
+  .tone-verse {
+    --reveal-color: var(--tone-verse);
+  }
+  .tone-neutral {
+    --reveal-color: var(--accent);
+  }
+  .under {
+    position: absolute;
+    inset: 0;
+    border-radius: 12px;
+    background: var(--reveal-color);
+  }
+  .surface {
+    position: relative;
+    display: block;
+    height: 100%;
+    padding: 1.75rem;
+    background: var(--bg-surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+  }
+  @media (min-width: 768px) {
+    .surface {
+      padding: 2.25rem;
+    }
+  }
+
+  /* --- reveal (active variant) --- */
+  .variant-reveal .surface {
+    border-bottom-left-radius: 12px;
+  }
+  .variant-reveal:hover .surface,
+  .variant-reveal:focus-within .surface,
+  .variant-reveal.card-hover:focus .surface {
+    border-bottom-left-radius: 30px;
+  }
+  @media (prefers-reduced-motion: no-preference) {
+    /* Also re-declare the global theme-fade properties: this scoped rule
+       out-specifies the global `html *` transition, and without them the
+       card surface would snap on theme toggle while the page fades. */
+    .variant-reveal .surface {
+      transition:
+        border-bottom-left-radius 300ms ease,
+        background-color 500ms ease,
+        border-color 500ms ease;
+    }
+  }
+  @media (prefers-reduced-motion: reduce) {
+    /* Static sliver, always visible — no animation */
+    .variant-reveal .surface {
+      border-bottom-left-radius: 30px;
+    }
+  }
+
+  /* --- dormant variants --- */
+  .variant-edge-bar .under {
+    display: none;
+  }
+  .variant-edge-bar .surface {
+    border-left: 3px solid var(--reveal-color);
+  }
+  .variant-chip .under {
+    display: none;
+  }
+  /* chip: exposes --reveal-color for a tinted label chip in the slot */
+  .variant-wash .under {
+    display: none;
+  }
+  .variant-wash .surface {
+    background: color-mix(in srgb, var(--reveal-color) 8%, var(--bg-surface));
+  }
+</style>

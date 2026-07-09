@@ -1,0 +1,37 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+
+const HEIGHTS = [30, 60, 100, 75, 45, 20];
+const ACCENT_INDEX = 3;
+---
+
+<div class:list={["hatch", className]} aria-hidden="true">
+  {
+    HEIGHTS.map((h, i) => (
+      <span
+        class:list={["tick", i === ACCENT_INDEX && "tick-accent"]}
+        style={`height: ${h}%;`}
+      />
+    ))
+  }
+</div>
+
+<style>
+  .hatch {
+    display: flex;
+    align-items: flex-end;
+    gap: 3px;
+    height: 2.75rem;
+  }
+  .tick {
+    width: 3px;
+    background: var(--fg);
+  }
+  .tick-accent {
+    background: var(--accent);
+  }
+</style>

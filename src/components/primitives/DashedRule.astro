@@ -1,0 +1,21 @@
+---
+interface Props {
+  class?: string;
+}
+
+const { class: className } = Astro.props;
+---
+
+<div class:list={["dashed-rule", className]} aria-hidden="true"></div>
+
+<style>
+  .dashed-rule {
+    height: 1px;
+    background: repeating-linear-gradient(
+      90deg,
+      var(--fg) 0 4px,
+      transparent 4px 12px
+    );
+    opacity: 0.25;
+  }
+</style>
