@@ -2,7 +2,7 @@ export const SITE = {
   title: "Parker Botsford",
   description:
     "IT engineer and programmer with a passion for designing, building, and maintaining innovative technology solutions.",
-  url: "https://parkerbotsford.com",
+  url: "https://parbots.com",
   author: "Parker Botsford",
 } as const;
 
