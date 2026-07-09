@@ -17,11 +17,12 @@
   --font-body: "Atkinson Hyperlegible Next", sans-serif;
   --font-mono: "JetBrains Mono", "Courier New", monospace;
 
-  /* Per-type tone colors — card detailing only (reveal layer, labels) */
-  --tone-blog: #b0714a;
-  --tone-writing: #7d9070;
-  --tone-project: #c08b52;
-  --tone-verse: #b3a273;
+  /* Per-type tone colors — card detailing only (reveal layer, labels).
+     Darkened from spec bases to meet AA 4.5:1 for small labels on #ffffff. */
+  --tone-blog: #a26844;
+  --tone-writing: #6b7b5f;
+  --tone-project: #9b6c39;
+  --tone-verse: #847448;
 
   /* Live dot (beza) */
   --live: #4ade80;
