@@ -2,6 +2,8 @@
 import Base from "../layouts/Base.astro";
 import Nav from "../components/primitives/Nav.astro";
 import Footer from "../components/primitives/Footer.astro";
+import HatchDivider from "../components/primitives/HatchDivider.astro";
+import Eyebrow from "../components/primitives/Eyebrow.astro";
 import Hero from "../features/home/Hero.astro";
 import StaggeredCards from "../features/home/StaggeredCards.astro";
 import { SITE } from "../config";
@@ -13,6 +15,10 @@ import { SITE } from "../config";
     <Nav />
     <main id="main" class="fade-in flex-1">
       <Hero />
+      <div class="mx-auto max-w-3xl px-8 md:px-12">
+        <HatchDivider />
+        <Eyebrow class="mt-6">Latest from the site</Eyebrow>
+      </div>
       <StaggeredCards />
     </main>
     <Footer />
